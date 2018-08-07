@@ -20,19 +20,19 @@
             {{ csrf_field() }}
             <div class="form-group col-6 m-auto">
                 <label for="title">Título</label>
-                <input type="text" class="form-control" name="title" id="title" required/>
+                <input type="text" class="form-control" name="title" id="title" required value="{{request()->get('title')}}"/>
             </div>
             <div class="form-group col-6 m-auto">
                 <label for="rating">Classificação</label>
-                <input type="number" class="form-control" name="rating" id="rating" required/>
+                <input type="number" class="form-control" name="rating" id="rating" required value="{{request()->get('rating')}}"/>
             </div>
             <div class="form-group col-6 m-auto">
                 <label for="awards">Prêmios</label>
-                <input type="number" class="form-control" name="awards" id="awards" required/>
+                <input type="number" class="form-control" name="awards" id="awards" required value="{{request()->get('awards')}}"/>
             </div>
             <div class="form-group col-6 m-auto">
                 <label for="length">Duração</label>
-                <input type="number" class="form-control" name="length" id="length" required/>
+                <input type="number" class="form-control" name="length" id="length" required value="{{request()->get('length')}}"/>
             </div>
             <div class="form-group col-6 m-auto">
                 <label>Data de estreia</label>

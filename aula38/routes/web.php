@@ -18,3 +18,13 @@ Route::get('/', function () {
 Route::get('/form', "formController@form");
 
 Route::post('/adicionar', "formController@adicionar");
+
+
+
+Route::get('/actors', "ActorController@actors");
+
+Route::post('/add', "ActorController@adicionar");
+
+Route::post('/add/salvar', "ActorController@salvar");
+
+Route::post('/add/remove', "ActorController@deletar");
