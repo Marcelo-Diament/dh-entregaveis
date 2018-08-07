@@ -15,9 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/form', "formController@form");
+Route::get('/form', "formController@exibirForm");
 
-Route::post('/adicionar', "formController@adicionar");
+Route::post('/cadastrarFilme', "formController@cadastrar");
 
 
 

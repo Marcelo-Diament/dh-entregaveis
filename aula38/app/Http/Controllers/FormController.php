@@ -8,18 +8,35 @@ use App\Filmes;
 
 class FormController extends Controller
 {
-    public function form (){
+    public function exibirForm (){
         return view('form');
     }
 
-    public function adicionar ( Request $request){
+    public function cadastrar ( Request $request){
         $this->validate($request, [
             'title' => 'required|unique:movies|max:500',
             'rating' => 'required|integer|min:0|max:10',
             'awards' => 'required|integer|min:0|max:99',
-            'length' => 'required|integer'
+            'length' => 'required|integer',
+            'release_date' => 'required'
         ]);
-        return view('form', [ 'request' => $request ]);
+
+        $filme = Filmes::create([
+            'title' => $request->input('title'),
+            'rating' => $request->input('rating'),
+            'awards' => $request->input('awards'),
+            'length' => $request->input('length'),
+            'release_date' => $request->input('release_date')
+        ]);
+
+        $sucesso = $filme->save();
+
+        if($sucesso){
+            return view('form')->with('sucesso',true);
+        } else {
+            return view('form')->with('ocorreuErro',true);
+        }
+        
     }
 
     public function salvar (Request $request){
