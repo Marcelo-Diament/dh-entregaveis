@@ -15,16 +15,27 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/form', "formController@exibirForm");
+/* ROTAS DE FILMES */
+Route::get('/filmes', "formController@exibirFilmes");
+Route::get('/adicionarFilme', "formController@adicionarFilme");
+Route::post('/filme/add', "formController@cadastrarFilme");
+Route::get('/filme/edit/{id}', "formController@editarFilme");
+Route::put('/filme/edit/{id}', "formController@atualizarFilme");
+Route::get('/filme/delete/{id}', "formController@excluirFilme");
+Route::delete('/filme/delete/{id}', "formController@deletarFilme");
 
-Route::post('/cadastrarFilme', "formController@cadastrar");
 
+/* ROTAS DE ATORES */
+// Route::get('/actors', "ActorController@exibiractors");
+// Route::get('/actor/add', "ActorController@exibirAtor");
+// Route::post('/actor/add', "ActorController@cadastrarAtor");
+// Route::get('/actor/edit/{id}', "ActorController@editarAtor");
+// Route::put('/actor/edit/{id}', "ActorController@atualizarAtor");
+// Route::get('/actor/delete/{id}', "ActorController@excluirAtor");
+// Route::delete('/actor/delete/{id}', "ActorController@deletarAtor");
 
 
 Route::get('/actors', "ActorController@actors");
-
 Route::post('/add', "ActorController@adicionar");
-
 Route::post('/add/salvar', "ActorController@salvar");
-
 Route::post('/add/remove', "ActorController@deletar");

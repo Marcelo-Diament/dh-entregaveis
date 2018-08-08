@@ -26,7 +26,7 @@
         <h1 align="center">Formulário</h1>
         <form id="adicionarFilme" name="adicionarFilme" method="POST" action="/filme/add">
             {{ csrf_field() }}
-            {{ method_field('POST')}}
+            {{ method_field('POST') }}
             <div class="form-group col-6 m-auto">
                 <label for="title">Título</label>
                 <input type="text" class="form-control" name="title" id="title" required value="{{old('title')}}"/>

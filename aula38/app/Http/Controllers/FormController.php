@@ -8,11 +8,19 @@ use App\Filmes;
 
 class FormController extends Controller
 {
-    public function exibirForm (){
-        return view('form');
+    // Exibição de Lista de Todos os Filmes
+    public function exibirFilmes (Request $request){
+        $filmes = Filmes::all();
+        return view('todosFilmes')->with('filmes', $filmes);
     }
 
-    public function cadastrar ( Request $request){
+    // Exibição do Formulário de Cadastro de Novo Filme
+    public function adicionarFilme (){
+        return view('/adicionarFilme');
+    }
+
+    // Validação e Cadastro do Novo Filme
+    public function cadastrarFilme ( Request $request){
         $this->validate($request, [
             'title' => 'required|unique:movies|max:500',
             'rating' => 'required|integer|min:0|max:10',
@@ -20,7 +28,6 @@ class FormController extends Controller
             'length' => 'required|integer',
             'release_date' => 'required'
         ]);
-
         $filme = Filmes::create([
             'title' => $request->input('title'),
             'rating' => $request->input('rating'),
@@ -28,35 +35,54 @@ class FormController extends Controller
             'length' => $request->input('length'),
             'release_date' => $request->input('release_date')
         ]);
-
         $sucesso = $filme->save();
-
         if($sucesso){
-            return view('form')->with('sucesso',true);
+            return view('adicionarFilme')->with('sucesso',true);
         } else {
-            return view('form')->with('ocorreuErro',true);
+            return view('adicionarFilme')->with('ocorreuErro',true);
         }
-        
     }
 
-    public function salvar (Request $request){
-
-        $cadastroFilme = Filmes::create($request->all());
-        // o request all só se aplica se todos os campos são salvos se houvesse um campo que não pode ser inserido na mesma tabela aí teríamos de fazer o request input a input
-        $cadastroFilme->save();
+    // Visualização para Edição
+    public function editarFilme($id){
+        $filme = Filmes::find($id);
+        return view('editarFilme')->with('filme', $filme);
     }
 
-    public function atualizar (Request $request){
-
-        $input =Filmes::find('title');
-        $input->title = $request->input('title');
-        
-        $input->save();
+    // Ação para Edição/Atualização
+    public function atualizarFilme (Request $request, $id){
+        $filme = Filmes::find($id);
+        $filme->title = $request->input('title');
+        $filme->rating = $request->input('rating');
+        $filme->awards = $request->input('awards');
+        $filme->length = $request->input('length');
+        $filme->release_date = $request->input('release_date');
+        $sucesso = $filme->save();
+        if($sucesso){
+            return view('/filmes')->with('sucesso',true);
+        } else {
+            return view('EditarFilme')->with('ocorreuErro',true);
+        }
     }
 
-    public function deletar (Request $request){
+    // Visualização para Exclusão
+    public function excluirFilmes (Request $request){
+        $filmes = Filmes::all();
+        return view('filmes/delete')->with('filmes', $filmes);
+    }
 
-        $input =Filmes::find('title');
-        $input->delete();
+    public function deletarFilme (Request $request, $id){
+        $filme = Filmes::find($id);
+        $filme->title = $request->input('title');
+        $filme->rating = $request->input('rating');
+        $filme->awards = $request->input('awards');
+        $filme->length = $request->input('length');
+        $filme->release_date = $request->input('release_date');
+        $sucesso = $filme->delete();
+        if($sucesso){
+            return view('/filmes')->with('sucesso',true);
+        } else {
+            return view('/filmes')->with('ocorreuErro',true);
+        }
     }
 }
