@@ -63,24 +63,16 @@
                 margin-bottom: 30px;
             }
 
-            .lista ul{
+            ul.lista{
                 list-style: none;
                 font-weight: bold;
                 text-align: left;
                 display: inline-block;
             }
+            b{
+                color: #000;
+            }
         </style>
-        <!-- ARRAY DE FILMES -->
-        <?php
-            $filmes = [
-                1 => "Toy Story",
-                2 => "Procurando Nemo",
-                3 => "Avatar",
-                4 => "Star Wars: Episódio V",
-                5 => "Up",
-                6 => "Mary e Max"
-            ];
-        ?>
     </head>
     <body>
         <div class="flex-center position-ref full-height">
@@ -99,24 +91,26 @@
                 <div class="title m-b-md">
                     Aula 36 | Laravel II
                 </div>
-                <h3>Exercícios 2a (comentado) e 2b</h3>
-                <hr>
-                <h2>Confira a seguir os filmes cadastrados</h2>
-                <!-- Exercício 2a -->
-                <!-- <div class="lista">
-                    <ul>
-                        <?php
-                            //foreach ($filmes as $idFilme => $nomeFilme) {
-                                //echo '<li>'.$nomeFilme.'</li><br/>';
-                            //}
-                        ?>
-                    </ul>
-                </div> -->
-                <div class="lista">
-                    <ul>
-                        @foreach ($filmes as $idFilme => $nomeFilme)
-                            <li> {{ $nomeFilme }} </li><br/>
-                        @endforeach
+                <div>
+                    <h2>Exercício 01 b</h2>
+                    @if ($resultado == 'ok')
+                        O filme de id <b>{{ $id }}</b> é <b>{{ $tituloFilme }}</b>
+                    @else
+                        Não há filme de id <b>{{ $id }}</b>
+                    @endif
+                </div>
+                <div>
+                    <!-- <h2>Exercício 02 a</h2>
+                    <ul class="lista">
+                        <?php //foreach ($listaFilmes as $idFilme => $tituloFilme){
+                            //echo '<li>'.{{ $idFilme }}.' | '.{{ $tituloFilme}}.' </li><br/>';
+                        //} ?>
+                    </ul> -->
+                    <h2>Exercício 02 b</h2>
+                    <ul class="lista">
+                        @foreach ($listaFilmes as $idFilme => $tituloFilme)
+                            <li>{{ $idFilme }} | {{ $tituloFilme}} </li><br/>
+                        @endforeach;
                     </ul>
                 </div>
             </div>

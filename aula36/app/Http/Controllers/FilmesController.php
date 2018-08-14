@@ -8,10 +8,7 @@ use Illuminate\Http\Request;
 class FilmesController extends Controller
 {
     
-    private $filmes;
-    public function __construct()
-    {
-      $this->filmes = [
+    private $listaFilmes = [
         1 => "Toy Story",
         2 => "Procurando Nemo",
         3 => "Avatar",
@@ -19,37 +16,24 @@ class FilmesController extends Controller
         5 => "Up",
         6 => "Mary e Max"
       ];
+
+    public function listarFilmes() {
+      return view('filme')->with('listaFilmes', $this->listaFilmes);
     }
 
     public function procurarFilmeId($id){
-	    
-		return '
-			<h1>Aula 36 | Laravel II | Exercício 1b</h1>
-			<cite>O nome do filme buscado <i>(pelo id '.$id.')</i> é <b>'.$this->filmes[$id].'</b></cite>
-		';
-		
-	}
-	public function procurarFilmeNome($nome){
-		$filmeEncontrado = array_search($nome, $this->filmes);
-		if ($filmeEncontrado != null){
-			return '
-				<h1>Aula 36 | Laravel II | Exercício 1c</h1>
-				<cite>Encontramos o filme <b>'.$nome.'</b>, seu id é <b>'.$filmeEncontrado.'</b>.</cite>
-			';
-		} else {
-			echo '
-				<h1>Aula 36 | Laravel II | Exercício 1c</h1>
-				<cite>Ops! Desculpe, não pudemos encontrar o filme <b>'.$nome.'</b>...
-				<br/>
-				Por favor, verifique se digitou o nome corretamente e tente novamente.
-				<br/>
-				Se preferir, confira a lista de todos os filmes cadastrados a seguir:</cite>
-				<ul>';
-					foreach ($this->filmes as $idFilme => $filme){
-						echo '<li><b>'.$filme.'</b></li>';
-					};
-				echo '</ul>
-			';
-		}
-	}
+        foreach ($this->listaFilmes as $idFilme => $tituloFilme){
+            if ($id == $idFilme){
+                $resultado = 'ok';
+                break;
+            } else {
+                $resultado = '';
+            }
+        }
+        return view('filme')
+            ->with('id', $id)
+            ->with('tituloFilme', $tituloFilme)
+            ->with('listaFilmes', $this->listaFilmes)
+            ->with('resultado', $resultado);
+    }
 }
