@@ -7,30 +7,30 @@ use Illuminate\Http\Request;
 // Aula 36 - Laravel II - Exercício 01b
 class FilmesController extends Controller
 {
+    
+    private $filmes;
+    public function __construct()
+    {
+      $this->filmes = [
+        1 => "Toy Story",
+        2 => "Procurando Nemo",
+        3 => "Avatar",
+        4 => "Star Wars: Episódio V",
+        5 => "Up",
+        6 => "Mary e Max"
+      ];
+    }
+
     public function procurarFilmeId($id){
-	    $filmes = [
-			1 => "Toy Story",
-			2 => "Procurando Nemo",
-			3 => "Avatar",
-			4 => "Star Wars: Episódio V",
-			5 => "Up",
-			6 => "Mary e Max"
-		];
+	    
 		return '
 			<h1>Aula 36 | Laravel II | Exercício 1b</h1>
-			<cite>O nome do filme buscado <i>(pelo id '.$id.')</i> é <b>'.$filmes[$id].'</b></cite>
+			<cite>O nome do filme buscado <i>(pelo id '.$id.')</i> é <b>'.$this->filmes[$id].'</b></cite>
 		';
+		
 	}
 	public function procurarFilmeNome($nome){
-	    $filmes = [
-			1 => "Toy Story",
-			2 => "Procurando Nemo",
-			3 => "Avatar",
-			4 => "Star Wars: Episódio V",
-			5 => "Up",
-			6 => "Mary e Max"
-		];
-		$filmeEncontrado = array_search($nome, $filmes);
+		$filmeEncontrado = array_search($nome, $this->filmes);
 		if ($filmeEncontrado != null){
 			return '
 				<h1>Aula 36 | Laravel II | Exercício 1c</h1>
@@ -45,7 +45,7 @@ class FilmesController extends Controller
 				<br/>
 				Se preferir, confira a lista de todos os filmes cadastrados a seguir:</cite>
 				<ul>';
-					foreach ($filmes as $idFilme => $filme){
+					foreach ($this->filmes as $idFilme => $filme){
 						echo '<li><b>'.$filme.'</b></li>';
 					};
 				echo '</ul>
