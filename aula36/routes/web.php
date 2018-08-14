@@ -15,5 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Aula 36 - Laravel II - Exercício 01
+// Aula 36 - Laravel II - Exercício 01b
 Route::get('/filmes/{id}', 'FilmesController@procurarFilmeId');
+
+// Aula 36 - Laravel II - Exercício 01c
+Route::get('/filmes/procurar/{nome}', 'FilmesController@procurarFilmeNome');
