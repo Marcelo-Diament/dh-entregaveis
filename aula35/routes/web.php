@@ -11,7 +11,7 @@
 |
 */
 
-// Aula 35 - Laravel I - Exercício 01 (apenas conectar ao Laravel e criar o projeto)
+// Aula 35 - Laravel I - Exercício 01
 Route::get('/', function () {
     return view('welcome');
 });
