@@ -15,20 +15,20 @@ Consolidar e validar o aprendizado em aula através de exercícios dados a cada 
 
 ##### Premissas:
 - Aplicar o aprendizado de cada aula
--- Utilizar as lições da aula para realizar os exercícios
--- Aproveitar o conteúdo já aprendido para incrementar o exercício
+--- Utilizar as lições da aula para realizar os exercícios
+--- Aproveitar o conteúdo já aprendido para incrementar o exercício
 - Clean Code
--- Na medida do possível, deixar o código mais limpo possível, para facilitar a compreensão por parte dos professores e edição posterior
+--- Na medida do possível, deixar o código mais limpo possível, para facilitar a compreensão por parte dos professores e edição posterior
 - Boas Práticas
--- Respeitar a organização determinada pela Digital House
--- Aplicar as boas práticas de programação
+--- Respeitar a organização determinada pela Digital House
+--- Aplicar as boas práticas de programação
 
 ##### Desejáveis:
 - Arquivos em dia
--- Fazer o possível para manter os exercícios sempre em dia
--- Utilizar o CoLearning para possíveis dúvidas
+--- Fazer o possível para manter os exercícios sempre em dia
+--- Utilizar o CoLearning para possíveis dúvidas
 - Validar exercícios
--- Se possível, validar no CoLearning cada exercício
+--- Se possível, validar no CoLearning cada exercício
 
 ---
 
@@ -50,7 +50,7 @@ O curso abrange as tecnologias básicas para podermos atuar como um Desenvolvedo
 
 Cada aula está contida em uma pasta, com o respectivo nome, conforme tabela a seguir:
 
-| Aula | Arquivo |
+| Aula | Pasta |
 | ------ | ------ |
 |**HTML e CSS** |
 | Aula 01 | [aula01] |
