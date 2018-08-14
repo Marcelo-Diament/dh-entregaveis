@@ -14,21 +14,13 @@ Repositório de exercícios do curso Full Stack. Turma 01 (T01), Unidade Vila Ol
 Consolidar e validar o aprendizado em aula através de exercícios dados a cada aula.
 
 ##### Premissas:
-- Aplicar o aprendizado de cada aula
---- Utilizar as lições da aula para realizar os exercícios
---- Aproveitar o conteúdo já aprendido para incrementar o exercício
-- Clean Code
---- Na medida do possível, deixar o código mais limpo possível, para facilitar a compreensão por parte dos professores e edição posterior
-- Boas Práticas
---- Respeitar a organização determinada pela Digital House
---- Aplicar as boas práticas de programação
+- Aplicar o aprendizado de cada aula: utilizar as lições da aula para realizar os exercícios e aproveitar o conteúdo já aprendido para incrementar o exercício
+- Clean Code: deixar o código mais limpo possível, para facilitar a compreensão por parte dos professores e edição posterior
+- Boas Práticas: respeitar a organização determinada pela Digital House e aplicar as boas práticas de programação
 
 ##### Desejáveis:
-- Arquivos em dia
---- Fazer o possível para manter os exercícios sempre em dia
---- Utilizar o CoLearning para possíveis dúvidas
-- Validar exercícios
---- Se possível, validar no CoLearning cada exercício
+- Arquivos em dia: fazer o possível para manter os exercícios sempre em dia e utilizar o CoLearning para possíveis dúvidas
+- Validar exercícios: sempre que possível, validar no CoLearning cada exercício
 
 ---
 
