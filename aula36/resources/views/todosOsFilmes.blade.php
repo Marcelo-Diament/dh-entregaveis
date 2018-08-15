@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Aula 36 | Exercício 2f</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -55,6 +55,9 @@
                 display: block;
                 margin: auto;
             }
+            .title a{
+                color: #636b6f !important;
+            }
             .links > a {
                 color: #636b6f;
                 padding: 0 25px;
@@ -68,7 +71,6 @@
                 margin-bottom: 30px;
             }
             .bloco-exercicio{
-                background-color: #cecece;
                 display: block;
                 width: 80vw;
                 margin: 40px auto;
@@ -77,6 +79,7 @@
             .enunciado{
                 background-color: #f2f2f2;
                 text-align: left;
+                width: 80vw;
                 padding: 20px;
                 display: inline-block;
                 border-radius: 20px 20px 0px 0px;
@@ -85,15 +88,20 @@
             .enunciado p{
                 font-weight: bold;
             }
-            .fa-code{
+            .fa-code, .fa-terminal, .fa-github{
                 color: #fa503a;
                 display: inline-block;
             }
             .resultado{
+                background-color: #cecece;
                 text-align: left;
+                width: 80vw;
                 padding: 20px;
                 display: inline-block;
                 border-radius: 0px 0px 20px 20px;
+            }
+            .indice{
+                display: flex;
             }
             ul.lista{
                 list-style: none;
@@ -124,7 +132,20 @@
                 color: #636b6f;
                 font-weight: bold;
             }
-
+            ul.menu{
+                list-style: none;
+                display: inline-flex;
+            }
+            ul.menu li{
+                margin-right: 30px;
+            }
+            .menu .fab, .menu .fa, .menu .fas{
+                font-size: 32pt;
+                color: #fa503a;
+            }
+            .sem-uso{
+                color: #636363 !important;
+            }
         </style>
     </head>
     <body>
@@ -142,12 +163,14 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    <img src="https://midnightcorp.com/wp-content/themes/midnightwp/dist/images/laravel.png" alt="Laravel" width="128" height="auto">
-                    Aula 36 | Laravel II
+                    <a href="{{url('/')}}" target="_self" title="Tela Inicial" rel="next" alt="Acessar Tela Inicial">
+                        <img src="https://midnightcorp.com/wp-content/themes/midnightwp/dist/images/laravel.png" alt="Laravel" width="128" height="auto">
+                        Aula 36 | Laravel II
+                    </a>
                 </div>
 
                 <!-- EXERCÍCIO 02 F - INÍCIO -->
-                <div class="bloco-exercicio">
+                <div class="bloco-exercicio" id="36-2f">
                     <div class="enunciado">
                         <h2><i class="fas fa-code"></i> Exercício 02 F | Listar todos os Filmes em nova View</h2>
                         <p>f. Criar uma rota /listarFilmes ​ que envie os dados ao controlador através do método <strike>listarFilmes​</strike> listarTodosOsFilmes. Também será necessário criar uma nova view todosOsFilmes.blade.php​ para mostrar todos os filmes.</p>

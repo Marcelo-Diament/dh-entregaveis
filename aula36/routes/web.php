@@ -21,4 +21,6 @@ Route::get('/filmes/procurarId/{id}', 'FilmesController@procurarFilmeId');
 
 Route::get('/filmes/procurarTitulo/{titulo}', 'FilmesController@procurarFilmeTitulo');
 
+Route::get('/adicionarFilme/{novoTitulo}', 'FilmesController@adicionarFilme');
+
 Route::get('/todosOsFilmes', 'FilmesController@listarTodosOsFilmes');

@@ -61,6 +61,15 @@ class FilmesController extends Controller
             ->with('resultado', $resultado);
     }
 
+    public function adicionarFilme($novoTitulo){
+        if (isset($novoTitulo)){
+            $this->listaFilmes[] = $novoTitulo;
+        }
+        return view('filme')
+            ->with('listaFilmes', $this->listaFilmes)
+            ->with('novoTitulo', $novoTitulo);
+    }
+
     public function listarTodosOsFilmes() {
       return view('todosOsFilmes')->with('listaFilmes', $this->listaFilmes);
     }

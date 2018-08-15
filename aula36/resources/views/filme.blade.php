@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Aula 36 | Ex 1 e 2 (a-e)</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -55,6 +55,9 @@
                 display: block;
                 margin: auto;
             }
+            .title a{
+                color: #636b6f !important;
+            }
             .links > a {
                 color: #636b6f;
                 padding: 0 25px;
@@ -68,7 +71,6 @@
                 margin-bottom: 30px;
             }
             .bloco-exercicio{
-                background-color: #cecece;
                 display: block;
                 width: 80vw;
                 margin: 40px auto;
@@ -77,6 +79,7 @@
             .enunciado{
                 background-color: #f2f2f2;
                 text-align: left;
+                width: 80vw;
                 padding: 20px;
                 display: inline-block;
                 border-radius: 20px 20px 0px 0px;
@@ -85,15 +88,20 @@
             .enunciado p{
                 font-weight: bold;
             }
-            .fa-code{
+            .fa-code, .fa-terminal, .fa-github{
                 color: #fa503a;
                 display: inline-block;
             }
             .resultado{
+                background-color: #cecece;
                 text-align: left;
+                width: 80vw;
                 padding: 20px;
                 display: inline-block;
                 border-radius: 0px 0px 20px 20px;
+            }
+            .indice{
+                display: flex;
             }
             ul.lista{
                 list-style: none;
@@ -124,7 +132,20 @@
                 color: #636b6f;
                 font-weight: bold;
             }
-
+            ul.menu{
+                list-style: none;
+                display: inline-flex;
+            }
+            ul.menu li{
+                margin-right: 30px;
+            }
+            .menu .fab, .menu .fa, .menu .fas{
+                font-size: 32pt;
+                color: #fa503a;
+            }
+            .sem-uso{
+                color: #636363 !important;
+            }
         </style>
     </head>
     <body>
@@ -142,12 +163,14 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    <img src="https://midnightcorp.com/wp-content/themes/midnightwp/dist/images/laravel.png" alt="Laravel" width="128" height="auto">
-                    Aula 36 | Laravel II
+                    <a href="{{url('/')}}" target="_self" title="Tela Inicial" rel="next" alt="Acessar Tela Inicial">
+                        <img src="https://midnightcorp.com/wp-content/themes/midnightwp/dist/images/laravel.png" alt="Laravel" width="128" height="auto">
+                        Aula 36 | Laravel II
+                    </a>
                 </div>
                 
                 <!-- EXERCÍCIO 01 A e B - INÍCIO-->
-                <div class="bloco-exercicio">
+                <div class="bloco-exercicio" id="36-1a-b">
                     <div class="enunciado">
                         <h2><i class="fas fa-code"></i> Exercício 01 A e B | Buscar Filme por Id</h2>
                         <p>a. Criar um novo controlador chamado FilmesController.</p>
@@ -170,7 +193,7 @@
                 <!-- EXERCÍCIO 01 A e B - FIM -->
 
                 <!-- EXERCÍCIO 01 C - INÍCIO -->
-                <div class="bloco-exercicio">
+                <div class="bloco-exercicio" id="36-1c">
                     <div class="enunciado">
                         <h2><i class="fas fa-code"></i> Exercício 01 C | Buscar Filme por Título</h2>
                         <p>c. Criar o caminho <strike>/filmes/procurar/{nome}​</strike> /filmes/procurarTitulo/{titulo}, o método <strike>procurarFilmeNome($nome)</strike> procurarFilmeTitulo($titulo)​, e copiar o array de filmes definido ao final do exercício. De acordo com o parâmetro recebido por URL, procurar coincidências com o array de filmes. Caso haja coincidências, retornar o nome do filme. Caso contrário, retornar a string “Não foram encontrados resultados”.</p>
@@ -192,7 +215,7 @@
                 <!-- EXERCÍCIO 01 C - FIM -->
                 
                 <!-- EXERCÍCIO 02 A, B, C e D - INÍCIO -->
-                <div class="bloco-exercicio">
+                <div class="bloco-exercicio" id="36-2a-b-c-d">
                     <!-- <h2>Exercício 02 a</h2>
                     <ul class="lista">
                         <?php //foreach ($listaFilmes as $idFilme => $tituloFilme){
@@ -218,24 +241,35 @@
                 </div>
                 <!-- EXERCÍCIO 02 A, B, C e D - FIM -->
 
-                <!-- EXERCÍCIO 02 A, B, C e D - INÍCIO -->
-                <div class="bloco-exercicio">
-                    <!-- <h2>Exercício 02 a</h2>
-                    <ul class="lista">
-                        <?php //foreach ($listaFilmes as $idFilme => $tituloFilme){
-                            //echo '<li>'.{{ $idFilme }}.' | '.{{ $tituloFilme}}.' </li><br/>';
-                        //} ?>
-                    </ul> -->
+                <!-- EXERCÍCIO 02 E - INÍCIO -->
+                <div class="bloco-exercicio" id="36-2e">
+                    <div class="enunciado">
+                        <h2><i class="fas fa-code"></i> Exercício 02 E | Adicionar Novo Filme</h2>
+                        <p>e. Criar um caminho /adicionarFilme/<strike>{filme}</strike>{novoTitulo}​ que adicione um filme ao array do último exercício utilizando o controlador FilmesController, ​este método deve retornar a string: “Filme adicionado com sucesso”.</p>
+                    </div>
+                    <div class="resultado">
+                        @if (isset($novoTitulo))
+                            <h3>Filme {{ $novoTitulo }} adicionado com sucesso!</h3>
+                        @else
+                            <h3>Acesse a rota <a href="localhost:8000/adicionarFilme/INSIRA-AQUI-O-TÍTULO-DO-NOVO-FILME-E-DEPOIS-APERTE-ENTER" target="_blank" title="Incluir novo filme" rel="next" alt="Incluir novo filme">/adicionarFilme/</a>, inclua o nome do filme após a última barra e confirme para acrescentar um filme à lista de filmes</h3>
+                        @endif
+                        <small>Como o exercício não envolve banco, após a inserção é exibida uma confirmação na view e a lista dos filmes é atualizada (na view).<br/>No entanto, o filme não é adicionado de fato ao array, então ao atualizar a página ele some novamente.</small>
+                    </div>
+                </div>
+                <!-- EXERCÍCIO 02 E - FIM -->
+
+                <!-- EXERCÍCIO 02 F - INÍCIO -->
+                <div class="bloco-exercicio" id="36-2f">
                     <div class="enunciado">
                         <h2><i class="fas fa-code"></i> Exercício 02 F | Listar todos os Filmes em nova View</h2>
                         <p>f. Criar uma rota /listarFilmes ​ que envie os dados ao controlador através do método <strike>listarFilmes​</strike> listarTodosOsFilmes. Também será necessário criar uma nova view todosOsFilmes.blade.php​ para mostrar todos os filmes.</p>
                     </div>
                     <div class="resultado">
-                        <h3><a href="localhost:8000/todosOsFilmes" target="_blank">Clique aqui para acessar a nova view <i class="fas fa-external-link"></i></a></h3>
-                        <small>Depois de clicar confirme o carregamento da página pressionando F5, por favor. Se preferir, acesse localhost:8000/todosOsFilmes.</small>
+                        <h3><a href="http://localhost:8000/todosOsFilmes" target="_blank" title="Acessar Exercício 2 f" rel="next" alt="Acessar Exercício 2 f">Clique aqui para acessar a nova view <i class="fas fa-external-link"></i></a></h3>
+                        <small>Se preferir, acesse localhost:8000/todosOsFilmes.</small>
                     </div>
                 </div>
-                <!-- EXERCÍCIO 02 A, B, C e D - FIM -->
+                <!-- EXERCÍCIO 02 F - FIM -->
 
             </div>
         </div>
