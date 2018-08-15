@@ -5,10 +5,11 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Aula 35 | Laravel I</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-TXfwrfuHVznxCssTxWoPZjhcss/hp38gEOH8UPZG/JcXonvBQ6SlsIF49wUzsGno" crossorigin="anonymous">
 
         <!-- Styles -->
         <style>
@@ -19,10 +20,11 @@
                 font-weight: 100;
                 height: 100vh;
                 margin: 0;
+                scroll-behavior: smooth;
             }
 
             .full-height {
-                height: 100vh;
+                min-height: 100vh;
             }
 
             .flex-center {
@@ -46,9 +48,16 @@
             }
 
             .title {
-                font-size: 84px;
+                font-size: 65px;
+                margin: 50px auto;
             }
-
+            .title img{
+                display: block;
+                margin: auto;
+            }
+            .title a{
+                color: #636b6f !important;
+            }
             .links > a {
                 color: #636b6f;
                 padding: 0 25px;
@@ -58,9 +67,92 @@
                 text-decoration: none;
                 text-transform: uppercase;
             }
-
             .m-b-md {
                 margin-bottom: 30px;
+            }
+            .bloco-exercicio{
+                display: block;
+                width: 80vw;
+                margin: 40px auto;
+                border-radius: 20px;
+            }
+            .enunciado{
+                background-color: #f2f2f2;
+                text-align: left;
+                width: 80vw;
+                padding: 20px;
+                display: inline-block;
+                border-radius: 20px 20px 0px 0px;
+                border-bottom: 3px solid #fa503a;
+            }
+            .enunciado p{
+                font-weight: bold;
+            }
+            .fa-code, .fa-terminal, .fa-github{
+                color: #fa503a;
+                display: inline-block;
+            }
+            .resultado{
+                background-color: #cecece;
+                text-align: left;
+                width: 80vw;
+                padding: 20px;
+                display: inline-block;
+                border-radius: 0px 0px 20px 20px;
+            }
+            .indice{
+                display: block;
+            }
+            ul.lista{
+                list-style: none;
+                font-weight: bold;
+                text-align: left;
+                display: inline-block;
+            }
+            b{
+                color: #fa503a;
+                font-weight: bolder;
+                font-size: 1.2em;
+            }
+            strike{
+                font-style: italic;
+                color: #cecece;
+            }
+            a, a:hover, .fa-external-link, .fa-external-link:hover{
+                color: #fa503a;
+                text-decoration: none;
+                -webkit-transition: font-size 0.4s ease-in-out;
+                -o-transition: font-size 0.4s ease-in-out;
+                transition: font-size 0.4s ease-in-out;
+            }
+            a:hover{
+                font-size: 1.02em;
+            }
+            small{
+                color: #636b6f;
+                font-weight: bold;
+            }
+            ul.menu{
+                list-style: none;
+                display: inline-flex;
+            }
+            ul.menu li{
+                margin-right: 30px;
+            }
+            .menu .fab, .menu .fa, .menu .fas{
+                font-size: 32pt;
+                color: #fa503a;
+            }
+            .sem-uso{
+                color: #636363 !important;
+            }
+            code{
+                margin-left: 20px;
+                padding: 2px;
+                background-color: #f1f1f1;
+            }
+            small code{
+                margin-left: inherit;
             }
         </style>
     </head>
@@ -79,16 +171,129 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    <a href="{{url('/')}}" target="_self" title="Tela Inicial" rel="next" alt="Acessar Tela Inicial">
+                        <img src="https://midnightcorp.com/wp-content/themes/midnightwp/dist/images/laravel.png" alt="Laravel" width="128" height="auto">
+                        Aula 35 | Laravel I
+                    </a>
                 </div>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                <!-- INÍCIO CUSTOM WELCOME -->
+                <div class="bloco-exercicio">
+                    <div class="enunciado">
+                        <h2><i class="fas fa-terminal"></i></i> <b>LARAVEL I | Introdução ao Laravel</b></h2>
+                        <small>Professor Especialista: Rodrigo</small>
+                        <br/>
+                        <small>Professores Digital House: Thiago M. Medeiros, Thomas Staziak</small>
+                        <br/>
+                        <small>Aula realizada em 30 de Julho de 2018</small>
+                    </div>
+                    <div class="resultado">
+                        <h3>Acesse os exercícios através do menu abaixo.</h3>
+                        <div class="indice">
+                            <ul class="lista">
+                                <li>Exercício 1</li>
+                                <br/>
+                                <li>
+                                    <ul class="lista">
+                                        <li>a. Criar um novo projeto em Laravel utilizando o seguinte comando:
+                                            <br/>
+                                            <code>composer create-project laravel/laravel nome_do_projeto</code>
+                                        </li>
+                                        <br/>
+                                        <li>b. Levantar o servidor local utilizando o seguinte comando:
+                                            <br/>
+                                            <code>php artisan serve</code>
+                                        </li>
+                                        <br/>
+                                        <li>c. Acessar a seguinte URL para entrar na página de início do projeto e verificar se tudo está funcionando corretamente.</li>
+                                        <br/>
+                                        <li><a href="{{url('/')}}" target="_self" title="Acessar Exercício 1" rel="next" alt="Acessar Exercício 1 a">Exercícios 1a, 1b e 1c</a></li>
+                                        <small>Já é a própria página de início (welcome.blade.php).</small>
+                                        <br/>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul class="lista">
+                                <li>Exercício 2</li>
+                                <br/>
+                                <li>
+                                    <ul class="lista">
+                                        <li>a. Criar um caminho até /meuPrimeiroCaminho​ que, quando inserido, retorne “Criei meu primeiro caminho em Laravel”.</li>
+                                        <br/>
+                                        <li><a href="{{url('/meuPrimeiroCaminho')}}" target="_blank" title="Acessar Exercício 2 a" rel="next" alt="Acessar Exercício 2 a">Exercício 2a</a></li>
+                                        <br/>
+                                        <br/>
+                                        <li>b. Criar um caminho /resultado/{numero}​ que, quando inserido, retorne uma string indicando se o número é par ou ímpar.</li>
+                                        <br/>
+                                        <li><a href="localhost:8000/resultado/INSIRA-AQUI-UM-NÚMERO-E-APERTE-ENTER-PARA-SABER-SE-É-PAR-OU-ÍMPAR" target="_blank" title="Acessar Exercício 2 b" rel="next" alt="Acessar Exercício 2 b">Exercício 2b</a></li>
+                                        <small>Obs.: reparei que utilizando <code><b>x % 2 == 0</b> ? 'par' : 'ímpar'</code> ou mesmo <code><b>x & 1</b> ? 'ímpar' : 'par'</code> só funciona com números até 9 dígitos, acima disso sempre retorna ímpar... Por que?</small>
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                        <li>c. Modificar o caminho anterior para que possa receber um novo parâmetro opcional. Ou seja, se o caminho anterior receber o novo parâmetro, deve multiplicar os dois números. Caso contrário, deve indicar se ele é par ou ímpar.</li>
+                                        <br/>
+                                        <li><a href="localhost:8000/resultado/INSIRA-O-PRIMEIRO-NÚMERO/numeroOpcional/INSIRA-O-SEGUNDO-NÚMERO(OPCIONAL)" target="_blank" title="Acessar Exercício 2 c" rel="next" alt="Acessar Exercício 2 c">Exercício 2c</a></li>
+                                        <small>Obs.: reparei que utilizando <code><b>x % 2 == 0</b> ? 'par' : 'ímpar'</code> ou mesmo <code><b>x & 1</b> ? 'ímpar' : 'par'</code> só funciona com números até 9 dígitos, acima disso sempre retorna ímpar... Por que?</small>
+                                        <br/>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul class="lista">
+                                <li>Funcionalidades</li>
+                                <br/>
+                                <li>
+                                    <ul class="lista">
+                                        <li><a href="localhost:8000/resultado/INSIRA-AQUI-UM-NÚMERO-E-APERTE-ENTER-PARA-SABER-SE-É-PAR-OU-ÍMPAR" target="_blank" title="Descobrir se o número é par ou ímpar" rel="next" alt="Descobrir se o número é par ou ímpar">Descobrir se o número é par ou ímpar</a></li>
+                                        <li><a href="localhost:8000/resultado/INSIRA-O-PRIMEIRO-NÚMERO/numeroOpcional/INSIRA-O-SEGUNDO-NÚMERO(OPCIONAL)" target="_blank" title="Multiplicar 2 números" rel="next" alt="Multiplicar 2 números">Multiplicar 2 números</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
+                <!-- FIM CUSTOM WELCOME -->
+                
+                <!-- INÍCIO MVC -->
+                <div class="bloco-exercicio">
+                    <div class="enunciado">
+                        <h2><i class="fas fa-terminal"></i></i> MVC + Routes + ReadMe + Repositório</h2>
+                    </div>
+                    <div class="resultado">
+                        <ul class="menu">
+                            <li><a href="#" target="_self" title="Esse exercício não utilizou Models" rel="external" alt="Esse exercício não utilizou Models"><i class="fas fa-database sem-uso"></i></a></li>
+                            <li><a href="#" target="_self" title="Esse exercício não utilizou Models" rel="external" alt="Esse exercício não utilizou Views"><i class="fas fa-eye sem-uso"></i></a></li>
+                            <li><a href="#" target="_self" title="Esse exercício não utilizou Models" rel="external" alt="Esse exercício não utilizou Controllers"><i class="fas fa-cog sem-uso"></i></a></li>
+                            <li><h3>+</h3></li>
+                            <li><a href="https://github.com/Marcelo-Diament/dh-entregaveis/blob/master/aula35/routes" target="_blank" title="Acessar Routes" rel="external" alt="Clique para acessar as Routes"><i class="fas fa-project-diagram"></i></a></li>
+                            <li><h3>+</h3></li>
+                            <li><a href="https://github.com/Marcelo-Diament/dh-entregaveis/blob/master/README.md" target="_blank" title="Acessar README.md" rel="help" alt="Clique para acessar o arquivo README.md"><i class="fas fa-info"></i></a></li>
+                            <li><h3>+</h3></li>
+                            <li><a href="https://github.com/Marcelo-Diament/dh-entregaveis/tree/master/aula35" target="_blank" title="Acessar o repositório" rel="external" alt="Clique para acessar o repositório"><i class="fab fa-github"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- FIM MVC -->
+
+                <!-- INÍCIO TECNOLOGIAS -->
+                <div class="bloco-exercicio">
+                    <div class="enunciado">
+                        <h2><i class="fas fa-terminal"></i></i> Tecnologias Utilizadas</h2>
+                    </div>
+                    <div class="resultado">
+                        <ul class="menu">
+                            <li><a href="https://laravel.com/" target="_blank" title="Laravel" rel="external" alt="Tecnologia Utilizada: Laravel"><i class="fab fa-laravel"></i></i></a></li>
+                            <li><a href="https://developer.mozilla.org/pt-BR/docs/Web/HTML/HTML5" target="_blank" title="HTML5" rel="external" alt="Tecnologia Utilizada: HTML5"><i class="fab fa-html5"></i></i></a></li>
+                            <li><a href="https://developer.mozilla.org/pt-BR/docs/Web/CSS" target="_blank" title="CSS3" rel="external" alt="Tecnologia Utilizada: CSS3"><i class="fab fa-css3-alt"></i></i></a></li>
+                            <li><a href="http://php.net/docs.php" target="_blank" title="php" rel="external" alt="Tecnologia Utilizada: php"><i class="fab fa-php"></i></a></li>
+                            <li><a href="https://github.com/" target="_blank" title="GitHub" rel="external" alt="Tecnologia Utilizada: GitHub"><i class="fab fa-github"></i></a></li>
+                            <li><a href="https://fontawesome.com/" target="_blank" title="Font Awesome" rel="external" alt="Tecnologia Utilizada: Font Awesome"><i class="fab fa-font-awesome"></i></i></a></li>
+                            <br/>
+                            
+                        </ul>
+                    </div>
+                </div>
+                <!-- FIM TECNOLOGIAS -->
+            </div>
             </div>
         </div>
     </body>
