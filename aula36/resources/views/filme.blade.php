@@ -134,8 +134,8 @@
                 <!-- EXERCÍCIO 01 A e B - INÍCIO-->
                 <div class="bloco-exercicio">
                     <div class="enunciado">
-                        <h2><i class="fas fa-code"></i> Exercício 01 a e 01 b | Buscar Filme por Id</h2>
-                        <p>a. Criar um novo controlador chamado FilmesController</p>
+                        <h2><i class="fas fa-code"></i> Exercício 01 A e B | Buscar Filme por Id</h2>
+                        <p>a. Criar um novo controlador chamado FilmesController.</p>
                         <p>b. No arquivo routes/web.php, criar a rota <strike>/filmes/{id}</strike> /filmes/procurarId/{id}​. Dentro do controlador FilmesController, criar o método procurarFilmeId($id)​ e copiar o array de filmes definido no final do exercício. De acordo com o parâmetro recebido pela URL, retornar o nome do filme. Considerar que o <strike>número de ID é igual à posição do elemento no array</strike> o número do Id é o número passado no array do exercício.</p>
                     </div>
                     <div class="resultado">
@@ -157,7 +157,7 @@
                 <!-- EXERCÍCIO 01 C - INÍCIO -->
                 <div class="bloco-exercicio">
                     <div class="enunciado">
-                        <h2><i class="fas fa-code"></i> Exercício 01 c | Buscar Filme por Título</h2>
+                        <h2><i class="fas fa-code"></i> Exercício 01 C | Buscar Filme por Título</h2>
                         <p>c. Criar o caminho <strike>/filmes/procurar/{nome}​</strike> /filmes/procurarTitulo/{titulo}, o método <strike>procurarFilmeNome($nome)</strike> procurarFilmeTitulo($titulo)​, e copiar o array de filmes definido ao final do exercício. De acordo com o parâmetro recebido por URL, procurar coincidências com o array de filmes. Caso haja coincidências, retornar o nome do filme. Caso contrário, retornar a string “Não foram encontrados resultados”.</p>
                     </div>
                     <div class="resultado">
@@ -176,7 +176,7 @@
                 </div>
                 <!-- EXERCÍCIO 01 C - FIM -->
                 
-                <!-- EXERCÍCIO 02 A e B - INÍCIO -->
+                <!-- EXERCÍCIO 02 A, B, C e D - INÍCIO -->
                 <div class="bloco-exercicio">
                     <!-- <h2>Exercício 02 a</h2>
                     <ul class="lista">
@@ -185,9 +185,11 @@
                         //} ?>
                     </ul> -->
                     <div class="enunciado">
-                        <h2><i class="fas fa-code"></i> Exercício 02 b | Listar todos os Filmes</h2>
-                        <p>a. Criar um novo controlador chamado FilmesController</p>
-                        <p>b. No arquivo routes/web.php, criar a rota /filmes/{id}​. Dentro do controlador FilmesController, criar o método procurarFilmeId($id)​ e copiar o array de filmes definido no final do exercício. De acordo com o parâmetro recebido pela URL, retornar o nome do filme. Considerar que o número de ID é igual à posição do elemento no array.</p>
+                        <h2><i class="fas fa-code"></i> Exercício 02 A, B, C e D | Listar todos os Filmes</h2>
+                        <p>a. Criar a view filme.blade.php​, com a rota /filmes​, e enviar o array de filmes definido ao final do exercício. Mostrar a lista de filmes na view, utilizando a sintaxe de PHP clássica.</p>
+                        <p>b. Modificar a sintaxe da view anterior, implementando blade.</p>
+                        <p>c. Modificar o caminho <strike>/filmes/{id}</strike> /filmes/procurarId/{id}​ para que utilize a visualização filmes.blade.php​.</p>
+                        <p>d. Modificar a visualização filmes.blade.php​ para que mostre uma mensagem caso não haja resultados.</p>
                     </div>
                     <div class="resultado">
                         <ul class="lista">
@@ -197,7 +199,7 @@
                         </ul>
                     </div>
                 </div>
-                <!-- EXERCÍCIO 02 A e B - FIM -->
+                <!-- EXERCÍCIO 02 A, B, C e D - FIM -->
 
             </div>
         </div>
