@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/app.css">
 
         <title>Laravel</title>
 
@@ -84,6 +85,9 @@
 
             <div class="content">
                 <div class="title m-b-md">
+                @if ($filmesPorGenero == false || $genero == false)
+                    <b>Não há gênero algum com o id inserido</b>
+                @else
                     O gênero de id <b>{{$genero->id}}</b> é <b>{{ $genero->name }}</b>
                     <br/>
                     Os filmes pertencentes a esse gênero são:
@@ -92,6 +96,7 @@
                             <li> {{ $filme->title }} <li>
                         @endforeach
                     </ul>
+                @endif
                 </div>
             </div>
         </div>
