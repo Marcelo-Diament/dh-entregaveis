@@ -106,6 +106,10 @@
                 font-weight: bolder;
                 font-size: 1.2em;
             }
+            strike{
+                font-style: italic;
+                color: #cecece;
+            }
         </style>
     </head>
     <body>
@@ -126,24 +130,53 @@
                     <img src="https://midnightcorp.com/wp-content/themes/midnightwp/dist/images/laravel.png" alt="Laravel" width="128" height="auto">
                     Aula 36 | Laravel II
                 </div>
+                
+                <!-- EXERCÍCIO 01 A e B - INÍCIO-->
                 <div class="bloco-exercicio">
                     <div class="enunciado">
                         <h2><i class="fas fa-code"></i> Exercício 01 a e 01 b | Buscar Filme por Id</h2>
                         <p>a. Criar um novo controlador chamado FilmesController</p>
-                        <p>b. No arquivo routes/web.php, criar a rota /filmes/{id}​. Dentro do controlador FilmesController, criar o método procurarFilmeId($id)​ e copiar o array de filmes definido no final do exercício. De acordo com o parâmetro recebido pela URL, retornar o nome do filme. Considerar que o número de ID é igual à posição do elemento no array.</p>
+                        <p>b. No arquivo routes/web.php, criar a rota <strike>/filmes/{id}</strike> /filmes/procurarId/{id}​. Dentro do controlador FilmesController, criar o método procurarFilmeId($id)​ e copiar o array de filmes definido no final do exercício. De acordo com o parâmetro recebido pela URL, retornar o nome do filme. Considerar que o <strike>número de ID é igual à posição do elemento no array</strike> o número do Id é o número passado no array do exercício.</p>
                     </div>
                     <div class="resultado">
                     @if (isset($resultado))
                         @if ($resultado != 'Não encontrado')
-                            <h3>O filme de id <b>{{ $id }}</b> é o <b>{{ $tituloFilme }}</b><h3>
+                            <h3>O filme de id <b>{{ $idFilme }}</b> é o <b>{{ $tituloFilme }}</b><h3>
+                        @elseif ($idFilme == null)
+                            <h3>Não há nenhum filme com o nome <b>{{ $tituloFilme }}</b>, confira a lista mais adiante.</h3>
                         @else
-                            <h3>Não há nenhum filme com id <b>{{ $id }}</b>, confira a lista mais adiante.</h3>
+                            <h3>Não há nenhum filme com id <b>{{ $idFilme }}</b>, confira a lista mais adiante.</h3>
                         @endif
                     @else
                         <h3>Insira "procurarId/{id}" na URL para buscar um filme por seu id.</h3>
                     @endif
                     </div>
                 </div>
+                <!-- EXERCÍCIO 01 A e B - FIM -->
+
+                <!-- EXERCÍCIO 01 C - INÍCIO -->
+                <div class="bloco-exercicio">
+                    <div class="enunciado">
+                        <h2><i class="fas fa-code"></i> Exercício 01 c | Buscar Filme por Título</h2>
+                        <p>c. Criar o caminho <strike>/filmes/procurar/{nome}​</strike> /filmes/procurarTitulo/{titulo}, o método <strike>procurarFilmeNome($nome)</strike> procurarFilmeTitulo($titulo)​, e copiar o array de filmes definido ao final do exercício. De acordo com o parâmetro recebido por URL, procurar coincidências com o array de filmes. Caso haja coincidências, retornar o nome do filme. Caso contrário, retornar a string “Não foram encontrados resultados”.</p>
+                    </div>
+                    <div class="resultado">
+                    @if (isset($resultado))
+                        @if ($resultado != 'Não encontrado' && $tituloFilme != null)
+                            <h3>O filme <b>{{ $tituloFilme }}</b> foi encontrado, seu id é <b>{{ $idFilme }}</b><h3>
+                        @elseif ($resultado == 'Não encontrado' && $tituloFilme != null)
+                            <h3>Não há nenhum filme chamado <b>{{ $tituloFilme }}</b> em nossos registros. Por favor, confira a lista mais adiante.</h3>
+                        @elseif ($tituloFilme == null)
+                            <h3>Não há nenhum filme com o id buscado em nossos registros. Por favor, confira a lista mais adiante.</h3>
+                        @endif
+                    @else
+                        <h3>Insira "procurarTitulo/{titulo}" na URL para buscar um filme por seu nome.</h3>
+                    @endif
+                    </div>
+                </div>
+                <!-- EXERCÍCIO 01 C - FIM -->
+                
+                <!-- EXERCÍCIO 02 A e B - INÍCIO -->
                 <div class="bloco-exercicio">
                     <!-- <h2>Exercício 02 a</h2>
                     <ul class="lista">
@@ -164,6 +197,8 @@
                         </ul>
                     </div>
                 </div>
+                <!-- EXERCÍCIO 02 A e B - FIM -->
+
             </div>
         </div>
     </body>

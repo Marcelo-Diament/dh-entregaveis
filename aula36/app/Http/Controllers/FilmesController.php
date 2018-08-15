@@ -29,10 +29,33 @@ class FilmesController extends Controller
                 break;
             } else {
                 $resultado = 'Não encontrado';
+                $tituloFilme = null;
             }
         }
         return view('filme')
-            ->with('id', $id)
+            ->with('idFilme', $id)
+            ->with('tituloFilme', $tituloFilme)
+            ->with('listaFilmes', $this->listaFilmes)
+            ->with('resultado', $resultado);
+    }
+
+    public function procurarFilmeTitulo($titulo){
+        foreach ($this->listaFilmes as $idFilme => $tituloFilme){
+            if ($titulo == $tituloFilme){
+                $resultado = 'ok';
+                break;
+            } elseif ($titulo != $tituloFilme && $idFilme >= 7) {
+                $resultado = 'Não encontrado';
+                $idFilme = null;
+                $tituloFilme = $titulo;
+            } else {
+                $resultado = null;
+                $idFilme = null;
+                $tituloFilme = null;
+            }
+        }
+        return view('filme')
+            ->with('idFilme', $idFilme)
             ->with('tituloFilme', $tituloFilme)
             ->with('listaFilmes', $this->listaFilmes)
             ->with('resultado', $resultado);
