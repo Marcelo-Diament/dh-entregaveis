@@ -20,3 +20,5 @@ Route::get('/filmes', 'FilmesController@listarFilmes');
 Route::get('/filmes/procurarId/{id}', 'FilmesController@procurarFilmeId');
 
 Route::get('/filmes/procurarTitulo/{titulo}', 'FilmesController@procurarFilmeTitulo');
+
+Route::get('/todosOsFilmes', 'FilmesController@listarTodosOsFilmes');

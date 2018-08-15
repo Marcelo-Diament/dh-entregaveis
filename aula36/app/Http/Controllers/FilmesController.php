@@ -60,4 +60,8 @@ class FilmesController extends Controller
             ->with('listaFilmes', $this->listaFilmes)
             ->with('resultado', $resultado);
     }
+
+    public function listarTodosOsFilmes() {
+      return view('todosOsFilmes')->with('listaFilmes', $this->listaFilmes);
+    }
 }

@@ -20,6 +20,7 @@
                 font-weight: 100;
                 height: 100vh;
                 margin: 0;
+                scroll-behavior: smooth;
             }
 
             .full-height {
@@ -47,8 +48,8 @@
             }
 
             .title {
-                font-size: 84px;
-                margin: 50px;
+                font-size: 65px;
+                margin: 50px auto;
             }
             .title img{
                 display: block;
@@ -67,14 +68,15 @@
                 margin-bottom: 30px;
             }
             .bloco-exercicio{
+                background-color: #cecece;
                 display: block;
                 width: 80vw;
-                margin-bottom: 50px;
+                margin: 40px auto;
+                border-radius: 20px;
             }
             .enunciado{
                 background-color: #f2f2f2;
                 text-align: left;
-                width: 100%;
                 padding: 20px;
                 display: inline-block;
                 border-radius: 20px 20px 0px 0px;
@@ -88,9 +90,7 @@
                 display: inline-block;
             }
             .resultado{
-                background-color: #cecece;
                 text-align: left;
-                width: 100%;
                 padding: 20px;
                 display: inline-block;
                 border-radius: 0px 0px 20px 20px;
@@ -110,6 +110,21 @@
                 font-style: italic;
                 color: #cecece;
             }
+            a, a:hover, .fa-external-link, .fa-external-link:hover{
+                color: #fa503a;
+                text-decoration: none;
+                -webkit-transition: font-size 0.4s ease-in-out;
+                -o-transition: font-size 0.4s ease-in-out;
+                transition: font-size 0.4s ease-in-out;
+            }
+            a:hover{
+                font-size: 1.02em;
+            }
+            small{
+                color: #636b6f;
+                font-weight: bold;
+            }
+
         </style>
     </head>
     <body>
@@ -193,10 +208,31 @@
                     </div>
                     <div class="resultado">
                         <ul class="lista">
+                            <li><b>Id | Título do Filme</b></li>
+                            <br/>
                             @foreach ($listaFilmes as $idFilme => $tituloFilme)
                                 <li>{{ $idFilme }} | {{ $tituloFilme}} </li><br/>
-                            @endforeach;
+                            @endforeach
                         </ul>
+                    </div>
+                </div>
+                <!-- EXERCÍCIO 02 A, B, C e D - FIM -->
+
+                <!-- EXERCÍCIO 02 A, B, C e D - INÍCIO -->
+                <div class="bloco-exercicio">
+                    <!-- <h2>Exercício 02 a</h2>
+                    <ul class="lista">
+                        <?php //foreach ($listaFilmes as $idFilme => $tituloFilme){
+                            //echo '<li>'.{{ $idFilme }}.' | '.{{ $tituloFilme}}.' </li><br/>';
+                        //} ?>
+                    </ul> -->
+                    <div class="enunciado">
+                        <h2><i class="fas fa-code"></i> Exercício 02 F | Listar todos os Filmes em nova View</h2>
+                        <p>f. Criar uma rota /listarFilmes ​ que envie os dados ao controlador através do método <strike>listarFilmes​</strike> listarTodosOsFilmes. Também será necessário criar uma nova view todosOsFilmes.blade.php​ para mostrar todos os filmes.</p>
+                    </div>
+                    <div class="resultado">
+                        <h3><a href="localhost:8000/todosOsFilmes" target="_blank">Clique aqui para acessar a nova view <i class="fas fa-external-link"></i></a></h3>
+                        <small>Depois de clicar confirme o carregamento da página pressionando F5, por favor. Se preferir, acesse localhost:8000/todosOsFilmes.</small>
                     </div>
                 </div>
                 <!-- EXERCÍCIO 02 A, B, C e D - FIM -->
