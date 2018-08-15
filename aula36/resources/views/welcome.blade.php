@@ -208,6 +208,18 @@
                                     </ul>
                                 </li>
                             </ul>
+                            <ul class="lista">
+                                <li>Funcionalidades</li>
+                                <br/>
+                                <li>
+                                    <ul class="lista">
+                                        <li><a href="{{url('/todosOsFilmes')}}" target="_blank" title="Ver todos os filmes" rel="next" alt="Ver todos os filmes">Listar Filmes</a></li>
+                                        <li><a href="localhost:8000/filmes/procurarId/INSIRA-AQUI-O-TÍTULO-QUE-PROCURA-E-DEPOIS-APERTE-ENTER" target="_blank" title="Buscar filme por id" rel="next" alt="Buscar filme por id">Buscar por Id de Filme</a></li>
+                                        <li><a href="localhost:8000/filmes/procurarTitulo/INSIRA-AQUI-O-TÍTULO-QUE-PROCURA-E-DEPOIS-APERTE-ENTER" target="_blank" title="Buscar filme por título" rel="next" alt="Buscar filme por título">Buscar por Título de Filme</a></li>
+                                        <li><a href="localhost:8000/adicionarFilme/INSIRA-AQUI-O-TÍTULO-DO-NOVO-FILME-E-DEPOIS-APERTE-ENTER" target="_blank" title="Incluir novo filme" rel="next" alt="Incluir novo filme">Adicionar Título de Filme</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>

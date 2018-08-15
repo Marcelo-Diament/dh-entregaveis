@@ -186,7 +186,7 @@
                             <h3>Não há nenhum filme com id <b>{{ $idFilme }}</b>, confira a lista mais adiante.</h3>
                         @endif
                     @else
-                        <h3>Insira "procurarId/{id}" na URL para buscar um filme por seu id.</h3>
+                        <h3>Acesse a rota <a href="localhost:8000/filmes/procurarId/INSIRA-AQUI-O-TÍTULO-QUE-PROCURA-E-DEPOIS-APERTE-ENTER" target="_blank" title="Buscar filme por id" rel="next" alt="Buscar filme por id">/procurarId/{id}</a> para buscar um filme por seu id.</h3>
                     @endif
                     </div>
                 </div>
@@ -208,7 +208,7 @@
                             <h3>Não há nenhum filme com o id buscado em nossos registros. Por favor, confira a lista mais adiante.</h3>
                         @endif
                     @else
-                        <h3>Insira "procurarTitulo/{titulo}" na URL para buscar um filme por seu nome.</h3>
+                        <h3>Acesse a rota <a href="localhost:8000/filmes/procurarTitulo/INSIRA-AQUI-O-TÍTULO-QUE-PROCURA-E-DEPOIS-APERTE-ENTER" target="_blank" title="Buscar filme por título" rel="next" alt="Buscar filme por título">/procurarTitulo/{titulo}</a> para buscar um filme por seu nome.</h3>
                     @endif
                     </div>
                 </div>
