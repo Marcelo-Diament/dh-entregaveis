@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/filmes/', 'FilmesController@listarFilmes');
+Route::get('/filmes', 'FilmesController@listarFilmes');
 
 Route::get('/filmes/procurarId/{id}', 'FilmesController@procurarFilmeId');
 

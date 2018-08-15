@@ -14,7 +14,8 @@ class FilmesController extends Controller
         3 => "Avatar",
         4 => "Star Wars: Episódio V",
         5 => "Up",
-        6 => "Mary e Max"
+        6 => "Mary e Max",
+        7 => "Titanic"
       ];
 
     public function listarFilmes() {
@@ -27,7 +28,7 @@ class FilmesController extends Controller
                 $resultado = 'ok';
                 break;
             } else {
-                $resultado = '';
+                $resultado = 'Não encontrado';
             }
         }
         return view('filme')

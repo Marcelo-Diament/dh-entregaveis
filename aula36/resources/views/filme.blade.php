@@ -9,6 +9,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-TXfwrfuHVznxCssTxWoPZjhcss/hp38gEOH8UPZG/JcXonvBQ6SlsIF49wUzsGno" crossorigin="anonymous">
 
         <!-- Styles -->
         <style>
@@ -22,7 +23,7 @@
             }
 
             .full-height {
-                height: 100vh;
+                min-height: 100vh;
             }
 
             .flex-center {
@@ -47,8 +48,12 @@
 
             .title {
                 font-size: 84px;
+                margin: 50px;
             }
-
+            .title img{
+                display: block;
+                margin: auto;
+            }
             .links > a {
                 color: #636b6f;
                 padding: 0 25px;
@@ -58,11 +63,38 @@
                 text-decoration: none;
                 text-transform: uppercase;
             }
-
             .m-b-md {
                 margin-bottom: 30px;
             }
-
+            .bloco-exercicio{
+                display: block;
+                width: 80vw;
+                margin-bottom: 50px;
+            }
+            .enunciado{
+                background-color: #f2f2f2;
+                text-align: left;
+                width: 100%;
+                padding: 20px;
+                display: inline-block;
+                border-radius: 20px 20px 0px 0px;
+                border-bottom: 3px solid #fa503a;
+            }
+            .enunciado p{
+                font-weight: bold;
+            }
+            .fa-code{
+                color: #fa503a;
+                display: inline-block;
+            }
+            .resultado{
+                background-color: #cecece;
+                text-align: left;
+                width: 100%;
+                padding: 20px;
+                display: inline-block;
+                border-radius: 0px 0px 20px 20px;
+            }
             ul.lista{
                 list-style: none;
                 font-weight: bold;
@@ -70,7 +102,9 @@
                 display: inline-block;
             }
             b{
-                color: #000;
+                color: #fa503a;
+                font-weight: bolder;
+                font-size: 1.2em;
             }
         </style>
     </head>
@@ -89,29 +123,46 @@
 
             <div class="content">
                 <div class="title m-b-md">
+                    <img src="https://midnightcorp.com/wp-content/themes/midnightwp/dist/images/laravel.png" alt="Laravel" width="128" height="auto">
                     Aula 36 | Laravel II
                 </div>
-                <div>
-                    <h2>Exercício 01 b</h2>
-                    @if ($resultado == 'ok')
-                        O filme de id <b>{{ $id }}</b> é <b>{{ $tituloFilme }}</b>
+                <div class="bloco-exercicio">
+                    <div class="enunciado">
+                        <h2><i class="fas fa-code"></i> Exercício 01 a e 01 b | Buscar Filme por Id</h2>
+                        <p>a. Criar um novo controlador chamado FilmesController</p>
+                        <p>b. No arquivo routes/web.php, criar a rota /filmes/{id}​. Dentro do controlador FilmesController, criar o método procurarFilmeId($id)​ e copiar o array de filmes definido no final do exercício. De acordo com o parâmetro recebido pela URL, retornar o nome do filme. Considerar que o número de ID é igual à posição do elemento no array.</p>
+                    </div>
+                    <div class="resultado">
+                    @if (isset($resultado))
+                        @if ($resultado != 'Não encontrado')
+                            <h3>O filme de id <b>{{ $id }}</b> é o <b>{{ $tituloFilme }}</b><h3>
+                        @else
+                            <h3>Não há nenhum filme com id <b>{{ $id }}</b>, confira a lista mais adiante.</h3>
+                        @endif
                     @else
-                        Não há filme de id <b>{{ $id }}</b>
+                        <h3>Insira "procurarId/{id}" na URL para buscar um filme por seu id.</h3>
                     @endif
+                    </div>
                 </div>
-                <div>
+                <div class="bloco-exercicio">
                     <!-- <h2>Exercício 02 a</h2>
                     <ul class="lista">
                         <?php //foreach ($listaFilmes as $idFilme => $tituloFilme){
                             //echo '<li>'.{{ $idFilme }}.' | '.{{ $tituloFilme}}.' </li><br/>';
                         //} ?>
                     </ul> -->
-                    <h2>Exercício 02 b</h2>
-                    <ul class="lista">
-                        @foreach ($listaFilmes as $idFilme => $tituloFilme)
-                            <li>{{ $idFilme }} | {{ $tituloFilme}} </li><br/>
-                        @endforeach;
-                    </ul>
+                    <div class="enunciado">
+                        <h2><i class="fas fa-code"></i> Exercício 02 b | Listar todos os Filmes</h2>
+                        <p>a. Criar um novo controlador chamado FilmesController</p>
+                        <p>b. No arquivo routes/web.php, criar a rota /filmes/{id}​. Dentro do controlador FilmesController, criar o método procurarFilmeId($id)​ e copiar o array de filmes definido no final do exercício. De acordo com o parâmetro recebido pela URL, retornar o nome do filme. Considerar que o número de ID é igual à posição do elemento no array.</p>
+                    </div>
+                    <div class="resultado">
+                        <ul class="lista">
+                            @foreach ($listaFilmes as $idFilme => $tituloFilme)
+                                <li>{{ $idFilme }} | {{ $tituloFilme}} </li><br/>
+                            @endforeach;
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
