@@ -228,12 +228,12 @@
                                 <h3>O ator/atriz de id <b>{{ $atorPorId->id }}</b> se chama <b>{{ $atorPorId->first_name .' '. $atorPorId->last_name }}</b>.</h3>
                                 <h3>Confira abaixo os detalhes sobre {{ $atorPorId->first_name}}:</h3>
                                 <div class="profile">
-                                    <img class="profile-pic" src="{{$atorPorId->picture_url}}" title="{{$atorPorId->first_name}} {{$atorPorId->last_name}}" alt="{{$atorPorId->first_name}} {{$atorPorId->last_name}}" height="150" width="150">
+                                    <img class="profile-pic" src="@if ($atorPorId->picture_url != null) {{$atorPorId->picture_url}} @else https://us.123rf.com/450wm/berkut2011/berkut20111506/berkut2011150600452/41143316-stock-vector-man-in-suit-secret-service-agent-icon.jpg?ver=6 @endif" title="{{$atorPorId->first_name}} {{$atorPorId->last_name}}" alt="{{$atorPorId->first_name}} {{$atorPorId->last_name}}" height="150" width="150">
                                     <ul class="lista profile-desc">
                                         <li>Nome: {{$atorPorId->first_name}}</li>
                                         <li>Sobrenome: {{$atorPorId->last_name}}</li>
-                                        <li>Avaliação: {{$atorPorId->rating}}</li>
-                                        <li>Id do seu filme favorito: {{$atorPorId->favorite_movie_id}}</li>
+                                        <li>Avaliação: @if (isset($atorPorId->rating)) {{$atorPorId->rating}} @else Não avaliado @endif</li>
+                                        <li>Id do seu filme favorito: @if (isset($atorPorId->favorite_movie_id)) {{$atorPorId->favorite_movie_id}} @else Não informado @endif</li>
                                     </ul>
                                 </div>
                             </div>
