@@ -246,19 +246,19 @@
                                     <ul class="lista">
                                         <li>a. Criar o caminho /atores​, que redirecione ao método <strike>AtorController@directory​</strike> ActorsController@directory e retorne a visualização atores.blade.php​.</li>
                                         <br/>
-                                        <li><a href="{{url('/atores#37-3a-b-c')}}" target="_blank" title="Acessar Exercício 3 a" rel="next" alt="Acessar Exercício 3 a">Exercício 3a</a></li>
+                                        <li><a href="{{url('/atores#37-3a-b-c-h')}}" target="_blank" title="Acessar Exercício 3 a" rel="next" alt="Acessar Exercício 3 a">Exercício 3a</a></li>
                                         <br/>
                                         <br/>
                                         <li>b. Na visualização que acabamos de criar, inserir um título e entrar em localhost:8000/atores​ para verificar se a exibição está correta.</li>
                                         <br/>
-                                        <li><a href="{{url('/atores#37-3a-b-c')}}" target="_blank" title="Acessar Exercício 3 b" rel="next" alt="Acessar Exercício 3 b">Exercício 3b</a></li>
+                                        <li><a href="{{url('/atores#37-3a-b-c-h')}}" target="_blank" title="Acessar Exercício 3 b" rel="next" alt="Acessar Exercício 3 b">Exercício 3b</a></li>
                                         <small>O ator inserido no BD é o 'Ator Novo' (first_name: Ator, last_name: Novo, id: 50).</small>
                                         <br/>
                                         <br/>
                                         <br/>
                                         <li>c. No controlador que acabamos de criar, utilizando Eloquent, obter todos os atores dentro de uma variável $atores​ e enviá-la à visualização. (Recomendamos utilizar o método All​). Lembrar de inserir a linha “use App\Ator​” para importar o modelo).</li>
                                         <br/>
-                                        <li><a href="{{url('/atores#37-3a-b-c')}}" target="_blank" title="Acessar Exercício 3 c" rel="next" alt="Acessar Exercício 3 c">Exercício 3c</a></li>
+                                        <li><a href="{{url('/atores#37-3a-b-c-h')}}" target="_blank" title="Acessar Exercício 3 c" rel="next" alt="Acessar Exercício 3 c">Exercício 3c</a></li>
                                         <br/>
                                         <br/>
                                         <li>d. Na visualização <strike>atores.blade.php</strike> filmes.blade.php​, mostrar uma lista dos nomes dos filmes utilizando Blade.</li>
@@ -285,7 +285,7 @@
                                         <br/>
                                         <li>h. Modificar a visualização atores.blade.php​ de forma que os nomes dos atores sejam links para os detalhes dos dados de cada um.</li>
                                         <br/>
-                                        <li><a href="{{url('/filmes#37-3d-g')}}" target="_blank" title="Acessar Exercício 3 g" rel="next" alt="Acessar Exercício 3 g">Exercício 3g</a></li>
+                                        <li><a href="{{url('/filmes#37-3a-b-c-h')}}" target="_blank" title="Acessar Exercício 3 h" rel="next" alt="Acessar Exercício 3 h">Exercício 3h</a></li>
 
                                     </ul>
                                 </li>

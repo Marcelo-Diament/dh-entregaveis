@@ -187,22 +187,22 @@
                     </a>
                 </div>
 
-                <!-- EXERCÍCIO 03 A, B e C - INÍCIO-->
+                <!-- EXERCÍCIO 03 A, B, C e H - INÍCIO-->
                 @if (isset($atores))
-                    <div class="bloco-exercicio" id="37-3a-b-c">
+                    <div class="bloco-exercicio" id="37-3a-b-c-h">
                         <div class="enunciado">
-                            <h2><i class="fas fa-code"></i> Exercícios 03 A, B e C | Listar Atores e Adicionar Novo Ator no BD (usando Eloquent)</h2>
+                            <h2><i class="fas fa-code"></i> Exercícios 03 A, B, C e H | Listar Atores com Link para Detalhes</h2>
                         </div>
                         <div class="resultado">
                             <ul class="lista">
                                 @foreach ($atores as $index=>$valor)
-                                    <li><a href="http://localhost:8000/ator/{{$valor['id']}}" target="_self" title="Acessar Detalhes do Ator" rel="next" alt="Acessar Detalhes do Ator">{{ $valor['first_name'] }} {{ $valor['last_name'] }}</a></li><br/>
+                                    <li>{{ $valor['first_name'] }} {{ $valor['last_name'] }} <a href="http://localhost:8000/ator/{{$valor['id']}}" target="_self" title="Acessar Detalhes do Ator" rel="next" alt="Acessar Detalhes do Ator"><i class="fas fa-plus-circle"></i></a></li><br/>
                                 @endforeach
                             </ul>
                         </div>
                     </div>
                 @endif
-                <!-- EXERCÍCIO 03 A, B e C - FIM -->
+                <!-- EXERCÍCIO 03 A, B, C e H - FIM -->
 
                 <!-- EXERCÍCIO 03 E - INÍCIO-->
                     @if (isset($atorPorId))
