@@ -30,6 +30,8 @@ class ActorsController extends Controller
             ->with('atorPorNome', null)
             ->with('nomeAtor', null)
             ->with('nomeBuscado', $nomeBuscado);
+        } elseif ($nomeAtor == null) {
+            return view('atores');
         } else {
             return view('atores')
             ->with('atorPorNome', $atorPorNome)
@@ -37,5 +39,4 @@ class ActorsController extends Controller
             ->with('nomeBuscado', $nomeBuscado);
         }
     }
-
 }

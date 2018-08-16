@@ -194,7 +194,7 @@
                         <ul class="lista">
                             @foreach ($filmes as $index=>$valor)
                                 <li>
-                                    {{ $valor['title'] }} | {{ mb_substr($valor['release_date'],0,4) }}
+                                    <b>{{ $valor['title'] }}</b> <small>({{ mb_substr($valor['release_date'],0,4) }})</small>
                                     <br/>
                                     Prêmios: {{ $valor['awards'] }}<br/>
                                     Avaliação: {{ $valor['rating'] }}<br/>
