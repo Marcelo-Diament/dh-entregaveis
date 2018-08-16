@@ -180,102 +180,20 @@
                     </a>
                 </div>
 
-                <!-- INÍCIO CUSTOM WELCOME -->
-                <div class="bloco-exercicio">
+                <!-- EXERCÍCIO 03 A - INÍCIO-->
+                <div class="bloco-exercicio" id="37-3a-b">
                     <div class="enunciado">
-                        <h2><i class="fas fa-terminal"></i></i> <b>LARAVEL III | Models</b></h2>
-                        <small>Professor Especialista: Rodrigo</small>
-                        <br/>
-                        <small>Professores Digital House: Thiago M. Medeiros, Thomas Staziak</small>
-                        <br/>
-                        <small>Aula realizada em 02 de Agosto de 2018</small>
+                        <h2><i class="fas fa-code"></i> Exercício 03 A | Listar Atores</h2>
                     </div>
                     <div class="resultado">
-                        <h3>Acesse os exercícios através do menu abaixo.</h3>
-                        <div class="indice">
-                            <ul class="lista">
-                                <li>Exercício 1 - Conexão ao Banco de Dados</li>
-                                <br/>
-                                <li>
-                                    <ul class="lista">
-                                        <li>Conexão a um banco de dados: (durante esta aula, utilizaremos o banco de dados <strike>laravel-database​.sql</strike> movies_db.sql no campus). Modificar o arquivo .env​ no diretório raiz de Laravel com as credenciais de MySQL. Em seguida, reiniciar <code class="inline-code">php artisan serve</code>​ para que aceite as alterações.
-                                        </li>
-                                        <br/>
-                                        <li><a class="sem-uso" href="#" target="_self" title="Exercício Inacessível" rel="nofollow" alt="Exercício Inacessível"><i>Exercícios 1a*</i></a></li>
-                                        <small>* Arquivo inacessível, incluso no .gitignore, foram inseridos DB Name, DB User e DB Pass. Em seguida, o artisan server reinicado.</small>
-                                        <br/>
-                                    </ul>
-                                </li>
-                            </ul>
-                            <ul class="lista">
-                                <li>Exercício 2 - Modelos</li>
-                                <br/>
-                                <li>
-                                    <ul class="lista">
-                                        <li>a. Criar um modelo para a tabela Movies​.</li>
-                                        <br/>
-                                        <li><a href="https://github.com/Marcelo-Diament/dh-entregaveis/blob/master/aula37/app/Movie.php" target="_blank" title="Acessar Exercício 2 a" rel="next" alt="Acessar Exercício 2 a">Exercício 2a</a></li>
-                                        <br/>
-                                        <br/>
-                                        <li>b. Criar um modelo para a tabela Genres.</li>
-                                        <br/>
-                                        <li><a href="https://github.com/Marcelo-Diament/dh-entregaveis/blob/master/aula37/app/Genre.php" target="_blank" title="Acessar Exercício 2 b" rel="next" alt="Acessar Exercício 2 b">Exercício 2b</a></li>
-                                        <br/>
-                                        <br/>
-                                        <li>c. Criar um modelo para a tabela Actors.</li>
-                                        <br/>
-                                        <li><a href="https://github.com/Marcelo-Diament/dh-entregaveis/blob/master/aula37/app/Actor.php" target="_blank" title="Acessar Exercício 2 c" rel="next" alt="Acessar Exercício 2 c">Exercício 2c</a></li>
-                                        <br/>
-                                        <br/>
-                                        <li>d. Adicionar ao modelo <strike>Ator​</strike> Actor o método getNomeCompleto​.</li>
-                                        <br/>
-                                        <li><a href="https://github.com/Marcelo-Diament/dh-entregaveis/blob/master/aula37/app/Actor.php" target="_blank" title="Acessar Exercício 2 d" rel="next" alt="Acessar Exercício 2 d">Exercício 2d</a></li>
-                                        <br/>
-                                    </ul>
-                                </li>
-                            </ul>
-                            <ul class="lista">
-                                <li>Exercício 3 - Acesso ao Banco de Dados</li>
-                                <br/>
-                                <li>
-                                    <ul class="lista">
-                                        <li>a. Criar o caminho /atores​, que redirecione ao método <strike>AtorController@directory​</strike> ActorsController@directory e retorne a visualização atores.blade.php​.</li>
-                                        <br/>
-                                        <li><a href="{{url('/atores')}}" target="_blank" title="Acessar Exercício 3 a" rel="next" alt="Acessar Exercício 3 a">Exercício 3a</a></li>
-                                        <br/>
-                                        <br/>
-                                        <li>b. Na visualização que acabamos de criar, inserir um título e entrar em localhost:8000/atores​ para verificar se a exibição está correta.</li>
-                                        <br/>
-                                        <li><a href="{{url('/atores')}}" target="_blank" title="Acessar Exercício 3 a" rel="next" alt="Acessar Exercício 3 a">Exercício 3b</a></li>
-                                        <small>O ator inserido no BD é o 'Ator Novo' (first_name: Ator, last_name: Novo, id: 50).</small>
-                                        <br/>
-                                        <br/>
-                                        <li>c. Criar um modelo para a tabela Actors.</li>
-                                        <br/>
-                                        <li><a href="https://github.com/Marcelo-Diament/dh-entregaveis/blob/master/aula37/app/Actor.php" target="_blank" title="Acessar Exercício 2 c" rel="next" alt="Acessar Exercício 2 c">Exercício 2c</a></li>
-                                        <br/>
-                                        <br/>
-                                        <li>d. Adicionar ao modelo <strike>Ator​</strike> Actor o método getNomeCompleto​.</li>
-                                        <br/>
-                                        <li><a href="https://github.com/Marcelo-Diament/dh-entregaveis/blob/master/aula37/app/Actor.php" target="_blank" title="Acessar Exercício 2 d" rel="next" alt="Acessar Exercício 2 d">Exercício 2d</a></li>
-                                        <br/>
-                                    </ul>
-                                </li>
-                            </ul>
-                            <ul class="lista">
-                                <li>Funcionalidades</li>
-                                <br/>
-                                <li>
-                                    <ul class="lista">
-                                        <li><a href="localhost:8000/resultado/INSIRA-AQUI-UM-NÚMERO-E-APERTE-ENTER-PARA-SABER-SE-É-PAR-OU-ÍMPAR" target="_blank" title="Descobrir se o número é par ou ímpar" rel="next" alt="Descobrir se o número é par ou ímpar">Descobrir se o número é par ou ímpar</a></li>
-                                        <li><a href="localhost:8000/resultado/INSIRA-O-PRIMEIRO-NÚMERO/numeroOpcional/INSIRA-O-SEGUNDO-NÚMERO(OPCIONAL)" target="_blank" title="Multiplicar 2 números" rel="next" alt="Multiplicar 2 números">Multiplicar 2 números</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
+                        <ul class="lista">
+                            @foreach ($atores as $index=>$valor)
+                                <li>{{ $valor['first_name'] }} {{ $valor['last_name'] }}</li><br/>
+                            @endforeach
+                        </ul>
                     </div>
                 </div>
-                <!-- FIM CUSTOM WELCOME -->
+                <!-- EXERCÍCIO 02 A - FIM -->
                 
                 <!-- INÍCIO MVC -->
                 <div class="bloco-exercicio">
