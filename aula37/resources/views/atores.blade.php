@@ -164,6 +164,20 @@
             small code, code.inline-code{
                 margin-left: inherit;
             }
+            div.profile{
+                display: inline-flex;
+                margin: 15px;
+                padding: 15px;
+            }
+            img.profile-pic{
+                height: 150px;
+                width: 150px;
+                border-radius: 50%;
+                margin: auto;
+            }
+            .profile-desc{
+                margin: auto;
+            }
         </style>
     </head>
     <body>
@@ -213,12 +227,15 @@
                             <div class="resultado">
                                 <h3>O ator/atriz de id <b>{{ $atorPorId->id }}</b> se chama <b>{{ $atorPorId->first_name .' '. $atorPorId->last_name }}</b>.</h3>
                                 <h3>Confira abaixo os detalhes sobre {{ $atorPorId->first_name}}:</h3>
-                                <ul class="lista">
-                                    <li>Nome: {{$atorPorId->first_name}}</li>
-                                    <li>Sobrenome: {{$atorPorId->last_name}}</li>
-                                    <li>Avaliação: {{$atorPorId->rating}}</li>
-                                    <li>Id do seu filme favorito: {{$atorPorId->favorite_movie_id}}</li>
-                                </ul>
+                                <div class="profile">
+                                    <img class="profile-pic" src="{{$atorPorId->picture_url}}" title="{{$atorPorId->first_name}} {{$atorPorId->last_name}}" alt="{{$atorPorId->first_name}} {{$atorPorId->last_name}}" height="150" width="150">
+                                    <ul class="lista profile-desc">
+                                        <li>Nome: {{$atorPorId->first_name}}</li>
+                                        <li>Sobrenome: {{$atorPorId->last_name}}</li>
+                                        <li>Avaliação: {{$atorPorId->rating}}</li>
+                                        <li>Id do seu filme favorito: {{$atorPorId->favorite_movie_id}}</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     @elseif (isset($idBuscado))
