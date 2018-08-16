@@ -185,63 +185,27 @@
                     </a>
                 </div>
 
-                <!-- EXERCÍCIO 03 D - INÍCIO-->
-                <div class="bloco-exercicio" id="37-3d">
+                <!-- EXERCÍCIO 03 D e G - INÍCIO-->
+                <div class="bloco-exercicio" id="37-3d-g">
                     <div class="enunciado">
-                        <h2><i class="fas fa-code"></i> Exercício 03 D | Listar Filmes</h2>
+                        <h2><i class="fas fa-code"></i> Exercício 03 D e G | Listar Filmes (com detalhes)</h2>
                     </div>
                     <div class="resultado">
                         <ul class="lista">
                             @foreach ($filmes as $index=>$valor)
-                                <li>{{ $valor['title'] }}</li><br/>
+                                <li>
+                                    {{ $valor['title'] }} | {{ mb_substr($valor['release_date'],0,4) }}
+                                    <br/>
+                                    Prêmios: {{ $valor['awards'] }}<br/>
+                                    Avaliação: {{ $valor['rating'] }}<br/>
+                                    Id do gênero: {{ $valor['genre_id'] }}
+                                </li><br/>
                             @endforeach
                         </ul>
                     </div>
                 </div>
-                <!-- EXERCÍCIO 03 D - FIM -->
+                <!-- EXERCÍCIO 03 D e G - FIM -->
                 
-                <!-- INÍCIO MVC -->
-                <div class="bloco-exercicio">
-                    <div class="enunciado">
-                        <h2><i class="fas fa-terminal"></i></i> MVC + Routes + ReadMe + Repositório</h2>
-                        <p>Clique para acessar os Models, Views, Controllers, Routes, o arquivo README.md (geral) e o repositório da aula</p>
-                    </div>
-                    <div class="resultado">
-                        <ul class="menu">
-                            <li><a href="https://github.com/Marcelo-Diament/dh-entregaveis/blob/master/aula37/app" target="_blank" title="Acessar Models" rel="external" alt="Acessar Models"><i class="fas fa-database"></i></a></li>
-                            <li><a href="https://github.com/Marcelo-Diament/dh-entregaveis/tree/master/aula37/resources/views" target="_blank" title="Acessar Views" rel="external" alt="Clique para acessar as Views"><i class="fas fa-eye"></i></a></li>
-                            <li><a href="https://github.com/Marcelo-Diament/dh-entregaveis/blob/master/aula37/app/Http/Controllers" target="_blank" title="Acessar Controllers" rel="external" alt="Clique para acessar os Controllers"><i class="fas fa-cog"></i></a></li>
-                            <li><h3>+</h3></li>
-                            <li><a href="https://github.com/Marcelo-Diament/dh-entregaveis/blob/master/aula37/routes" target="_blank" title="Acessar Routes" rel="external" alt="Clique para acessar as Routes"><i class="fas fa-project-diagram"></i></a></li>
-                            <li><h3>+</h3></li>
-                            <li><a href="https://github.com/Marcelo-Diament/dh-entregaveis/blob/master/README.md" target="_blank" title="Acessar README.md" rel="help" alt="Clique para acessar o arquivo README.md"><i class="fas fa-info"></i></a></li>
-                            <li><h3>+</h3></li>
-                            <li><a href="https://github.com/Marcelo-Diament/dh-entregaveis/tree/master/aula37" target="_blank" title="Acessar o repositório" rel="external" alt="Clique para acessar o repositório"><i class="fab fa-github"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- FIM MVC -->
-
-                <!-- INÍCIO TECNOLOGIAS -->
-                <div class="bloco-exercicio">
-                    <div class="enunciado">
-                        <h2><i class="fas fa-terminal"></i></i> Tecnologias Utilizadas</h2>
-                        <p>Clique para acessar o site oficial e/ou documentação</p>
-                    </div>
-                    <div class="resultado">
-                        <ul class="menu">
-                            <li><a href="https://laravel.com/" target="_blank" title="Laravel" rel="external" alt="Tecnologia Utilizada: Laravel"><i class="fab fa-laravel"></i></i></a></li>
-                            <li><a href="https://developer.mozilla.org/pt-BR/docs/Web/HTML/HTML5" target="_blank" title="HTML5" rel="external" alt="Tecnologia Utilizada: HTML5"><i class="fab fa-html5"></i></i></a></li>
-                            <li><a href="https://developer.mozilla.org/pt-BR/docs/Web/CSS" target="_blank" title="CSS3" rel="external" alt="Tecnologia Utilizada: CSS3"><i class="fab fa-css3-alt"></i></i></a></li>
-                            <li><a href="http://php.net/docs.php" target="_blank" title="php" rel="external" alt="Tecnologia Utilizada: php"><i class="fab fa-php"></i></a></li>
-                            <li><a href="https://github.com/" target="_blank" title="GitHub" rel="external" alt="Tecnologia Utilizada: GitHub"><i class="fab fa-github"></i></a></li>
-                            <li><a href="https://fontawesome.com/" target="_blank" title="Font Awesome" rel="external" alt="Tecnologia Utilizada: Font Awesome"><i class="fab fa-font-awesome"></i></i></a></li>
-                            <br/>
-                            
-                        </ul>
-                    </div>
-                </div>
-                <!-- FIM TECNOLOGIAS -->
             </div>
         </div>
     </body>

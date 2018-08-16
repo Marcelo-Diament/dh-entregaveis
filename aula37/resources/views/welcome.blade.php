@@ -263,7 +263,7 @@
                                         <br/>
                                         <li>d. Na visualização <strike>atores.blade.php</strike> filmes.blade.php​, mostrar uma lista dos nomes dos filmes utilizando Blade.</li>
                                         <br/>
-                                        <li><a href="{{url('/filmes#37-3d')}}" target="_blank" title="Acessar Exercício 3 d" rel="next" alt="Acessar Exercício 3 d">Exercício 3d*</a></li>
+                                        <li><a href="{{url('/filmes#37-3d-g')}}" target="_blank" title="Acessar Exercício 3 d" rel="next" alt="Acessar Exercício 3 d">Exercício 3d*</a></li>
                                         <small>* Acredito que a view correta seria /filmes, verifiquei no repositório que criaram de referência. Caso esteja errado, por favor, me avisem.</small>
                                         <br/>
                                         <br/>
@@ -276,19 +276,31 @@
                                         <li>f. No controlador AtorController​, utilizando Eloquent, obter o ator de acordo com o ID recebido por URL. Salvar o ator na variável $ator​ e enviá-la para a visualização. (Recomendamos utilizar o método find​).</li>
                                         <br/>
                                         <li><a href="localhost:8000/ator/INSIRA-AQUI-O-ID-DO-ATOR-QUE-PROCURA-E-DEPOIS-APERTE-ENTER" target="_blank" title="Acessar Exercício 3 f" rel="next" alt="Acessar Exercício 3 f">Exercício 3f</a></li>
+                                        <br/>
+                                        <br/>
+                                        <li>g. Na visualização <strike>atores.blade.php</strike> filmes.blade.php​, utilizando Blade, mostrar todos os dados do filme.</li>
+                                        <br/>
+                                        <li><a href="{{url('/filmes#37-3d-g')}}" target="_blank" title="Acessar Exercício 3 g" rel="next" alt="Acessar Exercício 3 g">Exercício 3g</a></li>
+                                        <br/>
+                                        <br/>
+                                        <li>h. Modificar a visualização atores.blade.php​ de forma que os nomes dos atores sejam links para os detalhes dos dados de cada um.</li>
+                                        <br/>
+                                        <li><a href="{{url('/filmes#37-3d-g')}}" target="_blank" title="Acessar Exercício 3 g" rel="next" alt="Acessar Exercício 3 g">Exercício 3g</a></li>
+
                                     </ul>
                                 </li>
                             </ul>
-                            <!-- <ul class="lista">
+                            <ul class="lista">
                                 <li>Funcionalidades</li>
                                 <br/>
                                 <li>
                                     <ul class="lista">
-                                        <li><a href="localhost:8000/resultado/INSIRA-AQUI-UM-NÚMERO-E-APERTE-ENTER-PARA-SABER-SE-É-PAR-OU-ÍMPAR" target="_blank" title="Descobrir se o número é par ou ímpar" rel="next" alt="Descobrir se o número é par ou ímpar">Descobrir se o número é par ou ímpar</a></li>
-                                        <li><a href="localhost:8000/resultado/INSIRA-O-PRIMEIRO-NÚMERO/numeroOpcional/INSIRA-O-SEGUNDO-NÚMERO(OPCIONAL)" target="_blank" title="Multiplicar 2 números" rel="next" alt="Multiplicar 2 números">Multiplicar 2 números</a></li>
+                                        <li><a href="{{url('/atores#37-3a-b-c')}}" target="_blank" title="Ver Lista de Atores" rel="next" alt="Ver Lista de Atores">Ver Lista de Atores</a></li>
+                                        <li><a href="localhost:8000/ator/INSIRA-AQUI-O-ID-DO-ATOR-QUE-PROCURA-E-DEPOIS-APERTE-ENTER" target="_blank" title="Buscar Ator por Id" rel="next" alt="Buscar Ator por Id">Buscar Ator por Id (com detalhes)</a></li>
+                                        <li><a href="{{url('/filmes#37-3d-g')}}" target="_blank" title="Ver Lista de Filmes" rel="next" alt="Ver Lista de Filmes">Ver Lista de Filmes (com detalhes)</a></li>
                                     </ul>
                                 </li>
-                            </ul> -->
+                            </ul>
                         </div>
                     </div>
                 </div>
