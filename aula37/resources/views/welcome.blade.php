@@ -198,6 +198,8 @@
                     <div class="resultado">
                         <h3>Acesse os exercícios através do menu abaixo.</h3>
                         <div class="indice">
+
+                            <!-- EXERCÍCIO 1 - INÍCIO -->
                             <ul class="lista">
                                 <li>Exercício 1 - Conexão ao Banco de Dados</li>
                                 <br/>
@@ -212,6 +214,9 @@
                                     </ul>
                                 </li>
                             </ul>
+                            <!-- EXERCÍCIO 1 - FIM -->
+
+                            <!-- EXERCÍCIO 2 - INÍCIO -->
                             <ul class="lista">
                                 <li>Exercício 2 - Modelos</li>
                                 <br/>
@@ -239,6 +244,9 @@
                                     </ul>
                                 </li>
                             </ul>
+                            <!-- EXERCÍCIO 2 - FIM -->
+
+                            <!-- EXERCÍCIO 3 - INÍCIO -->
                             <ul class="lista">
                                 <li>Exercício 3 - Acesso ao Banco de Dados</li>
                                 <br/>
@@ -286,21 +294,51 @@
                                         <li>h. Modificar a visualização atores.blade.php​ de forma que os nomes dos atores sejam links para os detalhes dos dados de cada um.</li>
                                         <br/>
                                         <li><a href="{{url('/filmes#37-3a-b-c-h')}}" target="_blank" title="Acessar Exercício 3 h" rel="next" alt="Acessar Exercício 3 h">Exercício 3h</a></li>
-
+                                        <br/>
                                     </ul>
                                 </li>
                             </ul>
+                            <!-- EXERCÍCIO 3 - FIM -->
+
+                            <!-- EXERCÍCIO 4 - INÍCIO -->
+                            <ul class="lista">
+                                <li>Exercício 4 - Buscador</li>
+                                <br/>
+                                <li>
+                                    <ul class="lista">
+                                        <li>a. Na visualização atores.blade.php​, criar um formulário que tenha apenas um campo de texto. O objetivo desse formulário será encontrar atores. (Levar em conta que o formulário deverá apontar para o caminho /atores/procurar​).</li>
+                                        <br/>
+                                        <li><a href="{{url('/atores#37-4a-b-c')}}" target="_blank" title="Acessar Exercício 4 a" rel="next" alt="Acessar Exercício 4 a">Exercício 4a</a></li>
+                                        <br/>
+                                        <br/>
+                                        <li>b. Criar o caminho /atores/procurar​, que redirecione ao método AtorController@search e retorne a visualização atores.blade.php​.</li>
+                                        <br/>
+                                        <li><a href="{{url('/atores#37-4a-b-c')}}" target="_blank" title="Acessar Exercício 4 b" rel="next" alt="Acessar Exercício 4 b">Exercício 4b</a></li>
+                                        <br/>
+                                        <br/>
+                                        <li>c. No controlador AtorController​, utilizando Eloquent, obter os atores com nomes que contenham os caracteres procurados. Salvar o ator na variável $atores​ e enviá-la para a visualização. (Recomendamos utilizar o método where​).</li>
+                                        <br/>
+                                        <li><a href="{{url('/atores#37-4a-b-c')}}" target="_blank" title="Acessar Exercício 4 c" rel="next" alt="Acessar Exercício 4 c">Exercício 4c</a></li>
+                                        <br/>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <!-- EXERCÍCIO 4 - FIM -->
+
+                            <!-- FUNCIONALIDADES - INÍCIO -->
                             <ul class="lista">
                                 <li>Funcionalidades</li>
                                 <br/>
                                 <li>
                                     <ul class="lista">
                                         <li><a href="{{url('/atores#37-3a-b-c')}}" target="_blank" title="Ver Lista de Atores" rel="next" alt="Ver Lista de Atores">Ver Lista de Atores</a></li>
+                                        <li><a href="{{url('/filmes#37-4a-b-c')}}" target="_blank" title="Buscar Ator por Nome" rel="next" alt="Buscar Ator por Nome">Buscar Por Nome de Ator (formulário)</a></li>
                                         <li><a href="localhost:8000/ator/INSIRA-AQUI-O-ID-DO-ATOR-QUE-PROCURA-E-DEPOIS-APERTE-ENTER" target="_blank" title="Buscar Ator por Id" rel="next" alt="Buscar Ator por Id">Buscar Ator por Id (com detalhes)</a></li>
                                         <li><a href="{{url('/filmes#37-3d-g')}}" target="_blank" title="Ver Lista de Filmes" rel="next" alt="Ver Lista de Filmes">Ver Lista de Filmes (com detalhes)</a></li>
                                     </ul>
                                 </li>
                             </ul>
+                            <!-- FUNCIONALIDADES - FIM -->
                         </div>
                     </div>
                 </div>

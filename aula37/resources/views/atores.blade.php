@@ -178,6 +178,41 @@
             .profile-desc{
                 margin: auto;
             }
+            label{
+                color: #636b6f;
+                font-weight: bold;
+                margin-left: 5px;
+            }
+            input[type=text]{
+                padding: 8px 10px;
+                width: 25%;
+                margin-top: 10px;
+                border-radius: 20px 0 0 20px;
+                border: 1px solid #a5a5a5;
+                border-right: none;
+            }
+            input[type=text]:focus{
+                padding: 8px 10px;
+                width: 25%;
+                margin-top: 10px;
+                border-radius: 20px 0 0 20px;
+                border: 1px solid #fa503a;
+                border-right: none;
+                outline-color: transparent;
+            }
+            input[type=submit]{
+                background-color: #fa503a;
+                color: #fff;
+                padding: 6px 10px 7px 10px;
+                font-size: 12pt;
+                border-radius: 0 20px 20px 0;
+                margin-left: -5px;
+                border: 1px solid #a5a5a5;
+                border-left: none;
+            }
+            input[type=submit]:hover{
+                background-color: #d9412e;
+            }
         </style>
     </head>
     <body>
@@ -219,37 +254,73 @@
                 <!-- EXERCÍCIO 03 A, B, C e H - FIM -->
 
                 <!-- EXERCÍCIO 03 E - INÍCIO-->
-                    @if (isset($atorPorId))
-                        <div class="bloco-exercicio" id="37-3e-f">
-                            <div class="enunciado">
-                                <h2><i class="fas fa-code"></i> Exercícios 03 E e F | Buscar Ator por Id</h2>
-                            </div>
-                            <div class="resultado">
-                                <h3>O ator/atriz de id <b>{{ $atorPorId->id }}</b> se chama <b>{{ $atorPorId->first_name .' '. $atorPorId->last_name }}</b>.</h3>
-                                <h3>Confira abaixo os detalhes sobre {{ $atorPorId->first_name}}:</h3>
-                                <div class="profile">
-                                    <img class="profile-pic" src="@if ($atorPorId->picture_url != null) {{$atorPorId->picture_url}} @else https://us.123rf.com/450wm/berkut2011/berkut20111506/berkut2011150600452/41143316-stock-vector-man-in-suit-secret-service-agent-icon.jpg?ver=6 @endif" title="{{$atorPorId->first_name}} {{$atorPorId->last_name}}" alt="{{$atorPorId->first_name}} {{$atorPorId->last_name}}" height="150" width="150">
-                                    <ul class="lista profile-desc">
-                                        <li>Nome: {{$atorPorId->first_name}}</li>
-                                        <li>Sobrenome: {{$atorPorId->last_name}}</li>
-                                        <li>Avaliação: @if (isset($atorPorId->rating)) {{$atorPorId->rating}} @else Não avaliado @endif</li>
-                                        <li>Id do seu filme favorito: @if (isset($atorPorId->favorite_movie_id)) {{$atorPorId->favorite_movie_id}} @else Não informado @endif</li>
-                                    </ul>
-                                </div>
+                @if (isset($atorPorId))
+                    <div class="bloco-exercicio" id="37-3e-f">
+                        <div class="enunciado">
+                            <h2><i class="fas fa-code"></i> Exercícios 03 E e F | Buscar Ator por Id</h2>
+                        </div>
+                        <div class="resultado">
+                            <h3>O ator/atriz de id <b>{{ $atorPorId->id }}</b> se chama <b>{{ $atorPorId->first_name .' '. $atorPorId->last_name }}</b>.</h3>
+                            <h3>Confira abaixo os detalhes sobre {{ $atorPorId->first_name}}:</h3>
+                            <div class="profile">
+                                <img class="profile-pic" src="@if ($atorPorId->picture_url != null) {{$atorPorId->picture_url}} @else https://us.123rf.com/450wm/berkut2011/berkut20111506/berkut2011150600452/41143316-stock-vector-man-in-suit-secret-service-agent-icon.jpg?ver=6 @endif" title="{{$atorPorId->first_name}} {{$atorPorId->last_name}}" alt="{{$atorPorId->first_name}} {{$atorPorId->last_name}}" height="150" width="150">
+                                <ul class="lista profile-desc">
+                                    <li>Nome: {{$atorPorId->first_name}}</li>
+                                    <li>Sobrenome: {{$atorPorId->last_name}}</li>
+                                    <li>Avaliação: @if (isset($atorPorId->rating)) {{$atorPorId->rating}} @else Não avaliado @endif</li>
+                                    <li>Id do seu filme favorito: @if (isset($atorPorId->favorite_movie_id)) {{$atorPorId->favorite_movie_id}} @else Não informado @endif</li>
+                                </ul>
                             </div>
                         </div>
-                    @elseif (isset($idBuscado))
-                        <div class="bloco-exercicio" id="37-3e-f">
-                            <div class="enunciado">
-                                <h2><i class="fas fa-code"></i> Exercícios 03 E | Buscar Ator por Id</h2>
-                            </div>
-                            <div class="resultado">
-                                <h3>Ops! Parece que não há nenhum ator nem atriz com id <b>{{ $idBuscado }}</b>. Clique <a href="{{url('/atores/#37-3a-b-c')}}" target="_self" title="Ver todos os atores e atrizes" rel="next" alt="Ver todos os atores e atrizes">aqui</a> para ver a lista de todos os atores e atrizes.</h3>
-                            </div>
+                    </div>
+                @elseif (isset($idBuscado))
+                    <div class="bloco-exercicio" id="37-3e-f">
+                        <div class="enunciado">
+                            <h2><i class="fas fa-code"></i> Exercícios 03 E | Buscar Ator por Id</h2>
                         </div>
-                    @endif
+                        <div class="resultado">
+                            <h3>Ops! Parece que não há nenhum ator nem atriz com id <b>{{ $idBuscado }}</b>. Clique <a href="{{url('/atores/#37-3a-b-c')}}" target="_self" title="Ver todos os atores e atrizes" rel="next" alt="Ver todos os atores e atrizes">aqui</a> para ver a lista de todos os atores e atrizes.</h3>
+                        </div>
+                    </div>
+                @endif
                 <!-- EXERCÍCIO 03 E - FIM -->
 
+                <!-- EXERCÍCIO 04 A e B - INÍCIO-->
+                <div class="bloco-exercicio" id="37-4a-b-c">
+                    <div class="enunciado">
+                        <h2><i class="fas fa-code"></i> Exercícios 04 A, B e C | Buscar Ator por Nome</h2>
+                    </div>
+                    <div class="resultado">
+                        <form action="/atores/procurar" method="post">
+                            @csrf
+                            <label for="nomeAtor">Digite o nome do Ator que está buscando</label>
+                            <br/>
+                            <input type="text" placeholder="Insira o nome do ator buscado" required id="nomeAtor" name="nomeAtor" title="Insira o nome do ator buscado">
+                            <input type="submit" value="Buscar Ator" title="Clique aqui para buscar o ator desejado (após preencher seu nome no campo ao lado)">
+                        </form>
+
+                <!-- EXERCÍCIO 04 A e B - FIM -->
+
+                        <!-- EXERCÍCIO 04 C - INÍCIO-->
+                        @if (isset($nomeBuscado) && $atorPorNome != null)
+                            <h3>Os atores/atrizes chamados <b>{{ $nomeBuscado }}</b> são:</h3>
+                                @foreach ($atorPorNome as $index=>$valor)
+                                    <div class="profile">
+                                        <img class="profile-pic" src="@if ($valor->picture_url != null) {{$valor->picture_url}} @else https://us.123rf.com/450wm/berkut2011/berkut20111506/berkut2011150600452/41143316-stock-vector-man-in-suit-secret-service-agent-icon.jpg?ver=6 @endif" title="{{$valor->first_name}} {{$valor->last_name}}" alt="{{$valor->first_name}} {{$valor->last_name}}" height="150" width="150">
+                                        <ul class="lista profile-desc">
+                                            <li>Nome: {{$valor->first_name}}</li>
+                                            <li>Sobrenome: {{$valor->last_name}}</li>
+                                            <li>Avaliação: @if (isset($valor->rating)) {{$valor->rating}} @else Não avaliado @endif</li>
+                                            <li>Id do seu filme favorito: @if (isset($valor->favorite_movie_id)) {{$valor->favorite_movie_id}} @else Não informado @endif</li>
+                                        </ul>
+                                    </div>
+                                @endforeach
+                        @elseif (isset($nomeBuscado))
+                            <h3>Não há atores que se chamam <b>{{ $nomeBuscado }}</b></h3>
+                        @endif
+                    </div>
+                <!-- EXERCÍCIO 04 C - FIM -->
+                </div>
             </div>
         </div>
     </body>
