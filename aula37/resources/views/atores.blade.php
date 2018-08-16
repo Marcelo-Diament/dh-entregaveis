@@ -87,6 +87,8 @@
             }
             .enunciado p{
                 font-weight: bold;
+                margin-top: -10px;
+                font-size: 11pt;
             }
             .fa-code, .fa-terminal, .fa-github{
                 color: #fa503a;
@@ -130,6 +132,9 @@
             }
             a:hover{
                 font-size: 1.02em;
+            }
+            i.fa:hover, i.fas:hover, i.fab:hover{
+                color: #d9412e;
             }
             small{
                 color: #636b6f;
@@ -180,10 +185,10 @@
                     </a>
                 </div>
 
-                <!-- EXERCÍCIO 03 A - INÍCIO-->
+                <!-- EXERCÍCIO 03 A, B e C - INÍCIO-->
                 <div class="bloco-exercicio" id="37-3a-b">
                     <div class="enunciado">
-                        <h2><i class="fas fa-code"></i> Exercício 03 A | Listar Atores</h2>
+                        <h2><i class="fas fa-code"></i> Exercícios 03 A, B e C | Listar Atores e Adicionar Novo Ator no BD (usando Eloquent)</h2>
                     </div>
                     <div class="resultado">
                         <ul class="lista">
@@ -193,12 +198,13 @@
                         </ul>
                     </div>
                 </div>
-                <!-- EXERCÍCIO 02 A - FIM -->
+                <!-- EXERCÍCIO 03 A, B e C - FIM -->
                 
                 <!-- INÍCIO MVC -->
                 <div class="bloco-exercicio">
                     <div class="enunciado">
                         <h2><i class="fas fa-terminal"></i></i> MVC + Routes + ReadMe + Repositório</h2>
+                        <p>Clique para acessar os Models, Views, Controllers, Routes, o arquivo README.md (geral) e o repositório da aula</p>
                     </div>
                     <div class="resultado">
                         <ul class="menu">
@@ -220,6 +226,7 @@
                 <div class="bloco-exercicio">
                     <div class="enunciado">
                         <h2><i class="fas fa-terminal"></i></i> Tecnologias Utilizadas</h2>
+                        <p>Clique para acessar o site oficial e/ou documentação</p>
                     </div>
                     <div class="resultado">
                         <ul class="menu">

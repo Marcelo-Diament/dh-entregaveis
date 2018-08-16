@@ -87,6 +87,8 @@
             }
             .enunciado p{
                 font-weight: bold;
+                margin-top: -10px;
+                font-size: 11pt;
             }
             .fa-code, .fa-terminal, .fa-github{
                 color: #fa503a;
@@ -130,6 +132,9 @@
             }
             a:hover{
                 font-size: 1.02em;
+            }
+            i.fa:hover, i.fas:hover, i.fab:hover{
+                color: #d9412e;
             }
             small{
                 color: #636b6f;
@@ -246,13 +251,14 @@
                                         <br/>
                                         <li>b. Na visualização que acabamos de criar, inserir um título e entrar em localhost:8000/atores​ para verificar se a exibição está correta.</li>
                                         <br/>
-                                        <li><a href="{{url('/atores')}}" target="_blank" title="Acessar Exercício 3 a" rel="next" alt="Acessar Exercício 3 a">Exercício 3b</a></li>
+                                        <li><a href="{{url('/atores')}}" target="_blank" title="Acessar Exercício 3 b" rel="next" alt="Acessar Exercício 3 b">Exercício 3b</a></li>
                                         <small>O ator inserido no BD é o 'Ator Novo' (first_name: Ator, last_name: Novo, id: 50).</small>
                                         <br/>
                                         <br/>
-                                        <li>c. Criar um modelo para a tabela Actors.</li>
                                         <br/>
-                                        <li><a href="https://github.com/Marcelo-Diament/dh-entregaveis/blob/master/aula37/app/Actor.php" target="_blank" title="Acessar Exercício 2 c" rel="next" alt="Acessar Exercício 2 c">Exercício 2c</a></li>
+                                        <li>c. No controlador que acabamos de criar, utilizando Eloquent, obter todos os atores dentro de uma variável $atores​ e enviá-la à visualização. (Recomendamos utilizar o método All​). Lembrar de inserir a linha “use App\Ator​” para importar o modelo).</li>
+                                        <br/>
+                                        <li><a href="{{url('/atores')}}" target="_blank" title="Acessar Exercício 3 c" rel="next" alt="Acessar Exercício 3 c">Exercício 3c</a></li>
                                         <br/>
                                         <br/>
                                         <li>d. Adicionar ao modelo <strike>Ator​</strike> Actor o método getNomeCompleto​.</li>
@@ -262,7 +268,7 @@
                                     </ul>
                                 </li>
                             </ul>
-                            <ul class="lista">
+                            <!-- <ul class="lista">
                                 <li>Funcionalidades</li>
                                 <br/>
                                 <li>
@@ -271,7 +277,7 @@
                                         <li><a href="localhost:8000/resultado/INSIRA-O-PRIMEIRO-NÚMERO/numeroOpcional/INSIRA-O-SEGUNDO-NÚMERO(OPCIONAL)" target="_blank" title="Multiplicar 2 números" rel="next" alt="Multiplicar 2 números">Multiplicar 2 números</a></li>
                                     </ul>
                                 </li>
-                            </ul>
+                            </ul> -->
                         </div>
                     </div>
                 </div>
@@ -281,6 +287,7 @@
                 <div class="bloco-exercicio">
                     <div class="enunciado">
                         <h2><i class="fas fa-terminal"></i></i> MVC + Routes + ReadMe + Repositório</h2>
+                        <p>Clique para acessar os Models, Views, Controllers, Routes, o arquivo README.md (geral) e o repositório da aula</p>
                     </div>
                     <div class="resultado">
                         <ul class="menu">
@@ -302,6 +309,7 @@
                 <div class="bloco-exercicio">
                     <div class="enunciado">
                         <h2><i class="fas fa-terminal"></i></i> Tecnologias Utilizadas</h2>
+                        <p>Clique para acessar o site oficial e/ou documentação</p>
                     </div>
                     <div class="resultado">
                         <ul class="menu">
