@@ -5,13 +5,11 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Aula 37 | Laravel III</title>
+        <title>Aula 37 | Laravel III | Exercício 3D</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-TXfwrfuHVznxCssTxWoPZjhcss/hp38gEOH8UPZG/JcXonvBQ6SlsIF49wUzsGno" crossorigin="anonymous">
-        
-        <link rel="shortcut icon" href="{{{ asset('img/favicon.png') }}}">
 
         <!-- Styles -->
         <style>
@@ -187,45 +185,21 @@
                     </a>
                 </div>
 
-                <!-- EXERCÍCIO 03 A, B e C - INÍCIO-->
-                @if (isset($atores))
-                    <div class="bloco-exercicio" id="37-3a-b-c">
-                        <div class="enunciado">
-                            <h2><i class="fas fa-code"></i> Exercícios 03 A, B e C | Listar Atores e Adicionar Novo Ator no BD (usando Eloquent)</h2>
-                        </div>
-                        <div class="resultado">
-                            <ul class="lista">
-                                @foreach ($atores as $index=>$valor)
-                                    <li>{{ $valor['first_name'] }} {{ $valor['last_name'] }}</li><br/>
-                                @endforeach
-                            </ul>
-                        </div>
+                <!-- EXERCÍCIO 03 D - INÍCIO-->
+                <div class="bloco-exercicio" id="37-3d">
+                    <div class="enunciado">
+                        <h2><i class="fas fa-code"></i> Exercício 03 D | Listar Filmes</h2>
                     </div>
-                @endif
-                <!-- EXERCÍCIO 03 A, B e C - FIM -->
-
-                <!-- EXERCÍCIO 03 E - INÍCIO-->
-                    @if (isset($atorPorId))
-                        <div class="bloco-exercicio" id="37-3e-f">
-                            <div class="enunciado">
-                                <h2><i class="fas fa-code"></i> Exercícios 03 E | Buscar Ator por Id</h2>
-                            </div>
-                            <div class="resultado">
-                                <h3>O ator/atriz de id <b>{{ $atorPorId->id }}</b> se chama <b>{{ $atorPorId->first_name .' '. $atorPorId->last_name }}</b>.</h3>
-                            </div>
-                        </div>
-                    @elseif (isset($idBuscado))
-                        <div class="bloco-exercicio" id="37-3e-f">
-                            <div class="enunciado">
-                                <h2><i class="fas fa-code"></i> Exercícios 03 E | Buscar Ator por Id</h2>
-                            </div>
-                            <div class="resultado">
-                                <h3>Ops! Parece que não há nenhum ator nem atriz com id <b>{{ $idBuscado }}</b>. Clique <a href="{{url('/atores/#37-3a-b-c')}}" target="_self" title="Ver todos os atores e atrizes" rel="next" alt="Ver todos os atores e atrizes">aqui</a> para ver a lista de todos os atores e atrizes.</h3>
-                            </div>
-                        </div>
-                    @endif
-                <!-- EXERCÍCIO 03 E - FIM -->
-
+                    <div class="resultado">
+                        <ul class="lista">
+                            @foreach ($filmes as $index=>$valor)
+                                <li>{{ $valor['title'] }}</li><br/>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+                <!-- EXERCÍCIO 03 D - FIM -->
+                
                 <!-- INÍCIO MVC -->
                 <div class="bloco-exercicio">
                     <div class="enunciado">

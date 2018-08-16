@@ -246,25 +246,36 @@
                                     <ul class="lista">
                                         <li>a. Criar o caminho /atores​, que redirecione ao método <strike>AtorController@directory​</strike> ActorsController@directory e retorne a visualização atores.blade.php​.</li>
                                         <br/>
-                                        <li><a href="{{url('/atores')}}" target="_blank" title="Acessar Exercício 3 a" rel="next" alt="Acessar Exercício 3 a">Exercício 3a</a></li>
+                                        <li><a href="{{url('/atores#37-3a-b-c')}}" target="_blank" title="Acessar Exercício 3 a" rel="next" alt="Acessar Exercício 3 a">Exercício 3a</a></li>
                                         <br/>
                                         <br/>
                                         <li>b. Na visualização que acabamos de criar, inserir um título e entrar em localhost:8000/atores​ para verificar se a exibição está correta.</li>
                                         <br/>
-                                        <li><a href="{{url('/atores')}}" target="_blank" title="Acessar Exercício 3 b" rel="next" alt="Acessar Exercício 3 b">Exercício 3b</a></li>
+                                        <li><a href="{{url('/atores#37-3a-b-c')}}" target="_blank" title="Acessar Exercício 3 b" rel="next" alt="Acessar Exercício 3 b">Exercício 3b</a></li>
                                         <small>O ator inserido no BD é o 'Ator Novo' (first_name: Ator, last_name: Novo, id: 50).</small>
                                         <br/>
                                         <br/>
                                         <br/>
                                         <li>c. No controlador que acabamos de criar, utilizando Eloquent, obter todos os atores dentro de uma variável $atores​ e enviá-la à visualização. (Recomendamos utilizar o método All​). Lembrar de inserir a linha “use App\Ator​” para importar o modelo).</li>
                                         <br/>
-                                        <li><a href="{{url('/atores')}}" target="_blank" title="Acessar Exercício 3 c" rel="next" alt="Acessar Exercício 3 c">Exercício 3c</a></li>
+                                        <li><a href="{{url('/atores#37-3a-b-c')}}" target="_blank" title="Acessar Exercício 3 c" rel="next" alt="Acessar Exercício 3 c">Exercício 3c</a></li>
                                         <br/>
                                         <br/>
-                                        <li>d. Adicionar ao modelo <strike>Ator​</strike> Actor o método getNomeCompleto​.</li>
+                                        <li>d. Na visualização <strike>atores.blade.php</strike> filmes.blade.php​, mostrar uma lista dos nomes dos filmes utilizando Blade.</li>
                                         <br/>
-                                        <li><a href="https://github.com/Marcelo-Diament/dh-entregaveis/blob/master/aula37/app/Actor.php" target="_blank" title="Acessar Exercício 2 d" rel="next" alt="Acessar Exercício 2 d">Exercício 2d</a></li>
+                                        <li><a href="{{url('/filmes#37-3d')}}" target="_blank" title="Acessar Exercício 3 d" rel="next" alt="Acessar Exercício 3 d">Exercício 3d*</a></li>
+                                        <small>* Acredito que a view correta seria /filmes, verifiquei no repositório que criaram de referência. Caso esteja errado, por favor, me avisem.</small>
                                         <br/>
+                                        <br/>
+                                        <br/>
+                                        <li>e. Criar o caminho /ator/{id}​, que redirecione ao método AtorController@show​ e retorne a visualização ator.blade.php​.</li>
+                                        <br/>
+                                        <li><a href="localhost:8000/ator/INSIRA-AQUI-O-ID-DO-ATOR-QUE-PROCURA-E-DEPOIS-APERTE-ENTER" target="_blank" title="Acessar Exercício 3 e" rel="next" alt="Acessar Exercício 3 e">Exercício 3e</a></li>
+                                        <br/>
+                                        <br/>
+                                        <li>f. No controlador AtorController​, utilizando Eloquent, obter o ator de acordo com o ID recebido por URL. Salvar o ator na variável $ator​ e enviá-la para a visualização. (Recomendamos utilizar o método find​).</li>
+                                        <br/>
+                                        <li><a href="localhost:8000/ator/INSIRA-AQUI-O-ID-DO-ATOR-QUE-PROCURA-E-DEPOIS-APERTE-ENTER" target="_blank" title="Acessar Exercício 3 f" rel="next" alt="Acessar Exercício 3 f">Exercício 3f</a></li>
                                     </ul>
                                 </li>
                             </ul>

@@ -14,4 +14,12 @@ class ActorsController extends Controller
     	return view('atores')
     		->with('atores', $atores);
     }
+
+    public function show($id){
+    	$atorPorId = Actor::find($id);
+    	return view('atores')
+    	->with('atorPorId', $atorPorId)
+    	->with('idBuscado', $id);
+    }
+
 }
