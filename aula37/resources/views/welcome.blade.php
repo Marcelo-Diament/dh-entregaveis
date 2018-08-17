@@ -342,6 +342,9 @@
                                         <br/>
                                         <li><a href="localhost:8000/filmes/procurarId/INSIRA-AQUI-O-ID-DO-FILME-QUE-PROCURA-E-DEPOIS-APERTE-ENTER" target="_blank" title="Acessar Exercício 5 - b" rel="next" alt="Acessar Exercício 5 - b">Exercício 5b - Buscar Filme por Id</a></li>
                                         <br/>
+                                        <li><a href="localhost:8000/filmes/procurarTitulo/INSIRA-AQUI-O-TITULO-DO-FILME-QUE-PROCURA-E-DEPOIS-APERTE-ENTER" target="_blank" title="Acessar Exercício 5 - c" rel="next" alt="Acessar Exercício 5 - c">Exercício 5c - Buscar Filme por Titulo</a></li>
+                                        <small>Na busca de filme por título, por algum motivo só consegui acessar o título inserindo o index do array de todos os filmes - <code>$filmesPorTitulo[0]->title</code>, usei o <code>Movie::find</code> pois com <code>Movie::where</code> também não consegui...</small>
+                                        <br/>
                                     </ul>
                                 </li>
                             </ul>
@@ -358,6 +361,7 @@
                                         <li><a href="localhost:8000/ator/INSIRA-AQUI-O-ID-DO-ATOR-QUE-PROCURA-E-DEPOIS-APERTE-ENTER" target="_blank" title="Buscar Ator por Id" rel="next" alt="Buscar Ator por Id">Buscar Ator por Id (com detalhes)</a></li>
                                         <li><a href="{{url('/filmes#37-3d-g')}}" target="_blank" title="Ver Lista de Filmes" rel="next" alt="Ver Lista de Filmes">Ver Lista de Filmes (com detalhes)</a></li>
                                         <li><a href="localhost:8000/filmes/procurarId/INSIRA-AQUI-O-ID-DO-FILME-QUE-PROCURA-E-DEPOIS-APERTE-ENTER" target="_blank" title="Buscar Filme por Id" rel="next" alt="Buscar Filme por Id">Buscar Filme por Id (com detalhes)</a></li>
+                                        <li><a href="localhost:8000/filmes/procurarTitulo/INSIRA-AQUI-O-TITULO-DO-FILME-QUE-PROCURA-E-DEPOIS-APERTE-ENTER" target="_blank" title="Buscar Filme por Título" rel="next" alt="Buscar Filme por Título">Buscar Filme por Título (com detalhes)</a></li>
                                     </ul>
                                 </li>
                             </ul>

@@ -208,7 +208,7 @@
                 @endif
                 <!-- EXERCÍCIO 03 D e G - FIM -->
 
-                <!-- EXERCÍCIO 05 - INÍCIO-->
+                <!-- EXERCÍCIO 05 A - INÍCIO-->
                 @if (isset($filmePorId))
                     <div class="bloco-exercicio" id="37-5-a">
                         <div class="enunciado">
@@ -239,7 +239,40 @@
                         </div>
                     </div>
                 @endif
-                <!-- EXERCÍCIO 05 - FIM -->
+                <!-- EXERCÍCIO 05 A - FIM -->
+
+                <!-- EXERCÍCIO 05 B - INÍCIO-->
+                @if (isset($filmePorTitulo))
+                    <div class="bloco-exercicio" id="37-5-a">
+                        <div class="enunciado">
+                            <h2><i class="fas fa-code"></i> Exercícios 05 | Buscar Filme por Título</h2>
+                        </div>
+                        <div class="resultado">
+                            <h3>O filme <b>{{ $filmePorTitulo[0]->title }}</b> é o filme de id <b>{{ $filmePorTitulo[0]->id }}</b>.</h3>
+                            <h3>Confira abaixo os detalhes sobre {{ $filmePorTitulo[0]->title}}:</h3>
+                            <div class="profile">
+                                <ul class="lista profile-desc">
+                                    <li>Título: <b>{{$filmePorTitulo[0]->title}}</b> @if (isset($filmePorTitulo[0]->release_date)) <small> ({{ mb_substr($filmePorTitulo[0]->release_date,0,4) }}) </small> @endif</li>
+                                    <li>Duração: @if (isset($filmePorTitulo[0]->length)) {{$filmePorTitulo[0]->length}} @else Não avaliado @endif</li>
+                                    <li>Avaliação: @if (isset($filmePorTitulo[0]->rating)) {{$filmePorTitulo[0]->rating}} @else Não avaliado @endif</li>
+                                    <li>Prêmios: @if (isset($filmePorTitulo[0]->awards)) {{$filmePorTitulo[0]->awards}} @else Parece que não receberam prêmios @endif</li>
+                                    <li>Id do gênero: @if (isset($filmePorTitulo[0]->genre_id)) {{$filmePorTitulo[0]->genre_id}} @else Não informado @endif</li>
+                                </ul>
+                                <h3>Clique <a href="{{url('/filmes#37-3d-g')}}" target="_self" title="Ver todos os filmes" rel="next" alt="Ver todos os filmes">aqui</a> para ver a lista de todos os filmes.</h3>
+                            </div>
+                        </div>
+                    </div>
+                @elseif (isset($tituloBuscado))
+                    <div class="bloco-exercicio" id="37-3e-f">
+                        <div class="enunciado">
+                            <h2><i class="fas fa-code"></i> Exercícios 03 E | Buscar Filme por Título</h2>
+                        </div>
+                        <div class="resultado">
+                            <h3>Ops! Parece que não há nenhum filme chamado <b>{{ $tituloBuscado}}</b>. Clique <a href="{{url('/filmes#37-3d-g')}}" target="_self" title="Ver todos os filmes" rel="next" alt="Ver todos os filmes">aqui</a> para ver a lista de todos os filmes.</h3>
+                        </div>
+                    </div>
+                @endif
+                <!-- EXERCÍCIO 05 B - FIM -->
                 
             </div>
         </div>

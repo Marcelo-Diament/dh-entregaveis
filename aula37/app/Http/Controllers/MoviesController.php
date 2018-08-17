@@ -24,35 +24,23 @@ class MoviesController extends Controller
     	->with('idBuscado', $id);
     }
 
-    // public function procurarFilmeTitulo($titulo){
-    //     foreach ($this->listaFilmes as $idFilme => $tituloFilme){
-    //         if ($titulo == $tituloFilme){
-    //             $resultado = 'ok';
-    //             break;
-    //         } elseif ($titulo != $tituloFilme && $idFilme >= 7) {
-    //             $resultado = 'Não encontrado';
-    //             $idFilme = null;
-    //             $tituloFilme = $titulo;
-    //         } else {
-    //             $resultado = null;
-    //             $idFilme = null;
-    //             $tituloFilme = null;
-    //         }
-    //     }
-    //     return view('filmes')
-    //         ->with('idFilme', $idFilme)
-    //         ->with('tituloFilme', $tituloFilme)
-    //         ->with('listaFilmes', $this->listaFilmes)
-    //         ->with('resultado', $resultado);
-    // }
 
-    // public function adicionarFilme($novoTitulo){
-    //     if (isset($novoTitulo)){
-    //         $this->listaFilmes[] = $novoTitulo;
-    //     }
-    //     return view('filmes')
-    //         ->with('listaFilmes', $this->listaFilmes)
-    //         ->with('novoTitulo', $novoTitulo);
-    // }
+    public function procurarFilmeTitulo($titulo){
+        $tituloBuscado = $titulo;
+        $filmePorTitulo = Movie::where('title', $tituloBuscado)->get();
+        if (count($filmePorTitulo) == 0) {
+            return view('filmes')
+            ->with('filmePorTitulo', null)
+            ->with('titulo', null)
+            ->with('tituloBuscado', $tituloBuscado);
+        } elseif ($titulo == null) {
+            return view('filmes');
+        } else {
+            return view('filmes')
+            ->with('filmePorTitulo', $filmePorTitulo)
+            ->with('titulo', $titulo)
+            ->with('tituloBuscado', $tituloBuscado);
+        }
+    }
 
 }
