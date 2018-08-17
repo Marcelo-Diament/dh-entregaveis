@@ -338,7 +338,9 @@
                                     <ul class="lista">
                                         <li>a. Na aula anterior, usamos um array para consultar os filmes. Implementar Eloquent nos seguintes caminhos: /filmes,​ /filmes/{id}​, /filmes/procurar/{texto}​ para consultar diretamente o banco de dados.</li>
                                         <br/>
-                                        <li><a href="{{url('/atores#37-4a-b-c-d')}}" target="_blank" title="Acessar Exercício 5" rel="next" alt="Acessar Exercício 5">Exercício 5</a></li>
+                                        <li><a href="{{url('/filmes#37-3d-g')}}" target="_blank" title="Acessar Exercício 5 - a" rel="next" alt="Acessar Exercício 5 - a">Exercício 5a - Lista Filmes</a></li>
+                                        <br/>
+                                        <li><a href="localhost:8000/filmes/procurarId/INSIRA-AQUI-O-ID-DO-FILME-QUE-PROCURA-E-DEPOIS-APERTE-ENTER" target="_blank" title="Acessar Exercício 5 - b" rel="next" alt="Acessar Exercício 5 - b">Exercício 5b - Buscar Filme por Id</a></li>
                                         <br/>
                                     </ul>
                                 </li>
@@ -355,7 +357,7 @@
                                         <li><a href="{{url('/atores#37-4a-b-c-d')}}" target="_blank" title="Buscar Ator por Nome" rel="next" alt="Buscar Ator por Nome">Buscar Ator Por Nome (formulário)</a></li>
                                         <li><a href="localhost:8000/ator/INSIRA-AQUI-O-ID-DO-ATOR-QUE-PROCURA-E-DEPOIS-APERTE-ENTER" target="_blank" title="Buscar Ator por Id" rel="next" alt="Buscar Ator por Id">Buscar Ator por Id (com detalhes)</a></li>
                                         <li><a href="{{url('/filmes#37-3d-g')}}" target="_blank" title="Ver Lista de Filmes" rel="next" alt="Ver Lista de Filmes">Ver Lista de Filmes (com detalhes)</a></li>
-                                        <li><a href="localhost:8000/filmes/procurarId/INSIRA-AQUI-O-ID-DO-ATOR-QUE-PROCURA-E-DEPOIS-APERTE-ENTER" target="_blank" title="Buscar Filme por Id" rel="next" alt="Buscar Filme por Id">Buscar Filme por Id (com detalhes)</a></li>
+                                        <li><a href="localhost:8000/filmes/procurarId/INSIRA-AQUI-O-ID-DO-FILME-QUE-PROCURA-E-DEPOIS-APERTE-ENTER" target="_blank" title="Buscar Filme por Id" rel="next" alt="Buscar Filme por Id">Buscar Filme por Id (com detalhes)</a></li>
                                     </ul>
                                 </li>
                             </ul>
