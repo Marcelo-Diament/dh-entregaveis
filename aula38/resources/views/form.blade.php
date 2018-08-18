@@ -186,17 +186,25 @@
                 font-weight: bold;
                 margin-left: 5px;
             }
-            input[type=text], input[type=datetime-local], input[type=number]{
+            input[type=text], input[type=number], select, input[type=datetime-local]{
                 padding: 8px 10px;
-                width: 25%;
+                width: 20%;
                 margin-top: 8px;
                 margin-bottom: 30px;
                 border-radius: 20px;
                 border: 1px solid #a5a5a5;
             }
-            input[type=text]:focus, input[type=datetime-local]:focus, input[type=number]:focus,
-            input[type=text]:focus-within, input[type=datetime-local]:focus-within, input[type=number]:focus-within,
-            input[type=text]:active, input[type=datetime-local]:active, input[type=number]:active
+            input[type=datetime-local]{
+                color: #636b6f;
+                width: 175px;
+            }
+            select{
+                width: 250px;
+                color: #636b6f;
+            }
+            input[type=text]:focus, input[type=datetime-local]:focus, input[type=number]:focus, select:focus,
+            input[type=text]:focus-within, input[type=datetime-local]:focus-within, input[type=number]:focus-within, select:focus-within,
+            input[type=text]:active, input[type=datetime-local]:active, input[type=number]:active, select:active
             {
                 border: 1px solid #fa503a;
                 outline-color: transparent !important;
@@ -244,7 +252,16 @@
                             <h2><i class="fas fa-code"></i> Exercícios 01 | Adicionar Filme por Formulário</h2>
                         </div>
                         <div class="resultado">
-                            <h3>O filme <b>{{$novoFilme->title}}</b> foi salvo com sucesso!</h3>
+                            <h3>O filme <b>{{$novoFilme->title}}</b> foi salvo com sucesso! Confira os detalhes a seguir:</h3>
+                            <ul class="lista profile-desc">
+                                <li>Título: <b>{{$novoFilme->title}}</b> @if (isset($novoFilme->release_date)) <small> ({{ mb_substr($novoFilme->release_date,0,4) }}) </small> @endif</li>
+                                <li>Duração: @if (isset($novoFilme->length)) {{$novoFilme->length}}' @else Não avaliado @endif</li>
+                                <li>Avaliação: @if (isset($novoFilme->rating)) {{$novoFilme->rating}} @else Não avaliado @endif</li>
+                                <li>Prêmios: @if (isset($novoFilme->awards)) {{$novoFilme->awards}} @else Parece que não receberam prêmios @endif</li>
+                                <li>Gênero: @if (isset($novoFilme->genre_id)) {{$novoFilme->genero['name']}} (id: {{$novoFilme->genre_id}}) @else Não informado @endif</li>
+                            </ul>
+                            <br/>
+                            <br/>
                             <form action="/filmes" method="get">
                                 <input type="submit" value="Ver Todos os Filmes">
                             </form>
@@ -340,6 +357,27 @@
                                         <input style="background-color:#fa503a;color:#fff" type="datetime-local" name="release_date" id="dataEstreia" required value="{{ old('release_date') }}"/>
                                     @else
                                         <input type="datetime-local" name="release_date" id="dataEstreia" required value="{{ old('release_date') }}"/>
+                                    @endif
+                                </div>
+                                <div class="">
+                                    <label for="generoId">Gênero</label>
+                                    <br/>
+                                    @if ($errors->has('genre_id'))
+                                    <select style="background-color:#fa503a;color:#fff" name="generoId" form="adicionarFilme">
+                                        <option selected disabled>Selecione o gênero do filme</option>
+                                        {{ $options = App\Genre::all()->pluck('name', 'id') }}
+                                        @foreach ($options as $id=>$value) 
+                                            <option value="{{ $id }}">{{ $id }} - {{ $value }}</option>
+                                        @endforeach
+                                    </select>
+                                    @else
+                                    <select name="generoId" form="adicionarFilme">
+                                        <option selected disabled>Selecione o gênero do filme</option>
+                                        {{ $options = App\Genre::all()->pluck('name', 'id') }}
+                                        @foreach ($options as $id=>$value) 
+                                            <option value="{{ $id }}">{{ $id }} - {{ $value }}</option>
+                                        @endforeach
+                                    </select>
                                     @endif
                                 </div>
                                 <br>

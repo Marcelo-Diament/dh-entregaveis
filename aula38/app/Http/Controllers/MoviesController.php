@@ -67,7 +67,8 @@ class MoviesController extends Controller{
 	      'rating' => 'required|numeric|min:0|max:10',
 	      'awards' => 'required|numeric|min:0',
 	      'length' => 'required|numeric|min:0',
-	      'release_date' => 'required|date'
+	      'release_date' => 'required|date',
+          'genre_id' => 'required|numeric|min:0'
 	    ]);
 	    $novoFilme = Movie::create([
 	      'title' => $request->input('title'),

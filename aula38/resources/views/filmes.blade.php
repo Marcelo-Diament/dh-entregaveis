@@ -259,10 +259,11 @@
                             <div class="profile">
                                 <ul class="lista profile-desc">
                                     <li>Título: <b>{{$nomeFilme[0]->title}}</b> @if (isset($nomeFilme[0]->release_date)) <small> ({{ mb_substr($nomeFilme[0]->release_date,0,4) }}) </small> @endif</li>
-                                    <li>Duração: @if (isset($nomeFilme[0]->length)) {{$nomeFilme[0]->length}} @else Não avaliado @endif</li>
+                                    <li>Duração: @if (isset($nomeFilme[0]->length)) {{$nomeFilme[0]->length}}' @else Não avaliado @endif</li>
                                     <li>Avaliação: @if (isset($nomeFilme[0]->rating)) {{$nomeFilme[0]->rating}} @else Não avaliado @endif</li>
                                     <li>Prêmios: @if (isset($nomeFilme[0]->awards)) {{$nomeFilme[0]->awards}} @else Parece que não receberam prêmios @endif</li>
                                     <li>Id do gênero: @if (isset($nomeFilme[0]->genre_id)) {{$nomeFilme[0]->genre_id}} @else Não informado @endif</li>
+                                    <li>Gênero: @if (isset($nomeFilme[0]->genero)) {{$nomeFilme[0]->genero['name']}} @else Não informado @endif</li>
                                 </ul>
                                 <h3>Clique <a href="{{url('/filmes#37-3d-g')}}" target="_self" title="Ver todos os filmes" rel="next" alt="Ver todos os filmes">aqui</a> para ver a lista de todos os filmes.</h3>
                             </div>
