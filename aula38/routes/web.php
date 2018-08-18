@@ -21,15 +21,15 @@ Route::get('/form', function () {
 
 Route::get('/atores', 'ActorsController@listarAtores');
 
-Route::get('/ator/buscar/{nomeAtor}', 'ActorsController@buscarNomeAtor');
+Route::get('/ator/buscarNomeAtor/{nomeAtor}', 'ActorsController@buscarNomeAtor');
 
-Route::get('/ator/buscar/{idAtor}', 'ActorsController@buscarIdAtor');
+Route::get('/ator/buscarIdAtor/{idAtor}', 'ActorsController@buscarIdAtor');
 
 Route::get('/filmes', 'MoviesController@listarFilmes');
 
-Route::get('/filme/buscar/{nomeFilme}', 'MoviesController@buscarNomeFilme');
+Route::get('/filme/buscarNomeFilme/{nomeFilme}', 'MoviesController@buscarNomeFilme');
 
-Route::get('/filme/buscar/{idFilme}', 'MoviesController@buscarIdFilme');
+Route::get('/filme/buscarIdFilme/{idFilme}', 'MoviesController@buscarIdFilme');
 
 Route::get('/form', 'MoviesController@adicionar');
 
