@@ -111,6 +111,11 @@
                 text-align: left;
                 display: inline-block;
             }
+            ol.lista{
+                font-weight: bold;
+                text-align: left;
+                display: inline-block;
+            }
             b{
                 color: #fa503a;
                 font-weight: bolder;
@@ -162,6 +167,62 @@
             small code, code.inline-code{
                 margin-left: inherit;
             }
+            div.profile{
+                display: inline-flex;
+                margin: 15px;
+                padding: 15px;
+            }
+            img.profile-pic{
+                height: 150px;
+                width: 150px;
+                border-radius: 50%;
+                margin: auto;
+                border: 2px solid #fa503a;
+           }
+            .profile-desc{
+                margin: auto;
+            }
+            label{
+                color: #636b6f;
+                font-weight: bold;
+                margin-left: 5px;
+            }
+            input[type=text], input[type=number], select, input[type=datetime-local]{
+                padding: 8px 10px;
+                width: 20%;
+                margin-top: 8px;
+                margin-bottom: 30px;
+                border-radius: 20px;
+                border: 1px solid #a5a5a5;
+            }
+            input[type=datetime-local]{
+                color: #636b6f;
+                width: 175px;
+            }
+            select{
+                width: 250px;
+                color: #636b6f;
+            }
+            input[type=text]:focus, input[type=datetime-local]:focus, input[type=number]:focus, select:focus,
+            input[type=text]:focus-within, input[type=datetime-local]:focus-within, input[type=number]:focus-within, select:focus-within,
+            input[type=text]:active, input[type=datetime-local]:active, input[type=number]:active, select:active
+            {
+                border: 1px solid #fa503a;
+                outline-color: transparent !important;
+            }
+            input[type=submit]{
+                background-color: #fa503a;
+                color: #fff;
+                padding: 6px 10px 7px 10px;
+                font-size: 12pt;
+                border-radius: 20px;
+                margin-left: 10px;
+                border: 1px solid #a5a5a5;
+                border-left: none;
+            }
+            input[type=submit]:hover{
+                background-color: #d9412e;
+            }
         </style>
     </head>
     <body>
@@ -184,10 +245,9 @@
                         Aula 37 | Laravel III
                     </a>
                 </div>
-
+                
                 <!-- EXERCÍCIO 03 D e G - INÍCIO-->
                 @if (isset($filmes))
-                {{ $filmes[0]->genre_id }}
                     <div class="bloco-exercicio" id="37-3d-g">
                         <div class="enunciado">
                             <h2><i class="fas fa-code"></i> Exercício 03 D e G | Listar Filmes (com detalhes)</h2>
@@ -200,6 +260,7 @@
                                         <br/>
                                         Prêmios: {{ $valor['awards'] }}<br/>
                                         Avaliação: {{ $valor['rating'] }}<br/>
+                                        Duração: {{ $valor['length'] }}'<br/>
                                         @if ($valor['genre_id'])
                                             Gênero: {{ $valor['genero']['name'] }} (id: {{ $valor['genre_id'] }})
                                         @else
@@ -225,9 +286,9 @@
                             <div class="profile">
                                 <ul class="lista profile-desc">
                                     <li>Título: <b>{{$idFilme->title}}</b> @if (isset($idFilme->release_date)) <small> ({{ mb_substr($idFilme->release_date,0,4) }}) </small> @endif</li>
-                                    <li>Duração: @if (isset($idFilme->length)) {{$idFilme->length}} @else Não avaliado @endif</li>
-                                    <li>Avaliação: @if (isset($idFilme->rating)) {{$idFilme->rating}} @else Não avaliado @endif</li>
                                     <li>Prêmios: @if (isset($idFilme->awards)) {{$idFilme->awards}} @else Parece que não receberam prêmios @endif</li>
+                                    <li>Avaliação: @if (isset($idFilme->rating)) {{$idFilme->rating}} @else Não avaliado @endif</li>
+                                    <li>Duração: @if (isset($idFilme->length)) {{$idFilme->length}}' @else Não avaliado @endif</li>
                                     <li>Id do gênero: @if (isset($idFilme->genre_id)) {{$idFilme->genre_id}} @else Não informado @endif</li>
                                     <li>Gênero: @if (isset($idFilme->genero)) {{$idFilme->genero}} @else Não informado @endif</li>
                                 </ul>
@@ -238,7 +299,7 @@
                 @elseif (isset($idBuscado))
                     <div class="bloco-exercicio" id="37-3e-f">
                         <div class="enunciado">
-                            <h2><i class="fas fa-code"></i> Exercícios 03 E | Buscar Ator por Id</h2>
+                            <h2><i class="fas fa-code"></i> Exercícios 03 E | Buscar Filme por Id</h2>
                         </div>
                         <div class="resultado">
                             <h3>Ops! Parece que não há nenhum filme com id <b>{{ $idBuscado}}</b>. Clique <a href="{{url('/filmes#37-3d-g')}}" target="_self" title="Ver todos os filmes" rel="next" alt="Ver todos os filmes">aqui</a> para ver a lista de todos os filmes.</h3>

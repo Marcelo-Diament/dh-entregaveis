@@ -249,7 +249,7 @@
                 @if (isset($filmeSalvo) && isset($novoFilme))
                     <div class="bloco-exercicio" id="37-5-a">
                         <div class="enunciado">
-                            <h2><i class="fas fa-code"></i> Exercícios 01 | Adicionar Filme por Formulário</h2>
+                            <h2><i class="fas fa-code"></i> Exercícios 01 a, b, c | Adicionar Filme por Formulário (e validar)</h2>
                         </div>
                         <div class="resultado">
                             <h3>O filme <b>{{$novoFilme->title}}</b> foi salvo com sucesso! Confira os detalhes a seguir:</h3>
@@ -277,7 +277,7 @@
 
                     <div class="bloco-exercicio" id="37-5-a">
                         <div class="enunciado">
-                            <h2><i class="fas fa-code"></i> Exercícios 01 | Adicionar Filme por Formulário</h2>
+                            <h2><i class="fas fa-code"></i> Exercícios 01 a, b, c | Adicionar Filme por Formulário (e validar)</h2>
                         </div>
                         <div class="resultado">
                             <h3>Ops! Infelizmente o filme não pôde ser salvo. Por favor, verifique os erros apontados a seguir e tente novamente.</h3>
@@ -303,10 +303,14 @@
                 <!-- INÍCIO CUSTOM WELCOME -->
                 <div class="bloco-exercicio" id="38-1">
                     <div class="enunciado">
-                        <h2><i class="fas fa-code"></i> Exercício 01 | Formulário</h2>
+                        <h2><i class="fas fa-code"></i> Exercícios 01 a, b, c | Adicionar Filme por Formulário (e validar)</h2>
                     </div>
                     <div class="resultado">
-                        <h3>Acesse os exercícios através do menu abaixo.</h3>
+                        <h3>Preencha o formulário a seguir para adicionar seu novo filme</h3>
+                            <small><b>Atenção:</b> para simular um erro, insira uma duração menor que 10.</small>
+                        <br/>
+                        <br/>
+                        <br/>
                         <div class="indice">
 
 

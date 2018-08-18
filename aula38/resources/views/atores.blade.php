@@ -113,6 +113,11 @@
                 text-align: left;
                 display: inline-block;
             }
+            ol.lista{
+                font-weight: bold;
+                text-align: left;
+                display: inline-block;
+            }
             b{
                 color: #fa503a;
                 font-weight: bolder;
@@ -184,36 +189,38 @@
                 font-weight: bold;
                 margin-left: 5px;
             }
-            input[type=text]{
+            input[type=text], input[type=number], select, input[type=datetime-local]{
                 padding: 8px 10px;
-                width: 25%;
-                margin-top: 10px;
-                border-radius: 20px 0 0 20px;
+                width: 20%;
+                margin-top: 8px;
+                margin-bottom: 30px;
+                border-radius: 20px;
                 border: 1px solid #a5a5a5;
-                border-right: none;
             }
-            input[type=text]:focus{
-                padding: 8px 10px;
-                width: 25%;
-                margin-top: 10px;
-                border-radius: 20px 0 0 20px;
+            input[type=datetime-local]{
+                color: #636b6f;
+                width: 175px;
+            }
+            select{
+                width: 250px;
+                color: #636b6f;
+            }
+            input[type=text]:focus, input[type=datetime-local]:focus, input[type=number]:focus, select:focus,
+            input[type=text]:focus-within, input[type=datetime-local]:focus-within, input[type=number]:focus-within, select:focus-within,
+            input[type=text]:active, input[type=datetime-local]:active, input[type=number]:active, select:active
+            {
                 border: 1px solid #fa503a;
-                border-right: none;
-                outline-color: transparent;
+                outline-color: transparent !important;
             }
             input[type=submit]{
                 background-color: #fa503a;
                 color: #fff;
                 padding: 6px 10px 7px 10px;
                 font-size: 12pt;
-                border-radius: 0 20px 20px 0;
-                margin-left: -5px;
-                border: 1px solid #a5a5a5;
-                border-left: none;
-            }
-            input[value="Limpar Busca"]{
                 border-radius: 20px;
                 margin-left: 10px;
+                border: 1px solid #a5a5a5;
+                border-left: none;
             }
             input[type=submit]:hover{
                 background-color: #d9412e;

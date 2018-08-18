@@ -111,6 +111,11 @@
                 text-align: left;
                 display: inline-block;
             }
+            ol.lista{
+                font-weight: bold;
+                text-align: left;
+                display: inline-block;
+            }
             b{
                 color: #fa503a;
                 font-weight: bolder;
@@ -161,6 +166,62 @@
             }
             small code, code.inline-code{
                 margin-left: inherit;
+            }
+            div.profile{
+                display: inline-flex;
+                margin: 15px;
+                padding: 15px;
+            }
+            img.profile-pic{
+                height: 150px;
+                width: 150px;
+                border-radius: 50%;
+                margin: auto;
+                border: 2px solid #fa503a;
+           }
+            .profile-desc{
+                margin: auto;
+            }
+            label{
+                color: #636b6f;
+                font-weight: bold;
+                margin-left: 5px;
+            }
+            input[type=text], input[type=number], select, input[type=datetime-local]{
+                padding: 8px 10px;
+                width: 20%;
+                margin-top: 8px;
+                margin-bottom: 30px;
+                border-radius: 20px;
+                border: 1px solid #a5a5a5;
+            }
+            input[type=datetime-local]{
+                color: #636b6f;
+                width: 175px;
+            }
+            select{
+                width: 250px;
+                color: #636b6f;
+            }
+            input[type=text]:focus, input[type=datetime-local]:focus, input[type=number]:focus, select:focus,
+            input[type=text]:focus-within, input[type=datetime-local]:focus-within, input[type=number]:focus-within, select:focus-within,
+            input[type=text]:active, input[type=datetime-local]:active, input[type=number]:active, select:active
+            {
+                border: 1px solid #fa503a;
+                outline-color: transparent !important;
+            }
+            input[type=submit]{
+                background-color: #fa503a;
+                color: #fff;
+                padding: 6px 10px 7px 10px;
+                font-size: 12pt;
+                border-radius: 20px;
+                margin-left: 10px;
+                border: 1px solid #a5a5a5;
+                border-left: none;
+            }
+            input[type=submit]:hover{
+                background-color: #d9412e;
             }
         </style>
     </head>
@@ -282,12 +343,15 @@
                                 <br/>
                                 <li>
                                     <ul class="lista">
+                                        <li>Filmes</li>
+                                        <br/>
+                                        <li><a href="{{url('/filmes#37-3d-g')}}" target="_blank" title="Ver Lista de Filmes" rel="next" alt="Ver Lista de Filmes">Ver Lista de Filmes</a></li>
+                                        <li><a href="{{url('/filmes/#buscaTituloFilme')}}" target="_blank" title="Buscar Filme por Título" rel="next" alt="Buscar Filme por Título">Buscar Filme por Título</a></li>
+                                        <li><a href="{{url('/form#38-1')}}" target="_blank" title="Adicionar Novo Filme" rel="next" alt="Adicionar Novo Filme">Adicionar Novo Filme</a></li>
                                         <li><a href="{{url('/atores#37-3a-b-c-h')}}" target="_blank" title="Ver Lista de Atores" rel="next" alt="Ver Lista de Atores">Ver Lista de Atores</a></li>
                                         <li><a href="{{url('/atores#37-4a-b-c-d')}}" target="_blank" title="Buscar Ator por Nome" rel="next" alt="Buscar Ator por Nome">Buscar Ator Por Nome (formulário)</a></li>
                                         <li><a href="localhost:8000/ator/INSIRA-AQUI-O-ID-DO-ATOR-QUE-PROCURA-E-DEPOIS-APERTE-ENTER" target="_blank" title="Buscar Ator por Id" rel="next" alt="Buscar Ator por Id">Buscar Ator por Id (com detalhes)</a></li>
-                                        <li><a href="{{url('/filmes#37-3d-g')}}" target="_blank" title="Ver Lista de Filmes" rel="next" alt="Ver Lista de Filmes">Ver Lista de Filmes (com detalhes)</a></li>
                                         <li><a href="localhost:8000/filmes/procurarId/INSIRA-AQUI-O-ID-DO-FILME-QUE-PROCURA-E-DEPOIS-APERTE-ENTER" target="_blank" title="Buscar Filme por Id" rel="next" alt="Buscar Filme por Id">Buscar Filme por Id (com detalhes)</a></li>
-                                        <li><a href="localhost:8000/filmes/procurarTitulo/INSIRA-AQUI-O-TITULO-DO-FILME-QUE-PROCURA-E-DEPOIS-APERTE-ENTER" target="_blank" title="Buscar Filme por Título" rel="next" alt="Buscar Filme por Título">Buscar Filme por Título (com detalhes)</a></li>
                                     </ul>
                                 </li>
                             </ul>

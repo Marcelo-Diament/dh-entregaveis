@@ -27,7 +27,7 @@ Route::get('/ator/buscarIdAtor/{idAtor}', 'ActorsController@buscarIdAtor');
 
 Route::get('/filmes', 'MoviesController@listarFilmes');
 
-Route::get('/filme/buscarNomeFilme/{nomeFilme}', 'MoviesController@buscarNomeFilme');
+Route::post('/filme/buscarNomeFilme/{nomeFilme}', 'MoviesController@buscarNomeFilme');
 
 Route::get('/filme/buscarIdFilme/{idFilme}', 'MoviesController@buscarIdFilme');
 

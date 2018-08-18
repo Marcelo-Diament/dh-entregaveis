@@ -23,7 +23,7 @@ class MoviesController extends Controller{
 
     public function buscarNomeFilme(Request $nomeFilme){
         $nomeBuscado = $nomeFilme->input('nomeFilme');
-        $filmePorNome = Movie::where('first_name', $nomeBuscado)->get();
+        $filmePorNome = Movie::where('title', $nomeBuscado)->get();
         if (count($filmePorNome) == 0) {
             return view('filmes')
             ->with('filmePorNome', null)
@@ -41,7 +41,7 @@ class MoviesController extends Controller{
 
     public function buscarIdFilme(Request $idFilme){
         $idBuscado = $idFilme->input('idFilme');
-        $filmePorId = Movie::where('first_name', $idBuscado)->get();
+        $filmePorId = Movie::where('id', $idBuscado)->get();
         if (count($filmePorId) == 0) {
             return view('filmes')
             ->with('filmePorId', null)
@@ -63,10 +63,10 @@ class MoviesController extends Controller{
 
     public function adicionarFilme(Request $request) {
 	    $this->validate($request, [
-	      'title' => 'required|max:100',
+	      'title' => 'required|max:100|unique:movies',
 	      'rating' => 'required|numeric|min:0|max:10',
 	      'awards' => 'required|numeric|min:0',
-	      'length' => 'required|numeric|min:0',
+	      'length' => 'required|numeric|min:10',
 	      'release_date' => 'required|date',
           'genre_id' => 'required|numeric|min:0'
 	    ]);
