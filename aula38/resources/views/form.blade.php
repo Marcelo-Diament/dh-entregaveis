@@ -363,7 +363,7 @@
                                     <label for="generoId">Gênero</label>
                                     <br/>
                                     @if ($errors->has('genre_id'))
-                                    <select style="background-color:#fa503a;color:#fff" name="generoId" form="adicionarFilme">
+                                    <select style="background-color:#fa503a;color:#fff" name="genre_id" form="adicionarFilme">
                                         <option selected disabled>Selecione o gênero do filme</option>
                                         {{ $options = App\Genre::all()->pluck('name', 'id') }}
                                         @foreach ($options as $id=>$value) 
@@ -371,7 +371,7 @@
                                         @endforeach
                                     </select>
                                     @else
-                                    <select name="generoId" form="adicionarFilme">
+                                    <select name="genre_id" form="adicionarFilme">
                                         <option selected disabled>Selecione o gênero do filme</option>
                                         {{ $options = App\Genre::all()->pluck('name', 'id') }}
                                         @foreach ($options as $id=>$value) 
