@@ -110,6 +110,11 @@
                 text-align: left;
                 display: inline-block;
             }
+            ol.lista{
+                font-weight: bold;
+                text-align: left;
+                display: inline-block;
+            }
             b{
                 color: #fa503a;
                 font-weight: bolder;
@@ -224,6 +229,7 @@
                 </div>
             @endif
 
+
             <div class="content">
                 <div class="title m-b-md">
                     <a href="{{url('/')}}" target="_self" title="Tela Inicial" rel="next" alt="Acessar Tela Inicial">
@@ -250,10 +256,36 @@
                         </div>
                     </div>
                 @endif
+
+                @if (count($errors) > 0)
+
+                    <div class="bloco-exercicio" id="37-5-a">
+                        <div class="enunciado">
+                            <h2><i class="fas fa-code"></i> Exercícios 01 | Adicionar Filme por Formulário</h2>
+                        </div>
+                        <div class="resultado">
+                            <h3>Ops! Infelizmente o filme não pôde ser salvo. Por favor, verifique os erros apontados a seguir e tente novamente.</h3>
+                            <ol class="lista">
+                                @foreach ($errors->all() as $error)
+                                  <li><h4><b>{{ $error }}</b></h4></li>
+                                @endforeach
+                            </ol>
+                            <br/>
+                            <form action="/filmes" method="get">
+                                <input type="submit" value="Ver Todos os Filmes">
+                            </form>
+                            <br/>
+                            <form action="/form#38-1" method="get">
+                                <input type="submit" value="Adicionar Novo Filme">
+                            </form>
+                        </div>
+                    </div>
+
+                @endif
                 <!-- EXERCCÍCIO 01 C (validando erros no envio) - FIM -->
 
                 <!-- INÍCIO CUSTOM WELCOME -->
-                <div class="bloco-exercicio" id="37-4a-b-c-d">
+                <div class="bloco-exercicio" id="38-1">
                     <div class="enunciado">
                         <h2><i class="fas fa-code"></i> Exercício 01 | Formulário</h2>
                     </div>
@@ -269,27 +301,47 @@
                                 <div class="">
                                     <label for="nomeFilme">Título</label>
                                     <br/>
-                                    <input type="text" name="title" id="nomeFilme" placeholder="Insira aqui o título do filme" required value="{{ old('nomeFilme') }}"/>
+                                    @if ($errors->has('title'))
+                                        <input style="background-color:#fa503a;color:#fff" type="text" name="title" id="nomeFilme" placeholder="Insira aqui o título do filme" required value="{{ old('title') }}"/>
+                                    @else
+                                        <input type="text" name="title" id="nomeFilme" placeholder="Insira aqui o título do filme" required value="{{ old('title') }}"/>
+                                    @endif
                                 </div>
                                 <div class="">
                                     <label for="avaliacaoFilme">Avaliação (0 - 10)</label>
                                     <br/>
-                                    <input type="number" name="rating" id="avaliacaoFilme" placeholder="Insira aqui a avaliação" min="0" max="10" step="0.1" required value="{{ old('avaliacaoFilme') }}"/>
+                                    @if ($errors->has('rating'))
+                                        <input style="background-color:#fa503a;color:#fff" type="number" name="rating" id="avaliacaoFilme" placeholder="Insira aqui a avaliação" min="0" max="10" step="0.1" required value="{{ old('rating') }}"/>
+                                    @else
+                                        <input type="number" name="rating" id="avaliacaoFilme" placeholder="Insira aqui a avaliação" min="0" max="10" step="0.1" required value="{{ old('rating') }}"/>
+                                    @endif
                                 </div>
                                 <div class="">
                                     <label for="premios">Prêmios</label>
                                     <br/>
-                                    <input type="number" name="awards" id="premios" placeholder="Insira aqui a quantidade de prêmios" step="1" required value="{{ old('premios') }}"/>
+                                    @if ($errors->has('awards'))
+                                        <input style="background-color:#fa503a;color:#fff;" type="number" name="awards" id="premios" placeholder="Insira aqui a quantidade de prêmios" step="1" required value="{{ old('awards') }}"/>
+                                    @else
+                                        <input type="number" name="awards" id="premios" placeholder="Insira aqui a quantidade de prêmios" step="1" required value="{{ old('awards') }}"/>
+                                    @endif
                                 </div>
                                 <div class="">
                                     <label for="duracao">Duração (minutos)</label>
                                     <br/>
-                                    <input type="number" name="length" id="duracao" placeholder="Insira aqui a duração (em minutos)" step="1" required value="{{ old('duracao') }}"/>
+                                    @if ($errors->has('length'))
+                                        <input style="background-color:#fa503a;color:#fff" type="number" name="length" id="duracao" placeholder="Insira aqui a duração (em minutos)" step="1" required value="{{ old('length') }}"/>
+                                    @else
+                                        <input type="number" name="length" id="duracao" placeholder="Insira aqui a duração (em minutos)" step="1" required value="{{ old('length') }}"/>
+                                    @endif
                                 </div>
                                 <div class="">
                                     <label for="dataEstreia">Data de Estréia</label>
                                     <br/>
-                                    <input type="datetime-local" name="release_date" id="dataEstreia" required value="{{ old('dataEstreia') }}"/>
+                                    @if ($errors->has('release_date'))
+                                        <input style="background-color:#fa503a;color:#fff" type="datetime-local" name="release_date" id="dataEstreia" required value="{{ old('release_date') }}"/>
+                                    @else
+                                        <input type="datetime-local" name="release_date" id="dataEstreia" required value="{{ old('release_date') }}"/>
+                                    @endif
                                 </div>
                                 <br>
                                 <div class="">

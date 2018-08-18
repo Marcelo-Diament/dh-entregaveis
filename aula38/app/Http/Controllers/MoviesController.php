@@ -66,7 +66,7 @@ class MoviesController extends Controller{
 	      'title' => 'required|max:100',
 	      'rating' => 'required|numeric|min:0|max:10',
 	      'awards' => 'required|numeric|min:0',
-	      'length' => 'required|numeric|min:5',
+	      'length' => 'required|numeric|min:0',
 	      'release_date' => 'required|date'
 	    ]);
 	    $novoFilme = Movie::create([
@@ -77,6 +77,7 @@ class MoviesController extends Controller{
 	      'release_date' => $request->input('release_date')
 	    ]);
 	    $salvarFilme = $novoFilme->save();
+        $filmeComErro = $this->title;
 	    if ($salvarFilme) {
 	      return view('form')
             ->with('novoFilme', $novoFilme)
@@ -84,7 +85,7 @@ class MoviesController extends Controller{
 	    } else {
 	      return view('form')
             ->with('novoFilme', $novoFilme)
-            ->with('erro', $erro)
+            ->with('filmeComErro', $filmeComErro)
 	      	->with('filmeNaoSalvo', false);
 	    }
 	  }
