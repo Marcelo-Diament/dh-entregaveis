@@ -223,6 +223,46 @@
             input[type=submit]:hover{
                 background-color: #d9412e;
             }
+            #logos {
+               position:fixed;  bottom: 25px;  right: 50px;  -webkit-perspective: 50px;
+               perspective: 800px; 
+            }
+            #cube {
+              display: block;  position: relative;  margin: 20px auto;
+              height: 60px;  width: 60px;
+              -webkit-transform-style: preserve-3d;
+              -webkit-transform: rotateX(0) rotateY(0) rotateZ(0);
+              transform-style: preserve-3d;
+              transform: rotateX(0) rotateY(0) rotateZ(0);
+
+            }
+            #front {
+              position: absolute;  height: 60px;  width: 60px;
+              -webkit-backface-visibility: hidden;
+              -webkit-transform:  translateZ(25px);
+              backface-visibility: hidden;
+              transform:  translateZ(25px);
+            }
+            #back {
+              position: absolute;  height: 60px;  width: 60px;
+              -webkit-backface-visibility: visible;
+              -webkit-transform:  rotateY(180deg) translateZ(25px);
+              backface-visibility: visible;
+              transform: rotateY(180deg) translateZ(25px);
+            }
+            #cube {
+              -webkit-animation: upyourscache1534623125707 4s infinite linear;
+              animation: upyourscache1534623125707 4s infinite linear;
+
+            }
+            @-webkit-keyframes upyourscache1534623125707 {
+              0% { -webkit-transform: rotateY(0) ;}
+              100% { -webkit-transform: rotateY(360deg) ;}
+            }
+            @keyframes upyourscache1534623125707 {
+              0% { transform: rotateY(0) ;}
+              100% { transform: rotateY(360deg) ;}
+            }
         </style>
     </head>
     <body>
@@ -246,7 +286,57 @@
                     </a>
                 </div>
                 
-                <!-- EXERCÍCIO 03 D e G - INÍCIO-->
+                <!-- BUSCAR FILME POR TÍTULO - INÍCIO-->
+                <div class="bloco-exercicio" id="buscaTituloFilme">
+                    <div class="enunciado">
+                        <h2><i class="fas fa-code"></i> Buscar Filme por Título</h2>
+                    </div>
+                    <div class="resultado">
+                        <form action="/filme/buscarNomeFilme" method="post">
+                            {{ csrf_field() }}
+                            {{ method_field('post')}}
+                            <label for="nomeFilme">Digite o nome do Filme que está buscando</label>
+                            <br/>
+                            <input type="text" placeholder="Insira o nome do flime buscado" id="nomeFilme" name="nomeFilme" title="Insira o nome do filme buscado">
+                            <input type="submit" value="Buscar Filme" title="Clique aqui para buscar o filme desejado (após preencher seu nome no campo ao lado)">
+                            <input type="submit" value="Limpar Busca" title="Clique aqui para refazer a buscar o filme desejado">
+                        </form>
+                    </div>
+                </div>
+                @if (isset($nomeFilme))
+                    <div class="bloco-exercicio" id="37-5-a">
+                        <div class="enunciado">
+                            <h2><i class="fas fa-code"></i> Resultado da Busca de Filme por Título</h2>
+                        </div>
+                        <div class="resultado">
+                            <h3>O filme <b>{{ $filmePorNome[0]->title }}</b> é o filme de id <b>{{ $filmePorNome[0]->id }}</b>.</h3>
+                            <h3>Confira abaixo os detalhes sobre {{ $filmePorNome[0]->title}}:</h3>
+                            <div class="profile">
+                                <ul class="lista profile-desc">
+                                    <li>Título: <b>{{$filmePorNome[0]->title}}</b> @if (isset($filmePorNome[0]->release_date)) <small> ({{ mb_substr($filmePorNome[0]->release_date,0,4) }}) </small> @endif</li>
+                                    <li>Duração: @if (isset($filmePorNome[0]->length)) {{$filmePorNome[0]->length}}' @else Não avaliado @endif</li>
+                                    <li>Avaliação: @if (isset($filmePorNome[0]->rating)) {{$filmePorNome[0]->rating}} @else Não avaliado @endif</li>
+                                    <li>Prêmios: @if (isset($filmePorNome[0]->awards)) {{$filmePorNome[0]->awards}} @else Parece que não receberam prêmios @endif</li>
+                                    <li>Gênero: @if (isset($filmePorNome[0]->genero)) {{$filmePorNome[0]->genero['name']}} (id: {{$filmePorNome[0]->genre_id}})@else Não informado @endif</li>
+                                </ul>
+                                <br/>
+                            </div>
+                            <h3>Clique <a href="{{url('/filmes#37-3d-g')}}" target="_self" title="Ver todos os filmes" rel="next" alt="Ver todos os filmes">aqui</a> para ver a lista de todos os filmes.</h3>
+                        </div>
+                    </div>
+                @elseif (isset($nomeBuscado))
+                    <div class="bloco-exercicio" id="37-3e-f">
+                        <div class="enunciado">
+                            <h2><i class="fas fa-code"></i> Resultado da Busca de Filme por Título</h2>
+                        </div>
+                        <div class="resultado">
+                            <h3>Ops! Parece que não há nenhum filme chamado <b>{{ $nomeBuscado}}</b>. Clique <a href="{{url('/filmes#37-3d-g')}}" target="_self" title="Ver todos os filmes" rel="next" alt="Ver todos os filmes">aqui</a> para ver a lista de todos os filmes.</h3>
+                        </div>
+                    </div>
+                @endif
+                <!-- BUSCAR FILME POR TÍTULO - FIM -->
+
+                <!-- LISTAR FILMES - INÍCIO-->
                 @if (isset($filmes))
                     <div class="bloco-exercicio" id="37-3d-g">
                         <div class="enunciado">
@@ -272,9 +362,9 @@
                         </div>
                     </div>
                 @endif
-                <!-- EXERCÍCIO 03 D e G - FIM -->
+                <!-- LISTAR FILMES - FIM -->
 
-                <!-- EXERCÍCIO 05 A - INÍCIO-->
+                <!-- BUSCAR FILME POR ID - INÍCIO-->
                 @if (isset($idFilme))
                     <div class="bloco-exercicio" id="37-5-a">
                         <div class="enunciado">
@@ -306,43 +396,20 @@
                         </div>
                     </div>
                 @endif
-                <!-- EXERCÍCIO 05 A - FIM -->
+                <!-- BUSCAR FILME POR ID - FIM -->
 
-                <!-- EXERCÍCIO 05 B - INÍCIO-->
-                @if (isset($nomeFilme))
-                    <div class="bloco-exercicio" id="37-5-a">
-                        <div class="enunciado">
-                            <h2><i class="fas fa-code"></i> Exercícios 05 | Buscar Filme por Título</h2>
-                        </div>
-                        <div class="resultado">
-                            <h3>O filme <b>{{ $nomeFilme[0]->title }}</b> é o filme de id <b>{{ $nomeFilme[0]->id }}</b>.</h3>
-                            <h3>Confira abaixo os detalhes sobre {{ $nomeFilme[0]->title}}:</h3>
-                            <div class="profile">
-                                <ul class="lista profile-desc">
-                                    <li>Título: <b>{{$nomeFilme[0]->title}}</b> @if (isset($nomeFilme[0]->release_date)) <small> ({{ mb_substr($nomeFilme[0]->release_date,0,4) }}) </small> @endif</li>
-                                    <li>Duração: @if (isset($nomeFilme[0]->length)) {{$nomeFilme[0]->length}}' @else Não avaliado @endif</li>
-                                    <li>Avaliação: @if (isset($nomeFilme[0]->rating)) {{$nomeFilme[0]->rating}} @else Não avaliado @endif</li>
-                                    <li>Prêmios: @if (isset($nomeFilme[0]->awards)) {{$nomeFilme[0]->awards}} @else Parece que não receberam prêmios @endif</li>
-                                    <li>Id do gênero: @if (isset($nomeFilme[0]->genre_id)) {{$nomeFilme[0]->genre_id}} @else Não informado @endif</li>
-                                    <li>Gênero: @if (isset($nomeFilme[0]->genero)) {{$nomeFilme[0]->genero['name']}} @else Não informado @endif</li>
-                                </ul>
-                                <h3>Clique <a href="{{url('/filmes#37-3d-g')}}" target="_self" title="Ver todos os filmes" rel="next" alt="Ver todos os filmes">aqui</a> para ver a lista de todos os filmes.</h3>
-                            </div>
-                        </div>
-                    </div>
-                @elseif (isset($tituloBuscado))
-                    <div class="bloco-exercicio" id="37-3e-f">
-                        <div class="enunciado">
-                            <h2><i class="fas fa-code"></i> Exercícios 03 E | Buscar Filme por Título</h2>
-                        </div>
-                        <div class="resultado">
-                            <h3>Ops! Parece que não há nenhum filme chamado <b>{{ $tituloBuscado}}</b>. Clique <a href="{{url('/filmes#37-3d-g')}}" target="_self" title="Ver todos os filmes" rel="next" alt="Ver todos os filmes">aqui</a> para ver a lista de todos os filmes.</h3>
-                        </div>
-                    </div>
-                @endif
-                <!-- EXERCÍCIO 05 B - FIM -->
+
+
+
+
                 
             </div>
+        </div>
+        <div id="logos">
+            <a id="cube" href="djament.com.br" title="Djament Comunicação" alt="Djament Comunicação" rel="external" target="_blank">
+                <img src="https://djament.com.br/assets/img/logo-60x60.png" height="60px" width="60px"  id="front" alt="Djament">
+                <img src="https://br.digitalhouse.com/wp-content/themes/dh/assets/img/icons/apple-icon-60x60.png" height="60px" width="60px" id="back" alt="Digital House">
+            </a>
         </div>
     </body>
 </html>

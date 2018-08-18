@@ -13,6 +13,8 @@
 
         <!-- Styles -->
         <style>
+
+
             html, body {
                 background-color: #fff;
                 color: #636b6f;
@@ -223,6 +225,46 @@
             input[type=submit]:hover{
                 background-color: #d9412e;
             }
+            #logos {
+               position:fixed;  bottom: 25px;  right: 50px;  -webkit-perspective: 50px;
+               perspective: 800px; 
+            }
+            #cube {
+              display: block;  position: relative;  margin: 20px auto;
+              height: 60px;  width: 60px;
+              -webkit-transform-style: preserve-3d;
+              -webkit-transform: rotateX(0) rotateY(0) rotateZ(0);
+              transform-style: preserve-3d;
+              transform: rotateX(0) rotateY(0) rotateZ(0);
+
+            }
+            #front {
+              position: absolute;  height: 60px;  width: 60px;
+              -webkit-backface-visibility: hidden;
+              -webkit-transform:  translateZ(25px);
+              backface-visibility: hidden;
+              transform:  translateZ(25px);
+            }
+            #back {
+              position: absolute;  height: 60px;  width: 60px;
+              -webkit-backface-visibility: visible;
+              -webkit-transform:  rotateY(180deg) translateZ(25px);
+              backface-visibility: visible;
+              transform: rotateY(180deg) translateZ(25px);
+            }
+            #cube {
+              -webkit-animation: upyourscache1534623125707 4s infinite linear;
+              animation: upyourscache1534623125707 4s infinite linear;
+
+            }
+            @-webkit-keyframes upyourscache1534623125707 {
+              0% { -webkit-transform: rotateY(0) ;}
+              100% { -webkit-transform: rotateY(360deg) ;}
+            }
+            @keyframes upyourscache1534623125707 {
+              0% { transform: rotateY(0) ;}
+              100% { transform: rotateY(360deg) ;}
+            }
         </style>
     </head>
     <body>
@@ -278,7 +320,7 @@
                                         <br/>
                                         <li>c. Modificar o formulário para que, caso haja um erro, recupere os campos que o usuário já tinha preenchido.</li>
                                         <br/>
-                                        <li><a class="" href="#" target="_self" title="Exercício 1c" rel="nofollow" alt="Exercício 1c">Exercício 1c</a></li>
+                                        <li><a class="" href="{{url('/form')}}" target="_self" title="Exercício 1c" rel="nofollow" alt="Exercício 1c">Exercício 1c</a></li>
                                         <br/>
                                         <br/>
                                         <li>d. Criar um novo formulário para adicionar atores, junto com o caminho /actors/add​ e a visualização actors/add.blade.php (levar em conta que o formulário deverá apontar para o caminho /actors/add​).</li>
@@ -293,7 +335,7 @@
                                         <br/>
                                         <li>f. Ao criar um filme ou um ator, confirmar se não existe outro/a com o mesmo nome. </li>
                                         <br/>
-                                        <li><a class="" href="#" target="_self" title="Exercício 1f" rel="nofollow" alt="Exercício 1f">Exercício 1f</a></li>
+                                        <li><a class="" href="{{url('/form')}}" target="_self" title="Exercício 1f" rel="nofollow" alt="Exercício 1f">Exercício 1f</a></li>
                                         <br/>
                                         <br/>
                                     </ul>
@@ -349,9 +391,9 @@
                                         <li><a href="{{url('/filmes/#buscaTituloFilme')}}" target="_blank" title="Buscar Filme por Título" rel="next" alt="Buscar Filme por Título">Buscar Filme por Título</a></li>
                                         <li><a href="{{url('/form#38-1')}}" target="_blank" title="Adicionar Novo Filme" rel="next" alt="Adicionar Novo Filme">Adicionar Novo Filme</a></li>
                                         <li><a href="{{url('/atores#37-3a-b-c-h')}}" target="_blank" title="Ver Lista de Atores" rel="next" alt="Ver Lista de Atores">Ver Lista de Atores</a></li>
-                                        <li><a href="{{url('/atores#37-4a-b-c-d')}}" target="_blank" title="Buscar Ator por Nome" rel="next" alt="Buscar Ator por Nome">Buscar Ator Por Nome (formulário)</a></li>
+                                        <!-- <li><a href="{{url('/atores#37-4a-b-c-d')}}" target="_blank" title="Buscar Ator por Nome" rel="next" alt="Buscar Ator por Nome">Buscar Ator Por Nome (formulário)</a></li>
                                         <li><a href="localhost:8000/ator/INSIRA-AQUI-O-ID-DO-ATOR-QUE-PROCURA-E-DEPOIS-APERTE-ENTER" target="_blank" title="Buscar Ator por Id" rel="next" alt="Buscar Ator por Id">Buscar Ator por Id (com detalhes)</a></li>
-                                        <li><a href="localhost:8000/filmes/procurarId/INSIRA-AQUI-O-ID-DO-FILME-QUE-PROCURA-E-DEPOIS-APERTE-ENTER" target="_blank" title="Buscar Filme por Id" rel="next" alt="Buscar Filme por Id">Buscar Filme por Id (com detalhes)</a></li>
+                                        <li><a href="localhost:8000/filmes/procurarId/INSIRA-AQUI-O-ID-DO-FILME-QUE-PROCURA-E-DEPOIS-APERTE-ENTER" target="_blank" title="Buscar Filme por Id" rel="next" alt="Buscar Filme por Id">Buscar Filme por Id (com detalhes)</a></li> -->
                                     </ul>
                                 </li>
                             </ul>
@@ -404,6 +446,18 @@
                 </div>
                 <!-- FIM TECNOLOGIAS -->
             </div>
+        </div>
+        <div id="logos">
+            <a id="cube" href="djament.com.br" title="Djament Comunicação" alt="Djament Comunicação" rel="external" target="_blank">
+                <img src="https://djament.com.br/assets/img/logo-60x60.png" height="60px" width="60px"  id="front" alt="Djament">
+                <img src="https://br.digitalhouse.com/wp-content/themes/dh/assets/img/icons/apple-icon-60x60.png" height="60px" width="60px" id="back" alt="Digital House">
+            </a>
+        </div>
+        <div id="logos">
+            <a id="cube" href="djament.com.br" title="Djament Comunicação" alt="Djament Comunicação" rel="external" target="_blank">
+                <img src="https://djament.com.br/assets/img/logo-60x60.png" height="60px" width="60px"  id="front" alt="Djament">
+                <img src="https://br.digitalhouse.com/wp-content/themes/dh/assets/img/icons/apple-icon-60x60.png" height="60px" width="60px" id="back" alt="Digital House">
+            </a>
         </div>
     </body>
 </html>

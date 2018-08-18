@@ -222,6 +222,46 @@
             input[type=submit]:hover{
                 background-color: #d9412e;
             }
+            #logos {
+               position:fixed;  bottom: 25px;  right: 50px;  -webkit-perspective: 50px;
+               perspective: 800px; 
+            }
+            #cube {
+              display: block;  position: relative;  margin: 20px auto;
+              height: 60px;  width: 60px;
+              -webkit-transform-style: preserve-3d;
+              -webkit-transform: rotateX(0) rotateY(0) rotateZ(0);
+              transform-style: preserve-3d;
+              transform: rotateX(0) rotateY(0) rotateZ(0);
+
+            }
+            #front {
+              position: absolute;  height: 60px;  width: 60px;
+              -webkit-backface-visibility: hidden;
+              -webkit-transform:  translateZ(25px);
+              backface-visibility: hidden;
+              transform:  translateZ(25px);
+            }
+            #back {
+              position: absolute;  height: 60px;  width: 60px;
+              -webkit-backface-visibility: visible;
+              -webkit-transform:  rotateY(180deg) translateZ(25px);
+              backface-visibility: visible;
+              transform: rotateY(180deg) translateZ(25px);
+            }
+            #cube {
+              -webkit-animation: upyourscache1534623125707 4s infinite linear;
+              animation: upyourscache1534623125707 4s infinite linear;
+
+            }
+            @-webkit-keyframes upyourscache1534623125707 {
+              0% { -webkit-transform: rotateY(0) ;}
+              100% { -webkit-transform: rotateY(360deg) ;}
+            }
+            @keyframes upyourscache1534623125707 {
+              0% { transform: rotateY(0) ;}
+              100% { transform: rotateY(360deg) ;}
+            }
         </style>
     </head>
     <body>
@@ -394,6 +434,12 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div id="logos">
+            <a id="cube" href="djament.com.br" title="Djament Comunicação" alt="Djament Comunicação" rel="external" target="_blank">
+                <img src="https://djament.com.br/assets/img/logo-60x60.png" height="60px" width="60px"  id="front" alt="Djament">
+                <img src="https://br.digitalhouse.com/wp-content/themes/dh/assets/img/icons/apple-icon-60x60.png" height="60px" width="60px" id="back" alt="Digital House">
+            </a>
         </div>
     </body>
 </html>
