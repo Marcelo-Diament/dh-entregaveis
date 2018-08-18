@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Genre;
+
 class Movie extends Model{
 
     private $id;
@@ -15,5 +17,9 @@ class Movie extends Model{
     private $genre_id;
 
     protected $fillable = ['title', 'rating', 'awards', 'release_date', 'length', 'genre_id'];
+
+    public function genero() {
+    	return $this->hasOne(Genre::class, 'id', 'genre_id');
+	}
 
 }

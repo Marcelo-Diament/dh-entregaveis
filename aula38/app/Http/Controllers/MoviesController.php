@@ -74,15 +74,16 @@ class MoviesController extends Controller{
 	      'rating' => $request->input('rating'),
 	      'awards' => $request->input('awards'),
 	      'length' => $request->input('length'),
-	      'release_date' => $request->input('release_date')
+	      'release_date' => $request->input('release_date'),
+          'genre_id' => $request->input('genre_id')
 	    ]);
 	    $salvarFilme = $novoFilme->save();
-        $filmeComErro = $this->title;
-	    if ($salvarFilme) {
-	      return view('form')
+        if ($salvarFilme) {
+          return view('form')
             ->with('novoFilme', $novoFilme)
-	      	->with('filmeSalvo', true);
-	    } else {
+            ->with('filmeSalvo', true);
+        } else {
+            $filmeComErro = $this->title;
 	      return view('form')
             ->with('novoFilme', $novoFilme)
             ->with('filmeComErro', $filmeComErro)

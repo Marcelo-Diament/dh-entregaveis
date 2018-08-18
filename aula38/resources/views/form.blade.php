@@ -237,7 +237,6 @@
                         Aula 38 | Laravel IV
                     </a>
                 </div>
-
                 <!-- EXERCCÍCIO 01 C (validando erros no envio) - INÍCIO-->
                 @if (isset($filmeSalvo) && isset($novoFilme))
                     <div class="bloco-exercicio" id="37-5-a">

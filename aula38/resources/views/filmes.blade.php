@@ -187,6 +187,7 @@
 
                 <!-- EXERCÍCIO 03 D e G - INÍCIO-->
                 @if (isset($filmes))
+                {{ $filmes[0]->genre_id }}
                     <div class="bloco-exercicio" id="37-3d-g">
                         <div class="enunciado">
                             <h2><i class="fas fa-code"></i> Exercício 03 D e G | Listar Filmes (com detalhes)</h2>
@@ -199,7 +200,11 @@
                                         <br/>
                                         Prêmios: {{ $valor['awards'] }}<br/>
                                         Avaliação: {{ $valor['rating'] }}<br/>
-                                        Id do gênero: {{ $valor['genre_id'] }}
+                                        @if ($valor['genre_id'])
+                                            Gênero: {{ $valor['genero']['name'] }} (id: {{ $valor['genre_id'] }})
+                                        @else
+                                            Gênero não especificado
+                                        @endif
                                     </li><br/>
                                 @endforeach
                             </ul>
@@ -224,6 +229,7 @@
                                     <li>Avaliação: @if (isset($idFilme->rating)) {{$idFilme->rating}} @else Não avaliado @endif</li>
                                     <li>Prêmios: @if (isset($idFilme->awards)) {{$idFilme->awards}} @else Parece que não receberam prêmios @endif</li>
                                     <li>Id do gênero: @if (isset($idFilme->genre_id)) {{$idFilme->genre_id}} @else Não informado @endif</li>
+                                    <li>Gênero: @if (isset($idFilme->genero)) {{$idFilme->genero}} @else Não informado @endif</li>
                                 </ul>
                                 <h3>Clique <a href="{{url('/filmes#37-3d-g')}}" target="_self" title="Ver todos os filmes" rel="next" alt="Ver todos os filmes">aqui</a> para ver a lista de todos os filmes.</h3>
                             </div>
