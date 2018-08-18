@@ -207,12 +207,12 @@
                                     <ul class="lista">
                                         <li>a. Utilizar o formulário que está no Campus Virtual para adicionar filmes e validar se todos os campos são obrigatórios e que mostre os erros de validação se houver.</li>
                                         <br/>
-                                        <li><a class="" href="#" target="_self" title="Exercício 1a" rel="nofollow" alt="Exercício 1a">Exercício 1a</a></li>
+                                        <li><a class="" href="{{url('/form')}}" target="_self" title="Exercício 1a" rel="nofollow" alt="Exercício 1a">Exercício 1a</a></li>
                                         <br/>
                                         <br/>
                                         <li>b. Adicionar regras que permitam validar se todos os tipos de dados estão corretos, bem como os mínimos e máximos.</li>
                                         <br/>
-                                        <li><a class="" href="#" target="_self" title="Exercício 1b" rel="nofollow" alt="Exercício 1b">Exercício 1b</a></li>
+                                        <li><a class="" href="{{url('/form')}}" target="_self" title="Exercício 1b" rel="nofollow" alt="Exercício 1b">Exercício 1b</a></li>
                                         <br/>
                                         <br/>
                                         <li>c. Modificar o formulário para que, caso haja um erro, recupere os campos que o usuário já tinha preenchido.</li>

@@ -4,7 +4,6 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
         <title>Aula 38 | Laravel IV</title>
 
         <!-- Fonts -->
@@ -233,6 +232,26 @@
                     </a>
                 </div>
 
+                <!-- EXERCCÍCIO 01 C (validando erros no envio) - INÍCIO-->
+                @if (isset($filmeSalvo) && isset($novoFilme))
+                    <div class="bloco-exercicio" id="37-5-a">
+                        <div class="enunciado">
+                            <h2><i class="fas fa-code"></i> Exercícios 01 | Adicionar Filme por Formulário</h2>
+                        </div>
+                        <div class="resultado">
+                            <h3>O filme <b>{{$novoFilme->title}}</b> foi salvo com sucesso!</h3>
+                            <form action="/filmes" method="get">
+                                <input type="submit" value="Ver Todos os Filmes">
+                            </form>
+                            <br/>
+                            <form action="/form" method="get">
+                                <input type="submit" value="Adicionar Mais um Filme">
+                            </form>
+                        </div>
+                    </div>
+                @endif
+                <!-- EXERCCÍCIO 01 C (validando erros no envio) - FIM -->
+
                 <!-- INÍCIO CUSTOM WELCOME -->
                 <div class="bloco-exercicio" id="37-4a-b-c-d">
                     <div class="enunciado">
@@ -242,7 +261,6 @@
                         <h3>Acesse os exercícios através do menu abaixo.</h3>
                         <div class="indice">
 
-                            
 
                             <!-- FORMULÁRIO ADICIONAR FILMES - INÍCIO -->
                             <form id="adicionarFilme" name="adicionarFilme" action ="/adicionarFilme" method="POST">
