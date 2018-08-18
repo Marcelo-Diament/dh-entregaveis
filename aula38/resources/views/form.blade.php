@@ -182,7 +182,7 @@
                 font-weight: bold;
                 margin-left: 5px;
             }
-            input[type=text], input[type=date], input[type=number]{
+            input[type=text], input[type=datetime-local], input[type=number]{
                 padding: 8px 10px;
                 width: 25%;
                 margin-top: 8px;
@@ -190,9 +190,12 @@
                 border-radius: 20px;
                 border: 1px solid #a5a5a5;
             }
-            input[type=text]:focus, input[type=date]:focus, input[type=number]:focus{
+            input[type=text]:focus, input[type=datetime-local]:focus, input[type=number]:focus,
+            input[type=text]:focus-within, input[type=datetime-local]:focus-within, input[type=number]:focus-within,
+            input[type=text]:active, input[type=datetime-local]:active, input[type=number]:active
+            {
                 border: 1px solid #fa503a;
-                outline-color: transparent;
+                outline-color: transparent !important;
             }
             input[type=submit]{
                 background-color: #fa503a;
@@ -268,7 +271,7 @@
                                 <div class="">
                                     <label for="dataEstreia">Data de Estréia</label>
                                     <br/>
-                                    <input type="date" name="release_date" id="dataEstreia" required value="{{ old('dataEstreia') }}"/>
+                                    <input type="datetime-local" name="release_date" id="dataEstreia" required value="{{ old('dataEstreia') }}"/>
                                 </div>
                                 <br>
                                 <div class="">
