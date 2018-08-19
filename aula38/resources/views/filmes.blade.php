@@ -321,7 +321,7 @@
                 @if (isset($idFilme) && (isset($idBuscado)))
                     <div class="bloco-exercicio" id="resultadoBuscaTituloId">
                         <div class="enunciado">
-                            <h2><i class="fas fa-code"></i> Resultado da Busca de Filme por Id</h2>
+                            <h2><i class="fas fa-code"></i> Encontramos o filme buscado!</h2>
                         </div>
                         <div class="resultado">
                             <h3>O filme de id <b>{{ $filmePorId[0]->id }}</b> é se chama <b>{{ $filmePorId[0]->title }}</b>.</h3>
@@ -329,8 +329,26 @@
                             <div class="profile">
                                 <ul class="lista profile-desc">
                                     <li>Título: <b>{{$filmePorId[0]->title}}</b> @if (isset($filmePorId[0]->release_date)) <small> ({{ mb_substr($filmePorId[0]->release_date,0,4) }}) </small> @endif</li>
-                                    <li>Duração: @if (isset($filmePorId[0]->length)) {{$filmePorId[0]->length}}' @else Não avaliado @endif</li>
-                                    <li>Avaliação: @if (isset($filmePorId[0]->rating)) {{$filmePorId[0]->rating}} @else Não avaliado @endif</li>
+                                    <li>Duração: @if (isset($filmePorId[0]->length)) {{$filmePorId[0]->length}}' @else Não informado @endif</li>
+                                    <li>Avaliação:
+                                        @if (isset($filmePorId[0]->rating))
+                                            {{$filmePorId[0]->rating}} 
+                                        @else
+                                            Não Avaliado
+                                        @endif
+                                        <br/>
+                                        @if (isset($filmePorId[0]->rating))
+                                            @for ($i = 0; $i < intval($filmePorId[0]->rating); $i++)
+                                                <i style="font-size:10pt;color:#fa503a;" class="fas fa-star"></i>
+                                            @endfor
+                                        @endif
+                                        @if ($filmePorId[0]->rating - intval($filmePorId[0]->rating) > 0)
+                                            <i style="font-size:10pt;color:#fa503a;" class="fas fa-star-half"></i>
+                                        @endif
+                                        @if ($filmePorId[0]->rating == 0)
+                                            <i style="font-size:10pt;color:#fa503a;" class="fas fa-thumbs-down"></i>
+                                        @endif
+                                    </li>
                                     <li>Prêmios: @if (isset($filmePorId[0]->awards)) {{$filmePorId[0]->awards}} @else Parece que não receberam prêmios @endif</li>
                                     <li>Gênero: @if (isset($filmePorId[0]->genero)) {{$filmePorId[0]->genero['name']}} (id: {{$filmePorId[0]->genre_id}})@else Não informado @endif</li>
                                 </ul>
@@ -342,10 +360,10 @@
                 @elseif (isset($idBuscado) && $idFilme == null)
                     <div class="bloco-exercicio" id="resultadoBuscaTituloId">
                         <div class="enunciado">
-                            <h2><i class="fas fa-code"></i> Resultado da Busca de Filme por Id</h2>
+                            <h2><i class="fas fa-code"></i> Hmmm...</h2>
                         </div>
                         <div class="resultado">
-                            <h3>Ops! Parece que não há nenhum filme com o id <b>{{ $idBuscado}}</b>.</h3>
+                            <h3>Parece que não há nenhum filme com o id <b>{{ $idBuscado}}</b>.</h3>
                             <h3>Por favor, verifique o id digitado no formulário mais adiante e tente novamente.</h3>
                             <h3>Se preferir, clique <a href="{{url('/filmes#todosOsFilmes')}}" target="_self" title="Ver todos os filmes" rel="next" alt="Ver todos os filmes">aqui</a> para ver a lista de todos os filmes.</h3>
                         </div>
@@ -357,7 +375,7 @@
                 @if (isset($nomeFilme) && (isset($nomeBuscado)))
                     <div class="bloco-exercicio" id="resultadoBuscaTituloFilme">
                         <div class="enunciado">
-                            <h2><i class="fas fa-code"></i> Resultado da Busca de Filme por Título</h2>
+                            <h2><i class="fas fa-code"></i> Encontramos o filme buscado!</h2>
                         </div>
                         <div class="resultado">
                             <h3>O filme <b>{{ $filmePorNome[0]->title }}</b> é o filme de id <b>{{ $filmePorNome[0]->id }}</b>.</h3>
@@ -365,8 +383,26 @@
                             <div class="profile">
                                 <ul class="lista profile-desc">
                                     <li>Título: <b>{{$filmePorNome[0]->title}}</b> @if (isset($filmePorNome[0]->release_date)) <small> ({{ mb_substr($filmePorNome[0]->release_date,0,4) }}) </small> @endif</li>
-                                    <li>Duração: @if (isset($filmePorNome[0]->length)) {{$filmePorNome[0]->length}}' @else Não avaliado @endif</li>
-                                    <li>Avaliação: @if (isset($filmePorNome[0]->rating)) {{$filmePorNome[0]->rating}} @else Não avaliado @endif</li>
+                                    <li>Duração: @if (isset($filmePorNome[0]->length)) {{$filmePorNome[0]->length}}' @else Não informado @endif</li>
+                                    <li>Avaliação:
+                                        @if (isset($filmePorNome[0]->rating))
+                                            {{$filmePorNome[0]->rating}} 
+                                        @else
+                                            Não Avaliado
+                                        @endif
+                                        <br/>
+                                        @if (isset($filmePorNome[0]->rating))
+                                            @for ($i = 0; $i < intval($filmePorNome[0]->rating); $i++)
+                                                <i style="font-size:10pt;color:#fa503a;" class="fas fa-star"></i>
+                                            @endfor
+                                        @endif
+                                        @if ($filmePorNome[0]->rating - intval($filmePorNome[0]->rating) > 0)
+                                            <i style="font-size:10pt;color:#fa503a;" class="fas fa-star-half"></i>
+                                        @endif
+                                        @if ($filmePorNome[0]->rating == 0)
+                                            <i style="font-size:10pt;color:#fa503a;" class="fas fa-thumbs-down"></i>
+                                        @endif
+                                    </li>
                                     <li>Prêmios: @if (isset($filmePorNome[0]->awards)) {{$filmePorNome[0]->awards}} @else Parece que não receberam prêmios @endif</li>
                                     <li>Gênero: @if (isset($filmePorNome[0]->genero)) {{$filmePorNome[0]->genero['name']}} (id: {{$filmePorNome[0]->genre_id}})@else Não informado @endif</li>
                                 </ul>
@@ -378,10 +414,10 @@
                 @elseif (isset($nomeBuscado) && $nomeFilme == null)
                     <div class="bloco-exercicio" id="resultadoBuscaTituloFilme">
                         <div class="enunciado">
-                            <h2><i class="fas fa-code"></i> Resultado da Busca de Filme por Título</h2>
+                            <h2><i class="fas fa-code"></i> Ops!</h2>
                         </div>
                         <div class="resultado">
-                            <h3>Ops! Parece que não há nenhum filme chamado <b>{{ $nomeBuscado}}</b>.</h3>
+                            <h3>Parece que não há nenhum filme chamado <b>{{ $nomeBuscado}}</b>.</h3>
                             <h3>Por favor, verifique o título digitado no formulário mais adiante e tente novamente.</h3>
                             <h3>Se preferir, clique <a href="{{url('/filmes#todosOsFilmes')}}" target="_self" title="Ver todos os filmes" rel="next" alt="Ver todos os filmes">aqui</a> para ver a lista de todos os filmes.</h3>
                         </div>
@@ -407,7 +443,7 @@
                             <input type="text" placeholder="Insira o nome do filme buscado" id="nomeFilme" name="nomeFilme" title="Insira o nome do filme buscado">
                             @endif
                             <input type="submit" id="buscaFilmeTituloSubmit" value="Buscar Filme" title="Clique aqui para buscar o filme desejado (após preencher seu nome no campo ao lado)">
-                            <input type="submit" value="Limpar Busca" title="Clique aqui para refazer a buscar o filme desejado">
+                            <input type="submit" value="Limpar Busca" title="Clique aqui para refazer a busca do filme desejado">
                         </form>
                     </div>
                 </div>
@@ -441,7 +477,7 @@
                 @if (isset($filmes))
                     <div class="bloco-exercicio" id="todosOsFilmes">
                         <div class="enunciado">
-                            <h2><i class="fas fa-code"></i> Exercício 03 D e G | Listar Filmes (com detalhes)</h2>
+                            <h2><i class="fas fa-code"></i> Lista de Todos os Filmes</h2>
                         </div>
                         <div class="resultado">
                             <ul class="lista">
@@ -450,11 +486,29 @@
                                         <b>{{ $valor['title'] }}</b> <small>({{ mb_substr($valor['release_date'],0,4) }})</small>
                                         <br/>
                                         Prêmios: {{ $valor['awards'] }}<br/>
-                                        Avaliação: {{ $valor['rating'] }}<br/>
+                                        Avaliação:
+                                            @if (isset($valor['rating']))
+                                                {{$valor['rating']}} 
+                                            @else
+                                                Não Avaliado
+                                            @endif
+                                            <br/>
+                                            @if (isset($valor['rating']))
+                                                @for ($i = 0; $i < intval($valor['rating']); $i++)
+                                                    <i style="font-size:10pt;color:#fa503a;" class="fas fa-star"></i>
+                                                @endfor
+                                            @endif
+                                            @if ($valor['rating'] - intval($valor['rating']) > 0)
+                                                <i style="font-size:10pt;color:#fa503a;" class="fas fa-star-half"></i>
+                                            @endif
+                                            @if ($valor['rating'] == 0)
+                                                <i style="font-size:10pt;color:#fa503a;" class="fas fa-thumbs-down"></i>
+                                            @endif
+                                        <br/>
                                         Duração: {{ $valor['length'] }}'<br/>
                                         @if ($valor['genre_id'])
                                             Gênero: {{ $valor['genero']['name'] }} (id: {{ $valor['genre_id'] }})
-                                        @else
+                                        @elseif (!$valor['genre_id'])
                                             Gênero não especificado
                                         @endif
                                     </li><br/>
@@ -469,41 +523,10 @@
             </div>
         </div>
         <div id="logos">
-            <a id="cube" href="djament.com.br" title="Djament Comunicação" alt="Djament Comunicação" rel="external" target="_blank">
-                <img src="https://djament.com.br/assets/img/logo-60x60.png" height="60px" width="60px"  id="front" alt="Djament">
-                <img src="https://br.digitalhouse.com/wp-content/themes/dh/assets/img/icons/apple-icon-60x60.png" height="60px" width="60px" id="back" alt="Digital House">
+            <a id="cube" href="https://djament.com.br" title="Djament Comunicação" alt="Djament Comunicação" rel="external" target="_blank">
+                <img src="https://djament.com.br/assets/img/logo-60x60.png" height="60px" width="60px"  id="front" alt="Djament" title="Djament">
+                <img src="https://br.digitalhouse.com/wp-content/themes/dh/assets/img/icons/apple-icon-60x60.png" height="60px" width="60px" id="back" alt="Digital House" title="Digital House">
             </a>
         </div>
-        <button id="fullScreen" onclick="launchFullscreen(document.documentElement);">Tela Cheia</button>
-        <script>
-            // Find the right method, call on correct element
-            function launchFullscreen(element) {
-              if(element.requestFullscreen) {
-                element.requestFullscreen();
-              } else if(element.mozRequestFullScreen) {
-                element.mozRequestFullScreen();
-              } else if(element.webkitRequestFullscreen) {
-                element.webkitRequestFullscreen();
-              } else if(element.msRequestFullscreen) {
-                element.msRequestFullscreen();
-              }
-            }
-
-            // Events
-            document.addEventListener("fullscreenchange", function(e) {
-              console.log("fullscreenchange event! ", e);
-            });
-            document.addEventListener("mozfullscreenchange", function(e) {
-              console.log("mozfullscreenchange event! ", e);
-            });
-            document.addEventListener("webkitfullscreenchange", function(e) {
-              console.log("webkitfullscreenchange event! ", e);
-            });
-            document.addEventListener("msfullscreenchange", function(e) {
-              console.log("msfullscreenchange event! ", e);
-            });
-
-            // Add different events for fullscreen
-        </script>
     </body>
 </html>

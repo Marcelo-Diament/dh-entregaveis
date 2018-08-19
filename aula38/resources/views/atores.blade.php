@@ -319,42 +319,74 @@
                     </a>
                 </div>
 
-                <!-- EXERCÍCIO 04 A, B e D - INÍCIO-->
-                <div class="bloco-exercicio" id="37-4a-b-c-d">
-                    <div class="enunciado">
-                        <h2><i class="fas fa-code"></i> Exercícios 04 A, B, C e D | Buscar Ator por Nome</h2>
-                    </div>
-                    <div class="resultado">
-                        <form action="/ator/buscarNomeAtor" method="post">
-                            @csrf
-                            <label for="nomeAtor">Digite o nome do Ator que está buscando</label>
-                            <br/>
-                            <input type="text" placeholder="Insira o nome do ator buscado" id="nomeAtor" name="nomeAtor" title="Insira o nome do ator buscado">
-                            <input type="submit" value="Buscar Ator" title="Clique aqui para buscar o ator desejado (após preencher seu nome no campo ao lado)">
-                            <input type="submit" value="Limpar Busca" title="Clique aqui para refazer a buscar o ator desejado">
-                        </form>
-
-                <!-- EXERCÍCIO 04 A, B e D - FIM -->
-
-                        <!-- EXERCÍCIO 04 C - INÍCIO-->
-                        @if (isset($nomeBuscado) && $atorPorNome != null)
-                            <h3>Os atores/atrizes chamados <b>{{ $nomeBuscado }}</b> são:</h3>
+                <!-- RESULTADO DE BUSCA DE ATOR POR NOME - INÍCIO-->
+                    @if (isset($nomeBuscado) && $atorPorNome != null)
+                        <div class="bloco-exercicio" id="resultadoBuscaNomeAtor">
+                            <div class="enunciado">
+                                @if (count($atorPorNome) == 1)
+                                <h2><i class="fas fa-code"></i> Encontramos um ator/atriz com o nome {{$nomeBuscado}}!</h2>
+                                @elseif (count($atorPorNome) > 1)
+                                <h2><i class="fas fa-code"></i> Parece que há mais de um(a) ator/atriz com o nome {{$nomeBuscado}}...</h2><h2>Na verdade existem {{ count($atorPorNome) }} "{{$nomeBuscado}}s"!</h2>
+                                @endif
+                            </div>
+                            <div class="resultado">
+                                <h3>Confira o resultado para o nome <b>{{ $nomeBuscado }}</b>:</h3>
                                 @foreach ($atorPorNome as $index=>$valor)
                                     <div class="profile">
                                         <img class="profile-pic" src="@if ($valor->picture_url != null) {{$valor->picture_url}} @else https://us.123rf.com/450wm/berkut2011/berkut20111506/berkut2011150600452/41143316-stock-vector-man-in-suit-secret-service-agent-icon.jpg?ver=6 @endif" title="{{$valor->first_name}} {{$valor->last_name}}" alt="{{$valor->first_name}} {{$valor->last_name}}" height="150" width="150">
                                         <ul class="lista profile-desc">
                                             <li>Nome: {{$valor->first_name}}</li>
                                             <li>Sobrenome: {{$valor->last_name}}</li>
-                                            <li>Avaliação: @if (isset($valor->rating)) {{$valor->rating}} @else Não avaliado @endif</li>
+                                            <li>Avaliação: 
+                                                @if (isset($valor->rating))
+                                                    {{$valor->rating}} 
+                                                @else
+                                                    Não Avaliado
+                                                @endif
+                                                <br/>
+                                                @if (isset($valor->rating))
+                                                    @for ($i = 0; $i < intval($valor->rating); $i++)
+                                                        <i style="font-size:10pt;color:#fa503a;" class="fas fa-star"></i>
+                                                    @endfor
+                                                @endif
+                                                @if ($valor->rating - intval($valor->rating) > 0)
+                                                    <i style="font-size:10pt;color:#fa503a;" class="fas fa-star-half"></i>
+                                                @endif
+                                            </li>
                                             <li>Id do seu filme favorito: @if (isset($valor->favorite_movie_id)) {{$valor->favorite_movie_id}} @else Não informado @endif</li>
                                         </ul>
                                     </div>
                                 @endforeach
-                        @elseif (isset($nomeBuscado))
-                            <h3>Não há atores que se chamam <b>{{ $nomeBuscado }}</b></h3>
-                        @endif
+                            </div>
+                        </div>
+                    @elseif (isset($nomeBuscado))
+                        <h3>Não há atores que se chamam <b>{{ $nomeBuscado }}</b></h3>
+                    @endif
+                <!-- RESULTADO DE BUSCA DE ATOR POR NOME - FIM -->
+
+                <!-- BUSCAR ATOR POR NOME - INÍCIO-->
+                <div class="bloco-exercicio" id="buscaAtorNome">
+                    <div class="enunciado">
+                        <h2><i class="fas fa-code"></i> Buscar Atriz/Ator por Nome</h2>
                     </div>
-                <!-- EXERCÍCIO 04 C - FIM -->
+                    <div class="resultado">
+                        <form action="/ator/buscarNomeAtor" method="post">
+                            {{ csrf_field() }}
+                            {{ method_field('post')}}
+                            <label for="nomeAtor">Digite o nome do Ator ou da Atriz que está buscando</label>
+                            <br/>
+                            @if (!isset($nomeAtor) && isset($nomeBuscado))
+                            <input type="text" placeholder="Insira o nome do ator ou da atriz buscado" id="nomeAtor" name="nomeAtor" title="Insira o nome da atriz ou do ator buscado" value="{{ $nomeBuscado }}">
+                            @else
+                            <input type="text" placeholder="Insira o nome do ator buscado" id="nomeAtor" name="nomeAtor" title="Insira o nome do ator/atriz buscado">
+                            @endif
+                            <input type="submit" value="Buscar Ator" title="Clique aqui para buscar a atriz ou o ator desejado (após preencher seu nome no campo ao lado)">
+                            <input type="submit" value="Limpar Busca" title="Clique aqui para refazer a busca do ator/atriz desejado">
+                        </form>
+                    </div>
+                </div>
+                <!-- BUSCAR ATOR POR NOME - FIM -->
+
 
                 <!-- EXERCÍCIO 03 A, B, C e H - INÍCIO-->
                 @if (isset($atores))
@@ -387,7 +419,22 @@
                                 <ul class="lista profile-desc">
                                     <li>Nome: {{$atorPorId->first_name}}</li>
                                     <li>Sobrenome: {{$atorPorId->last_name}}</li>
-                                    <li>Avaliação: @if (isset($atorPorId->rating)) {{$atorPorId->rating}} @else Não avaliado @endif</li>
+                                    <li>Avaliação:
+                                        @if (isset($atorPorId->rating))
+                                            {{$atorPorId->rating}} 
+                                        @else
+                                            Não Avaliado
+                                        @endif
+                                        <br/>
+                                        @if (isset($atorPorId->rating))
+                                            @for ($i = 0; $i < intval($atorPorId->rating); $i++)
+                                                <i style="font-size:10pt;color:#fa503a;" class="fas fa-star"></i>
+                                            @endfor
+                                        @endif
+                                        @if ($atorPorId->rating - intval($atorPorId->rating) > 0)
+                                            <i style="font-size:10pt;color:#fa503a;" class="fas fa-star-half"></i>
+                                        @endif
+                                    </li>
                                     <li>Id do seu filme favorito: @if (isset($atorPorId->favorite_movie_id)) {{$atorPorId->favorite_movie_id}} @else Não informado @endif</li>
                                 </ul>
                             </div>
@@ -409,41 +456,10 @@
             </div>
         </div>
         <div id="logos">
-            <a id="cube" href="djament.com.br" title="Djament Comunicação" alt="Djament Comunicação" rel="external" target="_blank">
-                <img src="https://djament.com.br/assets/img/logo-60x60.png" height="60px" width="60px"  id="front" alt="Djament">
-                <img src="https://br.digitalhouse.com/wp-content/themes/dh/assets/img/icons/apple-icon-60x60.png" height="60px" width="60px" id="back" alt="Digital House">
+            <a id="cube" href="https://djament.com.br" title="Djament Comunicação" alt="Djament Comunicação" rel="external" target="_blank">
+                <img src="https://djament.com.br/assets/img/logo-60x60.png" height="60px" width="60px"  id="front" alt="Djament" title="Djament">
+                <img src="https://br.digitalhouse.com/wp-content/themes/dh/assets/img/icons/apple-icon-60x60.png" height="60px" width="60px" id="back" alt="Digital House" title="Digital House">
             </a>
         </div>
-        <button id="fullScreen" onclick="launchFullscreen(document.documentElement);">Tela Cheia</button>
-        <script>
-            // Find the right method, call on correct element
-            function launchFullscreen(element) {
-              if(element.requestFullscreen) {
-                element.requestFullscreen();
-              } else if(element.mozRequestFullScreen) {
-                element.mozRequestFullScreen();
-              } else if(element.webkitRequestFullscreen) {
-                element.webkitRequestFullscreen();
-              } else if(element.msRequestFullscreen) {
-                element.msRequestFullscreen();
-              }
-            }
-
-            // Events
-            document.addEventListener("fullscreenchange", function(e) {
-              console.log("fullscreenchange event! ", e);
-            });
-            document.addEventListener("mozfullscreenchange", function(e) {
-              console.log("mozfullscreenchange event! ", e);
-            });
-            document.addEventListener("webkitfullscreenchange", function(e) {
-              console.log("webkitfullscreenchange event! ", e);
-            });
-            document.addEventListener("msfullscreenchange", function(e) {
-              console.log("msfullscreenchange event! ", e);
-            });
-
-            // Add different events for fullscreen
-        </script>
     </body>
 </html>

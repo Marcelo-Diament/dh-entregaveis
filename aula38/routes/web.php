@@ -15,15 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/form', function () {
-    return view('form');
-});
-
-Route::get('/atores', 'ActorsController@listarAtores');
-
-Route::get('/ator/buscarNomeAtor/{nomeAtor}', 'ActorsController@buscarNomeAtor');
-
-Route::get('/ator/buscarIdAtor/{idAtor}', 'ActorsController@buscarIdAtor');
+// FILMES
 
 Route::get('/filmes', 'MoviesController@listarFilmes');
 
@@ -34,3 +26,12 @@ Route::post('/filme/buscarIdFilme', 'MoviesController@buscarIdFilme');
 Route::get('/form', 'MoviesController@adicionar');
 
 Route::post('/adicionarFilme', 'MoviesController@adicionarFilme');
+
+// ATORES
+
+Route::get('/atores', 'ActorsController@listarAtores');
+
+Route::post('/ator/buscarNomeAtor/', 'ActorsController@buscarNomeAtor');
+
+Route::post('/ator/buscarIdAtor/', 'ActorsController@buscarIdAtor');
+

@@ -318,9 +318,9 @@
                 </div>
                 <!-- EXERCCÍCIO 01 C (validando erros no envio) - INÍCIO-->
                 @if (isset($filmeSalvo) && isset($novoFilme))
-                    <div class="bloco-exercicio" id="37-5-a">
+                    <div class="bloco-exercicio" id="resultadoFilmeAddSuccess">
                         <div class="enunciado">
-                            <h2><i class="fas fa-code"></i> Exercícios 01 a, b, c | Adicionar Filme por Formulário (e validar)</h2>
+                            <h2><i class="fas fa-code"></i> Novo Filme Adicionado!</h2>
                         </div>
                         <div class="resultado">
                             <h3>O filme <b>{{$novoFilme->title}}</b> foi salvo com sucesso! Confira os detalhes a seguir:</h3>
@@ -333,11 +333,11 @@
                             </ul>
                             <br/>
                             <br/>
-                            <form action="/filmes" method="get">
+                            <form action="/filmes#todosOsFilmes" method="get">
                                 <input type="submit" value="Ver Todos os Filmes">
                             </form>
                             <br/>
-                            <form action="/form" method="get">
+                            <form action="/form#adicionarFilmeEnunciado" method="get">
                                 <input type="submit" value="Adicionar Mais um Filme">
                             </form>
                         </div>
@@ -346,9 +346,9 @@
 
                 @if (count($errors) > 0)
 
-                    <div class="bloco-exercicio" id="37-5-a">
+                    <div class="bloco-exercicio" id="resultadoFilmeAddFail">
                         <div class="enunciado">
-                            <h2><i class="fas fa-code"></i> Exercícios 01 a, b, c | Adicionar Filme por Formulário (e validar)</h2>
+                            <h2><i class="fas fa-code"></i> Ops...</h2>
                         </div>
                         <div class="resultado">
                             <h3>Ops! Infelizmente o filme não pôde ser salvo. Por favor, verifique os erros apontados a seguir e tente novamente.</h3>
@@ -358,11 +358,11 @@
                                 @endforeach
                             </ol>
                             <br/>
-                            <form action="/filmes" method="get">
+                            <form action="/filmes#todosOsFilmes" method="get">
                                 <input type="submit" value="Ver Todos os Filmes">
                             </form>
                             <br/>
-                            <form action="/form#38-1" method="get">
+                            <form action="/form#adicionarFilmeEnunciado" method="get">
                                 <input type="submit" value="Adicionar Novo Filme">
                             </form>
                         </div>
@@ -372,9 +372,9 @@
                 <!-- EXERCCÍCIO 01 C (validando erros no envio) - FIM -->
 
                 <!-- INÍCIO CUSTOM WELCOME -->
-                <div class="bloco-exercicio" id="38-1">
+                <div class="bloco-exercicio" id="adicionarFilmeEnunciado">
                     <div class="enunciado">
-                        <h2><i class="fas fa-code"></i> Exercícios 01 a, b, c | Adicionar Filme por Formulário (e validar)</h2>
+                        <h2><i class="fas fa-code"></i> Adicionar Novo Filme</h2>
                     </div>
                     <div class="resultado">
                         <h3>Preencha o formulário a seguir para adicionar seu novo filme</h3>
@@ -467,41 +467,10 @@
             </div>
         </div>
         <div id="logos">
-            <a id="cube" href="djament.com.br" title="Djament Comunicação" alt="Djament Comunicação" rel="external" target="_blank">
-                <img src="https://djament.com.br/assets/img/logo-60x60.png" height="60px" width="60px"  id="front" alt="Djament">
-                <img src="https://br.digitalhouse.com/wp-content/themes/dh/assets/img/icons/apple-icon-60x60.png" height="60px" width="60px" id="back" alt="Digital House">
+            <a id="cube" href="https://djament.com.br" title="Djament Comunicação" alt="Djament Comunicação" rel="external" target="_blank">
+                <img src="https://djament.com.br/assets/img/logo-60x60.png" height="60px" width="60px"  id="front" alt="Djament" title="Djament">
+                <img src="https://br.digitalhouse.com/wp-content/themes/dh/assets/img/icons/apple-icon-60x60.png" height="60px" width="60px" id="back" alt="Digital House" title="Digital House">
             </a>
         </div>
-        <button id="fullScreen" onclick="launchFullscreen(document.documentElement);">Tela Cheia</button>
-        <script>
-            // Find the right method, call on correct element
-            function launchFullscreen(element) {
-              if(element.requestFullscreen) {
-                element.requestFullscreen();
-              } else if(element.mozRequestFullScreen) {
-                element.mozRequestFullScreen();
-              } else if(element.webkitRequestFullscreen) {
-                element.webkitRequestFullscreen();
-              } else if(element.msRequestFullscreen) {
-                element.msRequestFullscreen();
-              }
-            }
-
-            // Events
-            document.addEventListener("fullscreenchange", function(e) {
-              console.log("fullscreenchange event! ", e);
-            });
-            document.addEventListener("mozfullscreenchange", function(e) {
-              console.log("mozfullscreenchange event! ", e);
-            });
-            document.addEventListener("webkitfullscreenchange", function(e) {
-              console.log("webkitfullscreenchange event! ", e);
-            });
-            document.addEventListener("msfullscreenchange", function(e) {
-              console.log("msfullscreenchange event! ", e);
-            });
-
-            // Add different events for fullscreen
-        </script>
     </body>
 </html>
