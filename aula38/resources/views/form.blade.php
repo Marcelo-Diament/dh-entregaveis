@@ -226,7 +226,7 @@
                 top: 25px;
                 right: 50px;
             }
-            input[name=nomeFilme]{
+            input[name=nomeFilme], input[name=idFilme], input[name=nomeAtor], input[name=idAtor]{
                 padding: 8px 10px;
                 width: 20%;
                 margin-top: 10px;
@@ -234,7 +234,7 @@
                 border: 1px solid #a5a5a5;
                 border-right: none;
             }
-            input[value=nomeFilme]:focus{
+            input[name=nomeFilme]:focus, , input[name=idFilme]:focus,  input[name=nomeAtor]:focus, input[name=idAtor]:focus{
                 padding: 8px 10px;
                 width: 20%;
                 margin-top: 10px;
@@ -243,7 +243,7 @@
                 border-right: none;
                 outline-color: transparent;
             }
-            input[id="buscaFilmeSubmit"]{
+            input[id="buscaFilmeTituloSubmit"], input[id="buscaFilmeIdSubmit"],input[id="buscaAtorNomeSubmit"], input[id="buscaAtorIdSubmit"]{
                 background-color: #fa503a;
                 color: #fff;
                 padding: 6px 10px 7px 10px;
@@ -378,7 +378,7 @@
                     </div>
                     <div class="resultado">
                         <h3>Preencha o formulário a seguir para adicionar seu novo filme</h3>
-                            <small><b>Atenção:</b> para simular um erro, insira uma duração menor que 10.</small>
+                            <small><b>Atenção:</b> para simular um erro, insira uma duração menor que 10. Ou insira um nome repetido.</small>
                         <br/>
                         <br/>
                         <br/>

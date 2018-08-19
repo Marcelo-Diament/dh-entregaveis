@@ -55,10 +55,10 @@ class ActorsController extends Controller
     }
 
     public function linkarAtorPorId($id){
-        $atorPorId = Actor::find($id);
+        $atorPorLinkId = Actor::find($id);
         return view('atores')
-        ->with('atorPorId', $atorPorId)
-        ->with('idBuscado', $id);
+        ->with('atorPorLinkId', $atorPorLinkId)
+        ->with('idLinkBuscado', $id);
     }
 
 }

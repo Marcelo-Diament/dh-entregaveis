@@ -227,7 +227,7 @@
                 top: 25px;
                 right: 50px;
             }
-            input[name=nomeFilme], input[name=idFilme]{
+            input[name=nomeFilme], input[name=idFilme], input[name=nomeAtor], input[name=idAtor]{
                 padding: 8px 10px;
                 width: 20%;
                 margin-top: 10px;
@@ -235,7 +235,7 @@
                 border: 1px solid #a5a5a5;
                 border-right: none;
             }
-            input[value=nomeFilme]:focus, , input[name=idFilme]:focus{
+            input[name=nomeFilme]:focus, , input[name=idFilme]:focus,  input[name=nomeAtor]:focus, input[name=idAtor]:focus{
                 padding: 8px 10px;
                 width: 20%;
                 margin-top: 10px;
@@ -244,7 +244,7 @@
                 border-right: none;
                 outline-color: transparent;
             }
-            input[id="buscaFilmeTituloSubmit"], input[id="buscaFilmeIdSubmit"]{
+            input[id="buscaFilmeTituloSubmit"], input[id="buscaFilmeIdSubmit"],input[id="buscaAtorNomeSubmit"], input[id="buscaAtorIdSubmit"]{
                 background-color: #fa503a;
                 color: #fff;
                 padding: 6px 10px 7px 10px;
@@ -366,7 +366,7 @@
                                 </ul>
                                 <br/>
                             </div>
-                            <h3>Clique <a href="{{url('/filmes#todosOsFilmes')}}" target="_self" title="Ver todos os filmes" rel="next" alt="Ver todos os filmes">aqui</a> para ver a lista de todos os filmes.  Se preferir, realize uma nova busca utilizando o formulário a seguir.</h3>
+                            <h3> Quer ver mais? Então clique <a href="{{url('/filmes#todosOsFilmes')}}" target="_self" title="Ver todos os filmes" rel="next" alt="Ver todos os filmes">aqui</a> para ver a lista de todos os filmes.  Se preferir, realize uma nova busca utilizando o formulário a seguir.</h3>
                         </div>
                     </div>
                 @elseif (isset($idBuscado) && $idFilme == null)
@@ -432,7 +432,7 @@
                                 </ul>
                                 <br/>
                             </div>
-                            <h3>Clique <a href="{{url('/filmes#todosOsFilmes')}}" target="_self" title="Ver todos os filmes" rel="next" alt="Ver todos os filmes">aqui</a> para ver a lista de todos os filmes.  Se preferir, realize uma nova busca utilizando o formulário a seguir.</h3>
+                            <h3>Quer ver mais? Então clique <a href="{{url('/filmes#todosOsFilmes')}}" target="_self" title="Ver todos os filmes" rel="next" alt="Ver todos os filmes">aqui</a> para ver a lista de todos os filmes.  Se preferir, realize uma nova busca utilizando o formulário a seguir.</h3>
                         </div>
                     </div>
                 @elseif (isset($nomeBuscado) && $nomeFilme == null)

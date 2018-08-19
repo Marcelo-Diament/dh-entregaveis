@@ -227,7 +227,7 @@
                 top: 25px;
                 right: 50px;
             }
-            input[name=nomeFilme]{
+            input[name=nomeFilme], input[name=idFilme], input[name=nomeAtor], input[name=idAtor]{
                 padding: 8px 10px;
                 width: 20%;
                 margin-top: 10px;
@@ -235,7 +235,7 @@
                 border: 1px solid #a5a5a5;
                 border-right: none;
             }
-            input[value=nomeFilme]:focus{
+            input[name=nomeFilme]:focus, , input[name=idFilme]:focus,  input[name=nomeAtor]:focus, input[name=idAtor]:focus{
                 padding: 8px 10px;
                 width: 20%;
                 margin-top: 10px;
@@ -244,7 +244,7 @@
                 border-right: none;
                 outline-color: transparent;
             }
-            input[id="buscaFilmeSubmit"]{
+            input[id="buscaFilmeTituloSubmit"], input[id="buscaFilmeIdSubmit"],input[id="buscaAtorNomeSubmit"], input[id="buscaAtorIdSubmit"]{
                 background-color: #fa503a;
                 color: #fff;
                 padding: 6px 10px 7px 10px;
@@ -426,8 +426,7 @@
                                         <br/>
                                         <li><a href="{{url('/atores#todosOsAtores')}}" target="_self" title="Ver Lista de Atores" rel="next" alt="Ver Lista de Atores">Ver Lista de Atores</a></li>
                                         <li><a href="{{url('/atores#buscaNomeAtor')}}" target="_self" title="Buscar Ator por Nome" rel="next" alt="Buscar Ator por Nome">Buscar Ator Por Nome</a></li>
-                                        <!--<li><a href="localhost:8000/ator/INSIRA-AQUI-O-ID-DO-ATOR-QUE-PROCURA-E-DEPOIS-APERTE-ENTER" target="_self" title="Buscar Ator por Id" rel="next" alt="Buscar Ator por Id">Buscar Ator por Id (com detalhes)</a></li>
-                                        <li><a href="localhost:8000/filmes/procurarId/INSIRA-AQUI-O-ID-DO-FILME-QUE-PROCURA-E-DEPOIS-APERTE-ENTER" target="_self" title="Buscar Filme por Id" rel="next" alt="Buscar Filme por Id">Buscar Filme por Id (com detalhes)</a></li> -->
+                                        <li><a href="{{url('/atores#buscaIdAtor')}}" target="_self" title="Buscar Ator por Id" rel="next" alt="Buscar Ator por Id">Buscar Ator por Id</a></li>
                                     </ul>
                                 </li>
                             </ul>
