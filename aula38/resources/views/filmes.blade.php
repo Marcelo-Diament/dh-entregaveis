@@ -210,18 +210,49 @@
                 border: 1px solid #fa503a;
                 outline-color: transparent !important;
             }
-            input[type=submit]{
+            input[type=submit], button#fullScreen{
                 background-color: #fa503a;
                 color: #fff;
-                padding: 6px 10px 7px 10px;
+                padding: 6px 10px;
                 font-size: 12pt;
                 border-radius: 20px;
                 margin-left: 10px;
                 border: 1px solid #a5a5a5;
-                border-left: none;
             }
-            input[type=submit]:hover{
+            input[type=submit]:hover, button#fullScreen:hover{
                 background-color: #d9412e;
+            }
+            button#fullScreen{
+                position: fixed;
+                top: 25px;
+                right: 50px;
+            }
+            input[name=nomeFilme]{
+                padding: 8px 10px;
+                width: 20%;
+                margin-top: 10px;
+                border-radius: 20px 0 0 20px;
+                border: 1px solid #a5a5a5;
+                border-right: none;
+            }
+            input[value=nomeFilme]:focus{
+                padding: 8px 10px;
+                width: 20%;
+                margin-top: 10px;
+                border-radius: 20px 0 0 20px;
+                border: 1px solid #fa503a;
+                border-right: none;
+                outline-color: transparent;
+            }
+            input[id="buscaFilmeSubmit"]{
+                background-color: #fa503a;
+                color: #fff;
+                padding: 6px 10px 7px 10px;
+                font-size: 12pt;
+                border-radius: 0 20px 20px 0;
+                margin-left: -5px;
+                border: 1px solid #a5a5a5;
+                border-left: none;
             }
             #logos {
                position:fixed;  bottom: 25px;  right: 50px;  -webkit-perspective: 50px;
@@ -286,25 +317,9 @@
                     </a>
                 </div>
                 
-                <!-- BUSCAR FILME POR TÍTULO - INÍCIO-->
-                <div class="bloco-exercicio" id="buscaTituloFilme">
-                    <div class="enunciado">
-                        <h2><i class="fas fa-code"></i> Buscar Filme por Título</h2>
-                    </div>
-                    <div class="resultado">
-                        <form action="/filme/buscarNomeFilme" method="post">
-                            {{ csrf_field() }}
-                            {{ method_field('post')}}
-                            <label for="nomeFilme">Digite o nome do Filme que está buscando</label>
-                            <br/>
-                            <input type="text" placeholder="Insira o nome do flime buscado" id="nomeFilme" name="nomeFilme" title="Insira o nome do filme buscado">
-                            <input type="submit" value="Buscar Filme" title="Clique aqui para buscar o filme desejado (após preencher seu nome no campo ao lado)">
-                            <input type="submit" value="Limpar Busca" title="Clique aqui para refazer a buscar o filme desejado">
-                        </form>
-                    </div>
-                </div>
+                <!-- RESULTADO DE BUSCA DE FILME POR TÍTULO -->
                 @if (isset($nomeFilme))
-                    <div class="bloco-exercicio" id="37-5-a">
+                    <div class="bloco-exercicio" id="resultadoBuscaTituloFilme">
                         <div class="enunciado">
                             <h2><i class="fas fa-code"></i> Resultado da Busca de Filme por Título</h2>
                         </div>
@@ -321,24 +336,49 @@
                                 </ul>
                                 <br/>
                             </div>
-                            <h3>Clique <a href="{{url('/filmes#37-3d-g')}}" target="_self" title="Ver todos os filmes" rel="next" alt="Ver todos os filmes">aqui</a> para ver a lista de todos os filmes.</h3>
+                            <h3>Clique <a href="{{url('/filmes#todosOsFilmes')}}" target="_self" title="Ver todos os filmes" rel="next" alt="Ver todos os filmes">aqui</a> para ver a lista de todos os filmes.  Se preferir, realize uma nova busca utilizando o formulário a seguir.</h3>
                         </div>
                     </div>
                 @elseif (isset($nomeBuscado))
-                    <div class="bloco-exercicio" id="37-3e-f">
+                    <div class="bloco-exercicio" id="resultadoBuscaTituloFilme">
                         <div class="enunciado">
                             <h2><i class="fas fa-code"></i> Resultado da Busca de Filme por Título</h2>
                         </div>
                         <div class="resultado">
-                            <h3>Ops! Parece que não há nenhum filme chamado <b>{{ $nomeBuscado}}</b>. Clique <a href="{{url('/filmes#37-3d-g')}}" target="_self" title="Ver todos os filmes" rel="next" alt="Ver todos os filmes">aqui</a> para ver a lista de todos os filmes.</h3>
+                            <h3>Ops! Parece que não há nenhum filme chamado <b>{{ $nomeBuscado}}</b>.</h3>
+                            <h3>Por favor, verifique o título digitado no formulário mais adiante e tente novamente.</h3>
+                            <h3>Se preferir, clique <a href="{{url('/filmes#todosOsFilmes')}}" target="_self" title="Ver todos os filmes" rel="next" alt="Ver todos os filmes">aqui</a> para ver a lista de todos os filmes.</h3>
                         </div>
                     </div>
                 @endif
+                <!-- RESULTADO DE BUSCA DE FILME POR TÍTULO - FIM -->
+
+                <!-- BUSCAR FILME POR TÍTULO - INÍCIO-->
+                <div class="bloco-exercicio" id="buscaTituloFilme">
+                    <div class="enunciado">
+                        <h2><i class="fas fa-code"></i> Buscar Filme por Título</h2>
+                    </div>
+                    <div class="resultado">
+                        <form action="/filme/buscarNomeFilme" method="post">
+                            {{ csrf_field() }}
+                            {{ method_field('post')}}
+                            <label for="nomeFilme">Digite o nome do Filme que está buscando</label>
+                            <br/>
+                            @if (!isset($nomeFilme) && isset($nomeBuscado))
+                            <input type="text" placeholder="Insira o nome do flime buscado" id="nomeFilme" name="nomeFilme" title="Insira o nome do filme buscado" value="{{ $nomeBuscado }}">
+                            @else
+                            <input type="text" placeholder="Insira o nome do flime buscado" id="nomeFilme" name="nomeFilme" title="Insira o nome do filme buscado">
+                            @endif
+                            <input type="submit" id="buscaFilmeSubmit" value="Buscar Filme" title="Clique aqui para buscar o filme desejado (após preencher seu nome no campo ao lado)">
+                            <input type="submit" value="Limpar Busca" title="Clique aqui para refazer a buscar o filme desejado">
+                        </form>
+                    </div>
+                </div>
                 <!-- BUSCAR FILME POR TÍTULO - FIM -->
 
                 <!-- LISTAR FILMES - INÍCIO-->
                 @if (isset($filmes))
-                    <div class="bloco-exercicio" id="37-3d-g">
+                    <div class="bloco-exercicio" id="todosOsFilmes">
                         <div class="enunciado">
                             <h2><i class="fas fa-code"></i> Exercício 03 D e G | Listar Filmes (com detalhes)</h2>
                         </div>
@@ -411,5 +451,36 @@
                 <img src="https://br.digitalhouse.com/wp-content/themes/dh/assets/img/icons/apple-icon-60x60.png" height="60px" width="60px" id="back" alt="Digital House">
             </a>
         </div>
+        <button id="fullScreen" onclick="launchFullscreen(document.documentElement);">Tela Cheia</button>
+        <script>
+            // Find the right method, call on correct element
+            function launchFullscreen(element) {
+              if(element.requestFullscreen) {
+                element.requestFullscreen();
+              } else if(element.mozRequestFullScreen) {
+                element.mozRequestFullScreen();
+              } else if(element.webkitRequestFullscreen) {
+                element.webkitRequestFullscreen();
+              } else if(element.msRequestFullscreen) {
+                element.msRequestFullscreen();
+              }
+            }
+
+            // Events
+            document.addEventListener("fullscreenchange", function(e) {
+              console.log("fullscreenchange event! ", e);
+            });
+            document.addEventListener("mozfullscreenchange", function(e) {
+              console.log("mozfullscreenchange event! ", e);
+            });
+            document.addEventListener("webkitfullscreenchange", function(e) {
+              console.log("webkitfullscreenchange event! ", e);
+            });
+            document.addEventListener("msfullscreenchange", function(e) {
+              console.log("msfullscreenchange event! ", e);
+            });
+
+            // Add different events for fullscreen
+        </script>
     </body>
 </html>

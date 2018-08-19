@@ -209,18 +209,49 @@
                 border: 1px solid #fa503a;
                 outline-color: transparent !important;
             }
-            input[type=submit]{
+            input[type=submit], button#fullScreen{
                 background-color: #fa503a;
                 color: #fff;
-                padding: 6px 10px 7px 10px;
+                padding: 6px 10px;
                 font-size: 12pt;
                 border-radius: 20px;
                 margin-left: 10px;
                 border: 1px solid #a5a5a5;
-                border-left: none;
             }
-            input[type=submit]:hover{
+            input[type=submit]:hover, button#fullScreen:hover{
                 background-color: #d9412e;
+            }
+            button#fullScreen{
+                position: fixed;
+                top: 25px;
+                right: 50px;
+            }
+            input[name=nomeFilme]{
+                padding: 8px 10px;
+                width: 20%;
+                margin-top: 10px;
+                border-radius: 20px 0 0 20px;
+                border: 1px solid #a5a5a5;
+                border-right: none;
+            }
+            input[value=nomeFilme]:focus{
+                padding: 8px 10px;
+                width: 20%;
+                margin-top: 10px;
+                border-radius: 20px 0 0 20px;
+                border: 1px solid #fa503a;
+                border-right: none;
+                outline-color: transparent;
+            }
+            input[id="buscaFilmeSubmit"]{
+                background-color: #fa503a;
+                color: #fff;
+                padding: 6px 10px 7px 10px;
+                font-size: 12pt;
+                border-radius: 0 20px 20px 0;
+                margin-left: -5px;
+                border: 1px solid #a5a5a5;
+                border-left: none;
             }
             #logos {
                position:fixed;  bottom: 25px;  right: 50px;  -webkit-perspective: 50px;
@@ -441,5 +472,36 @@
                 <img src="https://br.digitalhouse.com/wp-content/themes/dh/assets/img/icons/apple-icon-60x60.png" height="60px" width="60px" id="back" alt="Digital House">
             </a>
         </div>
+        <button id="fullScreen" onclick="launchFullscreen(document.documentElement);">Tela Cheia</button>
+        <script>
+            // Find the right method, call on correct element
+            function launchFullscreen(element) {
+              if(element.requestFullscreen) {
+                element.requestFullscreen();
+              } else if(element.mozRequestFullScreen) {
+                element.mozRequestFullScreen();
+              } else if(element.webkitRequestFullscreen) {
+                element.webkitRequestFullscreen();
+              } else if(element.msRequestFullscreen) {
+                element.msRequestFullscreen();
+              }
+            }
+
+            // Events
+            document.addEventListener("fullscreenchange", function(e) {
+              console.log("fullscreenchange event! ", e);
+            });
+            document.addEventListener("mozfullscreenchange", function(e) {
+              console.log("mozfullscreenchange event! ", e);
+            });
+            document.addEventListener("webkitfullscreenchange", function(e) {
+              console.log("webkitfullscreenchange event! ", e);
+            });
+            document.addEventListener("msfullscreenchange", function(e) {
+              console.log("msfullscreenchange event! ", e);
+            });
+
+            // Add different events for fullscreen
+        </script>
     </body>
 </html>
