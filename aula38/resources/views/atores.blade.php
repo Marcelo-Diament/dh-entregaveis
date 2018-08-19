@@ -323,14 +323,16 @@
                     @if (isset($nomeBuscado) && $atorPorNome != null)
                         <div class="bloco-exercicio" id="resultadoBuscaNomeAtor">
                             <div class="enunciado">
-                                @if (count($atorPorNome) == 1)
-                                <h2><i class="fas fa-code"></i> Encontramos um ator/atriz com o nome {{$nomeBuscado}}!</h2>
-                                @elseif (count($atorPorNome) > 1)
-                                <h2><i class="fas fa-code"></i> Parece que há mais de um(a) ator/atriz com o nome {{$nomeBuscado}}...</h2><h2>Na verdade existem {{ count($atorPorNome) }} "{{$nomeBuscado}}s"!</h2>
-                                @endif
+                                <h2><i class="fas fa-code"></i> Resultado Busca de Ator por Nome</h2>
                             </div>
                             <div class="resultado">
-                                <h3>Confira o resultado para o nome <b>{{ $nomeBuscado }}</b>:</h3>
+                                @if (count($atorPorNome) == 1)
+                                    <h2>Encontramos um ator/atriz com o nome {{$nomeBuscado}}!</h2>
+                                    <h3>Confira os resultados para o nome <b>{{ $nomeBuscado }}</b>:</h3>
+                                @elseif (count($atorPorNome) > 1)
+                                    <h2>Parece que há mais de um(a) ator/atriz com o nome {{$nomeBuscado}} - na verdade existem {{ count($atorPorNome) }} "{{$nomeBuscado}}s"!</h2>
+                                    <h3>Confira o resultado para o nome <b>{{ $nomeBuscado }}</b>:</h3>
+                                @endif
                                 @foreach ($atorPorNome as $index=>$valor)
                                     <div class="profile">
                                         <img class="profile-pic" src="@if ($valor->picture_url != null) {{$valor->picture_url}} @else https://us.123rf.com/450wm/berkut2011/berkut20111506/berkut2011150600452/41143316-stock-vector-man-in-suit-secret-service-agent-icon.jpg?ver=6 @endif" title="{{$valor->first_name}} {{$valor->last_name}}" alt="{{$valor->first_name}} {{$valor->last_name}}" height="150" width="150">
@@ -360,7 +362,13 @@
                             </div>
                         </div>
                     @elseif (isset($nomeBuscado))
-                        <h3>Não há atores que se chamam <b>{{ $nomeBuscado }}</b></h3>
+                        <div class="bloco-exercicio" id="resultadoBuscaNomeAtor">
+                            <div class="enunciado">
+                                <h2><i class="fas fa-code"></i> Resultado Busca de Ator por Nome</h2>
+                            </div>
+                        <div class="resultado">
+                            <h3>Não há atores que se chamam <b>{{ $nomeBuscado }}</b>... Clique <a href="{{url('/atores/#todosOsAtores')}}" target="_self" title="Ver todos os atores e atrizes" rel="next" alt="Ver todos os atores e atrizes">aqui</a> para ver a lista de todos os atores e atrizes.</h3>
+                        </div>
                     @endif
                 <!-- RESULTADO DE BUSCA DE ATOR POR NOME - FIM -->
                 
@@ -400,9 +408,9 @@
                         </div>
                     </div>
                 @elseif (isset($idBuscado))
-                    <div class="bloco-exercicio" id="37-3e-f">
+                    <div class="bloco-exercicio" id="resultadoBuscaAtorId">
                         <div class="enunciado">
-                            <h2><i class="fas fa-code"></i> Exercícios 03 E | Buscar Ator por Id</h2>
+                            <h2><i class="fas fa-code"></i> Resultado da Busca de Ator por Id</h2>
                         </div>
                         <div class="resultado">
                             <h3>Ops! Parece que não há nenhum ator nem atriz com id <b>{{ $idBuscado }}</b>. Clique <a href="{{url('/atores/#todosOsAtores')}}" target="_self" title="Ver todos os atores e atrizes" rel="next" alt="Ver todos os atores e atrizes">aqui</a> para ver a lista de todos os atores e atrizes.</h3>

@@ -339,17 +339,17 @@
                                     <ul class="lista">
                                         <li>a. Utilizar o formulário que está no Campus Virtual para adicionar filmes e validar se todos os campos são obrigatórios e que mostre os erros de validação se houver.</li>
                                         <br/>
-                                        <li><a class="" href="{{url('/form')}}" target="_self" title="Exercício 1a" rel="nofollow" alt="Exercício 1a">Exercício 1a</a></li>
+                                        <li><a class="" href="{{url('/form#adicionarFilmeEnunciado')}}" target="_self" title="Exercício 1a" rel="nofollow" alt="Exercício 1a">Exercício 1a</a></li>
                                         <br/>
                                         <br/>
                                         <li>b. Adicionar regras que permitam validar se todos os tipos de dados estão corretos, bem como os mínimos e máximos.</li>
                                         <br/>
-                                        <li><a class="" href="{{url('/form')}}" target="_self" title="Exercício 1b" rel="nofollow" alt="Exercício 1b">Exercício 1b</a></li>
+                                        <li><a class="" href="{{url('/form#adicionarFilmeEnunciado')}}" target="_self" title="Exercício 1b" rel="nofollow" alt="Exercício 1b">Exercício 1b</a></li>
                                         <br/>
                                         <br/>
                                         <li>c. Modificar o formulário para que, caso haja um erro, recupere os campos que o usuário já tinha preenchido.</li>
                                         <br/>
-                                        <li><a class="" href="{{url('/form')}}" target="_self" title="Exercício 1c" rel="nofollow" alt="Exercício 1c">Exercício 1c</a></li>
+                                        <li><a class="" href="{{url('/form#adicionarFilmeEnunciado')}}" target="_self" title="Exercício 1c" rel="nofollow" alt="Exercício 1c">Exercício 1c</a></li>
                                         <br/>
                                         <br/>
                                         <li>d. Criar um novo formulário para adicionar atores, junto com o caminho /actors/add​ e a visualização actors/add.blade.php (levar em conta que o formulário deverá apontar para o caminho /actors/add​).</li>
@@ -364,7 +364,7 @@
                                         <br/>
                                         <li>f. Ao criar um filme ou um ator, confirmar se não existe outro/a com o mesmo nome. </li>
                                         <br/>
-                                        <li><a class="" href="{{url('/form')}}" target="_self" title="Exercício 1f" rel="nofollow" alt="Exercício 1f">Exercício 1f</a></li>
+                                        <li><a class="" href="{{url('/form#adicionarFilmeEnunciado')}}" target="_self" title="Exercício 1f" rel="nofollow" alt="Exercício 1f">Exercício 1f</a></li>
                                         <br/>
                                         <br/>
                                     </ul>
@@ -419,7 +419,7 @@
                                         <li><a href="{{url('/filmes#todosOsFilmes')}}" target="_self" title="Ver Lista de Filmes" rel="next" alt="Ver Lista de Filmes">Ver Lista de Filmes</a></li>
                                         <li><a href="{{url('/filmes/#buscaTituloFilme')}}" target="_self" title="Buscar Filme por Título" rel="next" alt="Buscar Filme por Título">Buscar Filme por Título</a></li>
                                         <li><a href="{{url('/filmes/#buscaIdFilme')}}" target="_self" title="Buscar Filme por Id" rel="next" alt="Buscar Filme por Id">Buscar Filme por Id</a></li>
-                                        <li><a href="{{url('/form#adicionarFilme')}}" target="_self" title="Adicionar Novo Filme" rel="next" alt="Adicionar Novo Filme">Adicionar Novo Filme</a></li>
+                                        <li><a href="{{url('/form#adicionarFilmeEnunciado')}}" target="_self" title="Adicionar Novo Filme" rel="next" alt="Adicionar Novo Filme">Adicionar Novo Filme</a></li>
                                     </ul>
                                     <ul class="lista">
                                         <li>Atores</li>
