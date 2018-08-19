@@ -29,7 +29,7 @@ Route::get('/filmes', 'MoviesController@listarFilmes');
 
 Route::post('/filme/buscarNomeFilme', 'MoviesController@buscarNomeFilme');
 
-Route::get('/filme/buscarIdFilme/{idFilme}', 'MoviesController@buscarIdFilme');
+Route::post('/filme/buscarIdFilme', 'MoviesController@buscarIdFilme');
 
 Route::get('/form', 'MoviesController@adicionar');
 

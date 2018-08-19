@@ -227,7 +227,7 @@
                 top: 25px;
                 right: 50px;
             }
-            input[name=nomeFilme]{
+            input[name=nomeFilme], input[name=idFilme]{
                 padding: 8px 10px;
                 width: 20%;
                 margin-top: 10px;
@@ -235,7 +235,7 @@
                 border: 1px solid #a5a5a5;
                 border-right: none;
             }
-            input[value=nomeFilme]:focus{
+            input[value=nomeFilme]:focus, , input[name=idFilme]:focus{
                 padding: 8px 10px;
                 width: 20%;
                 margin-top: 10px;
@@ -244,7 +244,7 @@
                 border-right: none;
                 outline-color: transparent;
             }
-            input[id="buscaFilmeSubmit"]{
+            input[id="buscaFilmeTituloSubmit"], input[id="buscaFilmeIdSubmit"]{
                 background-color: #fa503a;
                 color: #fff;
                 padding: 6px 10px 7px 10px;
@@ -317,8 +317,44 @@
                     </a>
                 </div>
                 
-                <!-- RESULTADO DE BUSCA DE FILME POR TÍTULO -->
-                @if (isset($nomeFilme))
+                <!-- RESULTADO DE BUSCA DE FILME POR ID - INÍCIO -->
+                @if (isset($idFilme) && (isset($idBuscado)))
+                    <div class="bloco-exercicio" id="resultadoBuscaTituloId">
+                        <div class="enunciado">
+                            <h2><i class="fas fa-code"></i> Resultado da Busca de Filme por Id</h2>
+                        </div>
+                        <div class="resultado">
+                            <h3>O filme de id <b>{{ $filmePorId[0]->id }}</b> é se chama <b>{{ $filmePorId[0]->title }}</b>.</h3>
+                            <h3>Confira abaixo os detalhes sobre {{ $filmePorId[0]->title}}:</h3>
+                            <div class="profile">
+                                <ul class="lista profile-desc">
+                                    <li>Título: <b>{{$filmePorId[0]->title}}</b> @if (isset($filmePorId[0]->release_date)) <small> ({{ mb_substr($filmePorId[0]->release_date,0,4) }}) </small> @endif</li>
+                                    <li>Duração: @if (isset($filmePorId[0]->length)) {{$filmePorId[0]->length}}' @else Não avaliado @endif</li>
+                                    <li>Avaliação: @if (isset($filmePorId[0]->rating)) {{$filmePorId[0]->rating}} @else Não avaliado @endif</li>
+                                    <li>Prêmios: @if (isset($filmePorId[0]->awards)) {{$filmePorId[0]->awards}} @else Parece que não receberam prêmios @endif</li>
+                                    <li>Gênero: @if (isset($filmePorId[0]->genero)) {{$filmePorId[0]->genero['name']}} (id: {{$filmePorId[0]->genre_id}})@else Não informado @endif</li>
+                                </ul>
+                                <br/>
+                            </div>
+                            <h3>Clique <a href="{{url('/filmes#todosOsFilmes')}}" target="_self" title="Ver todos os filmes" rel="next" alt="Ver todos os filmes">aqui</a> para ver a lista de todos os filmes.  Se preferir, realize uma nova busca utilizando o formulário a seguir.</h3>
+                        </div>
+                    </div>
+                @elseif (isset($idBuscado) && $idFilme == null)
+                    <div class="bloco-exercicio" id="resultadoBuscaTituloId">
+                        <div class="enunciado">
+                            <h2><i class="fas fa-code"></i> Resultado da Busca de Filme por Id</h2>
+                        </div>
+                        <div class="resultado">
+                            <h3>Ops! Parece que não há nenhum filme com o id <b>{{ $idBuscado}}</b>.</h3>
+                            <h3>Por favor, verifique o id digitado no formulário mais adiante e tente novamente.</h3>
+                            <h3>Se preferir, clique <a href="{{url('/filmes#todosOsFilmes')}}" target="_self" title="Ver todos os filmes" rel="next" alt="Ver todos os filmes">aqui</a> para ver a lista de todos os filmes.</h3>
+                        </div>
+                    </div>
+                @endif
+                <!-- RESULTADO DE BUSCA DE FILME POR ID - FIM -->
+                
+                <!-- RESULTADO DE BUSCA DE FILME POR TÍTULO - INÍCIO -->
+                @if (isset($nomeFilme) && (isset($nomeBuscado)))
                     <div class="bloco-exercicio" id="resultadoBuscaTituloFilme">
                         <div class="enunciado">
                             <h2><i class="fas fa-code"></i> Resultado da Busca de Filme por Título</h2>
@@ -339,7 +375,7 @@
                             <h3>Clique <a href="{{url('/filmes#todosOsFilmes')}}" target="_self" title="Ver todos os filmes" rel="next" alt="Ver todos os filmes">aqui</a> para ver a lista de todos os filmes.  Se preferir, realize uma nova busca utilizando o formulário a seguir.</h3>
                         </div>
                     </div>
-                @elseif (isset($nomeBuscado))
+                @elseif (isset($nomeBuscado) && $nomeFilme == null)
                     <div class="bloco-exercicio" id="resultadoBuscaTituloFilme">
                         <div class="enunciado">
                             <h2><i class="fas fa-code"></i> Resultado da Busca de Filme por Título</h2>
@@ -353,6 +389,7 @@
                 @endif
                 <!-- RESULTADO DE BUSCA DE FILME POR TÍTULO - FIM -->
 
+
                 <!-- BUSCAR FILME POR TÍTULO - INÍCIO-->
                 <div class="bloco-exercicio" id="buscaTituloFilme">
                     <div class="enunciado">
@@ -365,16 +402,40 @@
                             <label for="nomeFilme">Digite o nome do Filme que está buscando</label>
                             <br/>
                             @if (!isset($nomeFilme) && isset($nomeBuscado))
-                            <input type="text" placeholder="Insira o nome do flime buscado" id="nomeFilme" name="nomeFilme" title="Insira o nome do filme buscado" value="{{ $nomeBuscado }}">
+                            <input type="text" placeholder="Insira o nome do filme buscado" id="nomeFilme" name="nomeFilme" title="Insira o nome do filme buscado" value="{{ $nomeBuscado }}">
                             @else
-                            <input type="text" placeholder="Insira o nome do flime buscado" id="nomeFilme" name="nomeFilme" title="Insira o nome do filme buscado">
+                            <input type="text" placeholder="Insira o nome do filme buscado" id="nomeFilme" name="nomeFilme" title="Insira o nome do filme buscado">
                             @endif
-                            <input type="submit" id="buscaFilmeSubmit" value="Buscar Filme" title="Clique aqui para buscar o filme desejado (após preencher seu nome no campo ao lado)">
+                            <input type="submit" id="buscaFilmeTituloSubmit" value="Buscar Filme" title="Clique aqui para buscar o filme desejado (após preencher seu nome no campo ao lado)">
                             <input type="submit" value="Limpar Busca" title="Clique aqui para refazer a buscar o filme desejado">
                         </form>
                     </div>
                 </div>
                 <!-- BUSCAR FILME POR TÍTULO - FIM -->
+
+
+                <!-- BUSCAR FILME POR ID - INÍCIO-->
+                <div class="bloco-exercicio" id="buscaIdFilme">
+                    <div class="enunciado">
+                        <h2><i class="fas fa-code"></i> Buscar Filme por Id</h2>
+                    </div>
+                    <div class="resultado">
+                        <form action="/filme/buscarIdFilme" method="post">
+                            {{ csrf_field() }}
+                            {{ method_field('post')}}
+                            <label for="idFilme">Digite o id do Filme que está buscando</label>
+                            <br/>
+                            @if (!isset($idFilme) && isset($idBuscado))
+                            <input type="text" placeholder="Insira o id do filme buscado" id="idFilme" name="idFilme" title="Insira o id do filme buscado" value="{{ $idBuscado }}">
+                            @else
+                            <input type="text" placeholder="Insira o id do filme buscado" id="idFilme" name="idFilme" title="Insira o id do filme buscado">
+                            @endif
+                            <input type="submit" id="buscaFilmeIdSubmit" value="Buscar Filme" title="Clique aqui para buscar o filme desejado (após preencher seu id no campo ao lado)">
+                            <input type="submit" value="Limpar Busca" title="Clique aqui para refazer a buscar o filme desejado">
+                        </form>
+                    </div>
+                </div>
+                <!-- BUSCAR FILME POR ID - FIM -->
 
                 <!-- LISTAR FILMES - INÍCIO-->
                 @if (isset($filmes))
@@ -403,44 +464,6 @@
                     </div>
                 @endif
                 <!-- LISTAR FILMES - FIM -->
-
-                <!-- BUSCAR FILME POR ID - INÍCIO-->
-                @if (isset($idFilme))
-                    <div class="bloco-exercicio" id="37-5-a">
-                        <div class="enunciado">
-                            <h2><i class="fas fa-code"></i> Exercícios 05 | Buscar Filme por Id</h2>
-                        </div>
-                        <div class="resultado">
-                            <h3>O filme de id <b>{{ $idFilme->id }}</b> se chama <b>{{ $idFilme->title }}</b>.</h3>
-                            <h3>Confira abaixo os detalhes sobre {{ $idFilme->title}}:</h3>
-                            <div class="profile">
-                                <ul class="lista profile-desc">
-                                    <li>Título: <b>{{$idFilme->title}}</b> @if (isset($idFilme->release_date)) <small> ({{ mb_substr($idFilme->release_date,0,4) }}) </small> @endif</li>
-                                    <li>Prêmios: @if (isset($idFilme->awards)) {{$idFilme->awards}} @else Parece que não receberam prêmios @endif</li>
-                                    <li>Avaliação: @if (isset($idFilme->rating)) {{$idFilme->rating}} @else Não avaliado @endif</li>
-                                    <li>Duração: @if (isset($idFilme->length)) {{$idFilme->length}}' @else Não avaliado @endif</li>
-                                    <li>Id do gênero: @if (isset($idFilme->genre_id)) {{$idFilme->genre_id}} @else Não informado @endif</li>
-                                    <li>Gênero: @if (isset($idFilme->genero)) {{$idFilme->genero}} @else Não informado @endif</li>
-                                </ul>
-                                <h3>Clique <a href="{{url('/filmes#37-3d-g')}}" target="_self" title="Ver todos os filmes" rel="next" alt="Ver todos os filmes">aqui</a> para ver a lista de todos os filmes.</h3>
-                            </div>
-                        </div>
-                    </div>
-                @elseif (isset($idBuscado))
-                    <div class="bloco-exercicio" id="37-3e-f">
-                        <div class="enunciado">
-                            <h2><i class="fas fa-code"></i> Exercícios 03 E | Buscar Filme por Id</h2>
-                        </div>
-                        <div class="resultado">
-                            <h3>Ops! Parece que não há nenhum filme com id <b>{{ $idBuscado}}</b>. Clique <a href="{{url('/filmes#37-3d-g')}}" target="_self" title="Ver todos os filmes" rel="next" alt="Ver todos os filmes">aqui</a> para ver a lista de todos os filmes.</h3>
-                        </div>
-                    </div>
-                @endif
-                <!-- BUSCAR FILME POR ID - FIM -->
-
-
-
-
 
                 
             </div>
