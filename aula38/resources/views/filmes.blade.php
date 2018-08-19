@@ -336,8 +336,8 @@
                                         @else
                                             Não Avaliado
                                         @endif
-                                        <br/>
                                         @if (isset($filmePorId[0]->rating))
+                                             | 
                                             @for ($i = 0; $i < intval($filmePorId[0]->rating); $i++)
                                                 <i style="font-size:10pt;color:#fa503a;" class="fas fa-star"></i>
                                             @endfor
@@ -346,11 +346,23 @@
                                             <i style="font-size:10pt;color:#fa503a;" class="fas fa-star-half"></i>
                                         @endif
                                         @if ($filmePorId[0]->rating == 0)
-                                            <i style="font-size:10pt;color:#fa503a;" class="fas fa-thumbs-down"></i>
+                                            <i style="font-size:10pt;color:#fa503a;" class="fas fa-poop"></i>
                                         @endif
                                     </li>
-                                    <li>Prêmios: @if (isset($filmePorId[0]->awards)) {{$filmePorId[0]->awards}} @else Parece que não receberam prêmios @endif</li>
-                                    <li>Gênero: @if (isset($filmePorId[0]->genero)) {{$filmePorId[0]->genero['name']}} (id: {{$filmePorId[0]->genre_id}})@else Não informado @endif</li>
+                                    <li>Prêmios:
+                                        @if (isset($filmePorId[0]->awards))
+                                            {{$filmePorId[0]->awards}} 
+                                        @else
+                                            Não Informado
+                                        @endif
+                                        @if (isset($filmePorId[0]->awards) && $filmePorId[0]->awards > 0)
+                                         | 
+                                            @for ($i = 0; $i < $filmePorId[0]->awards; $i++)
+                                                <i style="font-size:10pt;color:#fa503a;" class="fas fa-award"></i>
+                                            @endfor
+                                        @endif
+                                    </li>
+                                    <li>Gênero: @if (isset($filmePorId[0]->genero)) {{$filmePorId[0]->genero['name']}} @else Não informado @endif</li>
                                 </ul>
                                 <br/>
                             </div>
@@ -390,8 +402,8 @@
                                         @else
                                             Não Avaliado
                                         @endif
-                                        <br/>
                                         @if (isset($filmePorNome[0]->rating))
+                                             | 
                                             @for ($i = 0; $i < intval($filmePorNome[0]->rating); $i++)
                                                 <i style="font-size:10pt;color:#fa503a;" class="fas fa-star"></i>
                                             @endfor
@@ -400,11 +412,23 @@
                                             <i style="font-size:10pt;color:#fa503a;" class="fas fa-star-half"></i>
                                         @endif
                                         @if ($filmePorNome[0]->rating == 0)
-                                            <i style="font-size:10pt;color:#fa503a;" class="fas fa-thumbs-down"></i>
+                                            <i style="font-size:10pt;color:#fa503a;" class="fas fa-poop"></i>
                                         @endif
                                     </li>
-                                    <li>Prêmios: @if (isset($filmePorNome[0]->awards)) {{$filmePorNome[0]->awards}} @else Parece que não receberam prêmios @endif</li>
-                                    <li>Gênero: @if (isset($filmePorNome[0]->genero)) {{$filmePorNome[0]->genero['name']}} (id: {{$filmePorNome[0]->genre_id}})@else Não informado @endif</li>
+                                    <li>Prêmios:
+                                        @if (isset($filmePorNome[0]->awards))
+                                            {{$filmePorNome[0]->awards}} 
+                                        @else
+                                            Não Informado
+                                        @endif
+                                        @if (isset($filmePorNome[0]->awards) && $filmePorNome[0]->awards > 0)
+                                             | 
+                                            @for ($i = 0; $i < $filmePorNome[0]->awards; $i++)
+                                                <i style="font-size:10pt;color:#fa503a;" class="fas fa-award"></i>
+                                            @endfor
+                                        @endif
+                                    </li>
+                                    <li>Gênero: @if (isset($filmePorNome[0]->genero)) {{$filmePorNome[0]->genero['name']}} @else Não informado @endif</li>
                                 </ul>
                                 <br/>
                             </div>
@@ -485,15 +509,14 @@
                                     <li>
                                         <b>{{ $valor['title'] }}</b> <small>({{ mb_substr($valor['release_date'],0,4) }})</small>
                                         <br/>
-                                        Prêmios: {{ $valor['awards'] }}<br/>
                                         Avaliação:
                                             @if (isset($valor['rating']))
-                                                {{$valor['rating']}} 
+                                                {{$valor['rating']}}
                                             @else
                                                 Não Avaliado
                                             @endif
-                                            <br/>
                                             @if (isset($valor['rating']))
+                                                 | 
                                                 @for ($i = 0; $i < intval($valor['rating']); $i++)
                                                     <i style="font-size:10pt;color:#fa503a;" class="fas fa-star"></i>
                                                 @endfor
@@ -502,12 +525,25 @@
                                                 <i style="font-size:10pt;color:#fa503a;" class="fas fa-star-half"></i>
                                             @endif
                                             @if ($valor['rating'] == 0)
-                                                <i style="font-size:10pt;color:#fa503a;" class="fas fa-thumbs-down"></i>
+                                                <i style="font-size:10pt;color:#fa503a;" class="fas fa-poop"></i>
                                             @endif
                                         <br/>
-                                        Duração: {{ $valor['length'] }}'<br/>
+                                        Prêmios: 
+                                            @if (isset($valor['awards']))
+                                                {{$valor['awards']}} 
+                                            @else
+                                                Não Avaliado
+                                            @endif
+                                            @if (isset($valor['awards']) && $valor['awards'] > 0)
+                                                 | 
+                                                @for ($i = 0; $i < $valor['awards']; $i++)
+                                                    <i style="font-size:10pt;color:#fa503a;" class="fas fa-award"></i>
+                                                @endfor
+                                            @endif
+                                            <br/>
+                                        Duração: @if(isset($valor['length'])) {{ $valor['length'] }}' @else Não informado @endif<br/>
                                         @if ($valor['genre_id'])
-                                            Gênero: {{ $valor['genero']['name'] }} (id: {{ $valor['genre_id'] }})
+                                            Gênero: {{ $valor['genero']['name'] }}
                                         @elseif (!$valor['genre_id'])
                                             Gênero não especificado
                                         @endif
