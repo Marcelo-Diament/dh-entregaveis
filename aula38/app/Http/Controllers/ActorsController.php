@@ -38,7 +38,7 @@ class ActorsController extends Controller
 
     public function buscarIdAtor(Request $idAtor){
         $idBuscado = $idAtor->input('idAtor');
-        $atorPorId = Actor::where('first_name', $idBuscado)->get();
+        $atorPorId = Actor::where('id', $idBuscado)->get();
         if (count($atorPorId) == 0) {
             return view('atores')
             ->with('atorPorId', null)
@@ -52,6 +52,13 @@ class ActorsController extends Controller
             ->with('idAtor', $idAtor)
             ->with('idBuscado', $idBuscado);
         }
+    }
+
+    public function linkarAtorPorId($id){
+        $atorPorId = Actor::find($id);
+        return view('atores')
+        ->with('atorPorId', $atorPorId)
+        ->with('idBuscado', $id);
     }
 
 }

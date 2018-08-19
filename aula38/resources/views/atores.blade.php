@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Aula 37 | Laravel III</title>
+        <title>Aula 38 | Laravel III</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -353,7 +353,7 @@
                                                     <i style="font-size:10pt;color:#fa503a;" class="fas fa-star-half"></i>
                                                 @endif
                                             </li>
-                                            <li>Id do seu filme favorito: @if (isset($valor->favorite_movie_id)) {{$valor->favorite_movie_id}} @else Não informado @endif</li>
+                                            <li>Filme favorito: @if (isset($valor->favorite_movie_id)) <br/>{{$valor->favMovie['title']}} @else Não informado @endif</li>
                                         </ul>
                                     </div>
                                 @endforeach
@@ -363,53 +363,12 @@
                         <h3>Não há atores que se chamam <b>{{ $nomeBuscado }}</b></h3>
                     @endif
                 <!-- RESULTADO DE BUSCA DE ATOR POR NOME - FIM -->
-
-                <!-- BUSCAR ATOR POR NOME - INÍCIO-->
-                <div class="bloco-exercicio" id="buscaAtorNome">
-                    <div class="enunciado">
-                        <h2><i class="fas fa-code"></i> Buscar Atriz/Ator por Nome</h2>
-                    </div>
-                    <div class="resultado">
-                        <form action="/ator/buscarNomeAtor" method="post">
-                            {{ csrf_field() }}
-                            {{ method_field('post')}}
-                            <label for="nomeAtor">Digite o nome do Ator ou da Atriz que está buscando</label>
-                            <br/>
-                            @if (!isset($nomeAtor) && isset($nomeBuscado))
-                            <input type="text" placeholder="Insira o nome do ator ou da atriz buscado" id="nomeAtor" name="nomeAtor" title="Insira o nome da atriz ou do ator buscado" value="{{ $nomeBuscado }}">
-                            @else
-                            <input type="text" placeholder="Insira o nome do ator buscado" id="nomeAtor" name="nomeAtor" title="Insira o nome do ator/atriz buscado">
-                            @endif
-                            <input type="submit" value="Buscar Ator" title="Clique aqui para buscar a atriz ou o ator desejado (após preencher seu nome no campo ao lado)">
-                            <input type="submit" value="Limpar Busca" title="Clique aqui para refazer a busca do ator/atriz desejado">
-                        </form>
-                    </div>
-                </div>
-                <!-- BUSCAR ATOR POR NOME - FIM -->
-
-
-                <!-- EXERCÍCIO 03 A, B, C e H - INÍCIO-->
-                @if (isset($atores))
-                    <div class="bloco-exercicio" id="37-3a-b-c-h">
-                        <div class="enunciado">
-                            <h2><i class="fas fa-code"></i> Exercícios 03 A, B, C e H | Listar Atores com Link para Detalhes</h2>
-                        </div>
-                        <div class="resultado">
-                            <ul class="lista">
-                                @foreach ($atores as $index=>$valor)
-                                    <li>{{ $valor['first_name'] }} {{ $valor['last_name'] }} <a href="http://localhost:8000/ator/{{$valor['id']}}/#37-3e-f" target="_self" title="Acessar Detalhes do Ator" rel="next" alt="Acessar Detalhes do Ator"><i class="fas fa-plus-circle"></i></a></li><br/>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
-                @endif
-                <!-- EXERCÍCIO 03 A, B, C e H - FIM -->
-
-                <!-- EXERCÍCIO 03 E - INÍCIO-->
+                
+                <!-- RESULTADO BUSCA ATOR POR ID - INÍCIO-->
                 @if (isset($atorPorId))
-                    <div class="bloco-exercicio" id="37-3e-f">
+                    <div class="bloco-exercicio" id="resultadoBuscaAtorId">
                         <div class="enunciado">
-                            <h2><i class="fas fa-code"></i> Exercícios 03 E e F | Buscar Ator por Id</h2>
+                            <h2><i class="fas fa-code"></i> Resultado Busca Ator por Id</h2>
                         </div>
                         <div class="resultado">
                             <h3>O ator/atriz de id <b>{{ $atorPorId->id }}</b> se chama <b>{{ $atorPorId->first_name .' '. $atorPorId->last_name }}</b>.</h3>
@@ -435,7 +394,7 @@
                                             <i style="font-size:10pt;color:#fa503a;" class="fas fa-star-half"></i>
                                         @endif
                                     </li>
-                                    <li>Id do seu filme favorito: @if (isset($atorPorId->favorite_movie_id)) {{$atorPorId->favorite_movie_id}} @else Não informado @endif</li>
+                                    <li>Filme favorito: @if (isset($atorPorId->favorite_movie_id)) <br/>{{$atorPorId->favMovie['title']}} @else Não informado @endif</li>
                                 </ul>
                             </div>
                         </div>
@@ -446,11 +405,53 @@
                             <h2><i class="fas fa-code"></i> Exercícios 03 E | Buscar Ator por Id</h2>
                         </div>
                         <div class="resultado">
-                            <h3>Ops! Parece que não há nenhum ator nem atriz com id <b>{{ $idBuscado }}</b>. Clique <a href="{{url('/atores/#37-3a-b-c')}}" target="_self" title="Ver todos os atores e atrizes" rel="next" alt="Ver todos os atores e atrizes">aqui</a> para ver a lista de todos os atores e atrizes.</h3>
+                            <h3>Ops! Parece que não há nenhum ator nem atriz com id <b>{{ $idBuscado }}</b>. Clique <a href="{{url('/atores/#todosOsAtores')}}" target="_self" title="Ver todos os atores e atrizes" rel="next" alt="Ver todos os atores e atrizes">aqui</a> para ver a lista de todos os atores e atrizes.</h3>
                         </div>
                     </div>
                 @endif
-                <!-- EXERCÍCIO 03 E - FIM -->
+                <!-- RESULTADO BUSCA ATOR POR ID - FIM -->
+
+                <!-- BUSCAR ATOR POR NOME - INÍCIO-->
+                <div class="bloco-exercicio" id="buscaAtorNome">
+                    <div class="enunciado">
+                        <h2><i class="fas fa-code"></i> Buscar Atriz/Ator por Nome</h2>
+                    </div>
+                    <div class="resultado">
+                        <form action="/ator/buscarNomeAtor" method="post">
+                            {{ csrf_field() }}
+                            {{ method_field('post')}}
+                            <label for="nomeAtor">Digite o nome do Ator ou da Atriz que está buscando</label>
+                            <br/>
+                            @if (!isset($nomeAtor) && isset($nomeBuscado))
+                            <input type="text" placeholder="Insira o nome do ator ou da atriz buscado" id="nomeAtor" name="nomeAtor" title="Insira o nome da atriz ou do ator buscado" value="{{ $nomeBuscado }}">
+                            @else
+                            <input type="text" placeholder="Insira o nome do ator buscado" id="nomeAtor" name="nomeAtor" title="Insira o nome do ator/atriz buscado">
+                            @endif
+                            <input type="submit" value="Buscar Ator" title="Clique aqui para buscar a atriz ou o ator desejado (após preencher seu nome no campo ao lado)">
+                            <input type="submit" value="Limpar Busca" title="Clique aqui para refazer a busca do ator/atriz desejado">
+                        </form>
+                    </div>
+                </div>
+                <!-- BUSCAR ATOR POR NOME - FIM -->
+
+
+                <!-- LISTAR TODOS OS ATORES - INÍCIO-->
+                @if (isset($atores))
+                    <div class="bloco-exercicio" id="todosOsAtores">
+                        <div class="enunciado">
+                            <h2><i class="fas fa-code"></i> Lista de Todos os Atores</h2>
+                        </div>
+                        <div class="resultado">
+                            <ul class="lista">
+                                @foreach ($atores as $index=>$valor)
+                                    <li>{{ $valor['first_name'] }} {{ $valor['last_name'] }} <a href="http://localhost:8000/ator/{{$valor['id']}}#resultadoBuscaAtorId" target="_self" title="Acessar Detalhes do Ator" rel="next" alt="Acessar Detalhes do Ator"><i class="fas fa-plus-circle"></i></a></li><br/>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                @endif
+                <!-- LISTAR TODOS OS ATORES - FIM -->
+
 
                 </div>
             </div>

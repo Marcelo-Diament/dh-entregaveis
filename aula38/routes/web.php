@@ -33,5 +33,4 @@ Route::get('/atores', 'ActorsController@listarAtores');
 
 Route::post('/ator/buscarNomeAtor/', 'ActorsController@buscarNomeAtor');
 
-Route::post('/ator/buscarIdAtor/', 'ActorsController@buscarIdAtor');
-
+Route::get('/ator/{id}', 'ActorsController@linkarAtorPorId');

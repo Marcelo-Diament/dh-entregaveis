@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 use App\Genre;
 
+use App\Actor;
+
 class Movie extends Model{
 
     private $id;
@@ -21,5 +23,9 @@ class Movie extends Model{
     public function genero() {
     	return $this->hasOne(Genre::class, 'id', 'genre_id');
 	}
+
+    public function atores() {
+        return $this->hasMany(Actor::class, 'id', 'favorite_movie_id');
+    }
 
 }
