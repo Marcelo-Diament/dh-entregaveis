@@ -40,3 +40,7 @@ Route::get('/ator/{id}', 'ActorsController@linkarAtorPorId');
 Route::get('/add', 'ActorsController@adicionar');
 
 Route::post('/adicionarAtor', 'ActorsController@adicionarAtor');
+
+Route::get('ator/form_edit/{id}', 'ActorsController@edit');
+
+Route::get('ator/edit/{id}', 'ActorsController@update');
