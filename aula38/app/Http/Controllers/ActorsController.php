@@ -114,7 +114,7 @@ class ActorsController extends Controller
 
     public function edit($id) {
         $atorParaEditarId = Actor::find($id);
-        return view('ator/edit')
+        return view('ator/form_edit')
         ->with('atorParaEditarId', $atorParaEditarId)
         ->with('idLinkBuscado', $id);
     }
