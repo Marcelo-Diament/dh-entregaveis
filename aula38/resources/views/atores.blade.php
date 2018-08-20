@@ -4,8 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Aula 38 | Laravel III</title>
+        <title>Aula 38 | Laravel IV | Atores</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -300,6 +299,18 @@
                 display: inline-flex;
                 margin-left: 20px;
             }
+            a:focus, button:focus, input:focus, select:focus, option:focus, input[type=submit]:focus{
+                outline-color: transparent !important;
+                outline-style: none !important;
+                outline-width: 0px !important;
+                border: 1px solid #fa503a;
+            }
+            .title a:focus{
+                outline-color: transparent !important;
+                outline-style: none !important;
+                outline-width: 0px !important;
+                border: none !important;
+            }
         </style>
     </head>
     <body>
@@ -483,6 +494,7 @@
                             {{ method_field('post')}}
                             <label for="nomeAtor">Digite o nome do Ator ou da Atriz que está buscando</label>
                             <br/>
+                            <br/>
                             @if (!isset($nomeAtor) && isset($nomeBuscado))
                             <input type="text" placeholder="Insira o nome do ator ou da atriz buscado" id="nomeAtor" name="nomeAtor" title="Insira o nome da atriz ou do ator buscado" value="{{ $nomeBuscado }}">
                             @else
@@ -505,6 +517,7 @@
                             {{ csrf_field() }}
                             {{ method_field('post')}}
                             <label for="idAtor">Digite o id do Ator ou da Atriz que está buscando</label>
+                            <br/>
                             <br/>
                             @if (!isset($idAtor) && isset($idBuscado))
                             <input type="text" placeholder="Insira o id do ator ou da atriz buscado" id="idAtor" name="idAtor" title="Insira o id da atriz ou do ator buscado" value="{{ $idBuscado }}">

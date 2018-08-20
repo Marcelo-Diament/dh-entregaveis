@@ -4,7 +4,6 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
         <title>Aula 38 | Laravel IV | Filmes</title>
 
         <!-- Fonts -->
@@ -298,6 +297,18 @@
                 display: inline-flex;
                 margin-left: 20px;
             }
+            a:focus, button:focus, input:focus, select:focus, option:focus, input[type=submit]:focus{
+                outline-color: transparent !important;
+                outline-style: none !important;
+                outline-width: 0px !important;
+                border: 1px solid #fa503a;
+            }
+            .title a:focus{
+                outline-color: transparent !important;
+                outline-style: none !important;
+                outline-width: 0px !important;
+                border: none !important;
+            }
         </style>
     </head>
     <body>
@@ -465,6 +476,7 @@
                             {{ method_field('post')}}
                             <label for="nomeFilme">Digite o nome do Filme que está buscando</label>
                             <br/>
+                            <br/>
                             @if (!isset($nomeFilme) && isset($nomeBuscado))
                             <input type="text" placeholder="Insira o nome do filme buscado" id="nomeFilme" name="nomeFilme" title="Insira o nome do filme buscado" value="{{ $nomeBuscado }}">
                             @else
@@ -488,6 +500,7 @@
                             {{ csrf_field() }}
                             {{ method_field('post')}}
                             <label for="idFilme">Digite o id do Filme que está buscando</label>
+                            <br/>
                             <br/>
                             @if (!isset($idFilme) && isset($idBuscado))
                             <input type="text" placeholder="Insira o id do filme buscado" id="idFilme" name="idFilme" title="Insira o id do filme buscado" value="{{ $idBuscado }}">

@@ -4,8 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Aula 38 | Laravel IV</title>
+        <title>Aula 38 | Laravel IV | Início</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -297,6 +296,18 @@
             .botoes-inline{
                 display: inline-flex;
                 margin-left: 20px;
+            }
+            a:focus, button:focus, input:focus, select:focus, option:focus, input[type=submit]:focus{
+                outline-color: transparent !important;
+                outline-style: none !important;
+                outline-width: 0px !important;
+                border: 1px solid #fa503a;
+            }
+            .title a:focus{
+                outline-color: transparent !important;
+                outline-style: none !important;
+                outline-width: 0px !important;
+                border: none !important;
             }
         </style>
     </head>

@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Aula 38 | Laravel IV</title>
+        <title>Aula 38 | Laravel IV | Adicionar Ator</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -297,6 +297,18 @@
                 display: inline-flex;
                 margin-left: 20px;
             }
+            a:focus, button:focus, input:focus, select:focus, option:focus, input[type=submit]:focus{
+                outline-color: transparent !important;
+                outline-style: none !important;
+                outline-width: 0px !important;
+                border: 1px solid #fa503a;
+            }
+            .title a:focus{
+                outline-color: transparent !important;
+                outline-style: none !important;
+                outline-width: 0px !important;
+                border: none !important;
+            }
         </style>
     </head>
     <body>
@@ -320,33 +332,60 @@
                         Aula 38 | Laravel IV
                     </a>
                 </div>
+
                 <!-- VALIDAÇÃO - INÍCIO-->
                 @if (isset($atorJaCadastrado))
+                <br/>
                     <div class="bloco-exercicio" id="resultadoAtorAddFail">
                         <div class="enunciado">
                             <h2><i class="fas fa-code"></i> Ops...</h2>
                         </div>
                         <div class="resultado">
-                            <h3>Parece que o ator/atriz <b>{{$nomeCompleto}}</b> já está cadastrado! Verifique a lista de todos os atores cadastrados.</h3>
+                            <h3>Parece que o ator/atriz <b>{{$nomeCompleto}}</b> já está cadastrado(a)! Verifique a <a href="{{url('/atores#todosOsAtores')}}" target="_self" title="Ver Lista de Atores" rel="next" alt="Ver Lista de Atores">lista</a> de todos os atores cadastrados.</h3>
                             <br/>
-                            <form action="/atores#todosOsAtores" method="get">
-                                <input type="submit" value="Ver Todos os Atores">
-                            </form>
+                            <div class="profile">
+                                <img class="profile-pic" src="@if ($atorExistente[0]['picture_url'] != null) {{$atorExistente[0]['picture_url']}} @else https://us.123rf.com/450wm/berkut2011/berkut20111506/berkut2011150600452/41143316-stock-vector-man-in-suit-secret-service-agent-icon.jpg?ver=6 @endif" title="{{$atorExistente[0]['first_name']}} {{$atorExistente[0]['last_name']}}" alt="{{$atorExistente[0]['first_name']}} {{$atorExistente[0]['last_name']}}" height="150" width="150">
+                                <ul class="lista profile-desc">
+                                    <li>Nome: {{$atorExistente[0]['first_name']}}</li>
+                                    <li>Sobrenome: {{$atorExistente[0]['last_name']}}</li>
+                                    <li>Avaliação: 
+                                        @if (isset($atorExistente[0]['rating']))
+                                            {{$atorExistente[0]['rating']}} 
+                                        @else
+                                            Não Avaliado
+                                        @endif
+                                        <br/>
+                                        @if (isset($atorExistente[0]['rating']))
+                                            @for ($i = 0; $i < intval($atorExistente[0]['rating']); $i++)
+                                                <i style="font-size:10pt;color:#fa503a;" class="fas fa-star"></i>
+                                            @endfor
+                                        @endif
+                                        @if ($atorExistente[0]['rating'] - intval($atorExistente[0]['rating']) > 0)
+                                            <i style="font-size:10pt;color:#fa503a;" class="fas fa-star-half"></i>
+                                        @endif
+                                    </li>
+                                    <li>Filme favorito: @if (isset($atorExistente[0]['favorite_movie_id'])) <br/>{{$atorExistente[0]['favMovie']['title']}} @else Não informado @endif</li>
+                                </ul>
+                            </div>
                             <br/>
-                            <form action="/add#adicionarAtorEnunciado" method="get">
-                                <input type="submit" value="Adicionar Novo Ator">
-                            </form>
+                            <div class="botoes-inline">
+                                <form action="/atores#todosOsAtores" method="get">
+                                    <input type="submit" value="Ver Todos os Atores">
+                                </form>
+                                <br/>
+                                <form action="/add#adicionarAtorEnunciado" method="get">
+                                    <input type="submit" value="Adicionar Novo Ator">
+                                </form>
+                            </div>
                         </div>
                     </div>
-                @endif
-
-                @if (isset($atorSalvo) && isset($novoAtor))
+                @elseif (isset($atorSalvo) && isset($novoAtor))
                     <div class="bloco-exercicio" id="resultadoAtorAddSuccess">
                         <div class="enunciado">
                             <h2><i class="fas fa-code"></i> Novo Ator/Atriz Adicionado(a)!</h2>
                         </div>
                         <div class="resultado">
-                            <h3>O ator <b>{{$novoAtor->first_name}}</b> foi salvo com sucesso! Confira os detalhes a seguir:</h3>
+                            <h3>O cadastro de <b>{{$nomeCompleto}}</b> foi salvo com sucesso! Confira os detalhes a seguir:</h3>
                             <div class="profile">
                                 <img class="profile-pic" src="@if ($novoAtor->picture_url != null) {{$novoAtor->picture_url}} @else https://us.123rf.com/450wm/berkut2011/berkut20111506/berkut2011150600452/41143316-stock-vector-man-in-suit-secret-service-agent-icon.jpg?ver=6 @endif" title="{{$novoAtor->first_name}} {{$novoAtor->last_name}}" alt="{{$novoAtor->first_name}} {{$novoAtor->last_name}}" height="150" width="150">
                                 <ul class="lista profile-desc">
