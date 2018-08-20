@@ -66,7 +66,7 @@ class GeneroSeeder extends Seeder
         // $genero->save();
 
         // CRIANDO GENEROS PELO SEEDS DE ACORDO COM DEFINIÇÃO DA FACTORY
-        $generos = factory(Generos:class)->times(5)->create();
+        $generos = factory(Genre::class)->times(5)->create();
 
     }
 }
