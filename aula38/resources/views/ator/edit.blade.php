@@ -381,144 +381,41 @@
                 @endif
                 <!-- CONFIRMAÇÃO ADIÇÃO DE ATOR COM LISTA EM SEGUIDA -->
                 
-                <!-- INÍCIO CUSTOM WELCOME -->
-                <div class="bloco-exercicio" id="adicionarAtorEnunciado">
-                    <div class="enunciado">
-                        <h2><i class="fas fa-code"></i> Editar Ator/Atriz {{$atorParaEditarId->first_name}} {{$atorParaEditarId->last_name}}</h2>
-                    </div>
-                    <div class="resultado">
-                        <h3>Preencha o formulário a seguir para adicionar seu novo ator</h3>
-                        <br/>
-                        <small><b>Atenção:</b> para simular um erro, insira uma avaliação maior que 10 e menor que 11 (como 10,5).</small>
-                        <br/>
-                        <br/>
-                        <br/>
-                        <div class="indice">
-                            @if (count($errors) > 0)
-                                <ol class="lista">
-                                    @foreach ($errors->all() as $error)
-                                      <li><h4><b>{{ $error }}</b></h4></li>
-                                    @endforeach
-                                </ol>
-                                <br/>
-                            @endif
-                        </div>
-                        <!-- FORMULÁRIO EDITAR ATOR - INÍCIO -->
-                        @if (isset($atorParaEditarId))
-                            <form id="editarAtor" name="editarAtor" action ="/ator/edit" method="POST">
-                                {{ csrf_field() }}
-                                {{ method_field('post')}}
-                                <div class="">
-                                    <label for="nomeAtor">Nome</label>
-                                    <br/>
-                                    @if ($errors->has('first_name'))
-                                        <input style="background-color:#fa503a;color:#fff" type="text" name="first_name" id="nomeAtor" placeholder="Insira aqui o nome do ator" required value="{{ $atorParaEditarId->first_name }}"/>
-                                    @else
-                                        <input type="text" name="first_name" id="nomeAtor" placeholder="Insira aqui o nome do ator" required value="{{ $atorParaEditarId->first_name }}"/>
-                                    @endif
-                                </div>
-                                <div class="">
-                                    <label for="sobrenomeAtor">Sobrenome</label>
-                                    <br/>
-                                    @if ($errors->has('last_name'))
-                                        <input style="background-color:#fa503a;color:#fff" type="text" name="last_name" id="sobrenomeAtor" placeholder="Insira aqui o sobrenome do ator" required value="{{ $atorParaEditarId->last_name }}"/>
-                                    @else
-                                        <input type="text" name="last_name" id="sobrenomeAtor" placeholder="Insira aqui o sobrenome do ator" required value="{{ $atorParaEditarId->last_name }}"/>
-                                    @endif
-                                </div>
-                                <div class="">
-                                    <label for="avaliacaoAtor">Avaliação (0 - 10)</label>
-                                    <br/>
-                                    @if ($errors->has('rating'))
-                                        <input style="background-color:#fa503a;color:#fff" type="number" name="rating" id="avaliacaoAtor" placeholder="Insira aqui a avaliação" min="0" max="10" step="0.1" required value="{{ $atorParaEditarId->rating }}"/>
-                                    @else
-                                        <input type="number" name="rating" id="avaliacaoAtor" placeholder="Insira aqui a avaliação" min="0" max="11" step="0.1" required value="{{ $atorParaEditarId->rating }}"/>
-                                    @endif
-                                </div>
-                                <div class="">
-                                    <label for="picture">Link da Imagem do Ator</label>
-                                    <small>Busque uma imagem bacana no Google e cole a URL no campo a seguir.</small>
-                                    <br/>
-                                    @if ($errors->has('picture_url'))
-                                        <input style="background-color:#fa503a;color:#fff;" type="text" name="picture_url" id="picture" placeholder="Insira aqui a URL da imagem" value="{{ $atorParaEditarId->picture_url }}"/>
-                                    @else
-                                        <input type="text" name="picture_url" id="picture_url" placeholder="Insira aqui a URL da imagem" value="{{ $atorParaEditarId->picture_url }}"/>
-                                    @endif
-                                </div>
-                                <!-- <div class="">
-                                    <label for="favMovieId">Filme Favorito</label>
-                                    <br/>
-                                    @if ($errors->has('favorite_movie_id'))
-                                    <select style="background-color:#fa503a;color:#fff" name="favorite_movie_id" required form="adicionarAtor">
-                                        {{ $options = App\Movie::all()->pluck('title', 'id') }}
-                                        <option selected value="{{$atorParaEditarId->favMovie['id']}}">{{$atorParaEditarId->favMovie['id']}} - {{$atorParaEditarId->favMovie['title']}}</option>
-                                        @foreach ($options as $id=>$value) 
-                                            <option value="{{ $id }}">{{ $id }} - {{ $value }}</option>
-                                        @endforeach
-                                    </select>
-                                    @else
-                                    <select name="favorite_movie_id" form="adicionarAtor">
-                                        <option selected disabled value="{{$atorParaEditarId->favMovie['id']}}">{{$atorParaEditarId->favMovie['id']}} - {{$atorParaEditarId->favMovie['title']}}</option>
-                                        {{ $options = App\Movie::all()->pluck('title', 'id') }}
-                                        @foreach ($options as $id=>$value) 
-                                            <option value="{{ $id }}">{{ $id }} - {{ $value }}</option>
-                                        @endforeach
-                                    </select>
-                                    @endif
-                                </div> -->
-                                <br>
-                                <div class="">
-                                  <input type="submit" value="Atualizar Ator" class=""/>
-                                </div>
-                            </form>
-                        @endif
-                        <!-- FORMULÁRIO EDITAR ATOR - FIM -->
-                    </div>
-                </div>
 
                 <!-- RESULTADO BUSCA ATOR POR LINK ID - INÍCIO-->
                 @if (isset($atorParaEditarId))
                     <div class="bloco-exercicio" id="resultadoBuscaAtorId">
                         <div class="enunciado">
-                            <h2><i class="fas fa-code"></i> Detalhes de {{ $atorParaEditarId->first_name . ' ' . $atorParaEditarId->last_name }}</h2>
+                            <h2><i class="fas fa-code"></i> Atriz ou Ator {{ $atorParaEditarId[0]['first_name'] . ' ' . $atorParaEditarId[0]['last_name'] }} atualizada(o) com sucesso!</h2>
                         </div>
                         <div class="resultado">
-                            <h3>O ator/atriz de id <b>{{ $atorParaEditarId->id }}</b> se chama <b>{{ $atorParaEditarId->first_name .' '. $atorParaEditarId->last_name }}</b>.</h3>
-                            <h3>Confira abaixo os detalhes sobre {{ $atorParaEditarId->first_name}}:</h3>
+                            <h3>O ator/atriz de id <b>{{ $atorParaEditarId[0]['id'] }}</b> se chama <b>{{ $atorParaEditarId[0]['first_name'] .' '. $atorParaEditarId[0]['last_name'] }}</b>.</h3>
+                            <h3>Confira abaixo os detalhes sobre {{ $atorParaEditarId[0]['first_name']}}:</h3>
                             <div class="profile">
-                                <img class="profile-pic" src="@if ($atorParaEditarId->picture_url != null) {{$atorParaEditarId->picture_url}} @else https://us.123rf.com/450wm/berkut2011/berkut20111506/berkut2011150600452/41143316-stock-vector-man-in-suit-secret-service-agent-icon.jpg?ver=6 @endif" title="{{$atorParaEditarId->first_name}} {{$atorParaEditarId->last_name}}" alt="{{$atorParaEditarId->first_name}} {{$atorParaEditarId->last_name}}" height="150" width="150">
+                                <img class="profile-pic" src="@if ($atorParaEditarId[0]['picture_url'] != null) {{$atorParaEditarId[0]['picture_url']}} @else https://us.123rf.com/450wm/berkut2011/berkut20111506/berkut2011150600452/41143316-stock-vector-man-in-suit-secret-service-agent-icon.jpg?ver=6 @endif" title="{{$atorParaEditarId[0]['first_name']}} {{$atorParaEditarId[0]['last_name']}}" alt="{{$atorParaEditarId[0]['first_name']}} {{$atorParaEditarId[0]['last_name']}}" height="150" width="150">
                                 <ul class="lista profile-desc">
-                                    <li>Nome: {{$atorParaEditarId->first_name}}</li>
-                                    <li>Sobrenome: {{$atorParaEditarId->last_name}}</li>
+                                    <li>Nome: {{$atorParaEditarId[0]['first_name']}}</li>
+                                    <li>Sobrenome: {{$atorParaEditarId[0]['last_name']}}</li>
                                     <li>Avaliação:
-                                        @if (isset($atorParaEditarId->rating))
-                                            {{$atorParaEditarId->rating}} 
+                                        @if (isset($atorParaEditarId[0]['rating']))
+                                            {{$atorParaEditarId[0]['rating']}} 
                                         @else
                                             Não Avaliado
                                         @endif
                                         <br/>
-                                        @if (isset($atorParaEditarId->rating))
-                                            @for ($i = 0; $i < intval($atorParaEditarId->rating); $i++)
+                                        @if (isset($atorParaEditarId[0]['rating']))
+                                            @for ($i = 0; $i < intval($atorParaEditarId[0]['rating']); $i++)
                                                 <i style="font-size:10pt;color:#fa503a;" class="fas fa-star"></i>
                                             @endfor
                                         @endif
-                                        @if ($atorParaEditarId->rating - intval($atorParaEditarId->rating) > 0)
+                                        @if ($atorParaEditarId[0]['rating'] - intval($atorParaEditarId[0]['rating']) > 0)
                                             <i style="font-size:10pt;color:#fa503a;" class="fas fa-star-half"></i>
                                         @endif
                                     </li>
-                                    <li>Filme favorito: @if (isset($atorParaEditarId->favorite_movie_id)) <br/>{{$atorParaEditarId->favMovie['title']}} @else Não informado @endif</li>
+                                    <li>Filme favorito: @if (isset($atorParaEditarId[0]['favorite_movie_id'])) <br/>{{$atorParaEditarId[0]->favMovie['title']}} @else Não informado @endif</li>
                                 </ul>
                             </div>
                             <h3>Quer ver mais? Então clique <a href="{{url('/atores/#todosOsAtores')}}" target="_self" title="Ver todos os atores e atrizes" rel="next" alt="Ver todos os atores e atrizes">aqui</a> e confira a lista de todos os atores e atrizes.</h3>
-                        </div>
-                    </div>
-                @elseif (isset($idLinkBuscado))
-                    <div class="bloco-exercicio" id="resultadoBuscaAtorId">
-                        <div class="enunciado">
-                            <h2><i class="fas fa-code"></i> Resultado da Busca de Ator por Id</h2>
-                        </div>
-                        <div class="resultado">
-                            <h3>Ops! Parece que não há nenhum ator nem atriz com id <b>{{ $idLinkBuscado }}</b>. Clique <a href="{{url('/atores/#todosOsAtores')}}" target="_self" title="Ver todos os atores e atrizes" rel="next" alt="Ver todos os atores e atrizes">aqui</a> para ver a lista de todos os atores e atrizes.</h3>
                         </div>
                     </div>
                 @endif

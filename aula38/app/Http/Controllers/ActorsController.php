@@ -114,15 +114,55 @@ class ActorsController extends Controller
 
     public function edit($id) {
         $atorParaEditarId = Actor::find($id);
-        return view('ator/form_edit')
+        return view('ator/edit')
         ->with('atorParaEditarId', $atorParaEditarId)
         ->with('idLinkBuscado', $id);
     }
 
-    public function update() {
-        return view('atores');
-    }
+    public function update(Request $request) {
 
+        $this->validate($request, [
+            'first_name' => 'required|max:100',
+            'last_name' => 'required|max:100',
+            'rating' => 'required|numeric|min:0|max:10',
+            'picture_url' => 'max:500',
+            // 'favMovie' => 'required|numeric|min:0',
+        ]);
+
+        $nomeCompleto = $request->input('first_name').' '.$request->input('last_name');
+        $nomeBd = Actor::where('first_name',$request->input('first_name'))->get();
+        $nomeInput = $request->input('first_name');
+        $sobrenomeBd = Actor::where('last_name', $request->input('last_name'))->get();
+        $sobrenomeInput = $request->input('last_name');
+        $atorJaCadastrado = 'Ator já cadastrado';
+        $atorParaEditarId = Actor::where('first_name', '=',$nomeInput)->where('last_name', '=', $sobrenomeInput)->get();
+
+            $first_name = $request->input('first_name');
+            $last_name = $request->input('last_name');
+            $rating = $request->input('rating');
+            $picture_url = $request->input('picture_url');
+            // 'favorite_movie_id' => $request->input('favMovie')
+        
+
+        $id = $atorParaEditarId[0]['id'];
+        $atualizado = Actor::where('id', $id)->update($request->except(['_method', '_token']));
+
+        if($atualizado){
+
+            $atores = Actor::all();
+            return view('ator/edit')
+                ->with('atorParaEditarId', $atorParaEditarId)
+                ->with('id', $id)
+                ->with('atualizado', $atualizado)
+                ->with('atores', $atores);
+        } else {
+            $atores = Actor::all();
+            return view('ator/edit')
+                ->with('atorParaEditarId', $atorParaEditarId)
+                ->with('id', $id)
+                ->with('atores', $atores);
+        }
+    }
 
 
 }

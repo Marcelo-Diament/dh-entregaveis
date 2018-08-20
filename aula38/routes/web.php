@@ -43,4 +43,4 @@ Route::post('/adicionarAtor', 'ActorsController@adicionarAtor');
 
 Route::get('ator/form_edit/{id}', 'ActorsController@edit');
 
-Route::get('ator/edit/{id}', 'ActorsController@update');
+Route::post('ator/edit', 'ActorsController@update');
