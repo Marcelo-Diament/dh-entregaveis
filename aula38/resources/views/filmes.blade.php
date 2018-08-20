@@ -294,6 +294,10 @@
               0% { transform: rotateY(0) ;}
               100% { transform: rotateY(360deg) ;}
             }
+            .botoes-inline{
+                display: inline-flex;
+                margin-left: 20px;
+            }
         </style>
     </head>
     <body>

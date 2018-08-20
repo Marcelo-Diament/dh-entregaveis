@@ -294,6 +294,10 @@
               0% { transform: rotateY(0) ;}
               100% { transform: rotateY(360deg) ;}
             }
+            .botoes-inline{
+                display: inline-flex;
+                margin-left: 20px;
+            }
         </style>
     </head>
     <body>
@@ -427,6 +431,7 @@
                                         <li><a href="{{url('/atores#todosOsAtores')}}" target="_self" title="Ver Lista de Atores" rel="next" alt="Ver Lista de Atores">Ver Lista de Atores</a></li>
                                         <li><a href="{{url('/atores#buscaNomeAtor')}}" target="_self" title="Buscar Ator por Nome" rel="next" alt="Buscar Ator por Nome">Buscar Ator Por Nome</a></li>
                                         <li><a href="{{url('/atores#buscaIdAtor')}}" target="_self" title="Buscar Ator por Id" rel="next" alt="Buscar Ator por Id">Buscar Ator por Id</a></li>
+                                        <li><a href="{{url('/add#adicionarAtorEnunciado')}}" target="_self" title="Adicionar Novo Ator" rel="next" alt="Adicionar Novo Ator">Adicionar Novo Ator</a></li>
                                     </ul>
                                 </li>
                             </ul>
