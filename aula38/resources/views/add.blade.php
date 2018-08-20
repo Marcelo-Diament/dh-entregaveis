@@ -449,6 +449,23 @@
                 @endif
                 <!-- VALIDAÇÃO - FIM -->
 
+                <!-- LISTAR TODOS OS ATORES - INÍCIO-->
+                @if (isset($atorSalvo) && isset($novoAtor))
+                    <div class="bloco-exercicio" id="todosOsAtores">
+                        <div class="enunciado">
+                            <h2><i class="fas fa-code"></i> Lista de Todos os Atores</h2>
+                        </div>
+                        <div class="resultado">
+                            <ul class="lista">
+                                @foreach ($atores as $index=>$valor)
+                                    <li>{{ $valor['first_name'] }} {{ $valor['last_name'] }} <a href="http://localhost:8000/ator/{{$valor['id']}}#resultadoBuscaAtorId" target="_self" title="Acessar Detalhes do Ator" rel="next" alt="Acessar Detalhes do Ator"><i class="fas fa-plus-circle"></i></a></li><br/>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                @endif
+                <!-- LISTAR TODOS OS ATORES - FIM -->
+
                 <!-- INÍCIO CUSTOM WELCOME -->
                 <div class="bloco-exercicio" id="adicionarAtorEnunciado">
                     <div class="enunciado">

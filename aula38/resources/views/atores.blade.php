@@ -334,6 +334,55 @@
                     </a>
                 </div>
 
+                <!-- CONFIRMAÇÃO ADIÇÃO DE ATOR COM LISTA EM SEGUIDA -->
+                @if (isset($nomeCompleto))
+                    <div class="bloco-exercicio" id="resultadoAtorAddSuccess">
+                        <div class="enunciado">
+                            <h2><i class="fas fa-code"></i> Novo Ator/Atriz Adicionado(a)!</h2>
+                        </div>
+                        <div class="resultado">
+                            <h3>O cadastro de <b>{{$nomeCompleto}}</b> foi salvo com sucesso! Confira os detalhes a seguir:</h3>
+                            <div class="profile">
+                                <img class="profile-pic" src="@if ($novoAtor->picture_url != null) {{$novoAtor->picture_url}} @else https://us.123rf.com/450wm/berkut2011/berkut20111506/berkut2011150600452/41143316-stock-vector-man-in-suit-secret-service-agent-icon.jpg?ver=6 @endif" title="{{$novoAtor->first_name}} {{$novoAtor->last_name}}" alt="{{$novoAtor->first_name}} {{$novoAtor->last_name}}" height="150" width="150">
+                                <ul class="lista profile-desc">
+                                    <li>Nome: {{$novoAtor->first_name}}</li>
+                                    <li>Sobrenome: {{$novoAtor->last_name}}</li>
+                                    <li>Avaliação: 
+                                        @if (isset($novoAtor->rating))
+                                            {{$novoAtor->rating}} 
+                                        @else
+                                            Não Avaliado
+                                        @endif
+                                        <br/>
+                                        @if (isset($novoAtor->rating))
+                                            @for ($i = 0; $i < intval($novoAtor->rating); $i++)
+                                                <i style="font-size:10pt;color:#fa503a;" class="fas fa-star"></i>
+                                            @endfor
+                                        @endif
+                                        @if ($novoAtor->rating - intval($novoAtor->rating) > 0)
+                                            <i style="font-size:10pt;color:#fa503a;" class="fas fa-star-half"></i>
+                                        @endif
+                                    </li>
+                                    <li>Filme favorito: @if (isset($novoAtor->favorite_movie_id)) <br/>{{$novoAtor->favMovie['title']}} @else Não informado @endif</li>
+                                </ul>
+                            </div>
+                            <br/>
+                            <br/>
+                            <div class="botoes-inline">
+                            <form action="/atores#todosOsAtores" method="get">
+                                <input type="submit" value="Ver Todos os Atores">
+                            </form>
+                            <form action="/add#adicionarAtorEnunciado" method="get">
+                                <input type="submit" value="Adicionar Mais um Ator">
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+                <!-- CONFIRMAÇÃO ADIÇÃO DE ATOR COM LISTA EM SEGUIDA -->
+
+
+
                 <!-- RESULTADO DE BUSCA DE ATOR POR NOME - INÍCIO-->
                     @if (isset($nomeBuscado) && $atorPorNome != null)
                         <div class="bloco-exercicio" id="resultadoBuscaNomeAtor">
@@ -533,7 +582,7 @@
 
 
                 <!-- LISTAR TODOS OS ATORES - INÍCIO-->
-                @if (isset($atores))
+                <!-- @if (isset($atores)) -->
                     <div class="bloco-exercicio" id="todosOsAtores">
                         <div class="enunciado">
                             <h2><i class="fas fa-code"></i> Lista de Todos os Atores</h2>
@@ -546,7 +595,7 @@
                             </ul>
                         </div>
                     </div>
-                @endif
+                <!-- @endif -->
                 <!-- LISTAR TODOS OS ATORES - FIM -->
 
 

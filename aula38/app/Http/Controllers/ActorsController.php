@@ -102,10 +102,12 @@ class ActorsController extends Controller
                 $salvarAtor = $novoAtor->save();
 
                 if ($salvarAtor) {
+                $atores = Actor::all();
                   return view('add')
                     ->with('novoAtor', $novoAtor)
                     ->with('nomeCompleto', $nomeCompleto)
-                    ->with('atorSalvo', true);
+                    ->with('atorSalvo', true)
+                    ->with('atores', $atores);
                 }
             }
     }
