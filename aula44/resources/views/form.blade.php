@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Aula 38 | Laravel IV | Adicionar Filme</title>
+        <title>Aula 44 | Laravel IX | Adicionar Filme</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -329,7 +329,7 @@
                 <div class="title m-b-md">
                     <a href="{{url('/')}}" target="_self" title="Tela Inicial" rel="next" alt="Acessar Tela Inicial">
                         <img src="https://midnightcorp.com/wp-content/themes/midnightwp/dist/images/laravel.png" alt="Laravel" width="128" height="auto">
-                        Aula 38 | Laravel IV
+                        Aula 44 | Laravel IX | Adicionar Filme
                     </a>
                 </div>
                 <!-- EXERCCÍCIO 01 C (validando erros no envio) - INÍCIO-->
