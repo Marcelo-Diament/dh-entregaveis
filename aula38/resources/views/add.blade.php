@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Aula 38 | Laravel IV | Adicionar Ator</title>
+        <title>Aula 38 | Laravel IV</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -329,7 +329,7 @@
                 <div class="title m-b-md">
                     <a href="{{url('/')}}" target="_self" title="Tela Inicial" rel="next" alt="Acessar Tela Inicial">
                         <img src="https://midnightcorp.com/wp-content/themes/midnightwp/dist/images/laravel.png" alt="Laravel" width="128" height="auto">
-                        Aula 38 | Laravel IV
+                        Laravel | Requests
                     </a>
                 </div>
 
@@ -458,7 +458,14 @@
                         <div class="resultado">
                             <ul class="lista">
                                 @foreach ($atores as $index=>$valor)
-                                    <li>{{ $valor['first_name'] }} {{ $valor['last_name'] }} <a href="http://localhost:8000/ator/{{$valor['id']}}#resultadoBuscaAtorId" target="_self" title="Acessar Detalhes do Ator" rel="next" alt="Acessar Detalhes do Ator"><i class="fas fa-plus-circle"></i></a></li><br/>
+                                    <li>
+                                        {{ $valor['first_name'] }} {{ $valor['last_name'] }} <a href="http://localhost:8000/ator/{{$valor['id']}}#resultadoBuscaAtorId" target="_self" title="Acessar Detalhes do Ator" rel="next" alt="Acessar Detalhes do Ator"><i class="fas fa-plus-circle"></i></a>
+                                        <br/>
+                                        <small>Opções: </small> 
+                                        <a href="http://localhost:8000/ator/{{$valor['id']}}#resultadoBuscaAtorId" target="_self" title="Acessar Detalhes do Ator" rel="next" alt="Acessar Detalhes do Ator"><i class="fas fa-plus-circle"></i></a> |   
+                                        <a href="http://localhost:8000/ator/form_edit/{{$valor['id']}}" target="_self" title="Editar Detalhes do Ator" rel="next" alt="Editar Detalhes do Ator">  <i class="fas fa-pencil-alt"></i></a> | 
+                                        <a href="http://localhost:8000/ator/form_del/{{$valor['id']}}" target="_self" title="Apagar Ator" rel="next" alt="Apagar Ator">  <i class="fas fa-trash-alt"></i></a>
+                                    </li><br/>
                                 @endforeach
                             </ul>
                         </div>

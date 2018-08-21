@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Aula 38 | Laravel IV | Atores</title>
+        <title>Aula 38 | Laravel IV</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -174,8 +174,8 @@
                 padding: 15px;
             }
             img.profile-pic{
-                height: 150px;
-                width: 150px;
+/*                height: 150px;
+                width: 150px;*/
                 border-radius: 50%;
                 margin: auto;
                 border: 2px solid #fa503a;
@@ -330,7 +330,7 @@
                 <div class="title m-b-md">
                     <a href="{{url('/')}}" target="_self" title="Tela Inicial" rel="next" alt="Acessar Tela Inicial">
                         <img src="https://midnightcorp.com/wp-content/themes/midnightwp/dist/images/laravel.png" alt="Laravel" width="128" height="auto">
-                        Aula 37 | Laravel III
+                        Laravel | Requests
                     </a>
                 </div>
 
@@ -420,6 +420,8 @@
                                                 @endif
                                             </li>
                                             <li>Filme favorito: @if (isset($valor->favorite_movie_id)) <br/>{{$valor->favMovie['title']}} @else Não informado @endif</li>
+                                            <a href="http://localhost:8000/ator/form_edit/{{$valor->id}}" target="_self" title="Editar Detalhes do Ator" rel="next" alt="Editar Detalhes do Ator">  <i class="fas fa-pencil-alt"></i></a> | 
+                                            <a href="http://localhost:8000/ator/form_del/{{$valor->id}}" target="_self" title="Apagar Ator" rel="next" alt="Apagar Ator">  <i class="fas fa-trash-alt"></i></a><br/>
                                         </ul>
                                     </div>
                                 @endforeach
@@ -468,6 +470,9 @@
                                             @endif
                                         </li>
                                         <li>Filme favorito: @if (isset($atorPorId[0]->favorite_movie_id)) <br/>{{$atorPorId[0]->favMovie['title']}} @else Não informado @endif</li>
+                                        <br/>
+                                        <a href="http://localhost:8000/ator/form_edit/{{$atorPorId[0]->id}}" target="_self" title="Editar Detalhes do Ator" rel="next" alt="Editar Detalhes do Ator">  <i class="fas fa-pencil-alt"></i></a> | 
+                                        <a href="http://localhost:8000/ator/form_del/{{$atorPorId[0]->id}}" target="_self" title="Apagar Ator" rel="next" alt="Apagar Ator">  <i class="fas fa-trash-alt"></i></a><br/>
                                     </ul>
                                 </div>
                                 <h3>Quer ver mais? Então clique <a href="{{url('/atores/#todosOsAtores')}}" target="_self" title="Ver todos os atores e atrizes" rel="next" alt="Ver todos os atores e atrizes">aqui</a> e confira a lista de todos os atores e atrizes.</h3>
@@ -515,6 +520,8 @@
                                         @endif
                                     </li>
                                     <li>Filme favorito: @if (isset($atorPorLinkId->favorite_movie_id)) <br/>{{$atorPorLinkId->favMovie['title']}} @else Não informado @endif</li>
+                                    <a href="http://localhost:8000/ator/form_edit/{{$atorPorLinkId->id}}" target="_self" title="Editar Detalhes do Ator" rel="next" alt="Editar Detalhes do Ator">  <i class="fas fa-pencil-alt"></i></a> | 
+                                    <a href="http://localhost:8000/ator/form_del/{{$atorPorLinkId->id}}" target="_self" title="Apagar Ator" rel="next" alt="Apagar Ator">  <i class="fas fa-trash-alt"></i></a><br/>
                                 </ul>
                             </div>
                             <h3>Quer ver mais? Então clique <a href="{{url('/atores/#todosOsAtores')}}" target="_self" title="Ver todos os atores e atrizes" rel="next" alt="Ver todos os atores e atrizes">aqui</a> e confira a lista de todos os atores e atrizes.</h3>
@@ -590,9 +597,15 @@
                         <div class="resultado">
                             <ul class="lista">
                                 @foreach ($atores as $index=>$valor)
-                                    <li>{{ $valor['first_name'] }} {{ $valor['last_name'] }}<br/><small>   Opções: </small> 
+                                    <br/>
+                                    <li>
+                                        <b>{{ $valor['first_name'] }} {{ $valor['last_name'] }}</b><br/>
+                                        <small>Opções: </small> 
                                         <a href="http://localhost:8000/ator/{{$valor['id']}}#resultadoBuscaAtorId" target="_self" title="Acessar Detalhes do Ator" rel="next" alt="Acessar Detalhes do Ator"><i class="fas fa-plus-circle"></i></a> |   
-                                        <a href="http://localhost:8000/ator/form_edit/{{$valor['id']}}" target="_self" title="Editar Detalhes do Ator" rel="next" alt="Editar Detalhes do Ator">  <i class="fas fa-pencil-alt"></i></a></li><br/>
+                                        <a href="http://localhost:8000/ator/form_edit/{{$valor['id']}}" target="_self" title="Editar Detalhes do Ator" rel="next" alt="Editar Detalhes do Ator">  <i class="fas fa-pencil-alt"></i></a> | 
+                                        <a href="http://localhost:8000/ator/form_del/{{$valor['id']}}" target="_self" title="Apagar Ator" rel="next" alt="Apagar Ator">  <i class="fas fa-trash-alt"></i></a>
+                                    </li>
+                                    <br/>
                                 @endforeach
                             </ul>
                         </div>

@@ -17,30 +17,35 @@ Route::get('/', function () {
 
 // FILMES
 
-Route::get('/filmes', 'MoviesController@listarFilmes');
+	// Listar
+	Route::get('/filmes', 'MoviesController@listarFilmes');
 
-Route::post('/filme/buscarNomeFilme', 'MoviesController@buscarNomeFilme');
+	// Buscar
+	Route::post('/filme/buscarNomeFilme', 'MoviesController@buscarNomeFilme');
+	Route::post('/filme/buscarIdFilme', 'MoviesController@buscarIdFilme');
 
-Route::post('/filme/buscarIdFilme', 'MoviesController@buscarIdFilme');
-
-Route::get('/form', 'MoviesController@adicionar');
-
-Route::post('/adicionarFilme', 'MoviesController@adicionarFilme');
+	// Adicionar
+	Route::get('/form', 'MoviesController@adicionar');
+	Route::post('/adicionarFilme', 'MoviesController@adicionarFilme');
 
 // ATORES
 
-Route::get('/atores', 'ActorsController@listarAtores');
+	// Listar
+	Route::get('/atores', 'ActorsController@listarAtores');
 
-Route::post('/ator/buscarNomeAtor/', 'ActorsController@buscarNomeAtor');
+	// Buscar
+	Route::post('/ator/buscarNomeAtor/', 'ActorsController@buscarNomeAtor');
+	Route::post('/ator/buscarIdAtor/', 'ActorsController@buscarIdAtor');
+	Route::get('/ator/{id}', 'ActorsController@linkarAtorPorId');
 
-Route::post('/ator/buscarIdAtor/', 'ActorsController@buscarIdAtor');
+	// Adicionar
+	Route::get('/add', 'ActorsController@adicionar');
+	Route::post('/adicionarAtor', 'ActorsController@adicionarAtor');
 
-Route::get('/ator/{id}', 'ActorsController@linkarAtorPorId');
+	// Editar
+	Route::get('ator/form_edit/{id}', 'ActorsController@edit');
+	Route::post('ator/edit', 'ActorsController@update');
 
-Route::get('/add', 'ActorsController@adicionar');
-
-Route::post('/adicionarAtor', 'ActorsController@adicionarAtor');
-
-Route::get('ator/form_edit/{id}', 'ActorsController@edit');
-
-Route::post('ator/edit', 'ActorsController@update');
+	// Apagar
+	Route::get('ator/form_del/{id}', 'ActorsController@apagar');
+	Route::delete('ator/delete/{id}', 'ActorsController@delete');	

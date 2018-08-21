@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Aula 38 | Laravel IV | Atores</title>
+        <title>Aula 38 | Laravel IV</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -330,7 +330,7 @@
                 <div class="title m-b-md">
                     <a href="{{url('/')}}" target="_self" title="Tela Inicial" rel="next" alt="Acessar Tela Inicial">
                         <img src="https://midnightcorp.com/wp-content/themes/midnightwp/dist/images/laravel.png" alt="Laravel" width="128" height="auto">
-                        Aula 37 | Laravel III
+                        Laravel | Requests
                     </a>
                 </div>
 
@@ -387,8 +387,8 @@
                         <h2><i class="fas fa-code"></i> Editar Ator/Atriz {{$atorParaEditarId->first_name}} {{$atorParaEditarId->last_name}}</h2>
                     </div>
                     <div class="resultado">
-                        <h3>Preencha o formulário a seguir para adicionar seu novo ator</h3>
                         <br/>
+                        <h3>Preencha o formulário a seguir para editar os dados de {{$atorParaEditarId->first_name}}</h3>
                         <small><b>Atenção:</b> para simular um erro, insira uma avaliação maior que 10 e menor que 11 (como 10,5).</small>
                         <br/>
                         <br/>
@@ -405,6 +405,7 @@
                         </div>
                         <!-- FORMULÁRIO EDITAR ATOR - INÍCIO -->
                         @if (isset($atorParaEditarId))
+                            <img class="profile-pic" src="@if ($atorParaEditarId->picture_url != null) {{$atorParaEditarId->picture_url}} @else https://us.123rf.com/450wm/berkut2011/berkut20111506/berkut2011150600452/41143316-stock-vector-man-in-suit-secret-service-agent-icon.jpg?ver=6 @endif" title="{{$atorParaEditarId[0]['first_name']}} {{$atorParaEditarId[0]['last_name']}}" alt="{{$atorParaEditarId[0]['first_name']}} {{$atorParaEditarId[0]['last_name']}}" height="50" width="50" style="margin:0px 50px 25px 25px;">
                             <form id="editarAtor" name="editarAtor" action ="/ator/edit" method="POST">
                                 {{ csrf_field() }}
                                 {{ method_field('post')}}
@@ -445,27 +446,36 @@
                                         <input type="text" name="picture_url" id="picture_url" placeholder="Insira aqui a URL da imagem" value="{{ $atorParaEditarId->picture_url }}"/>
                                     @endif
                                 </div>
-                                <!-- <div class="">
-                                    <label for="favMovieId">Filme Favorito</label>
+                                <div class="">
+                                    <label for="idFilmeFavorito">Filme Favorito</label>
                                     <br/>
-                                    @if ($errors->has('favorite_movie_id'))
-                                    <select style="background-color:#fa503a;color:#fff" name="favorite_movie_id" required form="adicionarAtor">
+                                    <small><i class="fas fa-exclamation-triangle" style="font-size:10pt;margin-left:5px;"></i>   Infelizmente ainda não é possível editar o filme favorito do ator/atriz... Estamos trabalhando para resolver isso! :)</small>
+                                    <!-- @if ($errors->has('idFilmeFavorito'))
+                                    <select style="background-color:#fa503a;color:#fff" name="idFilmeFavorito" required form="adicionarAtor">
                                         {{ $options = App\Movie::all()->pluck('title', 'id') }}
-                                        <option selected value="{{$atorParaEditarId->favMovie['id']}}">{{$atorParaEditarId->favMovie['id']}} - {{$atorParaEditarId->favMovie['title']}}</option>
-                                        @foreach ($options as $id=>$value) 
-                                            <option value="{{ $id }}">{{ $id }} - {{ $value }}</option>
+                                        <option disabled>Selecione o filme predileto do ator</option>
+                                        @foreach ($options as $idFilmeFavorito=>$nomeFilmeFavorito)
+                                            @if ($idFilmeFavorito == $atorParaEditarId->favorite_movie_id['id'])
+                                            <option selected value="{{ $idFilmeFavorito }}">{{ $idFilmeFavorito }} - {{ $nomeFilmeFavorito }}</option>
+                                            @else
+                                            <option value="{{ $idFilmeFavorito }}">{{ $idFilmeFavorito }} - {{ $nomeFilmeFavorito }}</option>
+                                            @endif
                                         @endforeach
                                     </select>
                                     @else
-                                    <select name="favorite_movie_id" form="adicionarAtor">
-                                        <option selected disabled value="{{$atorParaEditarId->favMovie['id']}}">{{$atorParaEditarId->favMovie['id']}} - {{$atorParaEditarId->favMovie['title']}}</option>
+                                    <select name="idFilmeFavorito" form="adicionarAtor">
+                                        <option disabled>Selecione o filme predileto do ator</option>
                                         {{ $options = App\Movie::all()->pluck('title', 'id') }}
-                                        @foreach ($options as $id=>$value) 
-                                            <option value="{{ $id }}">{{ $id }} - {{ $value }}</option>
+                                        @foreach ($options as $idFilmeFavorito=>$nomeFilmeFavorito)
+                                            @if ($idFilmeFavorito == $atorParaEditarId->favorite_movie_id['id'])
+                                            <option selected value="{{ $idFilmeFavorito }}">{{ $idFilmeFavorito }} - {{ $nomeFilmeFavorito }}</option>
+                                            @else
+                                            <option value="{{ $idFilmeFavorito }}">{{ $idFilmeFavorito }} - {{ $nomeFilmeFavorito }}</option>
+                                            @endif
                                         @endforeach
                                     </select>
-                                    @endif
-                                </div> -->
+                                    @endif -->
+                                </div>
                                 <br>
                                 <div class="">
                                   <input type="submit" value="Atualizar Ator" class=""/>

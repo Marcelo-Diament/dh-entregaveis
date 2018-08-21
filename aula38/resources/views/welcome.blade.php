@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Aula 38 | Laravel IV | Início</title>
+        <title>Aula 38 | Laravel IV</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -328,7 +328,7 @@
                 <div class="title m-b-md">
                     <a href="{{url('/')}}" target="_self" title="Tela Inicial" rel="next" alt="Acessar Tela Inicial">
                         <img src="https://midnightcorp.com/wp-content/themes/midnightwp/dist/images/laravel.png" alt="Laravel" width="128" height="auto">
-                        Aula 38 | Laravel IV
+                        Laravel | Requests
                     </a>
                 </div>
 
@@ -345,6 +345,39 @@
                     <div class="resultado">
                         <h3>Acesse os exercícios através do menu abaixo.</h3>
                         <div class="indice">
+
+                            <!-- FUNCIONALIDADES - INÍCIO -->
+                            <ul class="lista">
+                                <li>Funcionalidades</li>
+                                <br/>
+                                <li>
+                                    <ul class="lista">
+                                        <li>Filmes</li>
+                                        <br/>
+                                        <li><a href="{{url('/filmes#todosOsFilmes')}}" target="_self" title="Ver Lista de Filmes" rel="next" alt="Ver Lista de Filmes">Ver Lista de Filmes</a></li>
+                                        <li><a href="{{url('/filmes/#buscaTituloFilme')}}" target="_self" title="Buscar Filme por Título" rel="next" alt="Buscar Filme por Título">Buscar Filme por Título</a></li>
+                                        <li><a href="{{url('/filmes/#buscaIdFilme')}}" target="_self" title="Buscar Filme por Id" rel="next" alt="Buscar Filme por Id">Buscar Filme por Id</a></li>
+                                        <li><a href="{{url('/form#adicionarFilmeEnunciado')}}" target="_self" title="Adicionar Novo Filme" rel="next" alt="Adicionar Novo Filme">Adicionar Novo Filme</a></li>
+                                    </ul>
+                                    <ul class="lista">
+                                        <li>Atores</li>
+                                        <br/>
+                                        <li><a href="{{url('/atores#todosOsAtores')}}" target="_self" title="Ver Lista de Atores" rel="next" alt="Ver Lista de Atores">Ver Lista de Atores</a></li>
+                                        <li><a href="{{url('/atores#buscaNomeAtor')}}" target="_self" title="Buscar Ator por Nome" rel="next" alt="Buscar Ator por Nome">Buscar Ator Por Nome</a></li>
+                                        <li><a href="{{url('/atores#buscaIdAtor')}}" target="_self" title="Buscar Ator por Id" rel="next" alt="Buscar Ator por Id">Buscar Ator por Id</a></li>
+                                        <li><a href="{{url('/add#adicionarAtorEnunciado')}}" target="_self" title="Adicionar Novo Ator" rel="next" alt="Adicionar Novo Ator">Adicionar Novo Ator</a></li>
+                                    </ul>
+                                </li>
+                                <br/>
+                                <small>
+                                    <strong><u>Observações:</u></strong>
+                                    <br/>
+                                        1. Para que o exercício de exclusão de ator funcionasse dentro do escopo da aula, a tabela actor_movie foi excluída.
+                                    <br/>
+                                        2. Na opção de edição de atores, não foi possível atrelar o novo filme favorito ao ator (apenas na criação).
+                                </small>
+                            </ul>
+                            <!-- FUNCIONALIDADES - FIM -->
 
                             <!-- EXERCÍCIO 1 - INÍCIO -->
                             <ul class="lista">
@@ -423,30 +456,6 @@
                             </ul>
                             <!-- EXERCÍCIO 2 - FIM -->
 
-                            <!-- FUNCIONALIDADES - INÍCIO -->
-                            <ul class="lista">
-                                <li>Funcionalidades</li>
-                                <br/>
-                                <li>
-                                    <ul class="lista">
-                                        <li>Filmes</li>
-                                        <br/>
-                                        <li><a href="{{url('/filmes#todosOsFilmes')}}" target="_self" title="Ver Lista de Filmes" rel="next" alt="Ver Lista de Filmes">Ver Lista de Filmes</a></li>
-                                        <li><a href="{{url('/filmes/#buscaTituloFilme')}}" target="_self" title="Buscar Filme por Título" rel="next" alt="Buscar Filme por Título">Buscar Filme por Título</a></li>
-                                        <li><a href="{{url('/filmes/#buscaIdFilme')}}" target="_self" title="Buscar Filme por Id" rel="next" alt="Buscar Filme por Id">Buscar Filme por Id</a></li>
-                                        <li><a href="{{url('/form#adicionarFilmeEnunciado')}}" target="_self" title="Adicionar Novo Filme" rel="next" alt="Adicionar Novo Filme">Adicionar Novo Filme</a></li>
-                                    </ul>
-                                    <ul class="lista">
-                                        <li>Atores</li>
-                                        <br/>
-                                        <li><a href="{{url('/atores#todosOsAtores')}}" target="_self" title="Ver Lista de Atores" rel="next" alt="Ver Lista de Atores">Ver Lista de Atores</a></li>
-                                        <li><a href="{{url('/atores#buscaNomeAtor')}}" target="_self" title="Buscar Ator por Nome" rel="next" alt="Buscar Ator por Nome">Buscar Ator Por Nome</a></li>
-                                        <li><a href="{{url('/atores#buscaIdAtor')}}" target="_self" title="Buscar Ator por Id" rel="next" alt="Buscar Ator por Id">Buscar Ator por Id</a></li>
-                                        <li><a href="{{url('/add#adicionarAtorEnunciado')}}" target="_self" title="Adicionar Novo Ator" rel="next" alt="Adicionar Novo Ator">Adicionar Novo Ator</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                            <!-- FUNCIONALIDADES - FIM -->
                         </div>
                     </div>
                 </div>

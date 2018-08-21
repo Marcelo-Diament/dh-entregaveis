@@ -126,7 +126,7 @@ class ActorsController extends Controller
             'last_name' => 'required|max:100',
             'rating' => 'required|numeric|min:0|max:10',
             'picture_url' => 'max:500',
-            // 'favMovie' => 'required|numeric|min:0',
+            // 'idFilmeFavorito' => 'required|numeric|min:0',
         ]);
 
         $nomeCompleto = $request->input('first_name').' '.$request->input('last_name');
@@ -141,7 +141,7 @@ class ActorsController extends Controller
             $last_name = $request->input('last_name');
             $rating = $request->input('rating');
             $picture_url = $request->input('picture_url');
-            // 'favorite_movie_id' => $request->input('favMovie')
+            // $idFilmeFavorito = $request->input('favorite_movie_id');
         
 
         $id = $atorParaEditarId[0]['id'];
@@ -162,6 +162,23 @@ class ActorsController extends Controller
                 ->with('id', $id)
                 ->with('atores', $atores);
         }
+    }
+
+    public function apagar($id) {
+        $atorParaApagarId = Actor::find($id);
+        // $atorParaApagarId->delete();
+        $id = $id;
+        return view('ator/form_del')
+        ->with('atorParaApagarId', $atorParaApagarId);
+    }
+
+    public function delete($id) {
+        // Actor::disableForeignKeyConstraints()
+        $atorExcluido = Actor::find($id);
+        // $atorExcluido->foreign('id')->references('actor_id')->on('actor_movie')->onDelete('cascade');
+        $atorExcluido->delete();
+        // Actor::enableForeignKeyConstraints()
+        return redirect('/atores#todosOsAtores');
     }
 
 

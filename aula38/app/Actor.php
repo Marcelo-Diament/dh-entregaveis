@@ -17,6 +17,10 @@ class Actor extends Model{
 
     protected $fillable = ['first_name', 'last_name', 'rating', 'favorite_movie_id', 'picture_url'];
 
+    // public function desabilitarFK(){
+        // Actor::disableForeignKeyConstraints();
+    // }
+
     public function favMovie() {
     	return $this->hasOne(Movie::class, 'id', 'favorite_movie_id');
 	}

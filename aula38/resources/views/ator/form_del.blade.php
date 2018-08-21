@@ -9,6 +9,8 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-TXfwrfuHVznxCssTxWoPZjhcss/hp38gEOH8UPZG/JcXonvBQ6SlsIF49wUzsGno" crossorigin="anonymous">
+        
+        <link rel="shortcut icon" href="{{{ asset('img/favicon.png') }}}">
 
         <!-- Styles -->
         <style>
@@ -172,8 +174,8 @@
                 padding: 15px;
             }
             img.profile-pic{
-                height: 150px;
-                width: 150px;
+/*                height: 150px;
+                width: 150px;*/
                 border-radius: 50%;
                 margin: auto;
                 border: 2px solid #fa503a;
@@ -324,7 +326,6 @@
                 </div>
             @endif
 
-
             <div class="content">
                 <div class="title m-b-md">
                     <a href="{{url('/')}}" target="_self" title="Tela Inicial" rel="next" alt="Acessar Tela Inicial">
@@ -332,154 +333,57 @@
                         Laravel | Requests
                     </a>
                 </div>
-                <!-- EXERCCÍCIO 01 C (validando erros no envio) - INÍCIO-->
-                @if (isset($filmeSalvo) && isset($novoFilme))
-                    <div class="bloco-exercicio" id="resultadoFilmeAddSuccess">
+
+                <!-- CONFIRMAÇÃO ADIÇÃO DE ATOR COM LISTA EM SEGUIDA -->
+                @if (isset($atorParaApagarId))
+                    <div class="bloco-exercicio" id="resultadoAtorAddSuccess">
                         <div class="enunciado">
-                            <h2><i class="fas fa-code"></i> Novo Filme Adicionado!</h2>
+                            <h2><i class="fas fa-code"></i> Confirmação de Exclusão do Ator/Atriz</h2>
                         </div>
                         <div class="resultado">
-                            <h3>O filme <b>{{$novoFilme->title}}</b> foi salvo com sucesso! Confira os detalhes a seguir:</h3>
-                            <ul class="lista profile-desc">
-                                <li>Título: <b>{{$novoFilme->title}}</b> @if (isset($novoFilme->release_date)) <small> ({{ mb_substr($novoFilme->release_date,0,4) }}) </small> @endif</li>
-                                <li>Duração: @if (isset($novoFilme->length)) {{$novoFilme->length}}' @else Não avaliado @endif</li>
-                                <li>Avaliação: @if (isset($novoFilme->rating)) {{$novoFilme->rating}} @else Não avaliado @endif</li>
-                                <li>Prêmios: @if (isset($novoFilme->awards)) {{$novoFilme->awards}} @else Parece que não receberam prêmios @endif</li>
-                                <li>Gênero: @if (isset($novoFilme->genre_id)) {{$novoFilme->genero['name']}} (id: {{$novoFilme->genre_id}}) @else Não informado @endif</li>
-                            </ul>
+                            <h3>Por favor, confirme a exclusão do ator/atriz <b>{{$atorParaApagarId->first_name}}</b></h3>
+                            <div class="profile">
+                                <img class="profile-pic" src="@if ($atorParaApagarId->picture_url != null) {{$atorParaApagarId->picture_url}} @else https://us.123rf.com/450wm/berkut2011/berkut20111506/berkut2011150600452/41143316-stock-vector-man-in-suit-secret-service-agent-icon.jpg?ver=6 @endif" title="{{$atorParaApagarId->first_name}} {{$atorParaApagarId->last_name}}" alt="{{$atorParaApagarId->first_name}} {{$atorParaApagarId->last_name}}" height="150" width="150">
+                                <ul class="lista profile-desc">
+                                    <li>Nome: {{$atorParaApagarId->first_name}}</li>
+                                    <li>Sobrenome: {{$atorParaApagarId->last_name}}</li>
+                                    <li>Avaliação: 
+                                        @if (isset($atorParaApagarId->rating))
+                                            {{$atorParaApagarId->rating}} 
+                                        @else
+                                            Não Avaliado
+                                        @endif
+                                        <br/>
+                                        @if (isset($atorParaApagarId->rating))
+                                            @for ($i = 0; $i < intval($atorParaApagarId->rating); $i++)
+                                                <i style="font-size:10pt;color:#fa503a;" class="fas fa-star"></i>
+                                            @endfor
+                                        @endif
+                                        @if ($atorParaApagarId->rating - intval($atorParaApagarId->rating) > 0)
+                                            <i style="font-size:10pt;color:#fa503a;" class="fas fa-star-half"></i>
+                                        @endif
+                                    </li>
+                                    <li>Filme favorito: @if (isset($atorParaApagarId->favorite_movie_id)) <br/>{{$atorParaApagarId->favMovie['title']}} @else Não informado @endif</li>
+                                </ul>
+                            </div>
                             <br/>
                             <br/>
-                            <form action="/filmes#todosOsFilmes" method="get">
-                                <input type="submit" value="Ver Todos os Filmes">
-                            </form>
-                            <br/>
-                            <form action="/form#adicionarFilmeEnunciado" method="get">
-                                <input type="submit" value="Adicionar Mais um Filme">
-                            </form>
+                            <div class="botoes-inline">
+                                <form action="/ator/delete/{{$atorParaApagarId->id}}" method="post">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+                                    <input type="number" value="$atorParaApagarId->id" style="display:none;"/>
+                                    <input type="submit" value="Apagar"/>
+                                </form>
+                                <form action="/atores#todosOsAtores" method="get">
+                                    <input type="submit" value="Voltar">
+                                </form>
+                            </div>
                         </div>
                     </div>
                 @endif
+                <!-- CONFIRMAÇÃO ADIÇÃO DE ATOR COM LISTA EM SEGUIDA -->
 
-                @if (count($errors) > 0)
-
-                    <div class="bloco-exercicio" id="resultadoFilmeAddFail">
-                        <div class="enunciado">
-                            <h2><i class="fas fa-code"></i> Ops...</h2>
-                        </div>
-                        <div class="resultado">
-                            <h3>Ops! Infelizmente o filme não pôde ser salvo. Por favor, verifique os erros apontados a seguir e tente novamente.</h3>
-                            <ol class="lista">
-                                @foreach ($errors->all() as $error)
-                                  <li><h4><b>{{ $error }}</b></h4></li>
-                                @endforeach
-                            </ol>
-                            <br/>
-                            <form action="/filmes#todosOsFilmes" method="get">
-                                <input type="submit" value="Ver Todos os Filmes">
-                            </form>
-                            <br/>
-                            <form action="/form#adicionarFilmeEnunciado" method="get">
-                                <input type="submit" value="Adicionar Novo Filme">
-                            </form>
-                        </div>
-                    </div>
-
-                @endif
-                <!-- EXERCCÍCIO 01 C (validando erros no envio) - FIM -->
-
-                <!-- INÍCIO CUSTOM WELCOME -->
-                <div class="bloco-exercicio" id="adicionarFilmeEnunciado">
-                    <div class="enunciado">
-                        <h2><i class="fas fa-code"></i> Adicionar Novo Filme</h2>
-                    </div>
-                    <div class="resultado">
-                        <h3>Preencha o formulário a seguir para adicionar seu novo filme</h3>
-                            <small><b>Atenção:</b> para simular um erro, insira uma duração menor que 10. Ou insira um nome repetido.</small>
-                        <br/>
-                        <br/>
-                        <br/>
-                        <div class="indice">
-
-
-                            <!-- FORMULÁRIO ADICIONAR FILMES - INÍCIO -->
-                            <form id="adicionarFilme" name="adicionarFilme" action ="/adicionarFilme" method="POST">
-                                {{ csrf_field() }}
-                                {{ method_field('post')}}
-                                <div class="">
-                                    <label for="nomeFilme">Título</label>
-                                    <br/>
-                                    @if ($errors->has('title'))
-                                        <input style="background-color:#fa503a;color:#fff" type="text" name="title" id="nomeFilme" placeholder="Insira aqui o título do filme" required value="{{ old('title') }}"/>
-                                    @else
-                                        <input type="text" name="title" id="nomeFilme" placeholder="Insira aqui o título do filme" required value="{{ old('title') }}"/>
-                                    @endif
-                                </div>
-                                <div class="">
-                                    <label for="avaliacaoFilme">Avaliação (0 - 10)</label>
-                                    <br/>
-                                    @if ($errors->has('rating'))
-                                        <input style="background-color:#fa503a;color:#fff" type="number" name="rating" id="avaliacaoFilme" placeholder="Insira aqui a avaliação" min="0" max="10" step="0.1" required value="{{ old('rating') }}"/>
-                                    @else
-                                        <input type="number" name="rating" id="avaliacaoFilme" placeholder="Insira aqui a avaliação" min="0" max="10" step="0.1" required value="{{ old('rating') }}"/>
-                                    @endif
-                                </div>
-                                <div class="">
-                                    <label for="premios">Prêmios</label>
-                                    <br/>
-                                    @if ($errors->has('awards'))
-                                        <input style="background-color:#fa503a;color:#fff;" type="number" name="awards" id="premios" placeholder="Insira aqui a quantidade de prêmios" step="1" required value="{{ old('awards') }}"/>
-                                    @else
-                                        <input type="number" name="awards" id="premios" placeholder="Insira aqui a quantidade de prêmios" step="1" required value="{{ old('awards') }}"/>
-                                    @endif
-                                </div>
-                                <div class="">
-                                    <label for="duracao">Duração (minutos)</label>
-                                    <br/>
-                                    @if ($errors->has('length'))
-                                        <input style="background-color:#fa503a;color:#fff" type="number" name="length" id="duracao" placeholder="Insira aqui a duração (em minutos)" step="1" required value="{{ old('length') }}"/>
-                                    @else
-                                        <input type="number" name="length" id="duracao" placeholder="Insira aqui a duração (em minutos)" step="1" required value="{{ old('length') }}"/>
-                                    @endif
-                                </div>
-                                <div class="">
-                                    <label for="dataEstreia">Data de Estréia</label>
-                                    <br/>
-                                    @if ($errors->has('release_date'))
-                                        <input style="background-color:#fa503a;color:#fff" type="datetime-local" name="release_date" id="dataEstreia" required value="{{ old('release_date') }}"/>
-                                    @else
-                                        <input type="datetime-local" name="release_date" id="dataEstreia" required value="{{ old('release_date') }}"/>
-                                    @endif
-                                </div>
-                                <div class="">
-                                    <label for="generoId">Gênero</label>
-                                    <br/>
-                                    @if ($errors->has('genre_id'))
-                                    <select style="background-color:#fa503a;color:#fff" name="genre_id" form="adicionarFilme">
-                                        <option selected disabled>Selecione o gênero do filme</option>
-                                        {{ $options = App\Genre::all()->pluck('name', 'id') }}
-                                        @foreach ($options as $id=>$value) 
-                                            <option value="{{ $id }}">{{ $id }} - {{ $value }}</option>
-                                        @endforeach
-                                    </select>
-                                    @else
-                                    <select name="genre_id" form="adicionarFilme">
-                                        <option selected disabled>Selecione o gênero do filme</option>
-                                        {{ $options = App\Genre::all()->pluck('name', 'id') }}
-                                        @foreach ($options as $id=>$value) 
-                                            <option value="{{ $id }}">{{ $id }} - {{ $value }}</option>
-                                        @endforeach
-                                    </select>
-                                    @endif
-                                </div>
-                                <br>
-                                <div class="">
-                                  <input type="submit" value="Adicionar Filme" name="adicionar-filme" class=""/>
-                                </div>
-                            </form>
-                            <!-- FORMULÁRIO ADICIONAR FILMES - FIM -->
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
         <div id="logos">
