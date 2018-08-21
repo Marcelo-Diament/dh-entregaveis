@@ -453,7 +453,11 @@
                                         {{ $options = App\Movie::all()->pluck('title', 'id') }}
                                         <option selected value="{{$atorParaEditarId->favMovie['id']}}">{{$atorParaEditarId->favMovie['id']}} - {{$atorParaEditarId->favMovie['title']}}</option>
                                         @foreach ($options as $id=>$value) 
+                                            @if ($atorParaEditarId->favMovie['id'] == $id)
+                                            <option selected value="{{ $id }}">{{ $id }} - {{ $value }}</option>
+                                            @else
                                             <option value="{{ $id }}">{{ $id }} - {{ $value }}</option>
+                                            @endif
                                         @endforeach
                                     </select>
                                     @else
@@ -461,7 +465,11 @@
                                         <option selected disabled value="{{$atorParaEditarId->favMovie['id']}}">{{$atorParaEditarId->favMovie['id']}} - {{$atorParaEditarId->favMovie['title']}}</option>
                                         {{ $options = App\Movie::all()->pluck('title', 'id') }}
                                         @foreach ($options as $id=>$value) 
+                                            @if ($atorParaEditarId->favMovie['id'] == $id)
+                                            <option selected value="{{ $id }}">{{ $id }} - {{ $value }}</option>
+                                            @else
                                             <option value="{{ $id }}">{{ $id }} - {{ $value }}</option>
+                                            @endif
                                         @endforeach
                                     </select>
                                     @endif

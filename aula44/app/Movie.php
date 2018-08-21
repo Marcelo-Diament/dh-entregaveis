@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 use App\Genre;
 
+use App\Director;
+
 use App\Actor;
 
 class Movie extends Model{
@@ -26,6 +28,10 @@ class Movie extends Model{
 
     public function atores() {
         return $this->hasMany(Actor::class, 'id', 'favorite_movie_id');
+    }
+
+    public function diretores() {
+        return $this->hasOne(Director::class, 'id', 'director_id');
     }
 
 }
