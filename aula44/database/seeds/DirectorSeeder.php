@@ -16,9 +16,9 @@ class DirectorSeeder extends Seeder
         $diretores = factory(Director::class, 10)->create();
 
         foreach ($diretores as $diretor){
-            factory(Movie::class, 5)->create[
-                'director_id' => $diretor->id;
-            ]
+            factory(Movie::class, 5)->create([
+                'director_id' => $diretor->id
+            ]);
         }
     }
 }
