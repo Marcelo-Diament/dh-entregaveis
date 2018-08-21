@@ -19,6 +19,7 @@ class Actor extends Model{
 
     public function favMovie() {
     	return $this->hasOne(Movie::class, 'id', 'favorite_movie_id');
-	}
+    }
+    
     
 }
