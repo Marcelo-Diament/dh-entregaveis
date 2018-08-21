@@ -15,4 +15,42 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/genre/{id}', 'GenreController@show');
+// FILMES
+
+	// Listar
+	Route::get('/filmes', 'MoviesController@listarFilmes');
+
+	// Buscar
+	Route::post('/filme/buscarNomeFilme', 'MoviesController@buscarNomeFilme');
+	Route::post('/filme/buscarIdFilme', 'MoviesController@buscarIdFilme');
+
+	// Adicionar
+	Route::get('/form', 'MoviesController@adicionar');
+	Route::post('/adicionarFilme', 'MoviesController@adicionarFilme');
+
+// ATORES
+
+	// Listar
+	Route::get('/atores', 'ActorsController@listarAtores');
+
+	// Buscar
+	Route::post('/ator/buscarNomeAtor/', 'ActorsController@buscarNomeAtor');
+	Route::post('/ator/buscarIdAtor/', 'ActorsController@buscarIdAtor');
+	Route::get('/ator/{id}', 'ActorsController@linkarAtorPorId');
+
+	// Adicionar
+	Route::get('/add', 'ActorsController@adicionar');
+	Route::post('/adicionarAtor', 'ActorsController@adicionarAtor');
+
+	// Editar
+	Route::get('ator/form_edit/{id}', 'ActorsController@edit');
+	Route::post('ator/edit', 'ActorsController@update');
+
+	// Apagar
+	Route::get('ator/form_del/{id}', 'ActorsController@apagar');
+	Route::delete('ator/delete/{id}', 'ActorsController@delete');	
+
+// GÊNEROS
+
+	// Listar Filmes
+	Route::get('/genre/{id}', 'GenreController@show');

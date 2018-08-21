@@ -324,6 +324,7 @@
                 </div>
             @endif
 
+
             <div class="content">
                 <div class="title m-b-md">
                     <a href="{{url('/')}}" target="_self" title="Tela Inicial" rel="next" alt="Acessar Tela Inicial">
@@ -331,144 +332,154 @@
                         Laravel | Relacionamentos
                     </a>
                 </div>
+                <!-- EXERCCÍCIO 01 C (validando erros no envio) - INÍCIO-->
+                @if (isset($filmeSalvo) && isset($novoFilme))
+                    <div class="bloco-exercicio" id="resultadoFilmeAddSuccess">
+                        <div class="enunciado">
+                            <h2><i class="fas fa-code"></i> Novo Filme Adicionado!</h2>
+                        </div>
+                        <div class="resultado">
+                            <h3>O filme <b>{{$novoFilme->title}}</b> foi salvo com sucesso! Confira os detalhes a seguir:</h3>
+                            <ul class="lista profile-desc">
+                                <li>Título: <b>{{$novoFilme->title}}</b> @if (isset($novoFilme->release_date)) <small> ({{ mb_substr($novoFilme->release_date,0,4) }}) </small> @endif</li>
+                                <li>Duração: @if (isset($novoFilme->length)) {{$novoFilme->length}}' @else Não avaliado @endif</li>
+                                <li>Avaliação: @if (isset($novoFilme->rating)) {{$novoFilme->rating}} @else Não avaliado @endif</li>
+                                <li>Prêmios: @if (isset($novoFilme->awards)) {{$novoFilme->awards}} @else Parece que não receberam prêmios @endif</li>
+                                <li>Gênero: @if (isset($novoFilme->genre_id)) {{$novoFilme->genero['name']}} (id: {{$novoFilme->genre_id}}) @else Não informado @endif</li>
+                            </ul>
+                            <br/>
+                            <br/>
+                            <form action="/filmes#todosOsFilmes" method="get">
+                                <input type="submit" value="Ver Todos os Filmes">
+                            </form>
+                            <br/>
+                            <form action="/form#adicionarFilmeEnunciado" method="get">
+                                <input type="submit" value="Adicionar Mais um Filme">
+                            </form>
+                        </div>
+                    </div>
+                @endif
+
+                @if (count($errors) > 0)
+
+                    <div class="bloco-exercicio" id="resultadoFilmeAddFail">
+                        <div class="enunciado">
+                            <h2><i class="fas fa-code"></i> Ops...</h2>
+                        </div>
+                        <div class="resultado">
+                            <h3>Ops! Infelizmente o filme não pôde ser salvo. Por favor, verifique os erros apontados a seguir e tente novamente.</h3>
+                            <ol class="lista">
+                                @foreach ($errors->all() as $error)
+                                  <li><h4><b>{{ $error }}</b></h4></li>
+                                @endforeach
+                            </ol>
+                            <br/>
+                            <form action="/filmes#todosOsFilmes" method="get">
+                                <input type="submit" value="Ver Todos os Filmes">
+                            </form>
+                            <br/>
+                            <form action="/form#adicionarFilmeEnunciado" method="get">
+                                <input type="submit" value="Adicionar Novo Filme">
+                            </form>
+                        </div>
+                    </div>
+
+                @endif
+                <!-- EXERCCÍCIO 01 C (validando erros no envio) - FIM -->
 
                 <!-- INÍCIO CUSTOM WELCOME -->
-                <div class="bloco-exercicio">
+                <div class="bloco-exercicio" id="adicionarFilmeEnunciado">
                     <div class="enunciado">
-                        <h2><i class="fas fa-terminal"></i> <b>LARAVEL V | Review</b></h2>
-                        <small>Professor Especialista: Rodrigo</small>
-                        <br/>
-                        <small>Professores Digital House: Thiago M. Medeiros, Thomas Staziak</small>
-                        <br/>
-                        <small>Aula realizada em 09 de Agosto de 2018</small>
+                        <h2><i class="fas fa-code"></i> Adicionar Novo Filme</h2>
                     </div>
                     <div class="resultado">
-                        <h3>Acesse os exercícios através do menu abaixo.</h3>
+                        <h3>Preencha o formulário a seguir para adicionar seu novo filme</h3>
+                            <small><b>Atenção:</b> para simular um erro, insira uma duração menor que 10. Ou insira um nome repetido.</small>
+                        <br/>
+                        <br/>
+                        <br/>
                         <div class="indice">
 
-                            <!-- FUNCIONALIDADES - INÍCIO -->
-                            <ul class="lista">
-                                <li>Funcionalidades</li>
-                                <br/>
-                                <li>
-                                    <ul class="lista">
-                                        <li>Filmes</li>
-                                        <br/>
-                                        <li><a href="{{url('/filmes#todosOsFilmes')}}" target="_self" title="Ver Lista de Filmes" rel="next" alt="Ver Lista de Filmes">Ver Lista de Filmes</a></li>
-                                        <li><a href="{{url('/genres/{id}')}}" target="_self" title="Ver Filmes por Gênero" rel="next" alt="Ver Filmes por Gênero">Filmes por Gênero</a></li>
-                                        <li><a href="{{url('/filmes/#buscaTituloFilme')}}" target="_self" title="Buscar Filme por Título" rel="next" alt="Buscar Filme por Título">Buscar Filme por Título</a></li>
-                                        <li><a href="{{url('/filmes/#buscaIdFilme')}}" target="_self" title="Buscar Filme por Id" rel="next" alt="Buscar Filme por Id">Buscar Filme por Id</a></li>
-                                        <li><a href="{{url('/form#adicionarFilmeEnunciado')}}" target="_self" title="Adicionar Novo Filme" rel="next" alt="Adicionar Novo Filme">Adicionar Novo Filme</a></li>
-                                    </ul>
-                                    <ul class="lista">
-                                        <li>Atores</li>
-                                        <br/>
-                                        <li><a href="{{url('/atores#todosOsAtores')}}" target="_self" title="Ver Lista de Atores" rel="next" alt="Ver Lista de Atores">Ver Lista de Atores</a></li>
-                                        <li><a href="{{url('/atores#buscaNomeAtor')}}" target="_self" title="Buscar Ator por Nome" rel="next" alt="Buscar Ator por Nome">Buscar Ator Por Nome</a></li>
-                                        <li><a href="{{url('/atores#buscaIdAtor')}}" target="_self" title="Buscar Ator por Id" rel="next" alt="Buscar Ator por Id">Buscar Ator por Id</a></li>
-                                        <li><a href="{{url('/add#adicionarAtorEnunciado')}}" target="_self" title="Adicionar Novo Ator" rel="next" alt="Adicionar Novo Ator">Adicionar Novo Ator</a></li>
-                                    </ul>
-                                </li>
-                                <br/>
-                                <small>
-                                    <strong><u>Observações:</u></strong>
+
+                            <!-- FORMULÁRIO ADICIONAR FILMES - INÍCIO -->
+                            <form id="adicionarFilme" name="adicionarFilme" action ="/adicionarFilme" method="POST">
+                                {{ csrf_field() }}
+                                {{ method_field('post')}}
+                                <div class="">
+                                    <label for="nomeFilme">Título</label>
                                     <br/>
-                                        1. Para que o exercício de exclusão de ator funcionasse dentro do escopo da aula, a tabela actor_movie foi excluída.
+                                    @if ($errors->has('title'))
+                                        <input style="background-color:#fa503a;color:#fff" type="text" name="title" id="nomeFilme" placeholder="Insira aqui o título do filme" required value="{{ old('title') }}"/>
+                                    @else
+                                        <input type="text" name="title" id="nomeFilme" placeholder="Insira aqui o título do filme" required value="{{ old('title') }}"/>
+                                    @endif
+                                </div>
+                                <div class="">
+                                    <label for="avaliacaoFilme">Avaliação (0 - 10)</label>
                                     <br/>
-                                        2. Na opção de edição de atores, não foi possível atrelar o novo filme favorito ao ator (apenas na criação).
-                                </small>
-                            </ul>
-                            <!-- FUNCIONALIDADES - FIM -->
-
-                            <!-- EXERCÍCIO 1 - INÍCIO -->
-                            <ul class="lista">
-                                <li>Exercício 1</li>
-                                <br/>
-                                <li>
-                                    <ul class="lista">
-                                        <li>Editar o Formulário de Ator que foi criado na aula passada, inserindo um <code style="margin-left:0;">< select ></code>​ que traga todos os filmes da tabela movies para selecionar o filme favorito do ator.</li>
-                                        <br/>
-                                        <li><a class="" href="{{url('/add#adicionarAtorEnunciado')}}" target="_self" title="Exercício 1" rel="nofollow" alt="Exercício 1">Exercício 1</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                            <!-- EXERCÍCIO 1 - FIM -->
-
-                            <!-- EXERCÍCIO 2 - INÍCIO -->
-                            <ul class="lista">
-                                <li>Exercício 2</li>
-                                <br/>
-                                <li>
-                                    <ul class="lista">
-                                        <li>Após isso insira o ator no banco de dados com o id do filme selecionado.</li>
-                                        <br/>
-                                        <li><a class="" href="{{url('/add#adicionarAtorEnunciado')}}" target="_self" title="Exercício 1d" rel="nofollow" alt="Exercício 1d">Exercício 2</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                            <!-- EXERCÍCIO 2 - FIM -->
-
-                            <!-- EXERCÍCIO 3 - INÍCIO -->
-                            <ul class="lista">
-                                <li>Exercício 3</li>
-                                <br/>
-                                <li>
-                                    <ul class="lista">
-                                        <li>Utilizando a view (atores.blade.php) criada na aula retrasada mostre o nome do filme favorito do ator junto com as informações já existentes. Você precisará usar o join().</li>
-                                        <br/>
-                                        <li><a class="" href="{{url('/atores#todosOsAtores')}}" target="_self" title="Exercício 1d" rel="nofollow" alt="Exercício 1d">Exercício 2</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                            <!-- EXERCÍCIO 3 - FIM -->
-
+                                    @if ($errors->has('rating'))
+                                        <input style="background-color:#fa503a;color:#fff" type="number" name="rating" id="avaliacaoFilme" placeholder="Insira aqui a avaliação" min="0" max="10" step="0.1" required value="{{ old('rating') }}"/>
+                                    @else
+                                        <input type="number" name="rating" id="avaliacaoFilme" placeholder="Insira aqui a avaliação" min="0" max="10" step="0.1" required value="{{ old('rating') }}"/>
+                                    @endif
+                                </div>
+                                <div class="">
+                                    <label for="premios">Prêmios</label>
+                                    <br/>
+                                    @if ($errors->has('awards'))
+                                        <input style="background-color:#fa503a;color:#fff;" type="number" name="awards" id="premios" placeholder="Insira aqui a quantidade de prêmios" step="1" required value="{{ old('awards') }}"/>
+                                    @else
+                                        <input type="number" name="awards" id="premios" placeholder="Insira aqui a quantidade de prêmios" step="1" required value="{{ old('awards') }}"/>
+                                    @endif
+                                </div>
+                                <div class="">
+                                    <label for="duracao">Duração (minutos)</label>
+                                    <br/>
+                                    @if ($errors->has('length'))
+                                        <input style="background-color:#fa503a;color:#fff" type="number" name="length" id="duracao" placeholder="Insira aqui a duração (em minutos)" step="1" required value="{{ old('length') }}"/>
+                                    @else
+                                        <input type="number" name="length" id="duracao" placeholder="Insira aqui a duração (em minutos)" step="1" required value="{{ old('length') }}"/>
+                                    @endif
+                                </div>
+                                <div class="">
+                                    <label for="dataEstreia">Data de Estréia</label>
+                                    <br/>
+                                    @if ($errors->has('release_date'))
+                                        <input style="background-color:#fa503a;color:#fff" type="datetime-local" name="release_date" id="dataEstreia" required value="{{ old('release_date') }}"/>
+                                    @else
+                                        <input type="datetime-local" name="release_date" id="dataEstreia" required value="{{ old('release_date') }}"/>
+                                    @endif
+                                </div>
+                                <div class="">
+                                    <label for="generoId">Gênero</label>
+                                    <br/>
+                                    @if ($errors->has('genre_id'))
+                                    <select style="background-color:#fa503a;color:#fff" name="genre_id" form="adicionarFilme">
+                                        <option selected disabled>Selecione o gênero do filme</option>
+                                        {{ $options = App\Genre::all()->pluck('name', 'id') }}
+                                        @foreach ($options as $id=>$value) 
+                                            <option value="{{ $id }}">{{ $id }} - {{ $value }}</option>
+                                        @endforeach
+                                    </select>
+                                    @else
+                                    <select name="genre_id" form="adicionarFilme">
+                                        <option selected disabled>Selecione o gênero do filme</option>
+                                        {{ $options = App\Genre::all()->pluck('name', 'id') }}
+                                        @foreach ($options as $id=>$value) 
+                                            <option value="{{ $id }}">{{ $id }} - {{ $value }}</option>
+                                        @endforeach
+                                    </select>
+                                    @endif
+                                </div>
+                                <br>
+                                <div class="">
+                                  <input type="submit" value="Adicionar Filme" name="adicionar-filme" class=""/>
+                                </div>
+                            </form>
+                            <!-- FORMULÁRIO ADICIONAR FILMES - FIM -->
                         </div>
                     </div>
                 </div>
-                <!-- FIM CUSTOM WELCOME -->
-                
-                <!-- INÍCIO MVC -->
-                <div class="bloco-exercicio">
-                    <div class="enunciado">
-                        <h2><i class="fas fa-terminal"></i></i> MVC + Routes + ReadMe + Repositório</h2>
-                        <p>Clique para acessar os Models, Views, Controllers, Routes, o arquivo README.md (geral) e o repositório da aula</p>
-                    </div>
-                    <div class="resultado">
-                        <ul class="menu">
-                            <li><a href="https://github.com/Marcelo-Diament/dh-entregaveis/blob/master/aula39/app" target="_blank" title="Acessar Models" rel="external" alt="Acessar Models"><i class="fas fa-database"></i></a></li>
-                            <li><a href="https://github.com/Marcelo-Diament/dh-entregaveis/tree/master/aula39/resources/views" target="_blank" title="Acessar Views" rel="external" alt="Clique para acessar as Views"><i class="fas fa-eye"></i></a></li>
-                            <li><a href="https://github.com/Marcelo-Diament/dh-entregaveis/blob/master/aula39/app/Http/Controllers" target="_blank" title="Acessar Controllers" rel="external" alt="Clique para acessar os Controllers"><i class="fas fa-cog"></i></a></li>
-                            <li><h3>+</h3></li>
-                            <li><a href="https://github.com/Marcelo-Diament/dh-entregaveis/blob/master/aula39/routes" target="_blank" title="Acessar Routes" rel="external" alt="Clique para acessar as Routes"><i class="fas fa-project-diagram"></i></a></li>
-                            <li><h3>+</h3></li>
-                            <li><a href="https://github.com/Marcelo-Diament/dh-entregaveis/blob/master/README.md" target="_blank" title="Acessar README.md" rel="help" alt="Clique para acessar o arquivo README.md"><i class="fas fa-info"></i></a></li>
-                            <li><h3>+</h3></li>
-                            <li><a href="https://github.com/Marcelo-Diament/dh-entregaveis/tree/master/aula39" target="_blank" title="Acessar o repositório" rel="external" alt="Clique para acessar o repositório"><i class="fab fa-github"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- FIM MVC -->
-
-                <!-- INÍCIO TECNOLOGIAS -->
-                <div class="bloco-exercicio">
-                    <div class="enunciado">
-                        <h2><i class="fas fa-terminal"></i></i> Tecnologias Utilizadas</h2>
-                        <p>Clique para acessar o site oficial e/ou documentação</p>
-                    </div>
-                    <div class="resultado">
-                        <ul class="menu">
-                            <li><a href="https://laravel.com/" target="_blank" title="Laravel" rel="external" alt="Tecnologia Utilizada: Laravel"><i class="fab fa-laravel"></i></i></a></li>
-                            <li><a href="https://developer.mozilla.org/pt-BR/docs/Web/HTML/HTML5" target="_blank" title="HTML5" rel="external" alt="Tecnologia Utilizada: HTML5"><i class="fab fa-html5"></i></i></a></li>
-                            <li><a href="https://developer.mozilla.org/pt-BR/docs/Web/CSS" target="_blank" title="CSS3" rel="external" alt="Tecnologia Utilizada: CSS3"><i class="fab fa-css3-alt"></i></i></a></li>
-                            <li><a href="http://php.net/docs.php" target="_blank" title="php" rel="external" alt="Tecnologia Utilizada: php"><i class="fab fa-php"></i></a></li>
-                            <li><a href="https://github.com/" target="_blank" title="GitHub" rel="external" alt="Tecnologia Utilizada: GitHub"><i class="fab fa-github"></i></a></li>
-                            <li><a href="https://fontawesome.com/" target="_blank" title="Font Awesome" rel="external" alt="Tecnologia Utilizada: Font Awesome"><i class="fab fa-font-awesome"></i></i></a></li>
-                            <br/>
-                            
-                        </ul>
-                    </div>
-                </div>
-                <!-- FIM TECNOLOGIAS -->
             </div>
         </div>
         <div id="logos">

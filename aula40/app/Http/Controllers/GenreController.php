@@ -8,19 +8,23 @@ use App\Movie;
 
 class GenreController extends Controller
 {
+
+    public function listarGeneros(){
+        $generos = Genre::all();
+        return view('generos')
+            ->with('generos', $generos);
+    }
+
     public function show($id){
 
-        // $todosGeneros = Genre::all();
-        // $quantidadeGeneros = count($todosGeneros);
-        // if ($id < $quantidadeGeneros){
         $generoPorId = Genre::find($id);
         if ($generoPorId) {
-            $filmesPorGenero = $generoPorId->movies;
+            $filmesPorGenero = $generoPorId->filmes;
         } else {
             $filmesPorGenero = false;
         }
         return view('genre')
-            ->with('genero', $generoPorId)
+            ->with('generoPorId', $generoPorId)
             ->with('filmesPorGenero', $filmesPorGenero);
     }
 
