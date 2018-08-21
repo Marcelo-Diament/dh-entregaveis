@@ -44,3 +44,7 @@ Route::post('/adicionarAtor', 'ActorsController@adicionarAtor');
 Route::get('ator/form_edit/{id}', 'ActorsController@edit');
 
 Route::post('ator/edit', 'ActorsController@update');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
