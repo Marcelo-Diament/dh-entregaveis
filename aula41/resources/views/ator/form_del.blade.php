@@ -9,6 +9,8 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-TXfwrfuHVznxCssTxWoPZjhcss/hp38gEOH8UPZG/JcXonvBQ6SlsIF49wUzsGno" crossorigin="anonymous">
+        
+        <link rel="shortcut icon" href="{{{ asset('img/favicon.png') }}}">
 
         <!-- Styles -->
         <style>
@@ -172,8 +174,8 @@
                 padding: 15px;
             }
             img.profile-pic{
-                height: 150px;
-                width: 150px;
+/*                height: 150px;
+                width: 150px;*/
                 border-radius: 50%;
                 margin: auto;
                 border: 2px solid #fa503a;
@@ -332,132 +334,56 @@
                     </a>
                 </div>
 
-                <!-- INÍCIO CUSTOM WELCOME -->
-                <div class="bloco-exercicio">
-                    <div class="enunciado">
-                        <h2><i class="fas fa-terminal"></i> <b>LARAVEL VII | Paginação</b></h2>
-                        <small>Professor Especialista: Rodrigo</small>
-                        <br/>
-                        <small>Professores Digital House: Thiago M. Medeiros, Thomas Staziak</small>
-                        <br/>
-                        <small>Aula realizada em 13 de Agosto de 2018</small>
-                    </div>
-                    <div class="resultado">
-                        <h3>Acesse os exercícios através do menu abaixo.</h3>
-                        <div class="indice">
-
-                            <!-- FUNCIONALIDADES - INÍCIO -->
-                            <ul class="lista">
-                                <li>Funcionalidades</li>
-                                <br/>
-                                <li>
-                                    <ul class="lista">
-                                        <li>Filmes</li>
-                                        <br/>
-                                        <li><a href="{{url('/filmes#todosOsFilmes')}}" target="_self" title="Ver Lista de Filmes" rel="next" alt="Ver Lista de Filmes">Ver Lista de Filmes</a></li>
-                                        <li><a href="{{url('/genre')}}" target="_self" title="Ver Filmes por Gênero" rel="next" alt="Ver Filmes por Gênero">Filmes por Gênero</a></li>
-                                        <li><a href="{{url('/filmes/#buscaTituloFilme')}}" target="_self" title="Buscar Filme por Título" rel="next" alt="Buscar Filme por Título">Buscar Filme por Título</a></li>
-                                        <li><a href="{{url('/filmes/#buscaIdFilme')}}" target="_self" title="Buscar Filme por Id" rel="next" alt="Buscar Filme por Id">Buscar Filme por Id</a></li>
-                                        <li><a href="{{url('/form#adicionarFilmeEnunciado')}}" target="_self" title="Adicionar Novo Filme" rel="next" alt="Adicionar Novo Filme">Adicionar Novo Filme</a></li>
-                                    </ul>
-                                    <ul class="lista">
-                                        <li>Atores</li>
-                                        <br/>
-                                        <li><a href="{{url('/atores#todosOsAtores')}}" target="_self" title="Ver Lista de Atores" rel="next" alt="Ver Lista de Atores">Ver Lista de Atores</a></li>
-                                        <li><a href="{{url('/atores#buscaNomeAtor')}}" target="_self" title="Buscar Ator por Nome" rel="next" alt="Buscar Ator por Nome">Buscar Ator Por Nome</a></li>
-                                        <li><a href="{{url('/atores#buscaIdAtor')}}" target="_self" title="Buscar Ator por Id" rel="next" alt="Buscar Ator por Id">Buscar Ator por Id</a></li>
-                                        <li><a href="{{url('/add#adicionarAtorEnunciado')}}" target="_self" title="Adicionar Novo Ator" rel="next" alt="Adicionar Novo Ator">Adicionar Novo Ator</a></li>
-                                    </ul>
-                                </li>
-                                <br/>
-                            </ul>
-                            <!-- FUNCIONALIDADES - FIM -->
+                <!-- CONFIRMAÇÃO ADIÇÃO DE ATOR COM LISTA EM SEGUIDA -->
+                @if (isset($atorParaApagarId))
+                    <div class="bloco-exercicio" id="resultadoAtorAddSuccess">
+                        <div class="enunciado">
+                            <h2><i class="fas fa-code"></i> Confirmação de Exclusão do Ator/Atriz</h2>
                         </div>
-                        <div class="indice">
-                            <!-- EXERCÍCIO 1 - INÍCIO -->
-                            <ul class="lista">
-                                <li>Exercícios</li>
-                                <br/>
-                                <li>
-                                    <ul class="lista">
-                                        <li>Paginação aplicada em atores:</li>
+                        <div class="resultado">
+                            <h3>Por favor, confirme a exclusão do ator/atriz <b>{{$atorParaApagarId->first_name}}</b></h3>
+                            <div class="profile">
+                                <img class="profile-pic" src="@if ($atorParaApagarId->picture_url != null) {{$atorParaApagarId->picture_url}} @else https://us.123rf.com/450wm/berkut2011/berkut20111506/berkut2011150600452/41143316-stock-vector-man-in-suit-secret-service-agent-icon.jpg?ver=6 @endif" title="{{$atorParaApagarId->first_name}} {{$atorParaApagarId->last_name}}" alt="{{$atorParaApagarId->first_name}} {{$atorParaApagarId->last_name}}" height="150" width="150">
+                                <ul class="lista profile-desc">
+                                    <li>Nome: {{$atorParaApagarId->first_name}}</li>
+                                    <li>Sobrenome: {{$atorParaApagarId->last_name}}</li>
+                                    <li>Avaliação: 
+                                        @if (isset($atorParaApagarId->rating))
+                                            {{$atorParaApagarId->rating}} 
+                                        @else
+                                            Não Avaliado
+                                        @endif
                                         <br/>
-                                        <li><a href="{{url('/atores#todosOsAtores')}}" target="_self" title="Ver Lista de Atores" rel="next" alt="Ver Lista de Atores">Paginação em Atores</a></li>
-                                        <br/>
-                                        <br/>
-                                        <li>Paginação aplicada em filmes​:</li>
-                                        <br/>
-                                        <li><a href="{{url('/filmes#todosOsFilmes')}}" target="_self" title="Ver Lista de Filmes" rel="next" alt="Ver Lista de Filmes">Paginação em Filmes</a></li>
-                                        <br/>
-                                        <br/>
-                                    </ul>
-                                </li>
-                            </ul>
-                            <!-- EXERCÍCIO 1 - FIM -->
-
-                                <hr>
-                                <small>
-                                    <strong><u>Observações:</u></strong>
-                                    <br/>
-                                    <br/>
-                                        Não houve exercícios nessa aula, no entanto a paginação foi aplicada na lista de fimes e atores.
-                                        <br/>
-                                        <br/>
-                                        Os elementos da paginação <code>->links()</code> também foram customizados. Para isso foi necessário:<br/>
-                                        <br/>
-                                        <ol>
-                                           <li>Criar o arquivo de customização com o seguinte comando: <code>php artisan vendor:publish --tag=laravel-pagination</code></li> 
-                                           <br/>
-                                           <li>Então foram criadas classes equivalentes às do BootStrap no arquivo: <code>resources/views/vendor/pagination/bootstrap-4.blade.php</code></li>
-                                        </ol>
-                                </small>
-                        </div>
-                    </div>
-                </div>
-                <!-- FIM CUSTOM WELCOME -->
-                
-                <!-- INÍCIO MVC -->
-                <div class="bloco-exercicio">
-                    <div class="enunciado">
-                        <h2><i class="fas fa-terminal"></i></i> MVC + Routes + ReadMe + Repositório</h2>
-                        <p>Clique para acessar os Models, Views, Controllers, Routes, o arquivo README.md (geral) e o repositório da aula</p>
-                    </div>
-                    <div class="resultado">
-                        <ul class="menu">
-                            <li><a href="https://github.com/Marcelo-Diament/dh-entregaveis/blob/master/aula40/app" target="_blank" title="Acessar Models" rel="external" alt="Acessar Models"><i class="fas fa-database"></i></a></li>
-                            <li><a href="https://github.com/Marcelo-Diament/dh-entregaveis/tree/master/aula40/resources/views" target="_blank" title="Acessar Views" rel="external" alt="Clique para acessar as Views"><i class="fas fa-eye"></i></a></li>
-                            <li><a href="https://github.com/Marcelo-Diament/dh-entregaveis/blob/master/aula40/app/Http/Controllers" target="_blank" title="Acessar Controllers" rel="external" alt="Clique para acessar os Controllers"><i class="fas fa-cog"></i></a></li>
-                            <li><h3>+</h3></li>
-                            <li><a href="https://github.com/Marcelo-Diament/dh-entregaveis/blob/master/aula40/routes" target="_blank" title="Acessar Routes" rel="external" alt="Clique para acessar as Routes"><i class="fas fa-project-diagram"></i></a></li>
-                            <li><h3>+</h3></li>
-                            <li><a href="https://github.com/Marcelo-Diament/dh-entregaveis/blob/master/README.md" target="_blank" title="Acessar README.md" rel="help" alt="Clique para acessar o arquivo README.md"><i class="fas fa-info"></i></a></li>
-                            <li><h3>+</h3></li>
-                            <li><a href="https://github.com/Marcelo-Diament/dh-entregaveis/tree/master/aula40" target="_blank" title="Acessar o repositório" rel="external" alt="Clique para acessar o repositório"><i class="fab fa-github"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- FIM MVC -->
-
-                <!-- INÍCIO TECNOLOGIAS -->
-                <div class="bloco-exercicio">
-                    <div class="enunciado">
-                        <h2><i class="fas fa-terminal"></i></i> Tecnologias Utilizadas</h2>
-                        <p>Clique para acessar o site oficial e/ou documentação</p>
-                    </div>
-                    <div class="resultado">
-                        <ul class="menu">
-                            <li><a href="https://laravel.com/" target="_blank" title="Laravel" rel="external" alt="Tecnologia Utilizada: Laravel"><i class="fab fa-laravel"></i></i></a></li>
-                            <li><a href="https://developer.mozilla.org/pt-BR/docs/Web/HTML/HTML5" target="_blank" title="HTML5" rel="external" alt="Tecnologia Utilizada: HTML5"><i class="fab fa-html5"></i></i></a></li>
-                            <li><a href="https://developer.mozilla.org/pt-BR/docs/Web/CSS" target="_blank" title="CSS3" rel="external" alt="Tecnologia Utilizada: CSS3"><i class="fab fa-css3-alt"></i></i></a></li>
-                            <li><a href="http://php.net/docs.php" target="_blank" title="php" rel="external" alt="Tecnologia Utilizada: php"><i class="fab fa-php"></i></a></li>
-                            <li><a href="https://github.com/" target="_blank" title="GitHub" rel="external" alt="Tecnologia Utilizada: GitHub"><i class="fab fa-github"></i></a></li>
-                            <li><a href="https://fontawesome.com/" target="_blank" title="Font Awesome" rel="external" alt="Tecnologia Utilizada: Font Awesome"><i class="fab fa-font-awesome"></i></i></a></li>
+                                        @if (isset($atorParaApagarId->rating))
+                                            @for ($i = 0; $i < intval($atorParaApagarId->rating); $i++)
+                                                <i style="font-size:10pt;color:#fa503a;" class="fas fa-star"></i>
+                                            @endfor
+                                        @endif
+                                        @if ($atorParaApagarId->rating - intval($atorParaApagarId->rating) > 0)
+                                            <i style="font-size:10pt;color:#fa503a;" class="fas fa-star-half"></i>
+                                        @endif
+                                    </li>
+                                    <li>Filme favorito: @if (isset($atorParaApagarId->favorite_movie_id)) <br/>{{$atorParaApagarId->favMovie['title']}} @else Não informado @endif</li>
+                                </ul>
+                            </div>
                             <br/>
-                            
-                        </ul>
+                            <br/>
+                            <div class="botoes-inline">
+                                <form action="/ator/delete/{{$atorParaApagarId->id}}" method="post">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+                                    <input type="number" value="$atorParaApagarId->id" style="display:none;"/>
+                                    <input type="submit" value="Apagar"/>
+                                </form>
+                                <form action="/atores#todosOsAtores" method="get">
+                                    <input type="submit" value="Voltar">
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <!-- FIM TECNOLOGIAS -->
+                @endif
+                <!-- CONFIRMAÇÃO ADIÇÃO DE ATOR COM LISTA EM SEGUIDA -->
+
             </div>
         </div>
         <div id="logos">
