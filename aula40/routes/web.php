@@ -53,4 +53,6 @@ Route::get('/', function () {
 // GÊNEROS
 
 	// Listar Filmes
-	Route::get('/genre/{id}', 'GenreController@show');
+	Route::get('/genre/', 'GenreController@listarGeneros');
+	Route::get('/genre/{id}', 'GenreController@generoId');
+	Route::post('/genreFilmes', 'GenreController@generoPorId');

@@ -334,75 +334,34 @@
                     </a>
                 </div>
 
-
-                <!-- RESULTADO DE BUSCA DE FILMES POR ID GÊNERO - INÍCIO -->
-                    @if ($filmesPorGenero == true || $generoPorId == true)
-                        <div class="bloco-exercicio" id="resultadoBuscaGenero">
-                            <div class="enunciado">
-                                <h2><i class="fas fa-code"></i> Resultado Busca de Filmes por Gênero</h2>
-                            </div>
-                            <div class="resultado">
-                                <h2>Os filmes pertencentes ao gênero {{$generoPorId->name}} são:</h2>
-                                <div class="profile">
-                                    <ul class="lista profile-desc">
-                                        @foreach ($filmesPorGenero as $filme)
-                                        <li>
-                                            <ul class="lista">
-                                                <li>Título: <b>{{$filme['title']}}</b> @if (isset($filme->release_date)) <small> ({{ mb_substr($filme->release_date,0,4) }}) </small> @endif</li>
-                                                <li>Duração: @if (isset($filme->length)) {{$filme->length}}' @else Não informado @endif</li>
-                                                <li>Avaliação:
-                                                    @if (isset($filme->rating))
-                                                        {{$filme->rating}} 
-                                                    @else
-                                                        Não Avaliado
-                                                    @endif
-                                                    @if (isset($filme->rating))
-                                                         | 
-                                                        @for ($i = 0; $i < intval($filme->rating); $i++)
-                                                            <i style="font-size:10pt;color:#fa503a;" class="fas fa-star"></i>
-                                                        @endfor
-                                                    @endif
-                                                    @if ($filme->rating - intval($filme->rating) > 0)
-                                                        <i style="font-size:10pt;color:#fa503a;" class="fas fa-star-half"></i>
-                                                    @endif
-                                                    @if ($filme->rating == 0)
-                                                        <i style="font-size:10pt;color:#fa503a;" class="fas fa-poop"></i>
-                                                    @endif
-                                                </li>
-                                                <li>Prêmios:
-                                                    @if (isset($filme->awards))
-                                                        {{$filme->awards}} 
-                                                    @else
-                                                        Não Informado
-                                                    @endif
-                                                    @if (isset($filme->awards) && $filme->awards > 0)
-                                                     | 
-                                                        @for ($i = 0; $i < $filme->awards; $i++)
-                                                            <i style="font-size:10pt;color:#fa503a;" class="fas fa-award"></i>
-                                                        @endfor
-                                                    @endif
-                                                </li>
-                                            </ul>
-                                            <br/>
-                                            <br/>
-                                        </li>
-                                        @endforeach
+                <!-- BUSCAR FILMES POR GÊNERO - INÍCIO-->
+                <div class="bloco-exercicio" id="buscaFilmesPorGenero">
+                    <div class="enunciado">
+                        <h2><i class="fas fa-code"></i> Buscar Filmes por Gênero</h2>
+                    </div>
+                    <div class="resultado">
+                        <form action="/genreFilmes" method="POST" name="filmePorGenero">
+                            {{ csrf_field() }}
+                            {{ method_field('POST')}}
+                            <legend for="idGenero"><h3>Selecione <b>um</b> dos gêneros listados abaixo:</h3></legend>
+                            <br/>
+                                @foreach ($generos as $genero) 
+                                    <div>
+                                        <input type="checkbox" id="{{ $genero->id }}" value="{{ $genero->id }}" name="idGenero">
+                                        <label for="{{ $genero->name }}"> <small>{{ $genero->name }}</small></label>
                                         <br/>
-                                    </ul>
-                                </div>
-                                <h3>Quer ver mais? Então clique <a href="{{url('/atores/#todosOsAtores')}}" target="_self" title="Ver todos os atores e atrizes" rel="next" alt="Ver todos os atores e atrizes">aqui</a> e confira a lista de todos os atores e atrizes.</h3>
-                            </div>
-                        </div>
-                    @elseif ($filmesPorGenero == false || $generoPorId == false)
-                        <div class="bloco-exercicio" id="resultadoBuscaGenero">
-                            <div class="enunciado">
-                                <h2><i class="fas fa-code"></i> Resultado Busca de Filmes por Gênero</h2>
-                            </div>
-                        <div class="resultado">
-                            <h3>Ops! Não há filmes do gênero buscado...<br/>Se preferir, clique <a href="{{url('/filmes/#todosOsFilmes')}}" target="_self" title="Ver todos os atores e atrizes" rel="next" alt="Ver todos os atores e atrizes">aqui</a> para ver a lista de todos os filmes.</h3>
-                        </div>
-                    @endif
-                <!-- RESULTADO DE BUSCA DE FILMES POR ID GÊNERO - FIM -->
+                                        <br/>
+                                    </div>
+                                @endforeach
+                            
+                            <input type="submit" id="buscarFilmePorGenero" value="Listar Filmes" title="Clique aqui para listar os filmes do gênero escolhido">
+                            <input type="submit" value="Limpar Busca" title="Clique aqui para refazer a busca de filmes por gênero">
+                        </form>
+                    </div>
+                </div>
+                <!-- BUSCAR FILMES POR GÊNERO - FIM -->
+                
+                
 
                 </div>
             </div>

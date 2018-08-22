@@ -334,71 +334,136 @@
                     </a>
                 </div>
 
-
                 <!-- RESULTADO DE BUSCA DE FILMES POR ID GÊNERO - INÍCIO -->
-                    @if ($filmesPorGenero == true || $generoPorId == true)
+                    @if (isset($filmesPorGenero))
                         <div class="bloco-exercicio" id="resultadoBuscaGenero">
                             <div class="enunciado">
-                                <h2><i class="fas fa-code"></i> Resultado Busca de Filmes por Gênero</h2>
+                                <h2><i class="fas fa-code"></i> Resultado de Busca de Filmes por Gênero</h2>
                             </div>
                             <div class="resultado">
-                                <h2>Os filmes pertencentes ao gênero {{$generoPorId->name}} são:</h2>
+                                <h2>Os filmes pertencentes ao gênero <b>{{$generoPorId[0]['name']}}</b> são:</h2>
                                 <div class="profile">
                                     <ul class="lista profile-desc">
                                         @foreach ($filmesPorGenero as $filme)
-                                            <li>Título: <b>{{$filme->title}}</b> @if (isset($filme->release_date)) <small> ({{ mb_substr($filme->release_date,0,4) }}) </small> @endif</li>
-                                            <li>Duração: @if (isset($filme->length)) {{$filme->length}}' @else Não informado @endif</li>
-                                            <li>Avaliação:
-                                                @if (isset($filme->rating))
-                                                    {{$filme->rating}} 
-                                                @else
-                                                    Não Avaliado
-                                                @endif
-                                                @if (isset($filme->rating))
+                                        <li>
+                                            <ul class="lista">
+                                                <li>Título: <b>{{$filme['title']}}</b> @if (isset($filme->release_date)) <small> ({{ mb_substr($filme->release_date,0,4) }}) </small> @endif</li>
+                                                <li>Duração: @if (isset($filme->length)) {{$filme->length}}' @else Não informado @endif</li>
+                                                <li>Avaliação:
+                                                    @if (isset($filme->rating))
+                                                        {{$filme->rating}} 
+                                                    @else
+                                                        Não Avaliado
+                                                    @endif
+                                                    @if (isset($filme->rating))
+                                                         | 
+                                                        @for ($i = 0; $i < intval($filme->rating); $i++)
+                                                            <i style="font-size:10pt;color:#fa503a;" class="fas fa-star"></i>
+                                                        @endfor
+                                                    @endif
+                                                    @if ($filme->rating - intval($filme->rating) > 0)
+                                                        <i style="font-size:10pt;color:#fa503a;" class="fas fa-star-half"></i>
+                                                    @endif
+                                                    @if ($filme->rating == 0)
+                                                        <i style="font-size:10pt;color:#fa503a;" class="fas fa-poop"></i>
+                                                    @endif
+                                                </li>
+                                                <li>Prêmios:
+                                                    @if (isset($filme->awards))
+                                                        {{$filme->awards}} 
+                                                    @else
+                                                        Não Informado
+                                                    @endif
+                                                    @if (isset($filme->awards) && $filme->awards > 0)
                                                      | 
-                                                    @for ($i = 0; $i < intval($filme->rating); $i++)
-                                                        <i style="font-size:10pt;color:#fa503a;" class="fas fa-star"></i>
-                                                    @endfor
-                                                @endif
-                                                @if ($filme->rating - intval($filme->rating) > 0)
-                                                    <i style="font-size:10pt;color:#fa503a;" class="fas fa-star-half"></i>
-                                                @endif
-                                                @if ($filme->rating == 0)
-                                                    <i style="font-size:10pt;color:#fa503a;" class="fas fa-poop"></i>
-                                                @endif
-                                            </li>
-                                            <li>Prêmios:
-                                                @if (isset($filme->awards))
-                                                    {{$filme->awards}} 
-                                                @else
-                                                    Não Informado
-                                                @endif
-                                                @if (isset($filme->awards) && $filme->awards > 0)
-                                                 | 
-                                                    @for ($i = 0; $i < $filme->awards; $i++)
-                                                        <i style="font-size:10pt;color:#fa503a;" class="fas fa-award"></i>
-                                                    @endfor
-                                                @endif
-                                            </li>
+                                                        @for ($i = 0; $i < $filme->awards; $i++)
+                                                            <i style="font-size:10pt;color:#fa503a;" class="fas fa-award"></i>
+                                                        @endfor
+                                                    @endif
+                                                </li>
+                                            </ul>
+                                            <br/>
+                                            <br/>
+                                        </li>
                                         @endforeach
                                         <br/>
-                                        <a href="http://localhost:8000/ator/form_edit/{{$atorPorId[0]->id}}" target="_self" title="Editar Detalhes do Ator" rel="next" alt="Editar Detalhes do Ator">  <i class="fas fa-pencil-alt"></i></a> | 
-                                        <a href="http://localhost:8000/ator/form_del/{{$atorPorId[0]->id}}" target="_self" title="Apagar Ator" rel="next" alt="Apagar Ator">  <i class="fas fa-trash-alt"></i></a><br/>
                                     </ul>
                                 </div>
-                                <h3>Quer ver mais? Então clique <a href="{{url('/atores/#todosOsAtores')}}" target="_self" title="Ver todos os atores e atrizes" rel="next" alt="Ver todos os atores e atrizes">aqui</a> e confira a lista de todos os atores e atrizes.</h3>
+                                <h3>Quer ver mais? Então clique <a href="{{url('/filmes/#todosOsFilmes')}}" target="_self" title="Ver todos os filmes" rel="next" alt="Ver todos os filmes">aqui</a> e confira a lista de todos os fimles cadastrados.</h3>
                             </div>
                         </div>
-                    @elseif ($filmesPorGenero == false || $generoPorId == false)
-                        <div class="bloco-exercicio" id="resultadoBuscaGenero">
+                    @endif
+                <!-- RESULTADO DE BUSCA DE FILMES POR ID GÊNERO - FIM -->
+
+                <!-- RESULTADO DE BUSCA DE FILMES POR ID GÊNERO VIA URL - INÍCIO -->
+                    @if (isset($filmesDoGenero))
+                        <div class="bloco-exercicio" id="resultadoBuscaGeneroIDID">
+                            <div class="enunciado">
+                                <h2><i class="fas fa-code"></i> Resultado de Busca de Filmes por Gênero</h2>
+                            </div>
+                            <div class="resultado">
+                                <h2>Os filmes pertencentes ao gênero <b>{{$generoViaId[0]['name']}}</b> são:</h2>
+                                <div class="profile">
+                                    <ul class="lista profile-desc">
+                                        @foreach ($filmesDoGenero as $filme)
+                                        <li>
+                                            <ul class="lista">
+                                                <li>Título: <b>{{$filme['title']}}</b> @if (isset($filme->release_date)) <small> ({{ mb_substr($filme->release_date,0,4) }}) </small> @endif</li>
+                                                <li>Duração: @if (isset($filme->length)) {{$filme->length}}' @else Não informado @endif</li>
+                                                <li>Avaliação:
+                                                    @if (isset($filme->rating))
+                                                        {{$filme->rating}} 
+                                                    @else
+                                                        Não Avaliado
+                                                    @endif
+                                                    @if (isset($filme->rating))
+                                                         | 
+                                                        @for ($i = 0; $i < intval($filme->rating); $i++)
+                                                            <i style="font-size:10pt;color:#fa503a;" class="fas fa-star"></i>
+                                                        @endfor
+                                                    @endif
+                                                    @if ($filme->rating - intval($filme->rating) > 0)
+                                                        <i style="font-size:10pt;color:#fa503a;" class="fas fa-star-half"></i>
+                                                    @endif
+                                                    @if ($filme->rating == 0)
+                                                        <i style="font-size:10pt;color:#fa503a;" class="fas fa-poop"></i>
+                                                    @endif
+                                                </li>
+                                                <li>Prêmios:
+                                                    @if (isset($filme->awards))
+                                                        {{$filme->awards}} 
+                                                    @else
+                                                        Não Informado
+                                                    @endif
+                                                    @if (isset($filme->awards) && $filme->awards > 0)
+                                                     | 
+                                                        @for ($i = 0; $i < $filme->awards; $i++)
+                                                            <i style="font-size:10pt;color:#fa503a;" class="fas fa-award"></i>
+                                                        @endfor
+                                                    @endif
+                                                </li>
+                                            </ul>
+                                            <br/>
+                                            <br/>
+                                        </li>
+                                        @endforeach
+                                        <br/>
+                                    </ul>
+                                </div>
+                                <h3>Quer ver mais? Então clique <a href="{{url('/filmes/#todosOsFilmes')}}" target="_self" title="Ver todos os filmes" rel="next" alt="Ver todos os filmes">aqui</a> e confira a lista de todos os fimles cadastrados.</h3>
+                            </div>
+                        </div>
+                    @elseif (!isset($filmesPorGenero) && !isset($filmesDoGenero) && isset($id))
+                        <div class="bloco-exercicio" id="resultadoBuscaGeneroID">
                             <div class="enunciado">
                                 <h2><i class="fas fa-code"></i> Resultado Busca de Filmes por Gênero</h2>
                             </div>
                         <div class="resultado">
-                            <h3>Ops! Não há filmes do gênero buscado...<br/>Se preferir, clique <a href="{{url('/filmes/#todosOsFilmes')}}" target="_self" title="Ver todos os atores e atrizes" rel="next" alt="Ver todos os atores e atrizes">aqui</a> para ver a lista de todos os filmes.</h3>
+                            <h3>Ops! Não há nenhum gênero de id {{$id}}...<br/>Por favor, acesse a <a href="{{url('/genre#buscaFilmesPorGenero')}}" target="_self" title="Ver todos os gêneros" rel="next" alt="Ver todos os gêneros">lista de Gêneros</a> e escolha o gênero desejado.
+                                <br/>Se preferir, clique <a href="{{url('/filmes/#todosOsFilmes')}}" target="_self" title="Ver todos os filmes" rel="next" alt="Ver todos os filmes">aqui</a> e confira a lista de todos os fimles cadastrados.</h3>
                         </div>
                     @endif
-                <!-- RESULTADO DE BUSCA DE FILMES POR ID GÊNERO - FIM -->
+                <!-- RESULTADO DE BUSCA DE FILMES POR ID GÊNERO VIA URL - FIM -->
 
                 </div>
             </div>

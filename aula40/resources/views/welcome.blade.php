@@ -335,7 +335,7 @@
                 <!-- INÍCIO CUSTOM WELCOME -->
                 <div class="bloco-exercicio">
                     <div class="enunciado">
-                        <h2><i class="fas fa-terminal"></i> <b>LARAVEL V | Review</b></h2>
+                        <h2><i class="fas fa-terminal"></i> <b>LARAVEL VI | Relacionamentos</b></h2>
                         <small>Professor Especialista: Rodrigo</small>
                         <br/>
                         <small>Professores Digital House: Thiago M. Medeiros, Thomas Staziak</small>
@@ -355,7 +355,7 @@
                                         <li>Filmes</li>
                                         <br/>
                                         <li><a href="{{url('/filmes#todosOsFilmes')}}" target="_self" title="Ver Lista de Filmes" rel="next" alt="Ver Lista de Filmes">Ver Lista de Filmes</a></li>
-                                        <li><a href="{{url('/genres/{id}')}}" target="_self" title="Ver Filmes por Gênero" rel="next" alt="Ver Filmes por Gênero">Filmes por Gênero</a></li>
+                                        <li><a href="{{url('/genre')}}" target="_self" title="Ver Filmes por Gênero" rel="next" alt="Ver Filmes por Gênero">Filmes por Gênero</a></li>
                                         <li><a href="{{url('/filmes/#buscaTituloFilme')}}" target="_self" title="Buscar Filme por Título" rel="next" alt="Buscar Filme por Título">Buscar Filme por Título</a></li>
                                         <li><a href="{{url('/filmes/#buscaIdFilme')}}" target="_self" title="Buscar Filme por Id" rel="next" alt="Buscar Filme por Id">Buscar Filme por Id</a></li>
                                         <li><a href="{{url('/form#adicionarFilmeEnunciado')}}" target="_self" title="Adicionar Novo Filme" rel="next" alt="Adicionar Novo Filme">Adicionar Novo Filme</a></li>
@@ -375,7 +375,9 @@
                                     <br/>
                                         1. Para que o exercício de exclusão de ator funcionasse dentro do escopo da aula, a tabela actor_movie foi excluída.
                                     <br/>
-                                        2. Na opção de edição de atores, não foi possível atrelar o novo filme favorito ao ator (apenas na criação).
+                                        2.1. Na opção de edição de atores, não foi possível atrelar o novo filme favorito ao ator (apenas na criação).
+                                        <br/>
+                                        2.2. Na opção de seleção de gêneros para filtrar filmes, não foi possível utilizar select nem radio, por isso foi usado o checkbox. A questão é a mesma do item 2.1. (receber valores por select via Controller). O radio button por algum motivo permite a múltipla seleção.
                                 </small>
                             </ul>
                             <!-- FUNCIONALIDADES - FIM -->
@@ -386,41 +388,39 @@
                                 <br/>
                                 <li>
                                     <ul class="lista">
-                                        <li>Editar o Formulário de Ator que foi criado na aula passada, inserindo um <code style="margin-left:0;">< select ></code>​ que traga todos os filmes da tabela movies para selecionar o filme favorito do ator.</li>
+                                        <li>a. Criar o caminho /genre/{id}​, junto com o controlador e o método GenreController@show para exibir apenas um gênero.</li>
                                         <br/>
-                                        <li><a class="" href="{{url('/add#adicionarAtorEnunciado')}}" target="_self" title="Exercício 1" rel="nofollow" alt="Exercício 1">Exercício 1</a></li>
+                                        <li><a class="" href="localhost:8000/genre/INSIRA-O-ID-AQUI-E-APERTE-ENTER" target="_blank" title="Exercício 1" rel="nofollow" alt="Exercício 1">Exercício 1</a></li>
+                                        <br/>
+                                        <br/>
+                                        <li>b. Adicionar ao modelo do Genre​ um método movies​ que retorne todos os filmes usando hasMany​.</li>
+                                        <br/>
+                                        <li><a class="" href="{{url('/genre#buscaFilmesPorGenero')}}" target="_self" title="Exercício 1" rel="nofollow" alt="Exercício 1">Exercício 1</a></li>
+                                        <br/>
+                                        <br/>
+                                        <li>c. O método GenreController@show​ deve enviar à view genre.blade.php​ o gênero escolhido e a lista de filmes relacionados. Exiba todos os filmes associados a este gênero esolhido.</li>
+                                        <br/>
+                                        <li><a class="" href="{{url('/genre#buscaFilmesPorGenero')}}" target="_self" title="Exercício 1" rel="nofollow" alt="Exercício 1">Exercício 1</a></li>
+                                        <br/>
+                                        <br/>
+                                        <li>d. Modificar o formulário que permite adicionar filmes e foi criado na aula anterior de forma que ele tenha um seletor com todos os gêneros disponíveis..</li>
+                                        <br/>
+                                        <li><a class="" href="{{url('/form#adicionarFilmeEnunciado')}}" target="_self" title="Exercício 1d" rel="nofollow" alt="Exercício 1d">Exercício 1d</a></li>
+                                        <br/>
+                                        <br/>
+                                        <li>e. Adicionar nas informações do <strike>filme uma lista dos atores</strike> ator o filme favorito. Para isso, precisaremos que o modelo Movie​ tenha um método actors​ que utilize belongsToMany​.</li>
+                                        <small>Acredito que o enunciado esteja errado (por isso corrigi), pois a relação é que o ator possui filme favorito, correto?</small>
+                                        <br/>
+                                        <br/>
+                                        <li><a class="" href="{{url('/add#adicionarAtorEnunciado')}}" target="_self" title="Exercício 1e" rel="nofollow" alt="Exercício 1e">Exercício 1e</a></li>
+                                        <br/>
+                                        <br/>
                                     </ul>
+                                    <h4>Dica de Código Fornecida no Enunciado do Exercício:</h4>
+                                    <code>return $this->belongsToMany(NomeModeloFinal::class, 'tabela_intermediaria', 'fk_intermediaria_para_esta_classe', 'fk_intermediaria_classe_destino');</code>
                                 </li>
                             </ul>
                             <!-- EXERCÍCIO 1 - FIM -->
-
-                            <!-- EXERCÍCIO 2 - INÍCIO -->
-                            <ul class="lista">
-                                <li>Exercício 2</li>
-                                <br/>
-                                <li>
-                                    <ul class="lista">
-                                        <li>Após isso insira o ator no banco de dados com o id do filme selecionado.</li>
-                                        <br/>
-                                        <li><a class="" href="{{url('/add#adicionarAtorEnunciado')}}" target="_self" title="Exercício 1d" rel="nofollow" alt="Exercício 1d">Exercício 2</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                            <!-- EXERCÍCIO 2 - FIM -->
-
-                            <!-- EXERCÍCIO 3 - INÍCIO -->
-                            <ul class="lista">
-                                <li>Exercício 3</li>
-                                <br/>
-                                <li>
-                                    <ul class="lista">
-                                        <li>Utilizando a view (atores.blade.php) criada na aula retrasada mostre o nome do filme favorito do ator junto com as informações já existentes. Você precisará usar o join().</li>
-                                        <br/>
-                                        <li><a class="" href="{{url('/atores#todosOsAtores')}}" target="_self" title="Exercício 1d" rel="nofollow" alt="Exercício 1d">Exercício 2</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                            <!-- EXERCÍCIO 3 - FIM -->
 
                         </div>
                     </div>
@@ -435,15 +435,15 @@
                     </div>
                     <div class="resultado">
                         <ul class="menu">
-                            <li><a href="https://github.com/Marcelo-Diament/dh-entregaveis/blob/master/aula39/app" target="_blank" title="Acessar Models" rel="external" alt="Acessar Models"><i class="fas fa-database"></i></a></li>
-                            <li><a href="https://github.com/Marcelo-Diament/dh-entregaveis/tree/master/aula39/resources/views" target="_blank" title="Acessar Views" rel="external" alt="Clique para acessar as Views"><i class="fas fa-eye"></i></a></li>
-                            <li><a href="https://github.com/Marcelo-Diament/dh-entregaveis/blob/master/aula39/app/Http/Controllers" target="_blank" title="Acessar Controllers" rel="external" alt="Clique para acessar os Controllers"><i class="fas fa-cog"></i></a></li>
+                            <li><a href="https://github.com/Marcelo-Diament/dh-entregaveis/blob/master/aula40/app" target="_blank" title="Acessar Models" rel="external" alt="Acessar Models"><i class="fas fa-database"></i></a></li>
+                            <li><a href="https://github.com/Marcelo-Diament/dh-entregaveis/tree/master/aula40/resources/views" target="_blank" title="Acessar Views" rel="external" alt="Clique para acessar as Views"><i class="fas fa-eye"></i></a></li>
+                            <li><a href="https://github.com/Marcelo-Diament/dh-entregaveis/blob/master/aula40/app/Http/Controllers" target="_blank" title="Acessar Controllers" rel="external" alt="Clique para acessar os Controllers"><i class="fas fa-cog"></i></a></li>
                             <li><h3>+</h3></li>
-                            <li><a href="https://github.com/Marcelo-Diament/dh-entregaveis/blob/master/aula39/routes" target="_blank" title="Acessar Routes" rel="external" alt="Clique para acessar as Routes"><i class="fas fa-project-diagram"></i></a></li>
+                            <li><a href="https://github.com/Marcelo-Diament/dh-entregaveis/blob/master/aula40/routes" target="_blank" title="Acessar Routes" rel="external" alt="Clique para acessar as Routes"><i class="fas fa-project-diagram"></i></a></li>
                             <li><h3>+</h3></li>
                             <li><a href="https://github.com/Marcelo-Diament/dh-entregaveis/blob/master/README.md" target="_blank" title="Acessar README.md" rel="help" alt="Clique para acessar o arquivo README.md"><i class="fas fa-info"></i></a></li>
                             <li><h3>+</h3></li>
-                            <li><a href="https://github.com/Marcelo-Diament/dh-entregaveis/tree/master/aula39" target="_blank" title="Acessar o repositório" rel="external" alt="Clique para acessar o repositório"><i class="fab fa-github"></i></a></li>
+                            <li><a href="https://github.com/Marcelo-Diament/dh-entregaveis/tree/master/aula40" target="_blank" title="Acessar o repositório" rel="external" alt="Clique para acessar o repositório"><i class="fab fa-github"></i></a></li>
                         </ul>
                     </div>
                 </div>
