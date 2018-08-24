@@ -1,12 +1,12 @@
 // Exercício 1.1.
-function elevarAoSegundo(a,b){
+function elevarAoQuadrado(a,b){
     let resultado1_1 = a**b
     console.log('Exercício 1.1.', resultado1_1)
 }
 
 // Exercício 1.2.
-let quadrado = function(a,b){
-    let resultado1_2 = a**b
+let quadrado = function(a){
+    let resultado1_2 = a**2
     console.log('Exercício 1.2.', resultado1_2)
 }
 
@@ -41,3 +41,14 @@ function meuSanduiche(a, b, callback){
 function callback(){
     console.log('Terminei de comer meu sanduíche.')
 }
+
+// Exercício 2.1.
+let listaNumeros = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
+
+let porSete = listaNumeros.filter(function(numero) {
+ return (numero%7 == 0)
+})
+
+let multiplosDeSete = porSete.forEach(function(value){
+    console.log(value+' é múltiplo de 7')
+})

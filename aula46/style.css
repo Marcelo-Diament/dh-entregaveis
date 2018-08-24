@@ -4,6 +4,7 @@
     padding: 0;
     font-family: 'Raleway', sans-serif;
     font-size: 16pt;
+    scroll-behavior: smooth;
 }
 body{
     padding-top: 90px;
@@ -21,9 +22,21 @@ nav, footer{
     font-family: 'Poiret One', cursive;
     font-size: 20pt;
 }
+.navbar-toggler-icon{ 
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#8acf17' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
 a.nav-link, a{
     text-decoration: none;
     color: #fff;
+}
+a:hover{
+  font-weight: bolder;
+  color: inherit !important;
+  text-decoration: none;
+}
+a:visited, a:focus, a:active, a:focus-within{
+  text-decoration: none;
+  color: inherit;
 }
 header{
     text-align: center;
@@ -36,6 +49,7 @@ header img, li img, article img{
 section{
     border-radius: 80px;
     display: block;
+    margin: 25px;
 }
 article.enunciado{
     background-color: #f2f2f2;
@@ -44,7 +58,7 @@ article.enunciado{
     padding: 20px;
     display: inline-block;
     border-radius: 20px 20px 0 0;
-    border-bottom: 3px solid #f0bd21;
+    border-bottom: 3px solid #02a000;
 }
 article.resposta{
     background-color: #cecece;
@@ -54,12 +68,15 @@ article.resposta{
     display: inline-block;
     border-radius: 0 0 20px 20px;
 }
+article.resposta b{
+  color: #02a000;
+}
 i.fa, i.fas, i.fab, .title{
-    color: #f0bd21;
+    color: #02a000;
 }
 code{
     background-color: #f3f3f3;
-    color: #f0bd21;
+    color: #02a000;
     padding: 2px 10px;
 }
 h1{
