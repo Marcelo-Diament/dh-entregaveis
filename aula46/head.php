@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css?family=Poiret+One|Raleway|VT323" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <link href="style.css" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="60x60" href="../img/favicon.png">
     <script src="script.js"></script>
     <title>JavaScript - Aula 1 - Introdução</title>
 </head>
