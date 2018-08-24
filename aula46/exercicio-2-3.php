@@ -3,23 +3,22 @@
     <main class="container">
         <section class="row">
             <article class="enunciado col-12">
-                <h2 class="title"><i class="fas fa-terminal"></i> <b>Exercício 2.1.</b></h2>
-                <p>Definir um array de números de 1 a 20. Utilizando o método forEach, imprimir na linha de comando apenas os que sejam múltiplos de 7.</p>
+                <h2 class="title"><i class="fas fa-terminal"></i> <b>Exercício 2.3.</b></h2>
+                <p>Um detetive recebeu um código anônimo e quer decifrar a mensagem. Para isso, ele pede ajuda a você. As únicas pistas que ele recebeu foram: filter e typeof. Será que você consegue ajudá-lo?</p>
+                <code>
+                    var enigma = ["l",1,"a",2,2,5,"p",5,7,5,3,"e",6,"r",7,6,5,3,2,1,"s",9,9,9,6,"e",2,"v",5,"e",3,"r",2,"a",1,6,4,1,2,"n",2,"c",3,5,5,5,7,"i",4,"a",5,2,1,3,"e",6,"s",7,"l",4,"a",3,"c",2,3,1,5,3,2,"l",3,"a",4,"v",5,"e",6];
+                </code>
             </article>
             <article class="resposta col-12">
                 <h2 class="title"><i class="fas fa-code"></i> <b>Resultado</b></h2>
                 <pre>
-let listaNumeros = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
+var enigma = ["l",1,"a",2,2,5,"p",5,7,5,3,"e",6,"r",7,6,5,3,2,1,"s",9,9,9,6,"e",2,"v",5,"e",3,"r",2,"a",1,6,4,1,2,"n",2,"c",3,5,5,5,7,"i",4,"a",5,2,1,3,"e",6,"s",7,"l",4,"a",3,"c",2,3,1,5,3,2,"l",3,"a",4,"v",5,"e",6];
 
-let porSete = listaNumeros.filter(function(numero) {
-    return (numero%7 == 0)
-})
-
-let multiplosDeSete = porSete.forEach(function(value){
-    console.log(value+' é múltiplo de 7')
+let valoresAlfa = enigma.filter(function(value){
+    return (typeof value !== 'number')
 })<span class="terminal">_</span>
                 </pre>
-                <small>Resultado ocorreu corretamente (printou "7 é múltiplo de 7" e "14 é múltiplo de 7").</small>
+                <small>Resultado ocorreu corretamente (printou "la perseverancia es la clave").</small>
             </article>
         </section>
     </main>

@@ -16,11 +16,11 @@
                 <h2 class="title"><i class="fas fa-code"></i> <b>Resultado</b></h2>
                 <p>Retorna <i>undefined</i>. Para que ocorra corretamente deveria ser:</p>
                 <pre>
-                    let atribuicao = function(numero){
-                        return numero
-                    }
-                    let numero = 5
-                    console.log('Exercício 1.3.', atribuicao(numero))
+let atribuicao = function(numero){
+    return numero
+}
+let numero = 5
+console.log('Exercício 1.3.', atribuicao(numero))<span class="terminal">_</span>
                 </pre>
                 <small>Resultado, sendo numero = 5, deu 5 (correto).</small>
             </article>

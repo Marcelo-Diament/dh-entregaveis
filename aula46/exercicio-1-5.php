@@ -9,15 +9,15 @@
             <article class="resposta col-12">
                 <h2 class="title"><i class="fas fa-code"></i> <b>Resultado</b></h2>
                 <pre>
-                function meuSanduiche(a, b, callback){
-                    console.log('Estou comendo um sanduíche de '+a+' com '+b+'...')
-                    setTimeout(function(){
-                        callback()}, 1000)
-                }
+function meuSanduiche(a, b, callback){
+    console.log('Estou comendo um sanduíche de '+a+' com '+b+'...')
+    setTimeout(function(){
+        callback()}, 1000)
+}
                     
-                function callback(){
-                    console.log('Terminei de comer meu sanduíche.')
-                }
+function callback(){
+    console.log('Terminei de comer meu sanduíche.')
+}<span class="terminal">_</span>
                 </pre>
                 <small>Resultado ocorreu corretamente (printou Estou comendo um sanduíche de 'a', 'b'; depois de alguns segundos, apareceu Terminei de comer meu sanduíche).</small>
             </article>

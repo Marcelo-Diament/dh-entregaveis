@@ -14,14 +14,14 @@
             <article class="resposta col-12">
                 <h2 class="title"><i class="fas fa-code"></i> <b>Resultado</b></h2>
                 <pre>
-                function trianguloRetangulo(a,b){
-                    function hipotenusa(a,b){
-                        let hipotenusa = Math.sqrt(a**2 + b**2)
-                        return hipotenusa
-                    }
-                    let perimetroTriangulo = a + b + hipotenusa(a,b)
-                    console.log('Exercício 1.4.', perimetroTriangulo)
-                }
+function trianguloRetangulo(a,b){
+    function hipotenusa(a,b){
+        let hipotenusa = Math.sqrt(a**2 + b**2)
+        return hipotenusa
+    }
+    let perimetroTriangulo = a + b + hipotenusa(a,b)
+    console.log('Exercício 1.4.', perimetroTriangulo)
+}<span class="terminal">_</span>
                 </pre>
                 <small>Resultado, sendo a = 3 e b = 4, deu 12 (correto).</small>
             </article>

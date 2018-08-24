@@ -12,7 +12,7 @@
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" alt="Confira o menu de exercícios" title="Confira o menu de exercícios">
-                Exercício 1
+                Funções
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="exercicio-1-1.php"><i class="fas fa-code"></i> Exercício 1.1.</a>
@@ -24,19 +24,18 @@
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" alt="Confira o menu de exercícios" title="Confira o menu de exercícios">
-                Exercício 2
+                Arrays
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="exercicio-2-1.php"><i class="fas fa-code"></i> Exercício 2.1.</a>
                     <a class="dropdown-item" href="exercicio-2-2.php"><i class="fas fa-code"></i> Exercício 2.2.</a>
                     <a class="dropdown-item" href="exercicio-2-3.php"><i class="fas fa-code"></i> Exercício 2.3.</a>
                     <a class="dropdown-item" href="exercicio-2-4.php"><i class="fas fa-code"></i> Exercício 2.4.</a>
-                    <a class="dropdown-item" href="exercicio-2-5.php"><i class="fas fa-code"></i> Exercício 2.5.</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" alt="Confira o menu de exercícios" title="Confira o menu de exercícios">
-                Exercício 3
+                Objetos Literais
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="exercicio-3-1.php"><i class="fas fa-code"></i> Exercício 3.1.</a>
@@ -44,6 +43,8 @@
                     <a class="dropdown-item" href="exercicio-3-3.php"><i class="fas fa-code"></i> Exercício 3.3.</a>
                     <a class="dropdown-item" href="exercicio-3-4.php"><i class="fas fa-code"></i> Exercício 3.4.</a>
                     <a class="dropdown-item" href="exercicio-3-5.php"><i class="fas fa-code"></i> Exercício 3.5.</a>
+                    <a class="dropdown-item" href="exercicio-3-6.php"><i class="fas fa-code"></i> Exercício 3.6.</a>
+                    <a class="dropdown-item" href="exercicio-3-7.php"><i class="fas fa-code"></i> Exercício 3.7.</a>
                 </div>
             </li>
             <li class="nav-item">
