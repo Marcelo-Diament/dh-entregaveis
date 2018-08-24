@@ -7,9 +7,6 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="index.php" title="Acessar tela inicial" alt="Acessar tela inicial" rel="next" target="_self">Início<span class="sr-only"></span></a>
-            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" alt="Confira o menu de exercícios" title="Confira o menu de exercícios">
                 Funções
@@ -55,9 +52,11 @@
     </nav>
     <header class="container">
         <div class="row">
-            <div class="col-12">
-                <img src="img/js-logo.png" alt="JavaScript" title="JavaScript" height="150" width="150"/>
-                <h1 class="col-12">Aula 46 | JavaScript</h1>
+            <div class="col-12 topo">
+                <a href="index.php">
+                    <img src="img/js-logo.png" alt="JavaScript" title="JavaScript" height="150" width="150"/>
+                    <h1 class="col-12">Aula 46 | JavaScript</h1>
+                </a>
             </div>
         </div>
     </header>

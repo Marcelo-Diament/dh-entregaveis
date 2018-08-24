@@ -68,7 +68,6 @@
                         <br/>
                         <code>var enigma = <br/>["l",1,"a",2,2,5,"p",5,7,5,3,"e",6,"r",7,6,5,3,2,1,"s",9,9,9,6,"e",2,"v",5,"e",3,"r",2,"a",1,6,4,1,2,"n",2,"c",3,5,5,5,7,"i",4,"a",5,2,1,3,"e",6,"s",7,"l",4,"a",3,"c",2,3,1,5,3,2,"l",3,"a",4,"v",5,"e",6];</code>
                         <br/>
-                        <br/>
                         <a href="exercicio-2-3.php" title="Acessar exercício 2.3." alt="Acessar exercício 2.3." rel="next" target="_blank"><b>Exercício 2.3. </b></a><i class="fas fa-external-link-alt" style="font-size:12pt; margin-left:5px;padding-bottom:5px;"></i>
                         <br/>
                     </li>
@@ -93,13 +92,39 @@
                             <li>estado civil (string)</li>
                             <li>filmes preferidos (array de strings)</li>
                         </ol>
+                        <a href="exercicio-3-1.php" title="Acessar exercício 3.1." alt="Acessar exercício 3.1." rel="next" target="_blank"><b>Exercício 3.1. </b></a><i class="fas fa-external-link-alt" style="font-size:12pt; margin-left:5px;padding-bottom:5px;"></i>
+                        <br/>
                     </li>
-                    <li>Utilizando console.log, imprimir na linha de comando todas as propriedades de pessoa.</li>
-                    <li>Trocar a idade para simular que ela fez aniversário e utilize o console.log para ver o resultado.</li>
-                    <li>Adicionar a pessoa um método chamado cumprimento(), que imprima na linha de comando o < Olá ​nome​ e o ​sobrenome >​ da pessoa.</li>
-                    <li>Executar: <code>pessoa.cumprimento()</code>.</li>
-                    <li>Adicionar a pessoa um método chamado comer(), que receba um parâmetro comida e que imprima na linha de comando: “estou comendo:” e, em seguida, o nome da comida.</li>
-                    <li>Por último, executar o código pessoa.comer("macarrão").</li>
+                    <li>Utilizando console.log, imprimir na linha de comando todas as propriedades de pessoa.
+                        <br/>
+                        <a href="exercicio-3-2.php" title="Acessar exercício 3.2." alt="Acessar exercício 3.2." rel="next" target="_blank"><b>Exercício 3.2. </b></a><i class="fas fa-external-link-alt" style="font-size:12pt; margin-left:5px;padding-bottom:5px;"></i>
+                        <br/>
+                    </li>
+                    <li>Trocar a idade para simular que ela fez aniversário e utilize o console.log para ver o resultado.
+                        <br/>
+                        <a href="exercicio-3-3.php" title="Acessar exercício 3.3." alt="Acessar exercício 3.3." rel="next" target="_blank"><b>Exercício 3.3. </b></a><i class="fas fa-external-link-alt" style="font-size:12pt; margin-left:5px;padding-bottom:5px;"></i>
+                        <br/>
+                    </li>
+                    <li>Adicionar a pessoa um método chamado cumprimento(), que imprima na linha de comando o < Olá ​nome​ e o ​sobrenome >​ da pessoa.
+                        <br/>
+                        <a href="exercicio-3-4.php" title="Acessar exercício 3.4." alt="Acessar exercício 3.4." rel="next" target="_blank"><b>Exercício 3.4. </b></a><i class="fas fa-external-link-alt" style="font-size:12pt; margin-left:5px;padding-bottom:5px;"></i>
+                        <br/>
+                    </li>
+                    <li>Executar: <code>pessoa.cumprimento()</code>.
+                        <br/>
+                        <a href="exercicio-3-5.php" title="Acessar exercício 3.5." alt="Acessar exercício 3.5." rel="next" target="_blank"><b>Exercício 3.5. </b></a><i class="fas fa-external-link-alt" style="font-size:12pt; margin-left:5px;padding-bottom:5px;"></i>
+                        <br/>
+                    </li>
+                    <li>Adicionar a pessoa um método chamado comer(), que receba um parâmetro comida e que imprima na linha de comando: “estou comendo:” e, em seguida, o nome da comida.
+                        <br/>
+                        <a href="exercicio-3-6.php" title="Acessar exercício 3.6." alt="Acessar exercício 3.6." rel="next" target="_blank"><b>Exercício 3.6. </b></a><i class="fas fa-external-link-alt" style="font-size:12pt; margin-left:5px;padding-bottom:5px;"></i>
+                        <br/>
+                    </li>
+                    <li>Por último, executar o código pessoa.comer("macarrão").
+                        <br/>
+                        <a href="exercicio-3-7.php" title="Acessar exercício 3.7." alt="Acessar exercício 3.7." rel="next" target="_blank"><b>Exercício 3.7. </b></a><i class="fas fa-external-link-alt" style="font-size:12pt; margin-left:5px;padding-bottom:5px;"></i>
+                        <br/>
+                    </li>
                 </ol>
             </article>
         </section>
