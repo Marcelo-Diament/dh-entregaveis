@@ -26,5 +26,9 @@ function trianguloRetangulo(a,b){
                 <small>Resultado, sendo a = 3 e b = 4, deu 12 (correto).</small>
             </article>
         </section>
+        <form class="botoes">
+            <button type="submit" formaction="exercicio-1-3.php" target="_self"><i class="fas fa-arrow-left"></i> Exercício Anterior</button>
+            <button type="submit" formaction="exercicio-1-5.php" target="_self">Próximo Exercício <i class="fas fa-arrow-right"></i></button>
+        </form>
     </main>
 <?php include_once('footer.php'); ?>

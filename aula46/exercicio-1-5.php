@@ -22,5 +22,9 @@ function callback(){
                 <small>Resultado ocorreu corretamente (printou Estou comendo um sanduíche de 'a', 'b'; depois de alguns segundos, apareceu Terminei de comer meu sanduíche).</small>
             </article>
         </section>
+        <form class="botoes">
+            <button type="submit" formaction="exercicio-1-4.php" target="_self"><i class="fas fa-arrow-left"></i> Exercício Anterior</button>
+            <button type="submit" formaction="exercicio-2-1.php" target="_self">Próximo Exercício <i class="fas fa-arrow-right"></i></button>
+        </form>
     </main>
 <?php include_once('footer.php'); ?>

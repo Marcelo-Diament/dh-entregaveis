@@ -28,5 +28,9 @@ let pessoa = {
                 </pre>
             </article>
         </section>
+        <form class="botoes">
+            <button type="submit" formaction="exercicio-2-4.php" target="_self"><i class="fas fa-arrow-left"></i> Exercício Anterior</button>
+            <button type="submit" formaction="exercicio-3-2.php" target="_self">Próximo Exercício <i class="fas fa-arrow-right"></i></button>
+        </form>
     </main>
 <?php include_once('footer.php'); ?>

@@ -25,5 +25,9 @@ console.log('Exercício 1.3.', atribuicao(numero))<span class="terminal">_</span
                 <small>Resultado, sendo numero = 5, deu 5 (correto).</small>
             </article>
         </section>
+        <form class="botoes">
+            <button type="submit" formaction="exercicio-1-2.php" target="_self"><i class="fas fa-arrow-left"></i> Exercício Anterior</button>
+            <button type="submit" formaction="exercicio-1-4.php" target="_self">Próximo Exercício <i class="fas fa-arrow-right"></i></button>
+        </form>
     </main>
 <?php include_once('footer.php'); ?>

@@ -126,6 +126,34 @@ div.enigma img{
   vertical-align: initial;
   margin: 0;
 }
+form.botoes{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px -20px;
+}
+button{
+    background-color: #02a000 !important;
+    color: #fff !important;
+    font-size: 20pt;
+    border-radius: 30px;
+    border: none;
+    line-height: 45px;
+    padding: 5px 20px;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+        -webkit-transition: all 0.4s ease-in-out;
+        -moz-transition: all 0.4s ease-in-out;
+        -o-transition: all 0.4s ease-in-out;
+}
+button:hover{
+    background-color: #006d04 !important;
+}
+button i.fas{
+    color: #fff !important;
+}
+button.disabled{
+    background-color: grey
+}
 ::selection {
   background: #8acf17; color: #000;
 }

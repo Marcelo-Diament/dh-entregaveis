@@ -14,5 +14,9 @@ pessoa.comer('macarrão')<span class="terminal">_</span>
                 <small>Resultado ocorreu corretamente (printou "<i>Estou comendo macarrão!</i> ").</small>
             </article>
         </section>
+        <form class="botoes">
+            <button type="submit" formaction="exercicio-3-6.php" target="_self"><i class="fas fa-arrow-left"></i> Exercício Anterior</button>
+            <button type="submit" formaction="index.php" disabled target="_self" class="disabled">Não há mais Exercícios <i class="fas fa-arrow-right"></i></button>
+        </form>
     </main>
 <?php include_once('footer.php'); ?>

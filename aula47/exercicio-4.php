@@ -17,7 +17,7 @@ alert('A URL que você está é '+window.location.href)<span class="terminal">_<
                 </pre>
                 <small>Resultado: exibe a URL correta (<i>A URL em que você está é .../exercicio-4.php</i> - de acordo com o host).
                 <br/>
-                Incluí um prompt para ser possível visualizar ao entrar (como uma confirmação).</small>
+                Incluí um alert para ser possível visualizar ao entrar (como uma confirmação).</small>
             </article>
         </section>
         <form class="botoes">

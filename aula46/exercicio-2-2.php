@@ -23,5 +23,9 @@ let raizesQuadradasMap = listaNumeros.map(function(value){
                 <small>Resultado ocorreu corretamente (printou "1, 1.41, 1.73, 2 e assim por diante").</small>
             </article>
         </section>
+        <form class="botoes">
+            <button type="submit" formaction="exercicio-2-1.php" target="_self"><i class="fas fa-arrow-left"></i> Exercício Anterior</button>
+            <button type="submit" formaction="exercicio-2-3.php" target="_self">Próximo Exercício <i class="fas fa-arrow-right"></i></button>
+        </form>
     </main>
 <?php include_once('footer.php'); ?>

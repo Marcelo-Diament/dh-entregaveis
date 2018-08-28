@@ -17,5 +17,9 @@ function elevarAoSegundo(a,b){
                 <small>Resultado, sendo a = 5 e b = 2, deu 25 (correto).</small>
             </article>
         </section>
+        <form class="botoes">
+            <button type="submit" formaction="index.php" target="_self"><i class="fas fa-arrow-left"></i> Início</button>
+            <button type="submit" formaction="exercicio-1-2.php" target="_self">Próximo Exercício <i class="fas fa-arrow-right"></i></button>
+        </form>
     </main>
 <?php include_once('footer.php'); ?>

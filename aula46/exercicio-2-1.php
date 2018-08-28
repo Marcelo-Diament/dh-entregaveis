@@ -22,5 +22,9 @@ let multiplosDeSete = porSete.forEach(function(value){
                 <small>Resultado ocorreu corretamente (printou "7 é múltiplo de 7" e "14 é múltiplo de 7").</small>
             </article>
         </section>
+        <form class="botoes">
+            <button type="submit" formaction="exercicio-1-5.php" target="_self"><i class="fas fa-arrow-left"></i> Exercício Anterior</button>
+            <button type="submit" formaction="exercicio-2-2.php" target="_self">Próximo Exercício <i class="fas fa-arrow-right"></i></button>
+        </form>
     </main>
 <?php include_once('footer.php'); ?>
