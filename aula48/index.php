@@ -11,22 +11,25 @@
             <article class="resposta col-12">
                 <h2 class="title"><i class="fas fa-code"></i> <b>Exercício 1 | Seletores</b></h2>
                 <br/>
+                <small>Esclarecimento​: Para esta prática, vamos utilizar uma página de HTML5UP carregada no campus. Vamos trabalhar com o arquivo index.html e o <strike>arquivo main.js que está na pasta assets/js/</strike> script.js (../script.js). Lembre-se de utilizar window.onload para executar o código desses exercícios.</small>
                 <ol type="1">
-                    <li>Definir uma função chamada elevarAoSegundo​ que receba dois números e retorne o primeiro número elevado à potência do segundo. Por exemplo: minhaFuncao(5,2) = 5² = 25.
+                    <li>Utilizando <code>document.getElementById("")</code>, ocultar o elemento <code>< h1 id=<strike>'cabeçalho'</strike> 'titular' ></code> ao carregar a página.
                         <br/>
                         <a href="exercicio-1-1.php" title="Acessar exercício 1.1." alt="Acessar exercício 1.1." rel="next" target="_blank"><b>Exercício 1.1. </b></a><i class="fas fa-external-link-alt" style="font-size:12pt; margin-left:5px;padding-bottom:5px;"></i>
                         <br/>
                     </li>
-                    <li>Criar uma variável chamada quadrado com uma função anônima atribuída que receba um número e retorne o quadrado desse número.
+                    <li>Utilizando <code>querySelector(“”)</code> fazer com que, depois do carregamento da página, a coruja fique preta e branca. Para isso, utilizar:
+                        <br/>
+                        <code>
+                            elemento.style.filter = "grayscale(100%)";
+                        </code>
                         <br/>
                         <a href="exercicio-1-2.php" title="Acessar exercício 1.2." alt="Acessar exercício 1.2." rel="next" target="_blank"><b>Exercício 1.2. </b></a><i class="fas fa-external-link-alt" style="font-size:12pt; margin-left:5px;padding-bottom:5px;"></i>
                         <br/>
                     </li>
-                    <li>Considerando o seguinte código:
+                    <li>Utilizando querySelectorAll(“”) selecionar todos os inputs do formulário e alterar a cor de fundo de cada um (percorrê-los com forEach), usando:
                         <br/>
-                        <code>function atribuicao() {var numero = 5;}console.log(numero);</code>
-                        <br/>
-                        O código funcionou? Por que não?
+                        <code>elemento.style.background = "red";</code>
                         <br/>
                         <a href="exercicio-1-3.php" title="Acessar exercício 1.3." alt="Acessar exercício 1.3." rel="next" target="_blank"><b>Exercício 1.3. </b></a><i class="fas fa-external-link-alt" style="font-size:12pt; margin-left:5px;padding-bottom:5px;"></i>
                         <br/>
@@ -38,50 +41,66 @@
                 <h2 class="title"><i class="fas fa-code"></i> <b>Exercício 2 | DOM - Seletores e Elementos</b></h2>
                 <br/>
                 <ol type="1">
-                    <li>Definir um array de números de 1 a 20. Utilizando o método forEach, imprimir na linha de comando apenas os que sejam múltiplos de 7.
+                    <li>Selecionar o elemento com id “copyright” e mostrar todos os atributos dele na linha de comando, utilizando elemento.attributes.
                         <br/>
                         <a href="exercicio-2-1.php" title="Acessar exercício 2.1." alt="Acessar exercício 2.1." rel="next" target="_blank"><b>Exercício 2.1. </b></a><i class="fas fa-external-link-alt" style="font-size:12pt; margin-left:5px;padding-bottom:5px;"></i>
                         <br/>
                     </li>
-                    <li>Utilizando o array do exercício 1, implementar a função map para obter um arrayResultado com a raiz quadrada de cada um dos números. Para isso, utilizar a função Math.sqrt.
+                    <li>Usando getAttribute, mostrar na linha de comando a url à qual o botão do Twitter redireciona.
                         <br/>
                         <a href="exercicio-2-2.php" title="Acessar exercício 2.2." alt="Acessar exercício 2.2." rel="next" target="_blank"><b>Exercício 2.2. </b></a><i class="fas fa-external-link-alt" style="font-size:12pt; margin-left:5px;padding-bottom:5px;"></i>
                         <br/>
                     </li>
-                    <li>Um detetive recebeu um código anônimo e quer decifrar a mensagem. Para isso, ele pede ajuda a você. As únicas pistas que ele recebeu foram: filter e typeof. Será que você consegue ajudá-lo?
-                        <br/>
-                        <br/>
-                        <code>var enigma = <br/>["l",1,"a",2,2,5,"p",5,7,5,3,"e",6,"r",7,6,5,3,2,1,"s",9,9,9,6,"e",2,"v",5,"e",3,"r",2,"a",1,6,4,1,2,"n",2,"c",3,5,5,5,7,"i",4,"a",5,2,1,3,"e",6,"s",7,"l",4,"a",3,"c",2,3,1,5,3,2,"l",3,"a",4,"v",5,"e",6];</code>
+                    <li>Usando getAttribute, mostrar na linha de comando a url à qual o botão do Facebook redireciona.
                         <br/>
                         <a href="exercicio-2-3.php" title="Acessar exercício 2.3." alt="Acessar exercício 2.3." rel="next" target="_blank"><b>Exercício 2.3. </b></a><i class="fas fa-external-link-alt" style="font-size:12pt; margin-left:5px;padding-bottom:5px;"></i>
                         <br/>
                     </li>
-                    <li>Com todas essas informações, o detetive conseguiu descobrir o nome de uma rua, mas não a número. A única coisa que ele encontrou para decifrar foi esta legenda: “Somar todos os números do enigma proposto para encontrar o número”. Ele também encontrou uma pista que dizia <b><i>reduce</i></b>​.
+                    <li>Repare que o ícone do YouTube direciona ao Google. Queremos mudar isso com JavaScript, usando setAttribute, para que o ícone direcione ao canal da Digital House no YouTube.
                         <br/>
                         <a href="exercicio-2-4.php" title="Acessar exercício 2.4." alt="Acessar exercício 2.4." rel="next" target="_blank"><b>Exercício 2.4. </b></a><i class="fas fa-external-link-alt" style="font-size:12pt; margin-left:5px;padding-bottom:5px;"></i>
                         <br/>
                     </li>
-                    <li>Definir um array de números de 1 a 20. Utilizando o método forEach, imprimir na linha de comando apenas os que sejam múltiplos de 7.
+                    <li>Repare que o form não está funcionando e nos perguntaram se, por JavaScript, podemos ver se há um atributo action atribuído e imprimir o resultado em linha de comando.
                         <br/>
                         <a href="exercicio-2-5.php" title="Acessar exercício 2.5." alt="Acessar exercício 2.5." rel="next" target="_blank"><b>Exercício 2.5. </b></a><i class="fas fa-external-link-alt" style="font-size:12pt; margin-left:5px;padding-bottom:5px;"></i>
                         <br/>
                     </li>
-                    <li>Utilizando o array do exercício 1, implementar a função map para obter um arrayResultado com a raiz quadrada de cada um dos números. Para isso, utilizar a função Math.sqrt.
+                    <li>Repare que o programador se confundiu e adicionou no action um atributo url errado. Agora, precisamos excluir e adicionar a url a action, tudo por JavaScript.
                         <br/>
                         <a href="exercicio-2-6.php" title="Acessar exercício 2.6." alt="Acessar exercício 2.6." rel="next" target="_blank"><b>Exercício 2.6. </b></a><i class="fas fa-external-link-alt" style="font-size:12pt; margin-left:5px;padding-bottom:5px;"></i>
                         <br/>
                     </li>
-                    <li>Um detetive recebeu um código anônimo e quer decifrar a mensagem. Para isso, ele pede ajuda a você. As únicas pistas que ele recebeu foram: filter e typeof. Será que você consegue ajudá-lo?
-                        <br/>
-                        <br/>
-                        <code>var enigma = <br/>["l",1,"a",2,2,5,"p",5,7,5,3,"e",6,"r",7,6,5,3,2,1,"s",9,9,9,6,"e",2,"v",5,"e",3,"r",2,"a",1,6,4,1,2,"n",2,"c",3,5,5,5,7,"i",4,"a",5,2,1,3,"e",6,"s",7,"l",4,"a",3,"c",2,3,1,5,3,2,"l",3,"a",4,"v",5,"e",6];</code>
+                    <li>Utilizando elemento.style, trocar a cor de h2 para vermelho.
                         <br/>
                         <a href="exercicio-2-7.php" title="Acessar exercício 2.7." alt="Acessar exercício 2.7." rel="next" target="_blank"><b>Exercício 2.7. </b></a><i class="fas fa-external-link-alt" style="font-size:12pt; margin-left:5px;padding-bottom:5px;"></i>
                         <br/>
                     </li>
-                    <li>Com todas essas informações, o detetive conseguiu descobrir o nome de uma rua, mas não a número. A única coisa que ele encontrou para decifrar foi esta legenda: “Somar todos os números do enigma proposto para encontrar o número”. Ele também encontrou uma pista que dizia <b><i>reduce</i></b>​.
+                    <li>Precisamos mudar a cor de todos os ícones da página. Lembre que eles são da classe “icon”.
                         <br/>
                         <a href="exercicio-2-8.php" title="Acessar exercício 2.8." alt="Acessar exercício 2.8." rel="next" target="_blank"><b>Exercício 2.8. </b></a><i class="fas fa-external-link-alt" style="font-size:12pt; margin-left:5px;padding-bottom:5px;"></i>
+                        <br/>
+                    </li>
+                </ol>
+                <br/>
+                <hr>
+                <br/>
+                <h2 class="title"><i class="fas fa-code"></i> <b>Exercício 3 | Eventos</b></h2>
+                <br/>
+                <ol type="1">
+                    <li>Precisamos criar um botão usando JavaScript. A ideia é que ele fique ao lado do botão de abracadabra. Quando clicar no botão criado deve fazer a imagem da coruja desaparecer.
+                        <br/>
+                        <a href="exercicio-3-1.php" title="Acessar exercício 3.1." alt="Acessar exercício 3.1." rel="next" target="_blank"><b>Exercício 3.1. </b></a><i class="fas fa-external-link-alt" style="font-size:12pt; margin-left:5px;padding-bottom:5px;"></i>
+                        <br/>
+                    </li>
+                    <li>Traduzir todos os textos da top nav para português. Para isso, podemos usar os ids deles com o textContent.
+                        <br/>
+                        <a href="exercicio-3-2.php" title="Acessar exercício 3.2." alt="Acessar exercício 3.2." rel="next" target="_blank"><b>Exercício 3.2. </b></a><i class="fas fa-external-link-alt" style="font-size:12pt; margin-left:5px;padding-bottom:5px;"></i>
+                        <br/>
+                    </li>
+                    <li>Utilizando removeChild, remover o ícone do FourSquare das redes sociais (classe '.social').
+                        <br/>
+                        <a href="exercicio-3-3.php" title="Acessar exercício 3.3." alt="Acessar exercício 3.3." rel="next" target="_blank"><b>Exercício 3.3. </b></a><i class="fas fa-external-link-alt" style="font-size:12pt; margin-left:5px;padding-bottom:5px;"></i>
                         <br/>
                     </li>
                 </ol>
