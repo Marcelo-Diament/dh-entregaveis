@@ -11,6 +11,10 @@
     <script src="script.js"></script>
 </head>
 <body>
-    
+    <form action="https://google.com" id="formIdade">
+    	<label for="idade">Idade: </label>
+    	<input type="number" required placeholder=" Digite aqui a sua idade" id="inputIdade">
+    	<input type="submit" id="inputSubmit" value="OK">
+    </form>
 </body>
 </html>
