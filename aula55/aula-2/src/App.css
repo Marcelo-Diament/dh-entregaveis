@@ -1,0 +1,64 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+  margin: 0 auto;
+  display: -webkit-box;
+}
+
+.App-header {
+  background-color: rgb(56, 80, 216);
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+  margin: 0 auto;
+  display: -webkit-box;
+  text-align: -webkit-center;
+  margin-top: 20px;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+ol, ol li:first-child{
+  margin-top: 30px;
+}
+
+ol li{
+  margin-top: 5px;
+}
+
+article.adicionar, ol {
+  display: grid;
+  margin: auto;
+  width: 25%;
+}
+
+article.adicionar input{
+  margin-top: 20px;
+}
+
+article.adicionar button{
+  margin-top: 20px;
+  background-color: #3850d8;
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-style: none;
+  border-radius: 5px;
+  height: 32px;
+
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
