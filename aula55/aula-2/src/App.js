@@ -13,25 +13,84 @@ class App extends Component {
     }
   }
 
+  componentDidMount(){
+    fetch('http://localhost:8000/api/listTasks/')
+    .then(resposta => resposta.json())
+      .then((resposta) => {
+        this.setState({
+          lista:resposta
+        })
+      })
+  }
+
+salvarTexto(event){
+  this.setState({
+    input: event.target.value
+  })
+}
+
+salvarNaLista() {
+
+  fetch('http://localhost:8000/api/addTask/', {
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    method: 'POST',
+    body: JSON.stringify({
+      tarefa: this.state.input,
+    })
+  })
+  .then(res => {
+      fetch('http://localhost:8000/api/listTasks/')
+      .then(resposta => resposta.json())
+      .then((resposta) => {
+        this.setState({
+          lista: resposta
+        })
+    })
+  })
+}
+
+marcarComoFeito(id){
+  fetch('http://localhost:8000/api/updateTask/' + id)
+
+  .then(res => {
+      fetch('http://localhost:8000/api/listTasks/')
+      .then(resposta => resposta.json())
+      .then((resposta) => {
+        this.setState({
+          lista: resposta
+        })
+    })
+  })
+}
+
+
   onChange(e){
     this.setState({
       input: e.target.value
     })
   }
 
-  onClick(){
-    const novoArray = [
-      ...this.state.lista,
-      this.state.input
-    ];
-    this.setState({
-      lista: novoArray
-    })
-  }
+  // onClick(){
+  //   const novoArray = [
+  //     ...this.state.lista,
+  //     this.state.input
+  //   ];
+  //   this.setState({
+  //     lista: novoArray
+  //   })
+  // }
+
+
+
+
 
 
 
   render() {
+    console.log(this.state)
     return (
       <div>
         <header className="App-header">
@@ -39,22 +98,24 @@ class App extends Component {
           <h1 className="App-title">React II - Props e Life Cycle</h1>
         </header>
 
-        <section class="toDoList">
+        <section className="toDoList">
           <article>
             <ol list-style="1">
             {
               this.state.lista.map(item =>
                 <li>
-                  {item}
+                  {item.text} | status: {item.status}
+                  <Botao title="Marcar como feito" onClick={this.marcarComoFeito.bind(this, item.id)}/>
                 </li>
+
               )
             }
             </ol>
           </article>
 
-          <article class="adicionar">
+          <article className="adicionar">
             <Input onChange={this.onChange.bind(this)}/>
-            <Botao title="Adicionar To Do" onClick={this.onClick.bind(this)}/>
+            <Botao title="Adicionar To Do" onClick={this.salvarNaLista.bind(this)}/>
           </article>
 
         </section>
